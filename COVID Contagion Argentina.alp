@@ -195,7 +195,7 @@
 				<Variable Class="Parameter">
 					<Id>1584710609373</Id>
 					<Name><![CDATA[tasaContagio]]></Name>
-					<X>1140</X><Y>100</Y>
+					<X>990</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -209,6 +209,30 @@
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1584710609371</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1584976395709</Id>
+					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
+					<X>990</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[14.]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1584976395707</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -339,7 +363,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
 	String nombre = xl.getCellStringValue(source, row, 2);
-	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3));
+	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3)) / 10000;
 	double densidad = xl.getCellNumericValue(source, row, 7);
 	
 	// No se está usando actualmente - esta mal la ubicación de GBA
@@ -358,11 +382,12 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	region.id = id;
 	region.nombre = nombre;
 	region.poblacion = poblacion;
+	region.susceptibles = poblacion;
 	region.densidadPoblacional = densidad;
 	region.longitud = longitud;
 	region.latitud = latitud;	
 	region.r0 = r0;
-	region.respiradores = respiradores;
+	region.terapiaIntensiva = respiradores;
 	
 	maxPoblacion = max(maxPoblacion, poblacion);
 	maxDensidad = max(maxDensidad, densidad);
@@ -445,7 +470,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435244</Id>
 					<Name><![CDATA[probabilidadesHospitalizacion]]></Name>
-					<X>1140</X><Y>220</Y>
+					<X>990</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -486,7 +511,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435259</Id>
 					<Name><![CDATA[probabilidadesTerapiaIntensiva]]></Name>
-					<X>1140</X><Y>250</Y>
+					<X>990</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -521,7 +546,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435271</Id>
 					<Name><![CDATA[probabilidadesFallecimiento]]></Name>
-					<X>1140</X><Y>190</Y>
+					<X>990</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -781,7 +806,13 @@ for (int i = 0 ; i < regions.size() ; i ++){
 							<Name><![CDATA[r0]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[respiradores]]></Name>
+							<Name><![CDATA[terapiaIntensiva]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[testDisponibles]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[camaAislamiento]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -1548,7 +1579,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<RoundedRectangle>
 					<Id>1584710407550</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>1100</X><Y>20</Y>
+					<X>950</X><Y>20</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1571,7 +1602,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<Text>
 					<Id>1584710422760</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>1161</X><Y>140</Y>
+					<X>1011</X><Y>140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1593,7 +1624,7 @@ for (int i = 0 ; i < regions.size() ; i ++){
 				<Text>
 					<Id>1584710575242</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>1160</X><Y>40</Y>
+					<X>1010</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2235,7 +2266,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584835465450</Id>
-					<Name><![CDATA[respiradores]]></Name>
+					<Name><![CDATA[terapiaIntensiva]]></Name>
 					<X>390</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2247,6 +2278,54 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1584835465448</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1584979845222</Id>
+					<Name><![CDATA[testDisponibles]]></Name>
+					<X>700</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[10000]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1584979845220</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1584982622753</Id>
+					<Name><![CDATA[camaAislamiento]]></Name>
+					<X>700</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[500]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1584982622751</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -3101,6 +3180,36 @@ desarollar actividades como trabajo y escuelas
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1584979630735</Id>
+					<Name><![CDATA[testeado]]></Name>
+					<X>640</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1584980906507</Id>
+					<Name><![CDATA[aAislamiento]]></Name>
+					<X>640</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584547220632</Id>
 					<Name><![CDATA[edad]]></Name>
@@ -3314,8 +3423,6 @@ desarollar actividades como trabajo y escuelas
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="250" Height="240">
-						<EntryAction><![CDATA[calculoTasaContacto();
-calculoTasaContagio();]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -3405,67 +3512,75 @@ main.remove_infectados(this);]]></EntryAction>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1584899376263</Id>
 					<Name><![CDATA[detectado]]></Name>
-					<X>640</X><Y>234</Y>
+					<X>640</X><Y>244</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="200" Height="360">
+					<Properties Width="340" Height="376">
+						<EntryAction><![CDATA[hospitaliza = calculoHospitalizacion();
+salud.onChange();]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="detectado" ParentStateId="1584899376263">
 					<Id>1584899400039</Id>
 					<Name><![CDATA[hospitalizado]]></Name>
-					<X>660</X><Y>354</Y>
+					<X>660</X><Y>364</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="160" Height="220">
+					<Properties Width="300" Height="236">
+						<EntryAction><![CDATA[calculoCama();
+salud.onChange();]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1584899489497</Id>
 					<Name><![CDATA[noDetectado]]></Name>
-					<X>580</X><Y>54</Y>
+					<X>640</X><Y>64</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="320" Height="130">
+					<Properties Width="200" Height="130">
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="hospitalizado" ParentStateId="1584899400039">
 					<Id>1584899575188</Id>
-					<Name><![CDATA[terapiaSimple]]></Name>
-					<X>671.773</X><Y>414</Y>
+					<Name><![CDATA[camaAislamiento]]></Name>
+					<X>690</X><Y>490</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="135.519" Height="30">
+					<Properties Width="106.479" Height="30">
+						<EntryAction><![CDATA[regionActual.camaAislamiento--;]]></EntryAction>
+						<ExitAction><![CDATA[regionActual.camaAislamiento++;]]></ExitAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="hospitalizado" ParentStateId="1584899400039">
 					<Id>1584899594324</Id>
 					<Name><![CDATA[terapiaIntensiva]]></Name>
-					<X>671.773</X><Y>534</Y>
+					<X>840</X><Y>490</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="135.519" Height="30">
+					<Properties Width="106.479" Height="30">
+						<EntryAction><![CDATA[regionActual.terapiaIntensiva--;]]></EntryAction>
+						<ExitAction><![CDATA[regionActual.terapiaIntensiva++;]]></ExitAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="detectado" ParentStateId="1584899376263">
 					<Id>1584899821143</Id>
 					<Name><![CDATA[noHospitalizado]]></Name>
-					<X>660</X><Y>279</Y>
+					<X>660</X><Y>289</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3476,48 +3591,13 @@ main.remove_infectados(this);]]></EntryAction>
 				</StatechartElement>
 				<StatechartElement Class="State" ParentState="noDetectado" ParentStateId="1584899489497">
 					<Id>1584909514556</Id>
-					<Name><![CDATA[circulando]]></Name>
-					<X>600</X><Y>134</Y>
+					<Name><![CDATA[enEvaluacion]]></Name>
+					<X>660</X><Y>150</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Width="120" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="noDetectado" ParentStateId="1584899489497">
-					<Id>1584909570335</Id>
-					<Name><![CDATA[aislado]]></Name>
-					<X>760</X><Y>134</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="120" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="Branch" ParentState="noDetectado" ParentStateId="1584899489497">
-					<Id>1584911001066</Id>
-					<Name><![CDATA[branch]]></Name>
-					<X>740</X><Y>104</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Properties>	
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="hospitalizado" ParentStateId="1584899400039">
-					<Id>1584912885605</Id>
-					<Name><![CDATA[terapiaComun]]></Name>
-					<X>671</X><Y>473</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="135.519" Height="30">
+					<Properties Width="160" Height="30">
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -3536,6 +3616,29 @@ main.remove_infectados(this);]]></EntryAction>
 					<Id>1584973959908</Id>
 					<Name><![CDATA[branch2]]></Name>
 					<X>250</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Properties>	
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="State" ParentState="noDetectado" ParentStateId="1584899489497">
+					<Id>1584979456754</Id>
+					<Name><![CDATA[circulando]]></Name>
+					<X>660</X><Y>90</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Width="160" Height="30">
+						<FillColor/>
+					</Properties>
+				</StatechartElement>
+				<StatechartElement Class="Branch" ParentState="hospitalizado" ParentStateId="1584899400039">
+					<Id>1584980672481</Id>
+					<Name><![CDATA[branch]]></Name>
+					<X>810</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3572,7 +3675,6 @@ main.remove_infectados(this);]]></EntryAction>
 					</Points>
 					<IconOffset>10.0</IconOffset>
 					<Properties Source="1584897402291" Target="1584897402305" Trigger="timeout">
-						<Action><![CDATA[calculoCriticidad();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[calculoPeriodoIncubacion()]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -3603,6 +3705,7 @@ main.remove_infectados(this);]]></EntryAction>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584897402307" Target="1584897402309" Trigger="condition">
+						<Action><![CDATA[calculoCriticidad();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -3757,7 +3860,7 @@ enfermedad.onChange();]]></Action>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584897402309" Target="1584897402309" Trigger="timeout">
-						<Action><![CDATA[fallece = randomTrue(main.probabilidadesFallecimiento(edad));
+						<Action><![CDATA[fallece = calculoMortalidad();
 enfermedad.onChange();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -3775,20 +3878,20 @@ enfermedad.onChange();]]></Action>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="enfermo" ParentStateId="1584897402305">
+				<StatechartElement Class="Transition" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1584898823575</Id>
 					<Name><![CDATA[transition24]]></Name>
-					<X>340</X><Y>520</Y>
+					<X>360</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-40</X><Y>30</Y></Point>
+						<Point><X>-40</X><Y>40</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584897402305" Target="1584897402305" Trigger="rate">
+					<IconOffset>30.0</IconOffset>
+					<Properties Source="1584897402289" Target="1584897402289" Trigger="rate">
 						<Action><![CDATA[contagio();
 contagios++;
 /*contactos++;
@@ -3815,14 +3918,14 @@ if (randomTrue(tasaContagio)){
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1584899328993</Id>
 					<Name><![CDATA[salud]]></Name>
-					<X>680</X><Y>14</Y>
+					<X>740</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>40</Y></Point>
+						<Point><X>0</X><Y>34</Y></Point>
 					</Points>
 					<Properties Target="1584899489497">
 					</Properties>	
@@ -3830,24 +3933,24 @@ if (randomTrue(tasaContagio)){
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1584899532085</Id>
 					<Name><![CDATA[transition15]]></Name>
-					<X>740</X><Y>184</Y>
+					<X>740</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
+						<Point><X>0</X><Y>64</Y></Point>
 					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584899489497" Target="1584899376263" Trigger="rate">
+					<IconOffset>30.0</IconOffset>
+					<Properties Source="1584909514556" Target="1584899376263" Trigger="rate">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[dioPositivo]]></Condition>
 						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1/6]]></Code>
+							<Code><![CDATA[1./6.]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
@@ -3860,7 +3963,7 @@ if (randomTrue(tasaContagio)){
 				<StatechartElement Class="InitialStatePointer" ParentState="detectado" ParentStateId="1584899376263">
 					<Id>1584899859830</Id>
 					<Name><![CDATA[initialState8]]></Name>
-					<X>740</X><Y>249</Y>
+					<X>740</X><Y>259</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3875,7 +3978,7 @@ if (randomTrue(tasaContagio)){
 				<StatechartElement Class="Transition" ParentState="detectado" ParentStateId="1584899376263">
 					<Id>1584899891191</Id>
 					<Name><![CDATA[transition17]]></Name>
-					<X>740</X><Y>309</Y>
+					<X>740</X><Y>319</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3905,115 +4008,22 @@ if (randomTrue(tasaContagio)){
 				<StatechartElement Class="InitialStatePointer" ParentState="hospitalizado" ParentStateId="1584899400039">
 					<Id>1584899931026</Id>
 					<Name><![CDATA[initialState9]]></Name>
-					<X>740</X><Y>379</Y>
+					<X>810</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>35</Y></Point>
+						<Point><X>0</X><Y>30</Y></Point>
 					</Points>
-					<Properties Target="1584899575188">
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="terapiaSimple" ParentStateId="1584899575188">
-					<Id>1584900275730</Id>
-					<Name><![CDATA[transition18]]></Name>
-					<X>807</X><Y>424</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-47</X><Y>20</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584899575188" Target="1584899575188" Trigger="timeout">
-						<Action><![CDATA[aTerapiaIntensiva = randomTrue(main.probabilidadesTerapiaIntensiva(edad));]]></Action>
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="noDetectado" ParentStateId="1584899489497">
-					<Id>1584911006482</Id>
-					<Name><![CDATA[transition]]></Name>
-					<X>730</X><Y>114</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>-2</X><Y>-10</Y></Point>
-						<Point><X>-68</X><Y>-10</Y></Point>
-						<Point><X>-68</X><Y>20</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584911001066" Target="1584909514556" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>false</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="noDetectado" ParentStateId="1584899489497">
-					<Id>1584911019469</Id>
-					<Name><![CDATA[transition1]]></Name>
-					<X>752</X><Y>104</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>68</X><Y>0</Y></Point>
-						<Point><X>68</X><Y>30</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584911001066" Target="1584909570335" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					<Properties Target="1584980672481">
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="InitialStatePointer" ParentState="noDetectado" ParentStateId="1584899489497">
 					<Id>1584911061530</Id>
 					<Name><![CDATA[initialState]]></Name>
-					<X>740</X><Y>74</Y>
+					<X>760</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4022,67 +4032,7 @@ if (randomTrue(tasaContagio)){
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>0</X><Y>20</Y></Point>
 					</Points>
-					<Properties Target="1584911001066">
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
-					<Id>1584912903652</Id>
-					<Name><![CDATA[transition2]]></Name>
-					<X>740</X><Y>444</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>29</Y></Point>
-					</Points>
-					<IconOffset>10.0</IconOffset>
-					<Properties Source="1584899575188" Target="1584912885605" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
-					<Id>1584912915239</Id>
-					<Name><![CDATA[transition3]]></Name>
-					<X>740</X><Y>504</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>-1</Y></Point>
-						<Point><X>0</X><Y>30</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1584912885605" Target="1584899594324" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					<Properties Target="1584979456754">
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="Transition" ParentState="sintomatico" ParentStateId="1584897402309">
@@ -4224,6 +4174,228 @@ if (randomTrue(tasaContagio)){
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="noDetectado" ParentStateId="1584899489497">
+					<Id>1584979489463</Id>
+					<Name><![CDATA[transition]]></Name>
+					<X>740</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>30</Y></Point>
+					</Points>
+					<IconOffset>10.0</IconOffset>
+					<Properties Source="1584979456754" Target="1584909514556" Trigger="condition">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[testeado]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="circulando" ParentStateId="1584979456754">
+					<Id>1584979550700</Id>
+					<Name><![CDATA[transition1]]></Name>
+					<X>820</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-50</X><Y>20</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584979456754" Target="1584979456754" Trigger="timeout">
+						<Action><![CDATA[//testeado = randomTrue(1.);
+if(enfermedad.isStateActive(sintomatico) && regionActual.testDisponibles > 0){
+	testeado = true;
+	regionActual.testDisponibles--;
+}
+salud.onChange();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="noHospitalizado" ParentStateId="1584899821143">
+					<Id>1584980502041</Id>
+					<Name><![CDATA[transition8]]></Name>
+					<X>820</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-40</X><Y>19</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584899821143" Target="1584899821143" Trigger="timeout">
+						<Action><![CDATA[hospitaliza = calculoHospitalizacion();
+salud.onChange();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
+					<Id>1584980679689</Id>
+					<Name><![CDATA[transition2]]></Name>
+					<X>798</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-53</X><Y>0</Y></Point>
+						<Point><X>-53</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584980672481" Target="1584899575188" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[aAislamiento]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>false</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
+					<Id>1584981172629</Id>
+					<Name><![CDATA[transition13]]></Name>
+					<X>796</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0.47900000000004184</X><Y>0</Y></Point>
+						<Point><X>44</X><Y>0</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584899575188" Target="1584899594324" Trigger="condition">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[aTerapiaIntensiva]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
+					<Id>1584981308254</Id>
+					<Name><![CDATA[transition16]]></Name>
+					<X>960</X><Y>575</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-55</X><Y>25</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584899400039" Target="1584899400039" Trigger="timeout">
+						<Action><![CDATA[calculoCama();
+salud.onChange();]]></Action>
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
+				<StatechartElement Class="Transition" ParentState="hospitalizado" ParentStateId="1584899400039">
+					<Id>1584981983805</Id>
+					<Name><![CDATA[transition3]]></Name>
+					<X>822</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>78</X><Y>0</Y></Point>
+						<Point><X>78</X><Y>40</Y></Point>
+					</Points>
+					<IconOffset>20.0</IconOffset>
+					<Properties Source="1584980672481" Target="1584899594324" Trigger="timeout">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Condition><![CDATA[true]]></Condition>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<MessageType><![CDATA[Object]]></MessageType>
+						<DefaultTransition>true</DefaultTransition>
+						<FilterType><![CDATA[unconditionally]]></FilterType>
+						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
+						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
+					</Properties>	
+				</StatechartElement>
 			</StatechartElements>
 			<Events>
 				<Event>
@@ -4317,70 +4489,12 @@ if (randomTrue(tasaContagio)){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if (this.enfermedad.isStateActive(terapiaIntensiva)){
+					<Body><![CDATA[if (this.enfermedad.isStateActive(critico)){
 	tasaRecuperacion = uniform(3., 6.);
 } else {
 	tasaRecuperacion = 2.;
 }
 enfermedad.onChange();]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1584626613281</Id>
-					<Name><![CDATA[calculoTasaContacto]]></Name>
-					<X>40</X><Y>930</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if (enfermedad.isStateActive(asintomatico)){
-	tasaContacto = .5 * (regionActual.tasaContactoSocial + regionActual.tasaContactoComunidad + regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoSocial + regionOrigen.tasaContactoComunidad + regionOrigen.tasaContactoAislamiento);
-}
-if (enfermedad.isStateActive(noHospitalizado)){
-	tasaContacto =  .5 * (regionActual.tasaContactoComunidad + regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoComunidad + regionOrigen.tasaContactoAislamiento);
-}
-if (enfermedad.isStateActive(terapiaComun)){
-	tasaContacto =  .5 * (regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoAislamiento);
-}
-if (enfermedad.isStateActive(terapiaIntensiva)){
-	tasaContacto = .05 * (regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoAislamiento);
-}
-
-
-
-/* BACOS's 
-if (statechart.isStateActive(asintomatico)){
-	return .5 * (regionActual.tasaContactoSocial + regionOrigen.tasaContactoSocial);
-}
-if (statechart.isStateActive(noHospitalizado)){
-	return .5 * (regionActual.tasaContactoComunidad + regionOrigen.tasaContactoComunidad);
-}
-if (statechart.isStateActive(terapiaComun)){
-	return .5 * (regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoAislamiento);
-}
-if (statechart.isStateActive(terapiaIntensiva)){
-	return .05 * (regionActual.tasaContactoAislamiento + regionOrigen.tasaContactoAislamiento);
-}
-
-return 0.;*/]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1584626628566</Id>
-					<Name><![CDATA[calculoTasaContagio]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>40</X><Y>960</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(enfermedad.isStateActive(asintomatico)){
-	tasaContagio = main.tasaContagio * .25;
-}else{
-	tasaContagio = main.tasaContagio;
-}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -4439,9 +4553,9 @@ regionOrigen.susceptibles --;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[esCritico = randomTrue(0.2);
+					<Body><![CDATA[esCritico = randomTrue(0.2); //Poner rate real
 if(!esCritico){
-	esLeve = randomTrue(0.3);
+	esLeve = randomTrue(0.3); //Poner rate real
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -4455,13 +4569,85 @@ if(!esCritico){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[double re = 0.;
-double r0 = regionActual.r0;
-double s = 1.0 * regionActual.poblacion - 1.0 * regionActual.infectadosTotales;
-double n = 1.0 * regionActual.poblacion;
-
-re = (r0 / 14.) * (s/n);
-
+if(regionActual != null){
+	double r0 = regionActual.r0;
+	double s = 1.0 * regionActual.susceptibles;
+	double n = 1.0 * regionActual.poblacion;
+	
+	re = (r0 / main.duracionPromedioEnfermedad) * (s/n);
+	
+	if(salud.isStateActive(detectado)){
+		re = re * 0.01;
+	}else if(salud.isStateActive(enEvaluacion)){
+		re = re * 0.5;
+	}
+}
 return re;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1584978503765</Id>
+					<Name><![CDATA[calculoMortalidad]]></Name>
+					<X>40</X><Y>1140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[boolean fallece = false;
+//fallece = randomTrue(main.probabilidadesFallecimiento(edad));
+double potenciador = 1.0;
+
+if(enfermedad.isStateActive(critico) && !salud.isStateActive(hospitalizado)){
+	potenciador = 100.;
+}else if(enfermedad.isStateActive(critico) && !salud.isStateActive(terapiaIntensiva) && salud.isStateActive(hospitalizado)){
+	potenciador = 10.;
+}
+
+fallece = randomTrue(main.probabilidadesFallecimiento(edad)*potenciador);
+return fallece;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1584980149267</Id>
+					<Name><![CDATA[calculoHospitalizacion]]></Name>
+					<X>40</X><Y>1170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[boolean hosp = false;
+
+if((regionActual.camaAislamiento > 0 || regionActual.terapiaIntensiva > 0) && (enfermedad.isStateActive(critico) || enfermedad.isStateActive(moderado))){
+	hosp = true;
+}
+
+return hosp;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1584981067426</Id>
+					<Name><![CDATA[calculoCama]]></Name>
+					<X>40</X><Y>1200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if(enfermedad.isStateActive(critico)){
+	if(regionActual.terapiaIntensiva > 0){
+		aTerapiaIntensiva = true;
+		aAislamiento = false;
+	}else if(regionActual.camaAislamiento > 0){
+		aAislamiento = true;
+		aTerapiaIntensiva = false;
+	}
+}else if(enfermedad.isStateActive(moderado)){
+	if(regionActual.camaAislamiento > 0){
+		aAislamiento = true;
+	}
+}]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -4705,6 +4891,9 @@ return re;]]></Body>
 			<Parameters>			
 				<Parameter>
 					<ParameterName><![CDATA[tasaContagio]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[duracionPromedioEnfermedad]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
