@@ -2371,7 +2371,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[if(cuarentenaActivada){	
-	r0 -= efectoCuarentena
+	r0 -= efectoCuarentena;
 }]]></Action>
 				</Event>
 				<Event>
