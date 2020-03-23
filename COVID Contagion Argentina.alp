@@ -431,9 +431,9 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 for (int i = 0 ; i < regions.size() ; i ++){
 	regions.get(i).circle.setRadius(max(5., 25. * (double)regions.get(i).poblacion / (double)maxPoblacion));
 	
-	regions.get(i).tasaContactoSocial = 10. * (regions.get(i).densidadPoblacional/maxDensidad);
-	regions.get(i).tasaContactoComunidad = 15.  * (regions.get(i).densidadPoblacional / maxDensidad);
-	regions.get(i).tasaContactoAislamiento = .5 * (regions.get(i).densidadPoblacional / maxDensidad);
+	//regions.get(i).tasaContactoSocial = 10. * (regions.get(i).densidadPoblacional/maxDensidad);
+	//regions.get(i).tasaContactoComunidad = 15.  * (regions.get(i).densidadPoblacional / maxDensidad);
+	//regions.get(i).tasaContactoAislamiento = .5 * (regions.get(i).densidadPoblacional / maxDensidad);
 }]]></Body>
 				</Function>
 			</Functions>
@@ -788,15 +788,6 @@ for (int i = 0 ; i < regions.size() ; i ++){
 							<Name><![CDATA[longitud]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[tasaContactoComunidad]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tasaContactoAislamiento]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tasaContactoSocial]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[porcentajeMovil]]></Name>
 						</Parameter>
 						<Parameter>
@@ -813,6 +804,9 @@ for (int i = 0 ; i < regions.size() ; i ++){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[camaAislamiento]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[efectoCuarentena]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -1998,36 +1992,6 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1584629323961</Id>
-					<Name><![CDATA[aislamientoComunal]]></Name>
-					<X>420</X><Y>480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1584629389393</Id>
-					<Name><![CDATA[aislamientoSocial]]></Name>
-					<X>420</X><Y>520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1584707089961</Id>
 					<Name><![CDATA[edadPromedio]]></Name>
 					<X>490</X><Y>220</Y>
@@ -2037,6 +2001,21 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1584994128027</Id>
+					<Name><![CDATA[cuarentenaActivada]]></Name>
+					<X>210</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -2130,78 +2109,6 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1584627515115</Id>
-					<Name><![CDATA[tasaContactoComunidad]]></Name>
-					<X>180</X><Y>480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1584627515113</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1584627548843</Id>
-					<Name><![CDATA[tasaContactoAislamiento]]></Name>
-					<X>180</X><Y>560</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.05]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1584627548841</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1584627557890</Id>
-					<Name><![CDATA[tasaContactoSocial]]></Name>
-					<X>180</X><Y>520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.15]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1584627557888</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1584643516754</Id>
 					<Name><![CDATA[porcentajeMovil]]></Name>
 					<X>490</X><Y>250</Y>
@@ -2246,7 +2153,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 				<Variable Class="Parameter">
 					<Id>1584835041860</Id>
 					<Name><![CDATA[r0]]></Name>
-					<X>80</X><Y>480</Y>
+					<X>80</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2267,7 +2174,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 				<Variable Class="Parameter">
 					<Id>1584835465450</Id>
 					<Name><![CDATA[terapiaIntensiva]]></Name>
-					<X>390</X><Y>310</Y>
+					<X>700</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2326,6 +2233,30 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1584982622751</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1584992837548</Id>
+					<Name><![CDATA[efectoCuarentena]]></Name>
+					<X>80</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1584992837546</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -2409,6 +2340,74 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 
 				</Variable>
 			</Variables>
+			<Events>
+				<Event>
+					<Id>1584992650152</Id>
+					<Name><![CDATA[inicioCuarentena]]></Name>
+					<X>140</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[if(cuarentenaActivada){	
+	r0 -= efectoCuarentena
+}]]></Action>
+				</Event>
+				<Event>
+					<Id>1584992820696</Id>
+					<Name><![CDATA[finCuarentena]]></Name>
+					<X>270</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[50]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[if(cuarentenaActivada){	
+	r0 += efectoCuarentena;
+}]]></Action>
+				</Event>
+			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -2552,74 +2551,6 @@ return c;]]></Body>
 					<FillMaterial>null</FillMaterial>
 				</Oval>
 				<Text>
-					<Id>1584627612817</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>750</X><Y>460</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Tasa de contacto al 
-circular dentro de la region]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
-				<Text>
-					<Id>1584627701537</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>750</X><Y>540</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Tasa de contacto al 
-mantenerse aislado
-]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
-				<Text>
-					<Id>1584627719786</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>750</X><Y>500</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Tasa de contacto al 
-desarollar actividades como trabajo y escuelas
-]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
-				<Text>
 					<Id>1584627743914</Id>
 					<Name><![CDATA[text3]]></Name>
 					<X>50</X><Y>360</Y>
@@ -2729,27 +2660,6 @@ desarollar actividades como trabajo y escuelas
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1584629432568</Id>
-					<Name><![CDATA[text6]]></Name>
-					<X>500</X><Y>550</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[La tasa de aislamiento no puede afectarse]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
 				<RoundedRectangle>
 					<Id>1584643157582</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
@@ -2773,70 +2683,6 @@ desarollar actividades como trabajo y escuelas
 					<FillMaterial>null</FillMaterial>
 					<ArcRadius>10</ArcRadius>
 				</RoundedRectangle>
-				<Text>
-					<Id>1584711546023</Id>
-					<Name><![CDATA[text7]]></Name>
-					<X>50</X><Y>380</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[La tasa de contacto de una region se refiere a la cantidad de encuentros promedio por dia queda determinada por la suma de tres factores:]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1584711577800</Id>
-					<Name><![CDATA[text8]]></Name>
-					<X>520</X><Y>410</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Tasa de Contacto = [Tasa de Contacto Comunal x Aislamiento Comunal  +  Tasa de Contacto Social  x Aislamiento Social+  Tasa de Contacto de Aislamiento]]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>2</Style>
-					</Font>
-					<Alignment>CENTER</Alignment>
-				</Text>
-				<Text>
-					<Id>1584711793712</Id>
-					<Name><![CDATA[text9]]></Name>
-					<X>50</X><Y>440</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[A su vez la tasa comunal y la social varian segun el grupo etario del infectado
-]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Text>
 					<Id>1584833111175</Id>
 					<Name><![CDATA[text10]]></Name>
