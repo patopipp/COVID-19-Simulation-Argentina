@@ -9,8 +9,6 @@
   - [Links a noticias](#links-a-noticias)
     - [Modelación basada en agentes para entender el contagio](#modelación-basada-en-agentes-para-entender-el-contagio)
     - [El peligro de los casos asintomáticos y noticias al respecto](#el-peligro-de-los-casos-asintomáticos-y-noticias-al-respecto)
-    - [Datos de casos diagnosticados en Colombia](#datos-de-casos-diagnosticados-en-colombia)
-    - [Noticias respecto a las medidas contra el contagio del COVID-19 en Colombia](#noticias-respecto-a-las-medidas-contra-el-contagio-del-covid-19-en-colombia)
     - [Links adicionales](#links-adicionales)
   - [Referencias a documentos científicos](#referencias-a-documentos-científicos)
     - [Modelo matemático de propagación del COVID-19](#modelo-matemático-de-propagación-del-covid-19)
@@ -19,7 +17,6 @@
     - [Informe técnico de España](#informe-técnico-de-españa)
   - [Material multimedia de interés](#material-multimedia-de-interés)
     - [Lucha contra el COVID-19](#lucha-contra-el-covid-19)
-    - [Noticias positivas de medidas contra el COVID-19 en algunos sectores de Colombia](#noticias-positivas-de-medidas-contra-el-covid-19-en-algunos-sectores-de-colombia)
 - [Conflicto de intereses](#conflicto-de-intereses)
 
 # Información del repositorio
