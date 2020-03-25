@@ -21,7 +21,7 @@
 
 # Información del repositorio
 
-Este repositorio contiene varios códigos en Python que se hacen públicos con el
+Este repositorio contiene varios códigos que se hacen públicos con el
 fin de ayudar en la investigación alrededor del COVID-19, y también de educar a 
 las personas frente a las simulaciones epidemiológicas que deben conocer para 
 tomar decisiones que ayuden a la prevención contra su contagio.
