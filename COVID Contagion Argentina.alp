@@ -18,7 +18,8 @@
 			<Name><![CDATA[Main]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<Import><![CDATA[import java.text.SimpleDateFormat;]]></Import>
-			<StartupCode><![CDATA[cargarRegiones();]]></StartupCode>
+			<StartupCode><![CDATA[cargarRegiones();
+cargarInfoEnfermedad();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1584450064339</Id>
@@ -145,7 +146,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1584712979806</Id>
 					<Name><![CDATA[duracionPromedio]]></Name>
-					<X>1490</X><Y>100</Y>
+					<X>1220</X><Y>-1040</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -179,18 +180,6 @@
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1584716252534</Id>
-					<Name><![CDATA[ro]]></Name>
-					<X>1690</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -271,19 +260,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140334403</Id>
 					<Name><![CDATA[porcentajeSintomaticos]]></Name>
-					<X>990</X><Y>1120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1585140609066</Id>
-					<Name><![CDATA[tasaHospitalizacion]]></Name>
-					<X>990</X><Y>1140</Y>
+					<X>940</X><Y>-420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -295,7 +272,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140659032</Id>
 					<Name><![CDATA[porcentajeCriticosSobreDiagnosticados]]></Name>
-					<X>990</X><Y>1160</Y>
+					<X>1350</X><Y>-400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -307,19 +284,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140662556</Id>
 					<Name><![CDATA[porcentajeDiagnosticados]]></Name>
-					<X>990</X><Y>1100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1585140721132</Id>
-					<Name><![CDATA[tasaTerapiaIntensiva]]></Name>
-					<X>990</X><Y>1180</Y>
+					<X>1350</X><Y>-430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -331,7 +296,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140735981</Id>
 					<Name><![CDATA[tasaRespirador]]></Name>
-					<X>990</X><Y>1200</Y>
+					<X>940</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -343,7 +308,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140810721</Id>
 					<Name><![CDATA[duracionIncubacion]]></Name>
-					<X>990</X><Y>1220</Y>
+					<X>940</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -355,7 +320,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1585140825373</Id>
 					<Name><![CDATA[duracionEnfermedadLeve]]></Name>
-					<X>990</X><Y>1240</Y>
+					<X>940</X><Y>-290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -366,8 +331,20 @@
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1585140835882</Id>
-					<Name><![CDATA[duracionEnfermedadGrave]]></Name>
-					<X>990</X><Y>1260</Y>
+					<Name><![CDATA[duracionMinEnfermedadGrave]]></Name>
+					<X>940</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585147124771</Id>
+					<Name><![CDATA[duracionMaxEnfermedadGrave]]></Name>
+					<X>940</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -377,33 +354,9 @@
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1584710609373</Id>
-					<Name><![CDATA[tasaContagio]]></Name>
-					<X>990</X><Y>920</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1584710609371</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
-					<X>990</X><Y>890</Y>
+					<X>1200</X><Y>-1160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -611,27 +564,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	}
 }
 
-//Parámetros asociados a la enfermedad
-source = "Enfermedad";
-int col = 3;
-porcentajeDiagnosticados = xl.getCellNumericValue(source, 2, col);
-porcentajeSintomaticos = xl.getCellNumericValue(source, 3, col);
-tasaHospitalizacion = xl.getCellNumericValue(source, 6, col);
-porcentajeCriticosSobreDiagnosticados = xl.getCellNumericValue(source, 5, col);
-tasaTerapiaIntensiva = xl.getCellNumericValue(source, 7, col);
-tasaRespirador = xl.getCellNumericValue(source, 8, col);
-duracionIncubacion = xl.getCellNumericValue(source, 10, col);
-duracionEnfermedadLeve = xl.getCellNumericValue(source, 12, col);
-
-source = "tasaMortalidad";
-double[] edad = new double[9];
-double[] probabilidad = new double[9];
-
-for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
-	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
-	probabilidad[row - 2] = xl.getCellNumericValue(source, row, 2);
-}
-probabilidadesFallecimiento.setArgumentsAndValues(edad, probabilidad);]]></Body>
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -661,6 +594,60 @@ if(todas){
 		}
 	}
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585145230081</Id>
+					<Name><![CDATA[cargarInfoEnfermedad]]></Name>
+					<X>940</X><Y>-710</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//Parámetros asociados a la enfermedad
+String source;
+ExcelFile xl = regiones;
+
+source = "Enfermedad";
+int col = 3;
+porcentajeDiagnosticados = xl.getCellNumericValue(source, 2, col);
+porcentajeSintomaticos = xl.getCellNumericValue(source, 3, col);
+porcentajeCriticosSobreDiagnosticados = xl.getCellNumericValue(source, 5, col);
+tasaRespirador = xl.getCellNumericValue(source, 8, col);
+duracionIncubacion = xl.getCellNumericValue(source, 10, col);
+duracionEnfermedadLeve = xl.getCellNumericValue(source, 12, col);
+duracionMinEnfermedadGrave = xl.getCellNumericValue(source, 13, col);
+duracionMaxEnfermedadGrave = xl.getCellNumericValue(source, 13, col+1);
+
+source = "tasaMortalidad";
+double[] edad = new double[9];
+double[] probabilidad1 = new double[9];
+
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
+	probabilidad1[row - 2] = xl.getCellNumericValue(source, row, 2);
+}
+probabilidadesFallecimiento.setArgumentsAndValues(edad, probabilidad1);
+traceln(probabilidad1);
+
+source = "tasaHospitalizacion";
+double[] probabilidad2 = new double[9];
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
+	probabilidad2[row - 2] = xl.getCellNumericValue(source, row, 2);
+}
+probabilidadesHospitalizacion.setArgumentsAndValues(edad, probabilidad2);
+traceln(probabilidad2);
+
+source = "tasaTerapiaIntensiva";
+double[] probabilidad3 = new double[9];
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
+	probabilidad3[row - 2] = xl.getCellNumericValue(source, row, 2);
+}
+probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
+traceln(probabilidad3);]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -696,7 +683,7 @@ if(todas){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435244</Id>
 					<Name><![CDATA[probabilidadesHospitalizacion]]></Name>
-					<X>990</X><Y>1040</Y>
+					<X>940</X><Y>-580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -715,29 +702,11 @@ if(todas){
 							</ValueColumnReference>
 					</ValuesQuery>
 // arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Argument><![CDATA[10.0]]></Argument>
-					<Argument><![CDATA[20.0]]></Argument>
-					<Argument><![CDATA[30.0]]></Argument>
-					<Argument><![CDATA[40.0]]></Argument>
-					<Argument><![CDATA[50.0]]></Argument>
-					<Argument><![CDATA[60.0]]></Argument>
-					<Argument><![CDATA[70.0]]></Argument>
-					<Argument><![CDATA[80.0]]></Argument>
-					<Value><![CDATA[0.001]]></Value>
-					<Value><![CDATA[0.003]]></Value>
-					<Value><![CDATA[0.012]]></Value>
-					<Value><![CDATA[0.032]]></Value>
-					<Value><![CDATA[0.049]]></Value>
-					<Value><![CDATA[0.102]]></Value>
-					<Value><![CDATA[0.166]]></Value>
-					<Value><![CDATA[0.243]]></Value>
-					<Value><![CDATA[0.273]]></Value>
 				</TableFunction>
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435259</Id>
 					<Name><![CDATA[probabilidadesTerapiaIntensiva]]></Name>
-					<X>990</X><Y>1070</Y>
+					<X>940</X><Y>-550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -756,23 +725,11 @@ if(todas){
 							</ValueColumnReference>
 					</ValuesQuery>
 // arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Argument><![CDATA[40.0]]></Argument>
-					<Argument><![CDATA[50.0]]></Argument>
-					<Argument><![CDATA[60.0]]></Argument>
-					<Argument><![CDATA[70.0]]></Argument>
-					<Argument><![CDATA[80.0]]></Argument>
-					<Value><![CDATA[0.05]]></Value>
-					<Value><![CDATA[0.063]]></Value>
-					<Value><![CDATA[0.122]]></Value>
-					<Value><![CDATA[0.274]]></Value>
-					<Value><![CDATA[0.432]]></Value>
-					<Value><![CDATA[0.709]]></Value>
 				</TableFunction>
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435271</Id>
 					<Name><![CDATA[probabilidadesFallecimiento]]></Name>
-					<X>990</X><Y>1010</Y>
+					<X>940</X><Y>-610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -797,7 +754,7 @@ if(todas){
     			<DataSet>
 					<Id>1584713068702</Id>
 					<Name><![CDATA[duracionesEnfermedad]]></Name>
-					<X>1490</X><Y>60</Y>
+					<X>1220</X><Y>-1080</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -819,7 +776,7 @@ if(todas){
     			<DataSet>
 					<Id>1584716316061</Id>
 					<Name><![CDATA[cantidadContagios]]></Name>
-					<X>1490</X><Y>30</Y>
+					<X>1870</X><Y>-550</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1648,7 +1605,7 @@ if(todas){
 				<RoundedRectangle>
 					<Id>1584710407550</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>950</X><Y>840</Y>
+					<X>880</X><Y>-900</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1661,8 +1618,8 @@ if(todas){
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>300</Width>
-					<Height>510</Height>
+					<Width>1220</Width>
+					<Height>800</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -1671,7 +1628,7 @@ if(todas){
 				<Text>
 					<Id>1584710422760</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>1011</X><Y>960</Y>
+					<X>960</X><Y>-660</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1715,7 +1672,7 @@ if(todas){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1584713200852</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>1530</X><Y>130</Y>
+					<X>1240</X><Y>-1000</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1725,9 +1682,7 @@ if(todas){
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[duracionPromedio = duracionesEnfermedad.getYMean();
-//ro = duracionPromedio * tasasContacto.getYMean() * tasaContagio;
-ro = cantidadContagios.getYMean();]]></ActionCode>
+						<ActionCode><![CDATA[duracionPromedio = duracionesEnfermedad.getYMean();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -1737,7 +1692,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
     			<TimePlot>
 					<Id>1584713743294</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>1450</X><Y>210</Y>
+					<X>1410</X><Y>-760</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1821,7 +1776,7 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
     			<TimePlot>
 					<Id>1584716801500</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>1930</X><Y>220</Y>
+					<X>1410</X><Y>-590</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1839,15 +1794,15 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>360</Width>
-					<Height>210</Height>
+					<Width>440</Width>
+					<Height>140</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>280</Width>
-						<Height>120</Height>
+						<Width>360</Width>
+						<Height>50</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -1866,8 +1821,8 @@ ro = cantidadContagios.getYMean();]]></ActionCode>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleToExpression><![CDATA[3]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -2827,6 +2782,93 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
+				<Text>
+					<Id>1585145416681</Id>
+					<Name><![CDATA[text14]]></Name>
+					<X>1220</X><Y>-860</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Características de la Enfermedad]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585159047212</Id>
+					<Name><![CDATA[text15]]></Name>
+					<X>1010</X><Y>-780</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[I N P U T S]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585159073984</Id>
+					<Name><![CDATA[text16]]></Name>
+					<X>1560</X><Y>-780</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[V A L I D A C I Ó N]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1585159090588</Id>
+					<Name><![CDATA[line4]]></Name>
+					<X>1240</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>-580</Dy>
+					<Dz>0</Dz>
+				</Line>
 			</Presentation>
 
 				</Level>
@@ -5157,7 +5199,7 @@ salud.onChange();]]></Action>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
-						<Point><X>0.47900000000004184</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>44</X><Y>0</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
@@ -5826,9 +5868,6 @@ return hosp;]]></Body>
 			</Presentation>
 
 			<Parameters>			
-				<Parameter>
-					<ParameterName><![CDATA[tasaContagio]]></ParameterName>
-				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[duracionPromedioEnfermedad]]></ParameterName>
 				</Parameter>
