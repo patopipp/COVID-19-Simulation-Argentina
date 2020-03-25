@@ -69,7 +69,6 @@ país, se tomen precauciones inmediatas:
 
 - [¿Por qué debemos quedarnos en casa?](Por_que_debemos_quedarnos_en_casa.pdf)
 - [¿Why do we need to stay home?](Why_do_we_need_to_stay_home.pdf)
-- [Propagación virus COVID-19 en Ecuador - Fecha: 23/Marzo/2020](Propagacion_Virus_Ecuador_23-Marzo-2020.pdf)
 
 ## Links a noticias
 
