@@ -17,7 +17,6 @@
     - [Informe técnico de España](#informe-técnico-de-españa)
   - [Material multimedia de interés](#material-multimedia-de-interés)
     - [Lucha contra el COVID-19](#lucha-contra-el-covid-19)
-- [Conflicto de intereses](#conflicto-de-intereses)
 
 # Información del repositorio
 
@@ -124,9 +123,3 @@ ___
 - [VisualPolitik: ¿Cómo CHINA se ENFRENTÓ al CORONAVIRUS?](https://www.youtube.com/watch?v=PWTLSp7WOJY)
 - [VisualPolitik: COREA: ¿Cómo GANAR al CORONAVIRUS sin BLOQUEAR un PAÍS?](https://www.youtube.com/watch?v=4ESWLnxyZUo)
 - [World Economic Forum: Could this be the way to eliminate COVID-19 faster?](https://www.linkedin.com/posts/world-economic-forum_covid19-coronavirus-activity-6646443506883670016-2ETM)
-
-___
-
-# Conflicto de intereses
-
-Los colaboradores de este repositorio declara no tener conflictos de intereses.
