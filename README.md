@@ -4,7 +4,6 @@
 - [Información del repositorio](#información-del-repositorio)
 - [¿Por qué debemos quedarnos en casa?](#por-qué-debemos-quedarnos-en-casa)
 - [Simulaciones](#simulaciones)
-- [Investigadores que colaboran en el repositorio](#investigadores-que-colaboran-en-el-repositorio)
 - [Referencias](#referencias)
   - [Documentos principales](#documentos-principales)
   - [Links a noticias](#links-a-noticias)
