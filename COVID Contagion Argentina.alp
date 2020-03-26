@@ -161,7 +161,7 @@ cargarInfoEnfermedad();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1584713473315</Id>
 					<Name><![CDATA[recuperadosTotales]]></Name>
-					<X>30</X><Y>1050</Y>
+					<X>1770</X><Y>-284</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -173,7 +173,7 @@ cargarInfoEnfermedad();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1584713481372</Id>
 					<Name><![CDATA[fallecidosTotales]]></Name>
-					<X>30</X><Y>1090</Y>
+					<X>1770</X><Y>-254</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -392,6 +392,54 @@ cargarInfoEnfermedad();]]></StartupCode>
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585231561775</Id>
+					<Name><![CDATA[susceptiblesTotales]]></Name>
+					<X>1770</X><Y>-224</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585231579118</Id>
+					<Name><![CDATA[respiradoresDisponibles]]></Name>
+					<X>1770</X><Y>-194</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585231613385</Id>
+					<Name><![CDATA[terapiaIntensivaDisponibles]]></Name>
+					<X>1770</X><Y>-164</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585231630780</Id>
+					<Name><![CDATA[camaAislamientoDisponibles]]></Name>
+					<X>1770</X><Y>-134</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -516,6 +564,37 @@ traceln("El día " + round(time() / day()) + " agrega un infectado en " + inf.re
 inf.regionOrigen.infectadosActuales ++;
 inf.regionOrigen.infectadosTotales ++;
 inf.regionOrigen.susceptibles --;]]></Action>
+				</Event>
+				<Event>
+					<Id>1585232158628</Id>
+					<Name><![CDATA[kpis]]></Name>
+					<X>1750</X><Y>-340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585296000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[actualizoKpis();]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -689,6 +768,35 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 //traceln(probabilidad3);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585231746812</Id>
+					<Name><![CDATA[actualizoKpis]]></Name>
+					<X>1750</X><Y>-310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//Pongo en 0 todos los KPIs
+recuperadosTotales = 0;
+fallecidosTotales = 0;
+susceptiblesTotales = 0;
+respiradoresDisponibles = 0;
+terapiaIntensivaDisponibles = 0;
+camaAislamientoDisponibles = 0;
+
+//Recorro todas las regiones y actualizo KPIs
+for(int i = 0; i < regions.size() ; i++){
+	Region r = regions.get(i);
+	recuperadosTotales += r.recuperados;
+	fallecidosTotales += r.fallecidos;
+	susceptiblesTotales += r.susceptibles;
+	respiradoresDisponibles += r.respiradores;
+	terapiaIntensivaDisponibles += r.terapiaIntensiva;
+	camaAislamientoDisponibles += r.camaAislamiento;
+}]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -1712,7 +1820,7 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
     			<TimePlot>
 					<Id>1584713743294</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>1410</X><Y>-760</Y>
+					<X>1390</X><Y>80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1730,15 +1838,15 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>440</Width>
-					<Height>210</Height>
+					<Width>1220</Width>
+					<Height>270</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>360</Width>
-						<Height>120</Height>
+						<Width>1140</Width>
+						<Height>210</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -1753,7 +1861,7 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
 						<TextColor>-12566464</TextColor>
 					</Labels>
-					<ShowLegend>true</ShowLegend>
+					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
@@ -1788,15 +1896,24 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Susceptibles]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-9404272</Color>
+					<Expression2><![CDATA[susceptiblesTotales]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
     			<TimePlot>
 					<Id>1584716801500</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>1410</X><Y>-590</Y>
+					<X>1390</X><Y>400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1814,15 +1931,15 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>440</Width>
-					<Height>140</Height>
+					<Width>410</Width>
+					<Height>300</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>360</Width>
-						<Height>50</Height>
+						<Width>330</Width>
+						<Height>240</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -1837,7 +1954,7 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
 						<TextColor>-12566464</TextColor>
 					</Labels>
-					<ShowLegend>true</ShowLegend>
+					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
@@ -1846,7 +1963,7 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Ro]]></Title>
+						<Title><![CDATA[Re]]></Title>
 					<Expression><![CDATA[my_dataset1]]></Expression>
 					<Color>-2354116</Color>
 					<Expression2><![CDATA[cantidadContagios.getYMean()]]></Expression2>
@@ -1854,9 +1971,18 @@ probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[R0]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-10496</Color>
+					<Expression2><![CDATA[2.5]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
-					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
 				<Image>
@@ -2889,10 +3015,186 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<Dy>-580</Dy>
 					<Dz>0</Dz>
 				</Line>
+				<Text>
+					<Id>1585231499732</Id>
+					<Name><![CDATA[text17]]></Name>
+					<X>1820</X><Y>-360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[K P I S]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585232642483</Id>
+					<Name><![CDATA[text18]]></Name>
+					<X>1390</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[IMPÁCTO DE MEDIDAS NO FARMACEUTICAS EN EL CONTAGIO DEL CORONAVIRUS]]></Text>
+					<Font>
+						<Name>Graphik Black</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585232719282</Id>
+					<Name><![CDATA[text19]]></Name>
+					<X>1390</X><Y>60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[EVOLUCIÓN]]></Text>
+					<Font>
+						<Name>Graphik Black</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585232841340</Id>
+					<Name><![CDATA[text22]]></Name>
+					<X>1390</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[RITMO REPRODUCTIVO BÁSICO EFECTIVO]]></Text>
+					<Font>
+						<Name>Graphik Black</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585233499652</Id>
+					<Name><![CDATA[text23]]></Name>
+					<X>1840</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[DIAGNOSTICADOS]]></Text>
+					<Font>
+						<Name>Graphik Black</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+    			<TimePlot>
+					<Id>1585233521660</Id>
+					<Name><![CDATA[plot2]]></Name>
+					<X>1840</X><Y>400</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>410</Width>
+					<Height>300</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>330</Width>
+						<Height>240</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[3]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
 			</Presentation>
 
 				</Level>
 			</Presentation>
+			<Areas>
+				<Area>
+					<Id>1585232626999</Id>
+					<Name><![CDATA[kpisPosta]]></Name>
+					<X>1360</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1280</Width>
+					<Height>720</Height>
+				</Area>
+			</Areas>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -4433,7 +4735,7 @@ enfermedad.onChange();]]></EntryAction>
 					<Properties Width="100" Height="260">
 						<EntryAction><![CDATA[regionActual.infectadosActuales --;
 regionActual.recuperados ++;
-main.recuperadosTotales++;
+//main.recuperadosTotales++;
 
 duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
@@ -4456,7 +4758,7 @@ main.remove_infectados(this);]]></EntryAction>
 					<Properties Width="100" Height="250">
 						<EntryAction><![CDATA[regionActual.infectadosActuales --;
 regionActual.fallecidos ++;
-main.fallecidosTotales++;
+//main.fallecidosTotales++;
 //regionActual.poblacion --;
 
 duracionEnfermedad = time() - fechaContagio;
@@ -4614,7 +4916,9 @@ gradoAtencionActual = 1;]]></EntryAction>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="150" Height="40">
-						<EntryAction><![CDATA[gradoAtencionActual = 3;]]></EntryAction>
+						<EntryAction><![CDATA[gradoAtencionActual = 3;
+regionActual.respiradores--;]]></EntryAction>
+						<ExitAction><![CDATA[regionActual.respiradores++;]]></ExitAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
