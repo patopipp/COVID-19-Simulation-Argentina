@@ -670,7 +670,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probabilidad1[row - 2] = xl.getCellNumericValue(source, row, 2);
 }
 probabilidadesFallecimiento.setArgumentsAndValues(edad, probabilidad1);
-traceln(probabilidad1);
+//traceln(probabilidad1);
 
 source = "tasaHospitalizacion";
 double[] probabilidad2 = new double[9];
@@ -679,7 +679,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probabilidad2[row - 2] = xl.getCellNumericValue(source, row, 2);
 }
 probabilidadesHospitalizacion.setArgumentsAndValues(edad, probabilidad2);
-traceln(probabilidad2);
+//traceln(probabilidad2);
 
 source = "tasaTerapiaIntensiva";
 double[] probabilidad3 = new double[9];
@@ -688,7 +688,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probabilidad3[row - 2] = xl.getCellNumericValue(source, row, 2);
 }
 probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
-traceln(probabilidad3);]]></Body>
+//traceln(probabilidad3);]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -984,6 +984,9 @@ traceln(probabilidad3);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[respiradores]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probabilidadViajeros]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -3365,6 +3368,30 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1585226090475</Id>
+					<Name><![CDATA[probabilidadViajeros]]></Name>
+					<X>700</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.03]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1585226090473</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1584626832881</Id>
 					<Name><![CDATA[infectados]]></Name>
@@ -3414,21 +3441,6 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<Id>1584643180989</Id>
 					<Name><![CDATA[probabilidadDestinos]]></Name>
 					<X>60</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Double]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1584832024955</Id>
-					<Name><![CDATA[qGenteViajaADestinoTerrestre]]></Name>
-					<X>60</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4144,6 +4156,33 @@ return c;]]></Body>
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585227342873</Id>
+					<Name><![CDATA[yaViajo]]></Name>
+					<X>540</X><Y>1200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585228702392</Id>
+					<Name><![CDATA[duracionViaje]]></Name>
+					<X>620</X><Y>1200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -5114,7 +5153,8 @@ if (randomTrue(tasaContagio)){
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584979456754" Target="1584979456754" Trigger="timeout">
-						<Action><![CDATA[calculoTests();]]></Action>
+						<Action><![CDATA[calculoTests();
+viaja();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5519,6 +5559,7 @@ enfermedad.onChange();]]></Action>
 				<Event>
 					<Id>1584643082571</Id>
 					<Name><![CDATA[movimiento]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>250</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -5569,6 +5610,40 @@ enfermedad.onChange();]]></Action>
 		}
 		regionDestino = regionActual.destinos.get(index);
 	}
+}]]></Action>
+				</Event>
+				<Event>
+					<Id>1585228677784</Id>
+					<Name><![CDATA[vuelve]]></Name>
+					<X>540</X><Y>1230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="userControls">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[duracionViaje]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585296000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[duracionViaje]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[if(salud.isStateActive(circulando) && yaViajo){
+	//traceln("El agente " + this.getId() + " vuelve de su viaje de " + regionActual.nombre + " a " + regionOrigen.nombre);
+	regionActual = regionOrigen;
 }]]></Action>
 				</Event>
 			</Events>
@@ -5761,6 +5836,34 @@ salud.onChange();
 }
 salud.onChange();]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585226850789</Id>
+					<Name><![CDATA[viaja]]></Name>
+					<X>500</X><Y>1170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[boolean viaja = randomTrue(regionActual.probabilidadViajeros);
+double pVolver = 0.5;
+if(viaja && salud.isStateActive(circulando) && !yaViajo){
+	double pDestino = uniform(0., 1.);
+	for(int i = 0; i < regionActual.probabilidadDestinos.size(); i++){
+		if(pDestino > regionActual.probabilidadDestinos.get(i)){
+			regionDestino = regionActual.destinos.get(i);
+			//traceln("El agente " + this.getId() + " viaja de " + regionActual.nombre + " a " + regionDestino.nombre);
+			regionActual = regionDestino;
+			boolean vuelveDeViaje = randomTrue(pVolver);
+			double duracionViaje = uniform(5.,10.);
+			vuelve.restart();
+			yaViajo = true;
+			break;
+		}
+	}
+}]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -5902,7 +6005,7 @@ salud.onChange();]]></Body>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>1024</MaximumMemory>
-			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
