@@ -539,7 +539,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
 	String nombre = xl.getCellStringValue(source, row, 2);
-	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3)) / 500;
+	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3)) / 1000;
 	double densidad = xl.getCellNumericValue(source, row, 7);
 	
 	// No se está usando actualmente - esta mal la ubicación de GBA
@@ -551,6 +551,8 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	//Respiradores
 	double respiradores = xl.getCellNumericValue(source, row, 9);
 	int infectadosIniciales = roundToInt(xl.getCellNumericValue(source, row, 10));
+	double camaAislamiento = xl.getCellNumericValue(source, row, 11);
+	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12);
 	
 	add_regions();
 	
@@ -564,8 +566,10 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	region.longitud = longitud;
 	region.latitud = latitud;	
 	region.r0 = r0;
-	region.terapiaIntensiva = respiradores;
+	region.terapiaIntensiva = terapiaIntensiva;
 	region.infectadosIniciales = infectadosIniciales;
+	region.respiradores = respiradores;
+	region.camaAislamiento = camaAislamiento;
 	
 	maxPoblacion = max(maxPoblacion, poblacion);
 	maxDensidad = max(maxDensidad, densidad);
