@@ -484,6 +484,51 @@ actualizoKpis();]]></StartupCode>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1585250016873</Id>
+					<Name><![CDATA[atencionRequerida]]></Name>
+					<X>510</X><Y>-730</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1585250031092</Id>
+					<Name><![CDATA[atencionRecibida]]></Name>
+					<X>510</X><Y>-700</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1585250047667</Id>
+					<Name><![CDATA[agravamiento]]></Name>
+					<X>510</X><Y>-670</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Events>
 				<Event>
@@ -667,7 +712,7 @@ duracionMaxEnfermedadGrave = xl.getCellNumericValue(source, 13, col+1);
 tiempoMedioHospitalizacionGrave = xl.getCellNumericValue(source, 14, col);
 tiempoMedioHospitalizacionLeve = xl.getCellNumericValue(source, 15, col);
 
-source = "tasaMortalidad";
+source = "tasaMortalidadLeve";
 double[] edad = new double[9];
 double[] probabilidad1 = new double[9];
 
@@ -675,8 +720,18 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
 	probabilidad1[row - 2] = xl.getCellNumericValue(source, row, 2);
 }
-probabilidadesFallecimiento.setArgumentsAndValues(edad, probabilidad1);
+probabilidadesFallecimientoLeve.setArgumentsAndValues(edad, probabilidad1);
 //traceln(probabilidad1);
+
+source = "tasaMortalidadGrave";
+double[] edadGrave = new double[9];
+double[] probabilidadGrave = new double[9];
+
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	edadGrave[row - 2] = xl.getCellNumericValue(source, row, 1);
+	probabilidadGrave[row - 2] = xl.getCellNumericValue(source, row, 2);
+}
+probabilidadesFallecimientoGrave.setArgumentsAndValues(edadGrave, probabilidadGrave);
 
 source = "tasaHospitalizacion";
 double[] probabilidad2 = new double[9];
@@ -694,6 +749,14 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probabilidad3[row - 2] = xl.getCellNumericValue(source, row, 2);
 }
 probabilidadesTerapiaIntensiva.setArgumentsAndValues(edad, probabilidad3);
+
+source = "agravamiento";
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	atencionRequerida.add(roundToInt(xl.getCellNumericValue(source, row, 1)));
+	atencionRecibida.add(roundToInt(xl.getCellNumericValue(source, row, 2)));
+	agravamiento.add(xl.getCellNumericValue(source, row, 3));
+}
+
 //traceln(probabilidad3);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -807,6 +870,36 @@ inf.regionOrigen.infectadosActuales ++;
 inf.regionOrigen.infectadosTotales ++;
 inf.regionOrigen.susceptibles --;]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585250150030</Id>
+					<Name><![CDATA[calculoAgravamiento]]></Name>
+					<X>480</X><Y>-760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[inf]]></Name>
+						<Type><![CDATA[Infectado]]></Type>
+					</Parameter>
+					<Body><![CDATA[double ans = 1;
+ArrayList<Integer> auxRecibida = new ArrayList<Integer>();
+ArrayList<Double> auxPotencia = new ArrayList<Double>();
+for(int i = 0; i < atencionRequerida.size(); i++){
+	if(atencionRequerida.get(i) == inf.gradoAtencionRequerido){
+		auxRecibida.add(atencionRecibida.get(i));
+		auxPotencia.add(agravamiento.get(i));
+	}
+}
+
+int indexRecibida = auxRecibida.indexOf(inf.gradoAtencionActual);
+if(indexRecibida > -1){
+	ans = auxPotencia.get(indexRecibida);
+}
+return ans;]]></Body>
+				</Function>
 			</Functions>
 			<TableFunctions>
 				<TableFunction AccessType="public" StaticFunction="false">
@@ -857,8 +950,31 @@ inf.regionOrigen.susceptibles --;]]></Body>
 				</TableFunction>
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435271</Id>
-					<Name><![CDATA[probabilidadesFallecimiento]]></Name>
-					<X>930</X><Y>-420</Y>
+					<Name><![CDATA[probabilidadesFallecimientoLeve]]></Name>
+					<X>1080</X><Y>-673</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<InterpolationMethod>STEP</InterpolationMethod>
+					<OutOfRangeBehaviour>NEAREST</OutOfRangeBehaviour>
+					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
+					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<ValuesQuery>
+						<TableReference>
+						</TableReference>
+							<ArgumentColumnReference>
+							</ArgumentColumnReference>
+							<ValueColumnReference>
+							</ValueColumnReference>
+					</ValuesQuery>
+// arguments and values
+				</TableFunction>
+				<TableFunction AccessType="public" StaticFunction="false">
+					<Id>1585248689917</Id>
+					<Name><![CDATA[probabilidadesFallecimientoGrave]]></Name>
+					<X>1080</X><Y>-640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3887,49 +4003,6 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<Action><![CDATA[testDisponibles = 1000;]]></Action>
 				</Event>
 			</Events>
-			<Functions>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[Color]]></ReturnType>
-					<Id>1584454502883</Id>
-					<Name><![CDATA[setColor]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>420</X><Y>50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double relativo = 0.;
-// Si es relativo al país, el color va en función del máximo de infectados en las regiones del país
-if (main.relativoAlPais){
-	relativo = (double)infectadosActuales / (double)max(1., main.regions.maxInfected());
-// Si no es relativo al país, sino que es relativo a la población de mi región, normalizo el valor en relación al máximo ratio en el país
-} else {
-	relativo = (double)infectadosActuales / (double)poblacion;
-	relativo /= main.regions.maxRatioInfected();
-	if (main.regions.maxRatioInfected() == 0){
-		relativo = 0.;
-	}
-}
-
-// Busco el color en la escala de colores del main
-Color c = main.rectangleColor0.getFillColor();
-if (relativo <= 0){
-	c = main.rectangleColor0.getFillColor();
-} else if (relativo <= 0.25){
-	c = lerpColor(relativo / .25, main.rectangleColor0.getFillColor(), main.rectangleColor1.getFillColor());
-} else if (relativo <= 0.5){
-	c = lerpColor((relativo - .25) / .25, main.rectangleColor1.getFillColor(), main.rectangleColor2.getFillColor());
-} else if (relativo <= 0.75){
-	c = lerpColor((relativo - .5) / .25, main.rectangleColor2.getFillColor(), main.rectangleColor3.getFillColor());
-} else if (relativo <= 1){
-	c = lerpColor((relativo - .75) / .25, main.rectangleColor3.getFillColor(), main.rectangleColor4.getFillColor());
-} else {
-	c = main.rectangleColor4.getFillColor();
-}
-return c;]]></Body>
-				</Function>
-			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1584451482563</Id>
@@ -4304,7 +4377,7 @@ return c;]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1584630485944</Id>
 					<Name><![CDATA[tieneSintomas]]></Name>
-					<X>560</X><Y>790</Y>
+					<X>550</X><Y>790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4334,7 +4407,7 @@ return c;]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1584632071670</Id>
 					<Name><![CDATA[hospitaliza]]></Name>
-					<X>540</X><Y>970</Y>
+					<X>550</X><Y>970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4349,7 +4422,7 @@ return c;]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1584632079599</Id>
 					<Name><![CDATA[aTerapiaIntensiva]]></Name>
-					<X>540</X><Y>1030</Y>
+					<X>550</X><Y>1030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4439,7 +4512,7 @@ return c;]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1584980906507</Id>
 					<Name><![CDATA[aAislamiento]]></Name>
-					<X>540</X><Y>1000</Y>
+					<X>550</X><Y>1000</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4454,7 +4527,7 @@ return c;]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1585141465868</Id>
 					<Name><![CDATA[respirador]]></Name>
-					<X>540</X><Y>1060</Y>
+					<X>550</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4737,6 +4810,7 @@ return c;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="95" Height="30">
+						<EntryAction><![CDATA[gradoAtencionRequerido = 1;]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -4751,6 +4825,8 @@ return c;]]></Body>
 					<Properties Width="95" Height="30">
 						<EntryAction><![CDATA[if (randomTrue(main.probabilidadRespirador)){
 	gradoAtencionRequerido = 3;
+}else{
+	gradoAtencionRequerido = 2;
 }
 calculoTasaRecuperacion();
 enfermedad.onChange();]]></EntryAction>
@@ -6095,15 +6171,12 @@ return re;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[boolean fallece = false;
 //fallece = randomTrue(main.probabilidadesFallecimiento(edad));
-double potenciador = 1.0;
 
-if(enfermedad.isStateActive(critico) && !salud.isStateActive(hospitalizado)){
-	potenciador = 100.;
-}else if(enfermedad.isStateActive(critico) && !salud.isStateActive(terapiaIntensiva) && salud.isStateActive(hospitalizado)){
-	potenciador = 10.;
+if(enfermedad.isStateActive(critico)){
+	fallece = randomTrue(main.probabilidadesFallecimientoGrave(edad)*main.calculoAgravamiento(this));
+}else if(enfermedad.isStateActive(moderado)){
+	fallece = randomTrue(main.probabilidadesFallecimientoLeve(edad)*main.calculoAgravamiento(this));
 }
-
-fallece = randomTrue(main.probabilidadesFallecimiento(edad)*potenciador);
 return fallece;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
