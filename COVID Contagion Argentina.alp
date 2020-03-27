@@ -22,7 +22,8 @@ import java.util.function.IntToDoubleFunction;]]></Import>
 			<StartupCode><![CDATA[cargarRegiones();
 cargarInfoEnfermedad();
 creoInfectadosIniciales();
-actualizoKpis();]]></StartupCode>
+actualizoKpis();
+]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1584450064339</Id>
@@ -650,9 +651,11 @@ actualizoKpis();]]></StartupCode>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[String source = "Provincias";
-ExcelFile xl = regiones;
+					<Body><![CDATA[ExcelFile xl = regiones;
 
+int divisor = 1000;
+
+String source = "Provincias";
 // Creo la región con sus atributos básicos
 int maxPoblacion = 0;
 double maxDensidad = 0.;
@@ -660,7 +663,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
 	String nombre = xl.getCellStringValue(source, row, 2);
-	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3)) / 1000;
+	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3) / divisor);
 	double densidad = xl.getCellNumericValue(source, row, 7);
 	
 	// No se está usando actualmente - esta mal la ubicación de GBA
@@ -671,7 +674,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	double r0 = xl.getCellNumericValue(source, row, 8);
 	//Respiradores
 	double respiradores = xl.getCellNumericValue(source, row, 9);
-	int infectadosIniciales = roundToInt(xl.getCellNumericValue(source, row, 10));
+	int infectadosIniciales = max(1,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
 	double camaAislamiento = xl.getCellNumericValue(source, row, 11);
 	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12);
 	
@@ -727,6 +730,29 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 		regions.get(row - 2).destinos.add(regions.get(col - 2));
 		probAcum += xl.getCellNumericValue(source, row, col);
 		regions.get(row - 2).probabilidadDestinos.add(probAcum);
+	}
+}
+
+//Cargo Region Argentina
+source = "Diccionario";
+for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	
+	String nombre = xl.getCellStringValue(source, row, 1);
+	String regionMov = xl.getCellStringValue(source, row, 2);
+	String regionHosp = xl.getCellStringValue(source, row, 3);
+	
+	boolean encontro = false;
+	int i = 0;
+	
+	while(!encontro){
+		Region reg = regions.get(i);
+		//traceln(nombre + " vs " + reg.nombre);
+		if( reg.nombre.equals(nombre)){
+			encontro = true;
+			reg.regionHosp = regionHosp;
+			reg.regionMov = regionMov;
+		}
+		i++;
 	}
 }
 
@@ -788,7 +814,7 @@ duracionMaxEnfermedadGrave = xl.getCellNumericValue(source, 13, col+1);
 tiempoMedioHospitalizacionGrave = xl.getCellNumericValue(source, 14, col);
 tiempoMedioHospitalizacionLeve = xl.getCellNumericValue(source, 15, col);
 
-source = "tasaMortalidadLeve";
+source = "tasaLetalidadLeve";
 double[] edad = new double[9];
 double[] probabilidad1 = new double[9];
 
@@ -799,7 +825,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 probabilidadesFallecimientoLeve.setArgumentsAndValues(edad, probabilidad1);
 //traceln(probabilidad1);
 
-source = "tasaMortalidadGrave";
+source = "tasaLetalidadGrave";
 double[] edadGrave = new double[9];
 double[] probabilidadGrave = new double[9];
 
@@ -1091,7 +1117,7 @@ for(int i = 1 ; i <= cantidad ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435271</Id>
 					<Name><![CDATA[probabilidadesFallecimientoLeve]]></Name>
-					<X>1080</X><Y>-673</Y>
+					<X>1140</X><Y>-660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1114,7 +1140,7 @@ for(int i = 1 ; i <= cantidad ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1585248689917</Id>
 					<Name><![CDATA[probabilidadesFallecimientoGrave]]></Name>
-					<X>1080</X><Y>-640</Y>
+					<X>1140</X><Y>-630</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3757,29 +3783,6 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<FillColor>-8355712</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
-				<RoundedRectangle>
-					<Id>1585315585165</Id>
-					<Name><![CDATA[roundRectangle5]]></Name>
-					<X>880</X><Y>-880</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>1220</Width>
-					<Height>800</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>10</ArcRadius>
-				</RoundedRectangle>
     			<TimePlot>
 					<Id>1585316030697</Id>
 					<Name><![CDATA[plot3]]></Name>
@@ -4142,6 +4145,30 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585322796672</Id>
+					<Name><![CDATA[regionMov]]></Name>
+					<X>60</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585323203005</Id>
+					<Name><![CDATA[regionHosp]]></Name>
+					<X>180</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -5231,6 +5258,9 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -5490,6 +5520,7 @@ duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
 if(gradoAtencionActual > 0){
+	traceln(inicioHospitalizacion);
 	tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
 	tiempoHospitalizacion = 0;
@@ -5525,6 +5556,7 @@ duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
 if(gradoAtencionActual > 0){
+	traceln(inicioHospitalizacion);
 	tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
 	tiempoHospitalizacion = 0;
@@ -5851,8 +5883,7 @@ regionActual.respiradores--;]]></EntryAction>
 					</Points>
 					<IconOffset>10.0</IconOffset>
 					<Properties Source="1584897402315" Target="1584897402315" Trigger="timeout">
-						<Action><![CDATA[fallece = calculoMortalidad();
-enfermedad.onChange();]]></Action>
+						<Action><![CDATA[calculoMortalidad();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6482,8 +6513,7 @@ viaja();]]></Action>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584897402313" Target="1584897402313" Trigger="timeout">
-						<Action><![CDATA[fallece = calculoMortalidad();
-enfermedad.onChange();]]></Action>
+						<Action><![CDATA[calculoMortalidad();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6833,7 +6863,7 @@ if(regionActual != null){
 return re;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1584978503765</Id>
 					<Name><![CDATA[calculoMortalidad]]></Name>
@@ -6842,15 +6872,14 @@ return re;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[boolean fallece = false;
-//fallece = randomTrue(main.probabilidadesFallecimiento(edad));
+					<Body><![CDATA[fallece = false;
 
 if(enfermedad.isStateActive(critico)){
 	fallece = randomTrue(main.probabilidadesFallecimientoGrave(edad)*main.calculoAgravamiento(this));
 }else if(enfermedad.isStateActive(moderado)){
 	fallece = randomTrue(main.probabilidadesFallecimientoLeve(edad)*main.calculoAgravamiento(this));
 }
-return fallece;]]></Body>
+ enfermedad.onChange();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
