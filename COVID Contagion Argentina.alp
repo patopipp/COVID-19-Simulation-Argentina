@@ -504,6 +504,21 @@ actualizoKpis();
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585334470256</Id>
+					<Name><![CDATA[divisor]]></Name>
+					<X>30</X><Y>1110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1000]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -642,6 +657,7 @@ actualizoKpis();
 				<Event>
 					<Id>1585332723071</Id>
 					<Name><![CDATA[contagioPoblacionDiario]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>30</X><Y>1050</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -684,8 +700,6 @@ actualizoKpis();
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = regiones;
 
-int divisor = 1;
-
 String source = "Provincias";
 // Creo la región con sus atributos básicos
 int maxPoblacion = 0;
@@ -705,7 +719,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	double r0 = xl.getCellNumericValue(source, row, 8);
 	//Respiradores
 	double respiradores = xl.getCellNumericValue(source, row, 9);
-	int infectadosIniciales = max(1,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
+	int infectadosIniciales = max(xl.getCellNumericValue(source, row, 10) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
 	double camaAislamiento = xl.getCellNumericValue(source, row, 11);
 	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12);
 	
@@ -1102,6 +1116,7 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585332596795</Id>
 					<Name><![CDATA[contagiosDiarios]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>30</X><Y>1080</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3475,7 +3490,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<Title><![CDATA[% Diagnosticados]]></Title>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-2448096</Color>
-					<Expression2><![CDATA[diagnosticadosTotales/infectadosTotales]]></Expression2>
+					<Expression2><![CDATA[infectadosTotales > 0 ? diagnosticadosTotales/infectadosTotales : 0]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -3568,7 +3583,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>100</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[top.get(index).porcentajeInfectados*2]]></WidthCode>
+					<WidthCode><![CDATA[top.get(index).porcentajeInfectados*2*100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-18751</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3582,7 +3597,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[2750+top.get(index).porcentajeInfectados*2]]></XCode>
+					<XCode><![CDATA[2750+top.get(index).porcentajeInfectados*2*100]]></XCode>
 					<YCode><![CDATA[100 + index * 50]]></YCode>
 					<ReplicationCode Class="CodeValue">
 						<Code><![CDATA[top.size()]]></Code>
@@ -3596,7 +3611,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>30</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[top.get(index).porcentajeRecuperados * 2]]></WidthCode>
+					<WidthCode><![CDATA[top.get(index).porcentajeRecuperados * 2*100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-7876885</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3610,7 +3625,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[2750+ (top.get(index).porcentajeInfectados + top.get(index).porcentajeRecuperados)* 2]]></XCode>
+					<XCode><![CDATA[2750+ (top.get(index).porcentajeInfectados + top.get(index).porcentajeRecuperados)* 2*100]]></XCode>
 					<YCode><![CDATA[100 + index * 50]]></YCode>
 					<ReplicationCode Class="CodeValue">
 						<Code><![CDATA[top.size()]]></Code>
@@ -3624,7 +3639,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>30</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[top.get(index).porcentajeFallecidos*2]]></WidthCode>
+					<WidthCode><![CDATA[top.get(index).porcentajeFallecidos*2*100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8355712</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3752,7 +3767,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[2750+porcentajeInfectados*2]]></XCode>
+					<XCode><![CDATA[2750+porcentajeInfectados*2*100]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -3762,7 +3777,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>30</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[porcentajeRecuperados * 2]]></WidthCode>
+					<WidthCode><![CDATA[porcentajeRecuperados * 2 *100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-7876885</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3781,7 +3796,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[xx%    Buenos Aires]]></Text>
-					<TextCode><![CDATA[roundToDecimal(porcentajeInfectados , 2) +"%    Global"]]></TextCode>
+					<TextCode><![CDATA[roundToDecimal(porcentajeInfectados*100 , 2) +"%    Global"]]></TextCode>
 					<Font>
 						<Name>Graphik Black</Name>
 						<Size>22</Size>
@@ -3807,7 +3822,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>100</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[porcentajeInfectados*2]]></WidthCode>
+					<WidthCode><![CDATA[porcentajeInfectados*2*100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-18751</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3821,7 +3836,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[2750+ (porcentajeInfectados + porcentajeRecuperados) * 2]]></XCode>
+					<XCode><![CDATA[2750+ (porcentajeInfectados + porcentajeRecuperados) * 2 *100]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -3831,7 +3846,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>30</Width>
 					<Height>30</Height>
-					<WidthCode><![CDATA[porcentajeFallecidos * 2]]></WidthCode>
+					<WidthCode><![CDATA[porcentajeFallecidos * 2 *100]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8355712</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -5585,7 +5600,7 @@ duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
 if(gradoAtencionActual > 0){
-	traceln(inicioHospitalizacion);
+	//traceln(inicioHospitalizacion);
 	tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
 	tiempoHospitalizacion = 0;
@@ -5621,7 +5636,7 @@ duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
 if(gradoAtencionActual > 0){
-	traceln(inicioHospitalizacion);
+	//traceln(inicioHospitalizacion);
 	tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
 	tiempoHospitalizacion = 0;
@@ -5979,9 +5994,9 @@ regionActual.respiradores--;]]></EntryAction>
 					</Points>
 					<IconOffset>80.0</IconOffset>
 					<Properties Source="1584897402289" Target="1584897402289" Trigger="rate">
-						<Action><![CDATA[/*contagio();
-contagios++;*/
-contagiosDiarios++;]]></Action>
+						<Action><![CDATA[contagio();
+contagios++;
+//contagiosDiarios++;]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[calculoTasaContacto()]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6272,7 +6287,7 @@ contagiosDiarios++;]]></Action>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584979456754" Target="1584979456754" Trigger="timeout">
 						<Action><![CDATA[calculoTests();
-viaja();]]></Action>
+//viaja();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6796,6 +6811,7 @@ enfermedad.onChange();]]></Action>
 				<Event>
 					<Id>1585228677784</Id>
 					<Name><![CDATA[vuelve]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>540</X><Y>1230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -7027,6 +7043,7 @@ salud.onChange();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585226850789</Id>
 					<Name><![CDATA[viaja]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>500</X><Y>1170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
