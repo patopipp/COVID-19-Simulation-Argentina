@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagion Argentina]]></Name>
@@ -515,7 +515,7 @@ actualizoKpis();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[1000]]></Code>
+							<Code><![CDATA[1]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -657,7 +657,6 @@ actualizoKpis();
 				<Event>
 					<Id>1585332723071</Id>
 					<Name><![CDATA[contagioPoblacionDiario]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>30</X><Y>1050</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -967,7 +966,7 @@ if(infectados.size() == 0){
 					<Body><![CDATA[for(int i = 0; i < regions.size(); i++){
 	Region r = regions.get(i);
 	while(r.infectados.size() < r.infectadosIniciales){
-		creoInfectado();
+		creoInfectado(r);
 	}
 }]]></Body>
 				</Function>
@@ -981,6 +980,10 @@ if(infectados.size() == 0){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[regionOrigen]]></Name>
+						<Type><![CDATA[Region]]></Type>
+					</Parameter>
 					<Body><![CDATA[// Se crea un nuevo agente infectado
 add_infectados();
 
@@ -998,11 +1001,8 @@ for (int i = 0 ; i < regions.size() ; i ++){
 	pobAcum += (double)regions.get(i).poblacion;
 	auxProbPoblacion.add(pobAcum / totalPob);
 }
-int id = 0;
-while (id < regions.size() && auxProbPoblacion.get(id) < random){
-	id ++;
-}
-inf.regionOrigen = regions.get(id);
+
+inf.regionOrigen = regionOrigen;
 inf.regionActual = inf.regionOrigen;
 
 inf.fechaContagio = time();
@@ -1086,21 +1086,21 @@ for ( int i = 0 ; i < regions.size() ; i++){
 
 for(int i = 1 ; i <= cantidad ; i++){
 
-	int max = 0;
+	double max = 0;
 	Region mayor = regiones.get(0);
 	
 	for(int j = 0 ; j < regiones.size(); j++){
 				
 		Region reg = regiones.get(j);
 		
-		if(reg.infectados.size() > max){
-			max = reg.infectados.size();
+		if(reg.porcentajeInfectados > max){
+			max = reg.porcentajeInfectados;
 			mayor = reg;
 		}
 		
 		if(max == 0){ //No hay infectados
-			if(reg.recuperados + reg.fallecidos > max){
-				max = reg.recuperados + reg.fallecidos;
+			if(reg.porcentajeRecuperados + reg.porcentajeFallecidos > max){
+				max = reg.porcentajeRecuperados + reg.porcentajeFallecidos ;
 				mayor = reg;
 			}
 		}
@@ -1116,7 +1116,6 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585332596795</Id>
 					<Name><![CDATA[contagiosDiarios]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>30</X><Y>1080</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1124,14 +1123,14 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for(int i = 0; i < infectados.size(); i++){
 	Infectado inf = infectados.get(i);
-	if(inf.contagiosDiarios > 0){
-		traceln("El inf " + inf + " tiene " + inf.contagiosDiarios + " contagios diarios");
+	///if(inf.contagiosDiarios > 0){
+		//traceln("El inf " + inf + " tiene " + inf.contagiosDiarios + " contagios diarios");
 		while(inf.contagiosDiarios > 0){
 			inf.contagio();	
 			inf.contagiosDiarios--;	
 		}
-		traceln("El inf " + inf + " termina con " + inf.contagiosDiarios + " contagios diarios");
-	}
+		//traceln("El inf " + inf + " termina con " + inf.contagiosDiarios + " contagios diarios");
+	//}
 }]]></Body>
 				</Function>
 			</Functions>
@@ -3724,10 +3723,10 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[Susceptibles]]></Title>
+						<Title><![CDATA[Diagnosticados]]></Title>
 					<Expression><![CDATA[my_dataset3]]></Expression>
 					<Color>-9404272</Color>
-					<Expression2><![CDATA[susceptiblesTotales]]></Expression2>
+					<Expression2><![CDATA[diagnosticadosTotales]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -5994,9 +5993,9 @@ regionActual.respiradores--;]]></EntryAction>
 					</Points>
 					<IconOffset>80.0</IconOffset>
 					<Properties Source="1584897402289" Target="1584897402289" Trigger="rate">
-						<Action><![CDATA[contagio();
+						<Action><![CDATA[//contagio();
 contagios++;
-//contagiosDiarios++;]]></Action>
+contagiosDiarios++;]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[calculoTasaContacto()]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6048,7 +6047,7 @@ contagios++;
 						</Timeout>
 						<Condition><![CDATA[dioPositivo]]></Condition>
 						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1./6.]]></Code>
+							<Code><![CDATA[1./4.]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
@@ -6872,7 +6871,8 @@ enfermedad.onChange();]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(regionActual.susceptibles > 0 ){
+					<Body><![CDATA[if(regionActual.susceptibles > 0 ){	
+
 	// Se crea un nuevo agente infectado
 	if(regionActual.susceptibles > 0 )
 	main.add_infectados();
