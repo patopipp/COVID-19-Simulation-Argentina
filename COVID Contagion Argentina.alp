@@ -639,6 +639,37 @@ actualizoKpis();
 					</Properties>
 					<Action><![CDATA[actualizoKpis();]]></Action>
 				</Event>
+				<Event>
+					<Id>1585332723071</Id>
+					<Name><![CDATA[contagioPoblacionDiario]]></Name>
+					<X>30</X><Y>1050</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585382400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[contagiosDiarios();]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -653,7 +684,7 @@ actualizoKpis();
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = regiones;
 
-int divisor = 1000;
+int divisor = 1;
 
 String source = "Provincias";
 // Creo la región con sus atributos básicos
@@ -1064,6 +1095,28 @@ for(int i = 1 ; i <= cantidad ; i++){
 	Region aux = mayor;
 	regiones.remove(mayor);
 	top.add(aux);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585332596795</Id>
+					<Name><![CDATA[contagiosDiarios]]></Name>
+					<X>30</X><Y>1080</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for(int i = 0; i < infectados.size(); i++){
+	Infectado inf = infectados.get(i);
+	if(inf.contagiosDiarios > 0){
+		traceln("El inf " + inf + " tiene " + inf.contagiosDiarios + " contagios diarios");
+		while(inf.contagiosDiarios > 0){
+			inf.contagio();	
+			inf.contagiosDiarios--;	
+		}
+		traceln("El inf " + inf + " termina con " + inf.contagiosDiarios + " contagios diarios");
+	}
 }]]></Body>
 				</Function>
 			</Functions>
@@ -5263,6 +5316,18 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585332539630</Id>
+					<Name><![CDATA[contagiosDiarios]]></Name>
+					<X>860</X><Y>850</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584547220632</Id>
 					<Name><![CDATA[edad]]></Name>
@@ -5914,8 +5979,9 @@ regionActual.respiradores--;]]></EntryAction>
 					</Points>
 					<IconOffset>80.0</IconOffset>
 					<Properties Source="1584897402289" Target="1584897402289" Trigger="rate">
-						<Action><![CDATA[contagio();
-contagios++;]]></Action>
+						<Action><![CDATA[/*contagio();
+contagios++;*/
+contagiosDiarios++;]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[calculoTasaContacto()]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
