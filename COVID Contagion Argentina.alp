@@ -764,7 +764,7 @@ actualizoKpis();
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[contagiosDiarios();
+					<Action><![CDATA[cambiosDiarios();
 plot.updateData();
 plot1.updateData();]]></Action>
 				</Event>
@@ -1251,32 +1251,51 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585332596795</Id>
-					<Name><![CDATA[contagiosDiarios]]></Name>
+					<Name><![CDATA[cambiosDiarios]]></Name>
 					<X>540</X><Y>1270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[int j = 0;
-for(int i = 0; i < infectados.size(); i++){
-	Infectado inf = infectados.get(i);
-	while(inf.contagiosDiarios > 0){
-		inf.contagio();	
-		inf.contagiosDiarios--;	
-		j++;
-	}
-}
-
+					<Body><![CDATA[//ELIMINACION DE INFECTADOS
 int size = infectadosAEliminar.size();
 for( int i = 0; i < size ;i++){
 
-	Infectado inf = infectados.get(i);
-	
-	inf.regionActual.infectados.remove(inf);
-	infectadosAEliminar.remove(inf);
-	remove_infectados(inf);
-	}
-]]></Body>
+ 
+
+    Infectado inf = infectados.get(i);
+    
+    if(inf.recupera){
+        inf.regionOrigen.recuperados ++;
+    	traceln("Recupera " + inf.recupera);
+    }else if(inf.fallece){
+        inf.regionOrigen.fallecidos ++;
+        traceln("Fallece " + inf.fallece);
+   	}else{
+   		traceln("Error - " + inf);
+   	}
+    traceln(inf.enfermedad.getActiveSimpleState());
+    traceln("----");
+
+    
+    inf.regionActual.infectadosActuales --;
+    cantidadContagios.add(inf.contagios);
+    
+    inf.regionActual.infectados.remove(inf);
+    infectadosAEliminar.remove(inf);
+    remove_infectados(inf);
+}
+
+ 
+
+// CREACION DE INFECTADOS
+for(int i = 0; i < infectados.size(); i++){
+    Infectado inf = infectados.get(i);
+    while(inf.contagiosDiarios > 0){
+        inf.contagio();    
+        inf.contagiosDiarios--;    
+    }
+}]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -5215,6 +5234,21 @@ calculoEfectoPoliticas();]]></Action>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585756546186</Id>
+					<Name><![CDATA[recupera]]></Name>
+					<X>350</X><Y>1100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584547220632</Id>
 					<Name><![CDATA[edad]]></Name>
@@ -5443,30 +5477,24 @@ enfermedad.onChange();]]></EntryAction>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="60">
-						<EntryAction><![CDATA[
-regionActual.infectadosActuales --;
-regionOrigen.recuperados ++;
-//main.recuperadosTotales++;
-
-
-duracionEnfermedad = time() - fechaContagio;
+						<EntryAction><![CDATA[duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
+ 
+
 if(gradoAtencionActual > 0){
-	tiempoHospitalizacion = time() - inicioHospitalizacion;
+    tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
-	tiempoHospitalizacion = 0;
+    tiempoHospitalizacion = 0;
 }
 if(gradoAtencionRequerido == 1){
-	main.duracionHospLeve.add(tiempoHospitalizacion);
+    main.duracionHospLeve.add(tiempoHospitalizacion);
 }else if (gradoAtencionRequerido > 1){
-	main.duracionHospGrave.add(tiempoHospitalizacion);
+    main.duracionHospGrave.add(tiempoHospitalizacion);
 }
 
-main.cantidadContagios.add(contagios);
+ 
 
-//regionOrigen.infectados.remove(this);
-//main.remove_infectados(this);
 main.infectadosAEliminar.add(this);]]></EntryAction>
 						<FillColor/>
 					</Properties>
@@ -5480,34 +5508,24 @@ main.infectadosAEliminar.add(this);]]></EntryAction>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="60">
-						<EntryAction><![CDATA[traceln("muerto + 1");
-
-
-regionActual.infectadosActuales --;
-regionOrigen.fallecidos ++;
-//main.fallecidosTotales++;
-//regionActual.poblacion --;
-traceln(regionOrigen.fallecidos);
-
-duracionEnfermedad = time() - fechaContagio;
+						<EntryAction><![CDATA[duracionEnfermedad = time() - fechaContagio;
 main.duracionesEnfermedad.add(duracionEnfermedad);
 
+ 
+
 if(gradoAtencionActual > 0){
-	//traceln(inicioHospitalizacion);
-	tiempoHospitalizacion = time() - inicioHospitalizacion;
+    tiempoHospitalizacion = time() - inicioHospitalizacion;
 }else{
-	tiempoHospitalizacion = 0;
+    tiempoHospitalizacion = 0;
 }
 if(gradoAtencionRequerido == 1){
-	main.duracionHospLeve.add(tiempoHospitalizacion);
+    main.duracionHospLeve.add(tiempoHospitalizacion);
 }else if (gradoAtencionRequerido > 1){
-	main.duracionHospGrave.add(tiempoHospitalizacion);
+    main.duracionHospGrave.add(tiempoHospitalizacion);
 }
 
-main.cantidadContagios.add(contagios);
+ 
 
-//regionOrigen.infectados.remove(this);
-//main.remove_infectados(this);
 main.infectadosAEliminar.add(this);]]></EntryAction>
 						<FillColor/>
 					</Properties>
@@ -5793,6 +5811,7 @@ regionActual.respiradores--;]]></EntryAction>
 					</Points>
 					<IconOffset>50.0</IconOffset>
 					<Properties Source="1584897402305" Target="1584897402333" Trigger="timeout">
+						<Action><![CDATA[recupera = true;]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[tasaRecuperacion]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -6709,6 +6728,8 @@ if(regionActual != null){
 		traceln( "n = " + n + " s = " + s);
 		traceln( "re = " + re);
 	}
+	
+	
 	/*if(salud.isStateActive(detectado)){
 		re = re * 0.01;
 	}else if(salud.isStateActive(enEvaluacion)){
