@@ -564,6 +564,45 @@ actualizoKpis();
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585694622162</Id>
+					<Name><![CDATA[viajesActivados]]></Name>
+					<X>240</X><Y>1290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585695001996</Id>
+					<Name><![CDATA[maxInfectadosCantidad]]></Name>
+					<X>1280</X><Y>1500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585695013156</Id>
+					<Name><![CDATA[maxInfectadosFecha]]></Name>
+					<X>1280</X><Y>1520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -833,7 +872,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 		Region reg = regions.get(i);
 		if( reg.id == id){
 			encontro = true;
-			reg.porcentajeMovil = porcentajeMovil;
+			reg.probabilidadMovimiento = porcentajeMovil;
 		}
 		i++;
 	}
@@ -1049,7 +1088,21 @@ for(int i = 0; i < regions.size() ; i++){
 	r.porcentajeInfectados = r.infectados.size() / poblacion;
 	r.porcentajeRecuperados = r.recuperados/ poblacion;
 	r.porcentajeFallecidos = r.fallecidos/ poblacion;
+	r.porcentajeSuceptibles = r.susceptibles / poblacion;
+	
+	r.chequeoPorcentajes = r.porcentajeInfectados + r.porcentajeRecuperados + r.porcentajeFallecidos + r.porcentajeSuceptibles;
+	r.chequeoPorcentajes1 = r.infectados.size() + r.recuperados + r.fallecidos + r.susceptibles - r.poblacion;
+	
+	if(r.infectados.size() > r.maxInfectadosCantidad){
+		r.maxInfectadosCantidad = r.infectados.size();
+		r.maxInfectadosFecha = time();
+	}
 
+}
+
+if(infectados.size() > maxInfectadosCantidad){
+	maxInfectadosCantidad = infectados.size();
+	maxInfectadosFecha = time();
 }
 
 double poblacion = recuperadosTotales+susceptiblesTotales+fallecidosTotales+infectados.size();
@@ -1113,8 +1166,6 @@ while (inf.edad < inf.regionOrigen.perfilDemografico.size() && inf.regionOrigen.
 }
 
 // Perfil de Movimientos
-inf.esMovil = inf.edad >= 20 && inf.edad < 60 && randomTrue(inf.regionOrigen.porcentajeMovil);
-
 random = uniform();
 int index = 0;
 while (index < inf.regionOrigen.probabilidadDestinos.size() && inf.regionOrigen.probabilidadDestinos.get(index) < random){
@@ -1122,6 +1173,9 @@ while (index < inf.regionOrigen.probabilidadDestinos.size() && inf.regionOrigen.
 }
 inf.regionDestino = inf.regionOrigen.destinos.get(index);
 
+if(!viajesActivados){
+	inf.puedeViajar = false;
+}
 inf.regionOrigen.infectados.add(inf);
 
 // Actualizo contadores de la región
@@ -1513,9 +1567,6 @@ for( int i = 0; i < size ;i++){
 							<Name><![CDATA[edad]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[esMovil]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[regionOrigen]]></Name>
 						</Parameter>
 						<Parameter>
@@ -1602,7 +1653,7 @@ for( int i = 0; i < size ;i++){
 							<Name><![CDATA[longitud]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[porcentajeMovil]]></Name>
+							<Name><![CDATA[probabilidadMovimiento]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[densidadPoblacional]]></Name>
@@ -3992,6 +4043,66 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585694870820</Id>
+					<Name><![CDATA[maxInfectadosCantidad]]></Name>
+					<X>-170</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585694892761</Id>
+					<Name><![CDATA[maxInfectadosFecha]]></Name>
+					<X>-170</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585697122403</Id>
+					<Name><![CDATA[porcentajeSuceptibles]]></Name>
+					<X>400</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585697132848</Id>
+					<Name><![CDATA[chequeoPorcentajes]]></Name>
+					<X>600</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585700689612</Id>
+					<Name><![CDATA[chequeoPorcentajes1]]></Name>
+					<X>600</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584451482569</Id>
 					<Name><![CDATA[id]]></Name>
@@ -4084,8 +4195,8 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584643516754</Id>
-					<Name><![CDATA[porcentajeMovil]]></Name>
-					<X>490</X><Y>250</Y>
+					<Name><![CDATA[probabilidadMovimiento]]></Name>
+					<X>190</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5131,27 +5242,6 @@ calculoEfectoPoliticas();]]></Action>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1584625055827</Id>
-					<Name><![CDATA[esMovil]]></Name>
-					<X>90</X><Y>1130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[boolean]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1584625055825</Id>
-							<EditorContolType>CHECK_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1584703680002</Id>
 					<Name><![CDATA[regionOrigen]]></Name>
 					<X>50</X><Y>1010</Y>
@@ -5356,7 +5446,7 @@ enfermedad.onChange();]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="60">
 						<EntryAction><![CDATA[regionActual.infectadosActuales --;
-regionActual.recuperados ++;
+regionOrigen.recuperados ++;
 //main.recuperadosTotales++;
 
 duracionEnfermedad = time() - fechaContagio;
@@ -5392,7 +5482,7 @@ main.infectadosAEliminar.add(this);]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="60">
 						<EntryAction><![CDATA[regionActual.infectadosActuales --;
-regionActual.fallecidos ++;
+regionOrigen.fallecidos ++;
 //main.fallecidosTotales++;
 //regionActual.poblacion --;
 
@@ -6729,7 +6819,7 @@ salud.onChange();]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(esMovil && puedeViajar && regionActual == regionOrigen){
+					<Body><![CDATA[if( randomTrue(regionOrigen.probabilidadMovimiento) && (puedeViajar && regionActual == regionOrigen)){
 	regionActual = regionDestino;
 	regionOrigen.infectados.remove(this);
 	regionOrigen.infectadosActuales--;
