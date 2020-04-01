@@ -575,7 +575,7 @@ actualizoKpis();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
+							<Code><![CDATA[true]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -690,7 +690,7 @@ actualizoKpis();
 				<Variable Class="CollectionVariable">
 					<Id>1585587707183</Id>
 					<Name><![CDATA[infectadosAEliminar]]></Name>
-					<X>540</X><Y>1310</Y>
+					<X>590</X><Y>1270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -698,6 +698,21 @@ actualizoKpis();
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Infectado]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1585761273959</Id>
+					<Name><![CDATA[csvOutput]]></Name>
+					<X>600</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -755,12 +770,12 @@ actualizoKpis();
 						<OccurrenceAtTime>true</OccurrenceAtTime>
 						<OccurrenceDate>1585382400000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[8]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[8]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
@@ -1252,7 +1267,7 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585332596795</Id>
 					<Name><![CDATA[cambiosDiarios]]></Name>
-					<X>540</X><Y>1270</Y>
+					<X>590</X><Y>1300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1265,15 +1280,15 @@ for( int i = 0; i < size ;i++){
     
     if(inf.recupera){
         inf.regionOrigen.recuperados ++;
-    	traceln("Recupera " + inf.recupera);
+    	//traceln("Recupera " + inf.recupera);
     }else if(inf.fallece){
         inf.regionOrigen.fallecidos ++;
-        traceln("Fallece " + inf.fallece);
+        //traceln("Fallece " + inf.fallece);
    	}else{
-   		traceln("Error - " + inf);
+   		//traceln("Error - " + inf);
    	}
-    traceln(inf.enfermedad.getActiveSimpleState());
-    traceln("----");
+    //traceln(inf.enfermedad.getActiveSimpleState());
+    //traceln("----");
 
     
     inf.regionActual.infectadosActuales --;
@@ -1293,7 +1308,43 @@ for(int i = 0; i < infectados.size(); i++){
         inf.contagio();    
         inf.contagiosDiarios--;    
     }
-}]]></Body>
+}
+
+// LOG Resultados Diarios
+String headers = "Fecha;Region;Recuperados;Susceptibles;Enfermos;Muertos";
+csvOutput.add(headers);
+
+String resultados = "";
+SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+
+String dateParsed = sdf.format(date());
+
+for (int i = 0 ; i < regions.size();i++){
+	
+	Region r = regions.get(i);
+	
+	//Fecha;Region;Recuperados;Susceptibles;Enfermos;Muertos
+	resultados = dateParsed + ";" + r.nombre + ";" + r.recuperados * divisor+ ";" + r.susceptibles * divisor + ";" + r.infectados.size() * divisor + ";" + r.fallecidos * divisor;
+	csvOutput.add(resultados);
+}
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1585761580526</Id>
+					<Name><![CDATA[exportarResultados]]></Name>
+					<X>400</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int i = 0; i < csvOutput.size(); i++){
+	csvResultados.println(csvOutput.get(i));
+}
+
+csvResultados.close();
+traceln("Exportacion Finalizada");]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -1506,6 +1557,24 @@ for(int i = 0; i < infectados.size(); i++){
 				</DataSet>
 			</AnalysisData>
 			<Connectivity>
+				<TextFile>
+					<Id>1585758638369</Id>
+					<Name><![CDATA[csvResultados]]></Name>
+					<X>600</X><Y>940</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<FileType>FILE</FileType>
+					<Url><![CDATA[]]></Url>
+					<ResourceReference>
+						<PackageName><![CDATA[covid]]></PackageName>
+						<ClassName><![CDATA[Output/simulator_output.csv]]></ClassName>
+					</ResourceReference>
+					<FileMode>WRITE</FileMode>
+					<CharsetName>null</CharsetName>
+					<Separators>;</Separators>
+				</TextFile>
 				<ExcelFile>
 					<Id>1584670867270</Id>
 					<Name><![CDATA[inputSimulador]]></Name>
@@ -1516,7 +1585,7 @@ for(int i = 0; i < infectados.size(); i++){
 					<ShowLabel>true</ShowLabel>
 					<ResourceReference>
 						<PackageName><![CDATA[covid]]></PackageName>
-						<ClassName><![CDATA[Data/Input_Simulador.xlsx]]></ClassName>
+						<ClassName><![CDATA[Input/Input_Simulador.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -3724,6 +3793,27 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<Dy>-80</Dy>
 					<Dz>0</Dz>
 				</Line>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585761748279</Id>
+					<Name><![CDATA[button2]]></Name>
+					<X>380</X><Y>920</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="160" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[exportarResultados();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Exportar Resultados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
 			</Presentation>
 
 				</Level>
@@ -7120,7 +7210,11 @@ salud.onChange();]]></Body>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[Data/Input_Simulador.xlsx]]></Path>
+			<Path><![CDATA[Output/simulator_output.csv]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Input/Input_Simulador.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
