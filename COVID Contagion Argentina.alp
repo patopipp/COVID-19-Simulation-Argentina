@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagion Argentina]]></Name>
@@ -320,7 +320,7 @@ csvOutput.add(headers);]]></StartupCode>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1585163959082</Id>
-					<Name><![CDATA[probabilidadSintomas]]></Name>
+					<Name><![CDATA[probabilidadNoSintomas]]></Name>
 					<X>240</X><Y>1530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -476,7 +476,7 @@ csvOutput.add(headers);]]></StartupCode>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[1000]]></Code>
+							<Code><![CDATA[100]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1156,7 +1156,7 @@ int inf = 6;
 int sup = 7;
 
 // INPUT
-probabilidadSintomas = xl.getCellNumericValue(source, 2, valor);
+probabilidadNoSintomas = xl.getCellNumericValue(source, 2, valor);
 probabilidadRespirador = xl.getCellNumericValue(source, 7, valor);
 
 duracionIncubacionMedia = xl.getCellNumericValue(source, 9, media);
@@ -5615,7 +5615,7 @@ calculoEfectoPoliticas();]]></Action>
 			<Variables>
 				<Variable Class="PlainVariable">
 					<Id>1584630485944</Id>
-					<Name><![CDATA[tieneSintomas]]></Name>
+					<Name><![CDATA[noTieneSintomas]]></Name>
 					<X>550</X><Y>790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -5624,7 +5624,7 @@ calculoEfectoPoliticas();]]></Action>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
+							<Code><![CDATA[true]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -7264,7 +7264,7 @@ viaja();]]></Action>
 						<Point><X>0</X><Y>38</Y></Point>
 					</Points>
 					<Properties Target="1585243085030">
-					<Action><![CDATA[tieneSintomas = randomTrue(main.probabilidadSintomas);
+					<Action><![CDATA[noTieneSintomas = randomTrue(main.probabilidadNoSintomas);
 enfermedad.onChange();]]></Action>
 					</Properties>	
 				</StatechartElement>
@@ -7286,13 +7286,13 @@ enfermedad.onChange();]]></Action>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[tieneSintomas]]></Condition>
+						<Condition><![CDATA[noTieneSintomas]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>false</DefaultTransition>
+						<DefaultTransition>true</DefaultTransition>
 						<FilterType><![CDATA[unconditionally]]></FilterType>
 						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
@@ -7316,13 +7316,13 @@ enfermedad.onChange();]]></Action>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
+						<Condition><![CDATA[noTieneSintomas]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
 						</Rate>
 						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
+						<DefaultTransition>false</DefaultTransition>
 						<FilterType><![CDATA[unconditionally]]></FilterType>
 						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
