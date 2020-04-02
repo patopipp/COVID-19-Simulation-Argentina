@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagion Argentina]]></Name>
@@ -162,7 +162,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585020299467</Id>
 					<Name><![CDATA[regSel]]></Name>
-					<X>-360</X><Y>170</Y>
+					<X>-760</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -177,7 +177,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585052833474</Id>
 					<Name><![CDATA[cuarentenaOn]]></Name>
-					<X>-1050</X><Y>50</Y>
+					<X>-1120</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -190,24 +190,9 @@ csvOutput.add(headers);]]></StartupCode>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1585052881467</Id>
-					<Name><![CDATA[efectoCuarentena]]></Name>
-					<X>-840</X><Y>50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2.]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1585053252393</Id>
 					<Name><![CDATA[inicioCuarentena]]></Name>
-					<X>-630</X><Y>40</Y>
+					<X>-630</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -222,7 +207,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585053266127</Id>
 					<Name><![CDATA[finCuarentena]]></Name>
-					<X>-630</X><Y>60</Y>
+					<X>-630</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -483,7 +468,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585582798899</Id>
 					<Name><![CDATA[efectoDistSocial]]></Name>
-					<X>-840</X><Y>120</Y>
+					<X>-880</X><Y>185</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -609,7 +594,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585763797279</Id>
 					<Name><![CDATA[efectoRemoticidad]]></Name>
-					<X>-840</X><Y>200</Y>
+					<X>-880</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -624,7 +609,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585763897933</Id>
 					<Name><![CDATA[efectoFronterasCerradas]]></Name>
-					<X>-840</X><Y>280</Y>
+					<X>-880</X><Y>315</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -639,7 +624,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585763929765</Id>
 					<Name><![CDATA[distSocialOn]]></Name>
-					<X>-1020</X><Y>120</Y>
+					<X>-1090</X><Y>185</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -654,7 +639,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585763940645</Id>
 					<Name><![CDATA[fronterasCerradasOn]]></Name>
-					<X>-1020</X><Y>280</Y>
+					<X>-1090</X><Y>315</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -669,7 +654,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585763960821</Id>
 					<Name><![CDATA[remoticidadOn]]></Name>
-					<X>-1020</X><Y>200</Y>
+					<X>-1090</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -684,7 +669,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764005669</Id>
 					<Name><![CDATA[inicioDistSocial]]></Name>
-					<X>-630</X><Y>115</Y>
+					<X>-630</X><Y>175</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -699,7 +684,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764005671</Id>
 					<Name><![CDATA[finDistSocial]]></Name>
-					<X>-630</X><Y>135</Y>
+					<X>-630</X><Y>195</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -714,7 +699,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764051900</Id>
 					<Name><![CDATA[inicioRemoticidad]]></Name>
-					<X>-630</X><Y>190</Y>
+					<X>-630</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -729,7 +714,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764051902</Id>
 					<Name><![CDATA[finRemoticidad]]></Name>
-					<X>-630</X><Y>210</Y>
+					<X>-630</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -744,7 +729,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764222884</Id>
 					<Name><![CDATA[inicioFronterasCerradas]]></Name>
-					<X>-630</X><Y>265</Y>
+					<X>-630</X><Y>308</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -759,7 +744,52 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585764222886</Id>
 					<Name><![CDATA[finFronterasCerradas]]></Name>
-					<X>-630</X><Y>285</Y>
+					<X>-630</X><Y>328</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854463134</Id>
+					<Name><![CDATA[cerrarViajesInternos]]></Name>
+					<X>-1090</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854494199</Id>
+					<Name><![CDATA[inicioCierreViajes]]></Name>
+					<X>-630</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854494201</Id>
+					<Name><![CDATA[finCierreViajes]]></Name>
+					<X>-630</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1111,26 +1141,83 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585053136094</Id>
 					<Name><![CDATA[aplicarCambios]]></Name>
-					<X>-360</X><Y>200</Y>
+					<X>-760</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[boolean todas = regSel == null;
+					<Body><![CDATA[// Se activan los eventos para booleans de las distintas politicas 
+// en las regiones seleccionadas.
+
+boolean todas = regSel == null;
 if(todas){
 	for(int i = 0; i < regions.size(); i++){
+		
 		Region reg = regions.get(i);
+		
 		//Cuarentena
-		reg.cuarentenaActivada = cuarentenaOn;
-		reg.efectoCuarentena = efectoCuarentena;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioCuarentena);
-			Date fechaFin = sdf.parse(finCuarentena);
-			reg.inicioCuarentena.restartTo(fechaInicio);
-			reg.finCuarentena.restartTo(fechaFin);
-		}catch(Exception e){
-			e.printStackTrace();
+		if( cuarentenaOn ){
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioCuarentena);
+				Date fechaFin = sdf.parse(finCuarentena);
+				reg.inicioCuarentena.restartTo(fechaInicio);
+				reg.finCuarentena.restartTo(fechaFin);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+				
+		//Distancianmiento Social
+		if( distSocialOn ){
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioDistSocial);
+				Date fechaFin = sdf.parse(finDistSocial);
+				reg.inicioDistanciamiento.restartTo(fechaInicio);
+				reg.finDistanciamiento.restartTo(fechaFin);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		//Trabajo/Escuela Remoto
+		if (remoticidadOn ){
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioRemoticidad);
+				Date fechaFin = sdf.parse(finRemoticidad);
+				reg.inicioRemoticidad.restartTo(fechaInicio);
+				reg.finRemoticidad.restartTo(fechaFin);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		//Fronteras Cerradas
+		if( fronterasCerradasOn ){
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioFronterasCerradas);
+				Date fechaFin = sdf.parse(finFronterasCerradas);
+				reg.inicioCierreFronteras.restartTo(fechaInicio);
+				reg.finCierreFronteras.restartTo(fechaFin);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		//Cerrar Viajes Internos
+		if (cerrarViajesInternos ){
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioCierreViajes);
+				Date fechaFin = sdf.parse(finCierreViajes);
+				reg.inicioCierreViajes.restartTo(fechaInicio);
+				reg.finCierreViajes.restartTo(fechaFin);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 	}
 }]]></Body>
@@ -1906,9 +1993,6 @@ traceln("Exportacion Finalizada");]]></Body>
 							<Name><![CDATA[camaAislamientoActual]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[efectoCuarentena]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[respiradoresActual]]></Name>
 						</Parameter>
 						<Parameter>
@@ -2020,6 +2104,94 @@ traceln("Exportacion Finalizada");]]></Body>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Rectangle>
+					<Id>1585853930581</Id>
+					<Name><![CDATA[rectangle7]]></Name>
+					<X>-1150</X><Y>90</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>850</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5192482</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1585853884262</Id>
+					<Name><![CDATA[rectangle6]]></Name>
+					<X>-1110</X><Y>286</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>810</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1644806</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1585853850064</Id>
+					<Name><![CDATA[rectangle5]]></Name>
+					<X>-1110</X><Y>220</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>810</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1644806</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1585853786449</Id>
+					<Name><![CDATA[rectangle4]]></Name>
+					<X>-1110</X><Y>155</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>810</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1644806</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
 				<RoundedRectangle>
 					<Id>1585585711795</Id>
 					<Name><![CDATA[roundRectangle5]]></Name>
@@ -2385,7 +2557,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Image>
 					<Id>1585003947786</Id>
 					<Name><![CDATA[image4]]></Name>
-					<X>-150</X><Y>130</Y>
+					<X>-550</X><Y>-20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2792,7 +2964,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585052926526</Id>
 					<Name><![CDATA[button1]]></Name>
-					<X>-380</X><Y>100</Y>
+					<X>-780</X><Y>-50</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3989,7 +4161,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1585764072608</Id>
 					<Name><![CDATA[line12]]></Name>
-					<X>-650</X><Y>70</Y>
+					<X>-650</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4013,7 +4185,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1585764105028</Id>
 					<Name><![CDATA[line13]]></Name>
-					<X>-650</X><Y>145</Y>
+					<X>-650</X><Y>205</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4037,7 +4209,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1585764107452</Id>
 					<Name><![CDATA[line14]]></Name>
-					<X>-650</X><Y>220</Y>
+					<X>-650</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4061,7 +4233,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1585764144637</Id>
 					<Name><![CDATA[line15]]></Name>
-					<X>-650</X><Y>295</Y>
+					<X>-650</X><Y>338</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4085,7 +4257,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1585764249260</Id>
 					<Name><![CDATA[line16]]></Name>
-					<X>-1050</X><Y>300</Y>
+					<X>-1120</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4103,9 +4275,99 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
 					<Dx>0</Dx>
-					<Dy>-230</Dy>
+					<Dy>-295</Dy>
 					<Dz>0</Dz>
 				</Line>
+				<Text>
+					<Id>1585853721130</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>-830</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[El efecto sobre Re de la Cuarentena Total es la suma de
+las distintas mediads que lo compoene]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1585854501669</Id>
+					<Name><![CDATA[rectangle8]]></Name>
+					<X>-1110</X><Y>360</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>810</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-2572328</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1585854494197</Id>
+					<Name><![CDATA[line17]]></Name>
+					<X>-650</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>-40</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1585854639557</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>-800</X><Y>380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Cerrar los viajes afecta indirectamente Re
+a traves de los viajes inter regionales]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -4329,7 +4591,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1584994128027</Id>
 					<Name><![CDATA[cuarentenaActivada]]></Name>
-					<X>390</X><Y>430</Y>
+					<X>250</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4404,7 +4666,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1585582261386</Id>
 					<Name><![CDATA[efectoPoliticas]]></Name>
-					<X>390</X><Y>390</Y>
+					<X>60</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4416,7 +4678,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1585582467315</Id>
 					<Name><![CDATA[distanciamientoActivado]]></Name>
-					<X>440</X><Y>460</Y>
+					<X>310</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4680,6 +4942,51 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854222173</Id>
+					<Name><![CDATA[remoticidadActivada]]></Name>
+					<X>310</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854232445</Id>
+					<Name><![CDATA[fronterasCerradas]]></Name>
+					<X>310</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585854240061</Id>
+					<Name><![CDATA[viajesInhabilitados]]></Name>
+					<X>310</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584451482569</Id>
 					<Name><![CDATA[id]]></Name>
@@ -4815,7 +5122,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="Parameter">
 					<Id>1584835041860</Id>
 					<Name><![CDATA[r0]]></Name>
-					<X>310</X><Y>390</Y>
+					<X>60</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4895,30 +5202,6 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1584982622751</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1584992837548</Id>
-					<Name><![CDATA[efectoCuarentena]]></Name>
-					<X>80</X><Y>450</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1.5]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1584992837546</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -5129,7 +5412,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Event>
 					<Id>1584992650152</Id>
 					<Name><![CDATA[inicioCuarentena]]></Name>
-					<X>720</X><Y>430</Y>
+					<X>520</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5161,7 +5444,7 @@ calculoEfectoPoliticas();]]></Action>
 				<Event>
 					<Id>1584992820696</Id>
 					<Name><![CDATA[finCuarentena]]></Name>
-					<X>860</X><Y>430</Y>
+					<X>700</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5221,6 +5504,262 @@ calculoEfectoPoliticas();]]></Action>
 					</Properties>
 					<Action><![CDATA[testDisponibles = 1000;]]></Action>
 				</Event>
+				<Event>
+					<Id>1585854277022</Id>
+					<Name><![CDATA[inicioDistanciamiento]]></Name>
+					<X>520</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[distanciamientoActivado = true;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854277025</Id>
+					<Name><![CDATA[finDistanciamiento]]></Name>
+					<X>700</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[50]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[distanciamientoActivado = false;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854279358</Id>
+					<Name><![CDATA[inicioRemoticidad]]></Name>
+					<X>520</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[remoticidadActivada = true;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854279361</Id>
+					<Name><![CDATA[finRemoticidad]]></Name>
+					<X>700</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[50]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[remoticidadActivada = false;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854280615</Id>
+					<Name><![CDATA[inicioCierreFronteras]]></Name>
+					<X>520</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fronterasCerradas = true;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854280618</Id>
+					<Name><![CDATA[finCierreFronteras]]></Name>
+					<X>700</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[50]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fronterasCerradas = false;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854282063</Id>
+					<Name><![CDATA[inicioCierreViajes]]></Name>
+					<X>520</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[viajesInhabilitados = true;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1585854282066</Id>
+					<Name><![CDATA[finCierreViajes]]></Name>
+					<X>700</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1585036800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[50]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[viajesInhabilitados = false;
+calculoEfectoPoliticas();]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -5228,19 +5767,40 @@ calculoEfectoPoliticas();]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585582638286</Id>
 					<Name><![CDATA[calculoEfectoPoliticas]]></Name>
-					<X>540</X><Y>390</Y>
+					<X>60</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(cuarentenaActivada){
-	efectoPoliticas = main.efectoCuarentena;
-}else{
-	if(distanciamientoActivado){
-		efectoPoliticas += main.efectoDistSocial;
-	}
+					<Body><![CDATA[efectoPoliticas = 0;
 
-}]]></Body>
+//CUARENTENA
+	//Cuarentena activa toda las demas politicas
+
+
+//DISTANCIAMIENTO SOCIAL
+if(distanciamientoActivado || cuarentenaActivada){
+	efectoPoliticas += main.efectoDistSocial;
+}
+
+//DISTANCIAMIENTO SOCIAL
+if(remoticidadActivada || cuarentenaActivada){
+	efectoPoliticas += main.efectoRemoticidad;
+}
+
+//FRONTERAS CERRADAS
+if(fronterasCerradas || cuarentenaActivada){
+	efectoPoliticas += main.efectoFronterasCerradas;
+}
+
+//VIAJES INHABILITADOS
+boolean noHayViajes = false;
+if(viajesInhabilitados || cuarentenaActivada){
+	noHayViajes = true;
+}
+viajesInhabilitados = noHayViajes;
+
+]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -5298,7 +5858,7 @@ calculoEfectoPoliticas();]]></Action>
 				<RoundedRectangle>
 					<Id>1584627639118</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>10</X><Y>350</Y>
+					<X>0</X><Y>350</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5311,7 +5871,7 @@ calculoEfectoPoliticas();]]></Action>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>970</Width>
+					<Width>940</Width>
 					<Height>240</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -7541,6 +8101,8 @@ enfermedad.onChange();]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[double re = 0.;
 if(regionActual != null){
+
+	//Decrecimiento Natural de R0 - Efecto de Disminucion de Susceptibles
 	double r0 = regionActual.r0;
 	double s = 1.0 * regionActual.susceptibles;
 	double n = 1.0 * regionActual.poblacion;
@@ -7553,6 +8115,7 @@ if(regionActual != null){
 		traceln( "n = " + n + " s = " + s);
 		traceln( "re = " + re);
 	}
+	
 	
 	if(gradoAtencionActual > 0 ){
 		re = re * 0.5;
