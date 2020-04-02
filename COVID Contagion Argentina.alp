@@ -983,9 +983,9 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	//Valor R0 por region
 	double r0 = xl.getCellNumericValue(source, row, 8);
 	//Sistema de Salud
-	double respiradores = xl.getCellNumericValue(source, row, 9) / divisor;
-	double camaAislamiento = xl.getCellNumericValue(source, row, 11) / divisor;
-	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12) / divisor;
+	double respiradores = max(xl.getCellNumericValue(source, row, 9) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 9) / divisor));
+	double camaAislamiento = max(xl.getCellNumericValue(source, row, 11) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 11) / divisor));
+	double terapiaIntensiva = max(xl.getCellNumericValue(source, row, 12) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 12) / divisor));
 	
 	// Infectados Iniciales
 	int infectadosIniciales = max(xl.getCellNumericValue(source, row, 10) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
@@ -1486,7 +1486,7 @@ for (int i = 0 ; i < regions.size();i++){
 	Region r = regions.get(i);
 	
 	//Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
-	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.poblacion*divisor + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor+ ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
+	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.poblacion*divisor + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor + ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
 	
 	csvOutput.add(resultados);
 }
