@@ -24,7 +24,8 @@ cargarInfoEnfermedad();
 creoInfectadosIniciales();
 actualizoKpis();
 
-String headers = "Fecha;Region;Region Mapa;Poblacion;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador; Pacientes Sin Respirador;Susceptibles;Recuperados;Fallecidos";
+String headers = "Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
+
 csvOutput.add(headers);]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -982,9 +983,9 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	//Valor R0 por region
 	double r0 = xl.getCellNumericValue(source, row, 8);
 	//Sistema de Salud
-	double respiradores = xl.getCellNumericValue(source, row, 9);
-	double camaAislamiento = xl.getCellNumericValue(source, row, 11);
-	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12);
+	double respiradores = xl.getCellNumericValue(source, row, 9) / divisor;
+	double camaAislamiento = xl.getCellNumericValue(source, row, 11) / divisor;
+	double terapiaIntensiva = xl.getCellNumericValue(source, row, 12) / divisor;
 	
 	// Infectados Iniciales
 	int infectadosIniciales = max(xl.getCellNumericValue(source, row, 10) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
@@ -1002,14 +1003,17 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	region.longitud = longitud;
 	region.latitud = latitud;	
 	region.r0 = r0;
-	region.terapiaIntensiva = terapiaIntensiva;
+	
 	region.infectadosIniciales = infectadosIniciales;
-	region.respiradores = respiradores;
-	region.camaAislamiento = camaAislamiento;
-	
-	maxPoblacion = max(maxPoblacion, poblacion);
-	maxDensidad = max(maxDensidad, densidad);
-	
+
+	region.terapiaIntensivaActual = terapiaIntensiva;
+	region.terapiaIntensivaIniciales = terapiaIntensiva;
+
+	region.respiradoresActual = respiradores;
+	region.respiradoresIniciales= respiradores;
+
+	region.camaAislamientoActual = camaAislamiento;
+	region.camaAislamientoIniciales = camaAislamiento;	
 }
 
 // Cargo el perfil etario de cada región
@@ -1249,9 +1253,9 @@ for(int i = 0; i < regions.size() ; i++){
 	recuperadosTotales += r.recuperados;
 	fallecidosTotales += r.fallecidos;
 	susceptiblesTotales += r.susceptibles;
-	respiradoresDisponibles += r.respiradores;
-	terapiaIntensivaDisponibles += r.terapiaIntensiva;
-	camaAislamientoDisponibles += r.camaAislamiento;
+	respiradoresDisponibles += r.respiradoresActual;
+	terapiaIntensivaDisponibles += r.terapiaIntensivaActual;
+	camaAislamientoDisponibles += r.camaAislamientoActual;
 	infectadosTotales += r.infectadosTotales;
 	
 	double poblacion = r.poblacion;
@@ -1281,6 +1285,7 @@ calcularTopRegiones(25);
 
 if(infectados.size() == 0){
 	pauseSimulation();
+	exportarResultados();
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1480,8 +1485,8 @@ for (int i = 0 ; i < regions.size();i++){
 	
 	Region r = regions.get(i);
 	
-	//Fecha;Region;Region Mapa;Poblacion;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador; Pacientes Sin Respirador;Susceptibles;Recuperados;Fallecidos;
-	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.poblacion*divisor + ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
+	//Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
+	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.poblacion*divisor + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor+ ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
 	
 	csvOutput.add(resultados);
 }
@@ -1892,25 +1897,34 @@ traceln("Exportacion Finalizada");]]></Body>
 							<Name><![CDATA[r0]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[terapiaIntensiva]]></Name>
+							<Name><![CDATA[terapiaIntensivaActual]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[testDisponibles]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[camaAislamiento]]></Name>
+							<Name><![CDATA[camaAislamientoActual]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efectoCuarentena]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[respiradores]]></Name>
+							<Name><![CDATA[respiradoresActual]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probabilidadViajeros]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[infectadosIniciales]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[terapiaIntensivaIniciales]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[camaAislamientoIniciales]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[respiradoresIniciales]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -2054,7 +2068,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<EmbeddedObjectPresentation>
 					<Id>1584700051248</Id>
 					<Name><![CDATA[regions_presentation]]></Name>
-					<X>0</X><Y>820</Y>
+					<X>-50</X><Y>630</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4417,7 +4431,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1585694870820</Id>
 					<Name><![CDATA[maxInfectadosCantidad]]></Name>
-					<X>-170</X><Y>220</Y>
+					<X>200</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4429,7 +4443,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1585694892761</Id>
 					<Name><![CDATA[maxInfectadosFecha]]></Name>
-					<X>-170</X><Y>240</Y>
+					<X>200</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4821,7 +4835,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584835465450</Id>
-					<Name><![CDATA[terapiaIntensiva]]></Name>
+					<Name><![CDATA[terapiaIntensivaActual]]></Name>
 					<X>700</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -4866,7 +4880,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584982622753</Id>
-					<Name><![CDATA[camaAislamiento]]></Name>
+					<Name><![CDATA[camaAislamientoActual]]></Name>
 					<X>700</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -4914,7 +4928,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1585168799722</Id>
-					<Name><![CDATA[respiradores]]></Name>
+					<Name><![CDATA[respiradoresActual]]></Name>
 					<X>700</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -4974,6 +4988,75 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1585242688528</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1585830773296</Id>
+					<Name><![CDATA[terapiaIntensivaIniciales]]></Name>
+					<X>890</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1585830773294</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1585830773299</Id>
+					<Name><![CDATA[camaAislamientoIniciales]]></Name>
+					<X>890</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[500]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1585830773297</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1585830773302</Id>
+					<Name><![CDATA[respiradoresIniciales]]></Name>
+					<X>890</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[500]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1585830773300</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -5395,7 +5478,7 @@ calculoEfectoPoliticas();]]></Action>
 					<Name><![CDATA[button]]></Name>
 					<X>560</X><Y>-680</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
@@ -6183,11 +6266,11 @@ regionActual.hospitalizados++;]]></EntryAction>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="170" Height="40">
-						<EntryAction><![CDATA[regionActual.camaAislamiento--;
+						<EntryAction><![CDATA[regionActual.camaAislamientoActual--;
 gradoAtencionActual = 1;
 
 regionActual.pacientesAislados++;]]></EntryAction>
-						<ExitAction><![CDATA[regionActual.camaAislamiento++;
+						<ExitAction><![CDATA[regionActual.camaAislamientoActual++;
 regionActual.pacientesAislados--;]]></ExitAction>
 						<FillColor/>
 					</Properties>
@@ -6201,9 +6284,9 @@ regionActual.pacientesAislados--;]]></ExitAction>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="380" Height="120">
-						<EntryAction><![CDATA[regionActual.terapiaIntensiva--;
+						<EntryAction><![CDATA[regionActual.terapiaIntensivaActual--;
 regionActual.pacientesTI++;]]></EntryAction>
-						<ExitAction><![CDATA[regionActual.terapiaIntensiva++;
+						<ExitAction><![CDATA[regionActual.terapiaIntensivaActual++;
 regionActual.pacientesTI--;]]></ExitAction>
 						<FillColor/>
 					</Properties>
@@ -6295,9 +6378,9 @@ regionActual.enEvaluacion++;]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="150" Height="40">
 						<EntryAction><![CDATA[gradoAtencionActual = 3;
-regionActual.respiradores--;
+regionActual.respiradoresActual--;
 regionActual.pacientesTIconRespirados++;]]></EntryAction>
-						<ExitAction><![CDATA[regionActual.respiradores++;
+						<ExitAction><![CDATA[regionActual.respiradoresActual++;
 regionActual.pacientesTIconRespirados--;]]></ExitAction>
 						<FillColor/>
 					</Properties>
@@ -7511,7 +7594,7 @@ if(enfermedad.isStateActive(critico)){
 
 case 1:
 	//Hospitalizacion a Aislamiento
-	if( regionActual.camaAislamiento > 0){
+	if( regionActual.camaAislamientoActual > 0){
 		hospitaliza = true;
 		aAislamiento = true;
 		aTerapiaIntensiva = false;
@@ -7520,12 +7603,12 @@ case 1:
 break;
 case 2:
 	// Terapia Intensiva sin respirador
-	if( regionActual.terapiaIntensiva > 0){
+	if( regionActual.terapiaIntensivaActual > 0){
 		hospitaliza = true;
 		aAislamiento = false;
 		aTerapiaIntensiva = true;
 		respirador = false;
-	}else if (regionActual.camaAislamiento > 0){
+	}else if (regionActual.camaAislamientoActual > 0){
 		hospitaliza = true;
 		aAislamiento = true;
 		aTerapiaIntensiva = false;
@@ -7534,17 +7617,17 @@ case 2:
 break;
 case 3:
 	//Terapia Intensiva con respirador
-	if( regionActual.terapiaIntensiva > 0 && regionActual.respiradores > 0){
+	if( regionActual.terapiaIntensivaActual > 0 && regionActual.respiradoresActual > 0){
 		hospitaliza = true;
 		aAislamiento = false;
 		aTerapiaIntensiva = true;
 		respirador = true;
-	}else if( regionActual.terapiaIntensiva > 0){
+	}else if( regionActual.terapiaIntensivaActual > 0){
 		hospitaliza = true;
 		aAislamiento = false;
 		aTerapiaIntensiva = true;
 		respirador = false;
-	}else if (regionActual.camaAislamiento > 0){
+	}else if (regionActual.camaAislamientoActual > 0){
 		hospitaliza = true;
 		aAislamiento = true;
 		aTerapiaIntensiva = false;
