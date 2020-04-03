@@ -20,9 +20,7 @@
 			<Import><![CDATA[import java.text.SimpleDateFormat;
 import java.util.function.IntToDoubleFunction;]]></Import>
 			<StartupCode><![CDATA[cargarRegiones();
-cargarInfoEnfermedad();
-creoInfectadosIniciales();
-actualizoKpis();
+pauseSimulation();
 
 String headers = "Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 
@@ -476,7 +474,7 @@ csvOutput.add(headers);]]></StartupCode>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2.]]></Code>
+							<Code><![CDATA[0.]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -602,7 +600,7 @@ csvOutput.add(headers);]]></StartupCode>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2.]]></Code>
+							<Code><![CDATA[0.]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -617,7 +615,7 @@ csvOutput.add(headers);]]></StartupCode>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2.]]></Code>
+							<Code><![CDATA[0.]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -798,6 +796,36 @@ csvOutput.add(headers);]]></StartupCode>
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585926890679</Id>
+					<Name><![CDATA[exportacionActivada]]></Name>
+					<X>240</X><Y>1310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1585927608600</Id>
+					<Name><![CDATA[sumaDeEfectos]]></Name>
+					<X>-250</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1372,7 +1400,9 @@ calcularTopRegiones(25);
 
 if(infectados.size() == 0){
 	pauseSimulation();
-	exportarResultados();
+	if(exportacionActivada){
+		exportarResultados();
+	}
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2104,6 +2134,28 @@ traceln("Exportacion Finalizada");]]></Body>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Image>
+					<Id>1585923662618</Id>
+					<Name><![CDATA[image17]]></Name>
+					<X>10</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>1280</Width>
+					<Height>720</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 427.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 				<Rectangle>
 					<Id>1585853930581</Id>
 					<Name><![CDATA[rectangle7]]></Name>
@@ -2375,29 +2427,6 @@ traceln("Exportacion Finalizada");]]></Body>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MM_dd</LabelFormat>
     			</TimePlot>
-				<Image>
-					<Id>1585002926045</Id>
-					<Name><![CDATA[image]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Lock>true</Lock>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>1280</Width>
-					<Height>720</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[Group 427.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
 				<Line>
 					<Id>1585002977183</Id>
 					<Name><![CDATA[line]]></Name>
@@ -2425,7 +2454,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<RoundedRectangle>
 					<Id>1585003137913</Id>
 					<Name><![CDATA[roundRectangle1]]></Name>
-					<X>50</X><Y>80</Y>
+					<X>60</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2438,8 +2467,8 @@ traceln("Exportacion Finalizada");]]></Body>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>540</Width>
-					<Height>275</Height>
+					<Width>640</Width>
+					<Height>360</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -2489,28 +2518,6 @@ traceln("Exportacion Finalizada");]]></Body>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Image>
-					<Id>1585003732785</Id>
-					<Name><![CDATA[image2]]></Name>
-					<X>59</X><Y>87</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>21</Width>
-					<Height>25</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[Group (1).png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>true</OriginalSize>
-				</Image>
 				<Text>
 					<Id>1585003767232</Id>
 					<Name><![CDATA[text3]]></Name>
@@ -2577,31 +2584,9 @@ traceln("Exportacion Finalizada");]]></Body>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Image>
-					<Id>1585003951305</Id>
-					<Name><![CDATA[image5]]></Name>
-					<X>53</X><Y>34</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>18</Width>
-					<Height>19</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[map-pin.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
-				<Image>
 					<Id>1585003992481</Id>
 					<Name><![CDATA[image6]]></Name>
-					<X>253</X><Y>138</Y>
+					<X>313</X><Y>138</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2623,7 +2608,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Text>
 					<Id>1585004157074</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>282</X><Y>142</Y>
+					<X>342</X><Y>142</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2633,7 +2618,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Fecha Inicio/Fin]]></Text>
+					<Text><![CDATA[Fecha Inicio / Fin]]></Text>
 					<Font>
 						<Name>Roboto</Name>
 						<Size>12</Size>
@@ -2682,38 +2667,10 @@ traceln("Exportacion Finalizada");]]></Body>
 					<BeginArrowStyle>0</BeginArrowStyle>
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>520</Dx>
-					<Dy>0</Dy>
+					<Dx>631</Dx>
+					<Dy>1</Dy>
 					<Dz>0</Dz>
 				</Line>
-				<Image>
-					<Id>1585013967374</Id>
-					<Name><![CDATA[image7]]></Name>
-					<X>192</X><Y>179</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[cuarentenaOn = !cuarentenaOn;]]></OnClickCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>32</Width>
-					<Height>14</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[Group 380.png]]></ClassName>
-						</ImageResourceReference>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[Group 381.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<ImageIndexCode><![CDATA[cuarentenaOn ? 1 : 0]]></ImageIndexCode>
-					<OriginalSize>true</OriginalSize>
-				</Image>
 				<Group>
 					<Id>1585020284409</Id>
 					<Name><![CDATA[groupoElegirProv]]></Name>
@@ -2801,7 +2758,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Text>
 					<Id>1585020751764</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>83</X><Y>142</Y>
+					<X>93</X><Y>142</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2811,7 +2768,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Medida]]></Text>
+					<Text><![CDATA[Medidas]]></Text>
 					<Font>
 						<Name>Roboto</Name>
 						<Size>12</Size>
@@ -2822,7 +2779,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Line>
 					<Id>1585020832499</Id>
 					<Name><![CDATA[line2]]></Name>
-					<X>240</X><Y>137</Y>
+					<X>300</X><Y>137</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2846,7 +2803,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Image>
 					<Id>1585020933981</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>63</X><Y>141</Y>
+					<X>73</X><Y>141</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2869,7 +2826,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021000535</Id>
 					<Name><![CDATA[editbox]]></Name>
-					<X>253</X><Y>176</Y>
+					<X>313</X><Y>176</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2878,7 +2835,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<BasicProperties Width="76" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
-						<TextColor>-8355712</TextColor>
+						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[cuarentenaOn]]></EnableExpression>
 					</BasicProperties>
@@ -2893,7 +2850,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021221601</Id>
 					<Name><![CDATA[editbox1]]></Name>
-					<X>345.517</X><Y>176</Y>
+					<X>406</X><Y>176</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2902,7 +2859,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<BasicProperties Width="76" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
-						<TextColor>-8355712</TextColor>
+						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[cuarentenaOn]]></EnableExpression>
 					</BasicProperties>
@@ -2916,7 +2873,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<Text>
 					<Id>1585021250571</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>62</X><Y>180</Y>
+					<X>87</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2925,7 +2882,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
+					<Color>-16777088</Color>
 					<Text><![CDATA[Cuarentena total]]></Text>
 					<Font>
 						<Name>Roboto</Name>
@@ -2934,99 +2891,10 @@ traceln("Exportacion Finalizada");]]></Body>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1585052773193</Id>
-					<Name><![CDATA[editbox2]]></Name>
-					<X>487</X><Y>176</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="44" Height="20">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<FillColor/>
-						<TextColor>-8355712</TextColor>
-						<Enabled>true</Enabled>
-						<EnableExpression><![CDATA[cuarentenaOn]]></EnableExpression>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Arial" Size="10" Style="0"/>
-						<DefaultValueCode><![CDATA[0.5]]></DefaultValueCode>
-						<MinValue><![CDATA[0.]]></MinValue>
-						<MaxValue><![CDATA[2.5]]></MaxValue>
-						<LinkTo>true</LinkTo>
-						<Link>efectoCuarentena</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1585052926526</Id>
-					<Name><![CDATA[button1]]></Name>
-					<X>-780</X><Y>-50</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="170" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor/>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[aplicarCambios();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Aplicar cambios]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Text>
-					<Id>1585075801242</Id>
-					<Name><![CDATA[text10]]></Name>
-					<X>481</X><Y>334</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
-					<Text><![CDATA[R0 Final]]></Text>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>11</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1585075815396</Id>
-					<Name><![CDATA[text11]]></Name>
-					<X>527</X><Y>334</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
-					<Text><![CDATA[2.5]]></Text>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>11</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Line>
 					<Id>1585075856328</Id>
 					<Name><![CDATA[line3]]></Name>
-					<X>438</X><Y>137</Y>
+					<X>498</X><Y>137</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3047,32 +2915,10 @@ traceln("Exportacion Finalizada");]]></Body>
 					<Dy>201</Dy>
 					<Dz>0</Dz>
 				</Line>
-				<Image>
-					<Id>1585075918390</Id>
-					<Name><![CDATA[image10]]></Name>
-					<X>451</X><Y>138</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>21</Width>
-					<Height>22</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[calendar-dates.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
 				<Text>
 					<Id>1585075918402</Id>
 					<Name><![CDATA[text12]]></Name>
-					<X>480</X><Y>142</Y>
+					<X>540</X><Y>142</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3090,106 +2936,10 @@ traceln("Exportacion Finalizada");]]></Body>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Text>
-					<Id>1585076003681</Id>
-					<Name><![CDATA[text13]]></Name>
-					<X>537</X><Y>180</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-8355712</Color>
-					<Text><![CDATA[%]]></Text>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>11</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Group>
-					<Id>1585020200651</Id>
-					<Name><![CDATA[listadoProvincias]]></Name>
-					<X>220</X><Y>63</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[220]]></XCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-
-			<Presentation>
-				<Rectangle>
-					<Id>1585019950070</Id>
-					<Name><![CDATA[rectangle1]]></Name>
-					<X>-90</X><Y>-10</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-4144960</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>180</Width>
-					<Height>20</Height>
-					<HeightCode><![CDATA[regions.size() * 20]]></HeightCode>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Text>
-					<Id>1585019971098</Id>
-					<Name><![CDATA[text7]]></Name>
-					<X>-80</X><Y>-5</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<YCode><![CDATA[-5 + index * 20]]></YCode>
-					<ReplicationCode Class="CodeValue">
-						<Code><![CDATA[regions.size()]]></Code>
-					</ReplicationCode>
-					<OnClickCode><![CDATA[Region aux = regions.get(index);
-if(regSel != aux){
-	regSel = aux;
-}else{
-	regSel = null;
-}
-listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-8355712</Color>
-					<ColorCode><![CDATA[regSel == regions.get(index) ? dodgerBlue : gray]]></ColorCode>
-					<Text><![CDATA[Todas]]></Text>
-					<TextCode><![CDATA[regions.get(index).nombre]]></TextCode>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Presentation>
-
-				</Group>
 				<RoundedRectangle>
 					<Id>1585076364757</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
-					<X>50</X><Y>368</Y>
+					<X>50</X><Y>470</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3203,7 +2953,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>540</Width>
-					<Height>312</Height>
+					<Height>210.326</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3212,7 +2962,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Text>
 					<Id>1585076364759</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>95</X><Y>383</Y>
+					<X>95</X><Y>480.112</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3233,7 +2983,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1585076364755</Id>
 					<Name><![CDATA[image14]]></Name>
-					<X>65</X><Y>383</Y>
+					<X>60</X><Y>490</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3255,7 +3005,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<RoundedRectangle>
 					<Id>1585076435097</Id>
 					<Name><![CDATA[roundRectangle4]]></Name>
-					<X>610</X><Y>80</Y>
+					<X>720</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3268,7 +3018,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>626</Width>
+					<Width>546.128</Width>
 					<Height>600</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
@@ -3278,7 +3028,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Text>
 					<Id>1585076435099</Id>
 					<Name><![CDATA[text21]]></Name>
-					<X>656</X><Y>95</Y>
+					<X>760.131</X><Y>95</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3299,7 +3049,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1585076435101</Id>
 					<Name><![CDATA[image15]]></Name>
-					<X>626</X><Y>95</Y>
+					<X>733.959</X><Y>95</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3307,7 +3057,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>18</Width>
+					<Width>15.703</Width>
 					<Height>18</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
@@ -4368,6 +4118,845 @@ a traves de los viajes inter regionales]]></Text>
 					</Font>
 					<Alignment>CENTER</Alignment>
 				</Text>
+				<Text>
+					<Id>1585918720908</Id>
+					<Name><![CDATA[text14]]></Name>
+					<X>87</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Distanciamiento Social]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1585919541749</Id>
+					<Name><![CDATA[image1]]></Name>
+					<X>505</X><Y>135</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>21</Width>
+					<Height>22</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 360.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585919559052</Id>
+					<Name><![CDATA[image2]]></Name>
+					<X>60</X><Y>85</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>21</Width>
+					<Height>25</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group (1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585919579265</Id>
+					<Name><![CDATA[image5]]></Name>
+					<X>55</X><Y>35</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>18</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[map-pin.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585919597802</Id>
+					<Name><![CDATA[image10]]></Name>
+					<X>255</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[cuarentenaOn = !cuarentenaOn;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>32</Width>
+					<Height>14</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[cuarentenaOn ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1585919689770</Id>
+					<Name><![CDATA[text26]]></Name>
+					<X>87</X><Y>255</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Trabajo/Escualas Remotas]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585920169217</Id>
+					<Name><![CDATA[text27]]></Name>
+					<X>87</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Cierre Fronteras Externas]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585920222905</Id>
+					<Name><![CDATA[text28]]></Name>
+					<X>87</X><Y>325</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Cierre Fronteras Internas]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1585920301937</Id>
+					<Name><![CDATA[image11]]></Name>
+					<X>255</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[distSocialOn = !distSocialOn;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>32</Width>
+					<Height>14</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[distSocialOn ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585920317057</Id>
+					<Name><![CDATA[image12]]></Name>
+					<X>255</X><Y>255</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[remoticidadOn = !remoticidadOn;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>32</Width>
+					<Height>14</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[remoticidadOn ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585920330777</Id>
+					<Name><![CDATA[image13]]></Name>
+					<X>255</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[fronterasCerradasOn = !fronterasCerradasOn;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>32</Width>
+					<Height>14</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[fronterasCerradasOn ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1585920339761</Id>
+					<Name><![CDATA[image16]]></Name>
+					<X>255</X><Y>325</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[cerrarViajesInternos = !cerrarViajesInternos;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>32</Width>
+					<Height>14</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[cerrarViajesInternos ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920352033</Id>
+					<Name><![CDATA[editbox3]]></Name>
+					<X>313</X><Y>218</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[distSocialOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>inicioDistSocial</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920352035</Id>
+					<Name><![CDATA[editbox4]]></Name>
+					<X>406</X><Y>218</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[distSocialOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>finDistSocial</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920387201</Id>
+					<Name><![CDATA[editbox5]]></Name>
+					<X>313</X><Y>288</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[fronterasCerradasOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>inicioFronterasCerradas</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920387203</Id>
+					<Name><![CDATA[editbox6]]></Name>
+					<X>406</X><Y>288</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[fronterasCerradasOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>finFronterasCerradas</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920481026</Id>
+					<Name><![CDATA[editbox7]]></Name>
+					<X>313</X><Y>253</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[remoticidadOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>inicioRemoticidad</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920489609</Id>
+					<Name><![CDATA[editbox8]]></Name>
+					<X>313</X><Y>323</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[cerrarViajesInternos]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>inicioCierreViajes</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920541417</Id>
+					<Name><![CDATA[editbox9]]></Name>
+					<X>406</X><Y>253</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[remoticidadOn]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>finRemoticidad</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585920553289</Id>
+					<Name><![CDATA[editbox10]]></Name>
+					<X>406</X><Y>323</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="76" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[cerrarViajesInternos]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>finCierreViajes</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1585920897488</Id>
+					<Name><![CDATA[text29]]></Name>
+					<X>655</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[XX %]]></Text>
+					<TextCode><![CDATA[efectoDistSocial == 0 ? "- %" : roundToInt(efectoDistSocial * 100) + " %"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585921019791</Id>
+					<Name><![CDATA[text33]]></Name>
+					<X>655</X><Y>185</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777088</Color>
+					<Text><![CDATA[XX %]]></Text>
+					<TextCode><![CDATA[1 - sumaDeEfectos > 0 ? roundToInt((1 - sumaDeEfectos) * 100) + " %" : "- %" ]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585921174638</Id>
+					<Name><![CDATA[text32]]></Name>
+					<X>600</X><Y>330</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Prohibición de Viajes Inter-Regionales]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>8</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585921610289</Id>
+					<Name><![CDATA[slider]]></Name>
+					<X>520</X><Y>212</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoFronterasCerradas) * (1 - efectoRemoticidad) ;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoDistSocial</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1585922284372</Id>
+					<Name><![CDATA[text34]]></Name>
+					<X>570</X><Y>186</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Suma de demás efectos]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>8</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585922309052</Id>
+					<Name><![CDATA[slider1]]></Name>
+					<X>520</X><Y>250</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoFronterasCerradas) * (1 - efectoRemoticidad) ;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoRemoticidad</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1585922310692</Id>
+					<Name><![CDATA[slider2]]></Name>
+					<X>520</X><Y>285</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoFronterasCerradas) * (1 - efectoRemoticidad) ;]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoFronterasCerradas</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1585922318124</Id>
+					<Name><![CDATA[text30]]></Name>
+					<X>655</X><Y>255</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[XX %]]></Text>
+					<TextCode><![CDATA[efectoRemoticidad == 0 ? "- %" : roundToInt(efectoRemoticidad * 100) + " %"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1585922320468</Id>
+					<Name><![CDATA[text31]]></Name>
+					<X>655</X><Y>290</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[XX %]]></Text>
+					<TextCode><![CDATA[efectoFronterasCerradas == 0 ? "- %" : roundToInt(efectoFronterasCerradas * 100) + " %"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Group>
+					<Id>1585020200651</Id>
+					<Name><![CDATA[listadoProvincias]]></Name>
+					<X>220</X><Y>63</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[220]]></XCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1585019950070</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>-90</X><Y>-10</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-4144960</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>180</Width>
+					<Height>20</Height>
+					<HeightCode><![CDATA[regions.size() * 20]]></HeightCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1585019971098</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>-80</X><Y>-5</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<YCode><![CDATA[-5 + index * 20]]></YCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[regions.size()]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[Region aux = regions.get(index);
+if(regSel != aux){
+	regSel = aux;
+}else{
+	regSel = null;
+}
+listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-8355712</Color>
+					<ColorCode><![CDATA[regSel == regions.get(index) ? dodgerBlue : gray]]></ColorCode>
+					<Text><![CDATA[Todas]]></Text>
+					<TextCode><![CDATA[regions.get(index).nombre]]></TextCode>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+				<Group>
+					<Id>1585924080975</Id>
+					<Name><![CDATA[group]]></Name>
+					<X>400</X><Y>395</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[aplicarCambios();
+cargarInfoEnfermedad();
+creoInfectadosIniciales();
+actualizoKpis();
+
+runSimulation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<RoundedRectangle>
+					<Id>1585923853881</Id>
+					<Name><![CDATA[roundRectangle6]]></Name>
+					<X>-65</X><Y>-35</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[aplicarCambios();
+cargarInfoEnfermedad();
+creoInfectadosIniciales();
+actualizoKpis();
+
+runSimulation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>125</Width>
+					<Height>65</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-11116635</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Image>
+					<Id>1585923103651</Id>
+					<Name><![CDATA[image7]]></Name>
+					<X>-28</X><Y>-27</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[aplicarCambios();
+cargarInfoEnfermedad();
+creoInfectadosIniciales();
+actualizoKpis();
+
+runSimulation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>50</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[play-button (1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 				</Level>
@@ -4591,7 +5180,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1584994128027</Id>
 					<Name><![CDATA[cuarentenaActivada]]></Name>
-					<X>250</X><Y>410</Y>
+					<X>287</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4673,6 +5262,9 @@ a traves de los viajes inter regionales]]></Text>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -5417,7 +6009,7 @@ a traves de los viajes inter regionales]]></Text>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5449,7 +6041,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5471,6 +6063,11 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[cuarentenaActivada = false;
+if (inicioCierreViajes.isActive()){
+	viajesInhabilitados = false;
+}else if(!main.cerrarViajesInternos){
+	viajesInhabilitados=false;
+}
 calculoEfectoPoliticas();]]></Action>
 				</Event>
 				<Event>
@@ -5512,7 +6109,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5544,7 +6141,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5576,7 +6173,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5608,7 +6205,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5640,7 +6237,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5672,7 +6269,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5704,7 +6301,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5736,7 +6333,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="occuresOnce">
+					<Properties TriggerType="timeout" Mode="userControls">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
@@ -5772,7 +6369,7 @@ calculoEfectoPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[efectoPoliticas = 0;
+					<Body><![CDATA[efectoPoliticas = 1;
 
 //CUARENTENA
 	//Cuarentena activa toda las demas politicas
@@ -5780,17 +6377,17 @@ calculoEfectoPoliticas();]]></Action>
 
 //DISTANCIAMIENTO SOCIAL
 if(distanciamientoActivado || cuarentenaActivada){
-	efectoPoliticas += main.efectoDistSocial;
+	efectoPoliticas = efectoPoliticas * (1 - main.efectoDistSocial);
 }
 
 //DISTANCIAMIENTO SOCIAL
 if(remoticidadActivada || cuarentenaActivada){
-	efectoPoliticas += main.efectoRemoticidad;
+	efectoPoliticas = efectoPoliticas * (1 - main.efectoRemoticidad);
 }
 
 //FRONTERAS CERRADAS
 if(fronterasCerradas || cuarentenaActivada){
-	efectoPoliticas += main.efectoFronterasCerradas;
+	efectoPoliticas = efectoPoliticas * (1 - main.efectoFronterasCerradas);
 }
 
 //VIAJES INHABILITADOS
@@ -6055,6 +6652,121 @@ viajesInhabilitados = noHayViajes;
 						<LabelText><![CDATA[button]]></LabelText>
 					</ExtendedProperties>
 				</Control>
+				<Oval>
+					<Id>1585923388592</Id>
+					<Name><![CDATA[oval]]></Name>
+					<X>285</X><Y>440</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>7.5</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillColorCode><![CDATA[distanciamientoActivado || cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
+				<Oval>
+					<Id>1585923456666</Id>
+					<Name><![CDATA[oval1]]></Name>
+					<X>285</X><Y>460</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>7.5</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillColorCode><![CDATA[remoticidadActivada || cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
+				<Oval>
+					<Id>1585923493385</Id>
+					<Name><![CDATA[oval2]]></Name>
+					<X>285</X><Y>480</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>7.5</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillColorCode><![CDATA[fronterasCerradas || cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
+				<Oval>
+					<Id>1585923495331</Id>
+					<Name><![CDATA[oval3]]></Name>
+					<X>285</X><Y>500</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>7.5</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillColorCode><![CDATA[viajesInhabilitados || cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
+				<Oval>
+					<Id>1585923515370</Id>
+					<Name><![CDATA[oval4]]></Name>
+					<X>262</X><Y>410</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>7.5</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillColorCode><![CDATA[cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
 			</Presentation>
 
 				</Level>
@@ -7426,6 +8138,7 @@ contagiosDiarios++;]]></Action>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1584979456754" Target="1584979456754" Trigger="timeout">
 						<Action><![CDATA[calculoTests();
+puedeViajar = !regionActual.viajesInhabilitados;
 viaja();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -8116,7 +8829,13 @@ if(regionActual != null){
 		traceln( "re = " + re);
 	}
 	
+	//Efecto Politicas de la region
+	traceln("re " + re);
+	traceln("efectos politicas " + regionActual.efectoPoliticas);
+	re = re * (regionActual.efectoPoliticas);
+	traceln("re " + re);
 	
+	//Efecto de hospitalizacino sobre el contagio
 	if(gradoAtencionActual > 0 ){
 		re = re * 0.5;
 	}	
@@ -8647,6 +9366,10 @@ switch(salud.getActiveSimpleState()){
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Input/Input_Simulador.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[play-button (1).png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
