@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagion Argentina]]></Name>
@@ -22,7 +22,7 @@ import java.util.function.IntToDoubleFunction;]]></Import>
 			<StartupCode><![CDATA[cargarRegiones();
 pauseSimulation();
 
-String headers = "Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
+String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 
 csvOutput.add(headers);]]></StartupCode>
 			<Generic>false</Generic>
@@ -1602,8 +1602,8 @@ for (int i = 0 ; i < regions.size();i++){
 	
 	Region r = regions.get(i);
 	
-	//Fecha;Region;Region Mapa;Poblacion;# Camas Aislamiento;# Camas TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomaticos;Sintomaticos;Leves;Moderados;Criticos;No Detectados; Circulando; En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI; Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
-	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.poblacion*divisor + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor + ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
+	//Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Incubando;Enfermos;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
+	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.regionMov + ";" +  r.poblacion*divisor + ";" + r.cuarentenaActivada + ";" + sumaDeEfectos + ";" + r.distanciamientoActivado + ";" + efectoDistSocial + ";" + r.remoticidadActivada + ";" + efectoRemoticidad + ";" + r.fronterasCerradas + ";" + efectoFronterasCerradas + ";" + r.viajesInhabilitados + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor + ";" + r.infectados.size()*divisor + ";" + r.incubando*divisor + ";" + r.enfermos*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.enEvaluacion*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
 	
 	csvOutput.add(resultados);
 }
@@ -8830,10 +8830,10 @@ if(regionActual != null){
 	}
 	
 	//Efecto Politicas de la region
-	traceln("re " + re);
-	traceln("efectos politicas " + regionActual.efectoPoliticas);
+	//traceln("re " + re);
+	//traceln("efectos politicas " + regionActual.efectoPoliticas);
 	re = re * (regionActual.efectoPoliticas);
-	traceln("re " + re);
+	//traceln("re " + re);
 	
 	//Efecto de hospitalizacino sobre el contagio
 	if(gradoAtencionActual > 0 ){
