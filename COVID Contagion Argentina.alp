@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagion Argentina]]></Name>
@@ -853,6 +853,30 @@ csvOutput.add(headers);]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1586178278804</Id>
+					<Name><![CDATA[diasFadeOut]]></Name>
+					<X>-250</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[14]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1586178278802</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1585250016873</Id>
 					<Name><![CDATA[atencionRequerida]]></Name>
@@ -1119,7 +1143,8 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 		Region reg = regions.get(i);
 		if( reg.id == id){
 			encontro = true;
-			reg.probabilidadMovimiento = porcentajeMovil;
+			reg.probabilidadMovimientoActual = porcentajeMovil;
+			reg.probabilidadMovimientoOriginal = porcentajeMovil;
 		}
 		i++;
 	}
@@ -2005,7 +2030,7 @@ traceln("Exportacion Finalizada");]]></Body>
 							<Name><![CDATA[longitud]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[probabilidadMovimiento]]></Name>
+							<Name><![CDATA[probabilidadMovimientoActual]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[densidadPoblacional]]></Name>
@@ -2026,9 +2051,6 @@ traceln("Exportacion Finalizada");]]></Body>
 							<Name><![CDATA[respiradoresActual]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[probabilidadViajeros]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[infectadosIniciales]]></Name>
 						</Parameter>
 						<Parameter>
@@ -2039,6 +2061,9 @@ traceln("Exportacion Finalizada");]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[respiradoresIniciales]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probabilidadMovimientoOriginal]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -5579,6 +5604,81 @@ runSimulation();]]></OnClickCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586178766195</Id>
+					<Name><![CDATA[fadeOutRestanteCuarenta]]></Name>
+					<X>1050</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586178800077</Id>
+					<Name><![CDATA[fadeOutRestanteDistSoc]]></Name>
+					<X>1050</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586178808833</Id>
+					<Name><![CDATA[fadeOutRestanteRemoticidad]]></Name>
+					<X>1050</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586178818418</Id>
+					<Name><![CDATA[fadeOutRestanteCierreFront]]></Name>
+					<X>1050</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586178828705</Id>
+					<Name><![CDATA[fadeOutRestanteCierreViajes]]></Name>
+					<X>1050</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584451482569</Id>
 					<Name><![CDATA[id]]></Name>
@@ -5671,8 +5771,8 @@ runSimulation();]]></OnClickCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584643516754</Id>
-					<Name><![CDATA[probabilidadMovimiento]]></Name>
-					<X>190</X><Y>100</Y>
+					<Name><![CDATA[probabilidadMovimientoActual]]></Name>
+					<X>190</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5826,30 +5926,6 @@ runSimulation();]]></OnClickCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1585226090475</Id>
-					<Name><![CDATA[probabilidadViajeros]]></Name>
-					<X>700</X><Y>190</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.03]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1585226090473</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1585242688530</Id>
 					<Name><![CDATA[infectadosIniciales]]></Name>
 					<X>700</X><Y>160</Y>
@@ -5932,6 +6008,27 @@ runSimulation();]]></OnClickCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1585830773300</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1586189424560</Id>
+					<Name><![CDATA[probabilidadMovimientoOriginal]]></Name>
+					<X>190</X><Y>-10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1586189424558</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -6031,6 +6128,7 @@ runSimulation();]]></OnClickCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[cuarentenaActivada = true;
+probabilidadMovimientoActual = probabilidadMovimientoOriginal;
 calculoEfectoPoliticas();]]></Action>
 				</Event>
 				<Event>
@@ -6068,7 +6166,12 @@ if (inicioCierreViajes.isActive()){
 }else if(!main.cerrarViajesInternos){
 	viajesInhabilitados=false;
 }
-calculoEfectoPoliticas();]]></Action>
+
+
+fadeOutRestanteCuarenta = main.diasFadeOut - 1;
+calculoEfectoPoliticas();
+
+fadeOutCuarentena.restart(1, DAY);]]></Action>
 				</Event>
 				<Event>
 					<Id>1585166865066</Id>
@@ -6163,7 +6266,11 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[distanciamientoActivado = false;
-calculoEfectoPoliticas();]]></Action>
+
+fadeOutRestanteDistSoc = main.diasFadeOut - 1;
+calculoEfectoPoliticas();
+
+fadeOutDistSocial.restart(1, DAY);]]></Action>
 				</Event>
 				<Event>
 					<Id>1585854279358</Id>
@@ -6227,7 +6334,11 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[remoticidadActivada = false;
-calculoEfectoPoliticas();]]></Action>
+
+fadeOutRestanteRemoticidad = main.diasFadeOut - 1;
+calculoEfectoPoliticas();
+
+fadeOutRemoticidad.restart(1, DAY);]]></Action>
 				</Event>
 				<Event>
 					<Id>1585854280615</Id>
@@ -6291,7 +6402,11 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[fronterasCerradas = false;
-calculoEfectoPoliticas();]]></Action>
+
+fadeOutRestanteCierreFront = main.diasFadeOut - 1;
+calculoEfectoPoliticas();
+
+fadeOutCierreFront.restart(1, DAY);]]></Action>
 				</Event>
 				<Event>
 					<Id>1585854282063</Id>
@@ -6323,6 +6438,7 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[viajesInhabilitados = true;
+probabilidadMovimientoActual = probabilidadMovimientoOriginal;
 calculoEfectoPoliticas();]]></Action>
 				</Event>
 				<Event>
@@ -6355,6 +6471,204 @@ calculoEfectoPoliticas();]]></Action>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[viajesInhabilitados = false;
+
+fadeOutRestanteCierreViajes = main.diasFadeOut - 1;
+calculoEfectoPoliticas();
+
+fadeOutCierreViajes.restart(1, DAY);]]></Action>
+				</Event>
+				<Event>
+					<Id>1586176213177</Id>
+					<Name><![CDATA[fadeOutCuarentena]]></Name>
+					<X>870</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="userControls">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586246400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fadeOutRestanteCuarenta--;
+
+if(fadeOutRestanteCuarenta > 0){
+	fadeOutCuarentena.restart(1, DAY);
+}else if(fadeOutRestanteCuarenta == 0){
+	probabilidadMovimientoActual = probabilidadMovimientoOriginal;
+}
+
+
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1586178146272</Id>
+					<Name><![CDATA[fadeOutDistSocial]]></Name>
+					<X>870</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586246400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fadeOutRestanteDistSoc--;
+
+if(fadeOutRestanteDistSoc> 0){
+	fadeOutDistSocial.restart(1, DAY);
+}
+
+
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1586178159154</Id>
+					<Name><![CDATA[fadeOutRemoticidad]]></Name>
+					<X>870</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586246400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fadeOutRestanteRemoticidad--;
+
+if(fadeOutRestanteRemoticidad > 0){
+	fadeOutRemoticidad.restart(1, DAY);
+}
+
+
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1586178173118</Id>
+					<Name><![CDATA[fadeOutCierreFront]]></Name>
+					<X>870</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586246400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fadeOutRestanteCierreFront--;
+
+if(fadeOutRestanteCierreFront > 0){
+	fadeOutCierreFront.restart(1, DAY);
+}
+
+
+calculoEfectoPoliticas();]]></Action>
+				</Event>
+				<Event>
+					<Id>1586178183986</Id>
+					<Name><![CDATA[fadeOutCierreViajes]]></Name>
+					<X>870</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586246400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[fadeOutRestanteCierreViajes--;
+
+if(fadeOutRestanteCierreViajes > 0){
+	fadeOutCierreViajes.restart(1, DAY);
+}else if(fadeOutRestanteCierreViajes == 0){
+	//Retorno la probabilidad de Movimientos a su valor original
+	probabilidadMovimientoActual = probabilidadMovimientoOriginal;
+}
+
 calculoEfectoPoliticas();]]></Action>
 				</Event>
 			</Events>
@@ -6370,24 +6684,83 @@ calculoEfectoPoliticas();]]></Action>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[efectoPoliticas = 1;
+double efectoResidual = 0;
+
+/*traceln("------");
+traceln(date());
+traceln(" ");*/
 
 //CUARENTENA
 	//Cuarentena activa toda las demas politicas
 
 
 //DISTANCIAMIENTO SOCIAL
-if(distanciamientoActivado || cuarentenaActivada){
-	efectoPoliticas = efectoPoliticas * (1 - main.efectoDistSocial);
+if(distanciamientoActivado || cuarentenaActivada || fadeOutRestanteDistSoc > 0 || fadeOutRestanteCuarenta > 0){
+	
+	double fadeOutRestante = fadeOutRestanteDistSoc;
+	if( fadeOutRestanteCuarenta > fadeOutRestanteDistSoc){
+		fadeOutRestante = fadeOutRestanteCuarenta;
+	}
+	if(distanciamientoActivado || cuarentenaActivada){
+		fadeOutRestante = main.diasFadeOut;	
+	}
+	
+	efectoResidual = fadeOutRestante/main.diasFadeOut;
+	
+	efectoPoliticas = efectoPoliticas * (1 - (main.efectoDistSocial * efectoResidual));
+
+	/*traceln("");
+	traceln("Dist Social");
+	traceln("Efecto Normal " + main.efectoDistSocial);
+	traceln("Impatco Residual " + efectoResidual);
+	traceln("Efecto Residual " + (main.efectoDistSocial * efectoResidual));
+	traceln("Efecto Politicas" + efectoPoliticas);*/
 }
 
-//DISTANCIAMIENTO SOCIAL
-if(remoticidadActivada || cuarentenaActivada){
-	efectoPoliticas = efectoPoliticas * (1 - main.efectoRemoticidad);
+//REMOTICIDAD
+if(remoticidadActivada || cuarentenaActivada || fadeOutRestanteRemoticidad > 0 || fadeOutRestanteCuarenta > 0){
+	
+	double fadeOutRestante = fadeOutRestanteRemoticidad;
+	if( fadeOutRestanteCuarenta > fadeOutRestanteRemoticidad){
+		fadeOutRestante = fadeOutRestanteCuarenta;
+	}
+	if(remoticidadActivada || cuarentenaActivada){
+		fadeOutRestante = main.diasFadeOut;	
+	}
+	
+	efectoResidual = fadeOutRestante/main.diasFadeOut;
+	
+	efectoPoliticas = efectoPoliticas * (1 - (main.efectoRemoticidad * efectoResidual));
+
+	/*traceln("");
+	traceln("Remoticidad");
+	traceln("Efecto Normal " + main.efectoRemoticidad);
+	traceln("Impacto Residual " + efectoResidual);
+	traceln("Efecto Residual " +  (main.efectoRemoticidad * efectoResidual));
+	traceln("Efecto Politicas" + efectoPoliticas);*/
 }
 
 //FRONTERAS CERRADAS
-if(fronterasCerradas || cuarentenaActivada){
-	efectoPoliticas = efectoPoliticas * (1 - main.efectoFronterasCerradas);
+if(fronterasCerradas || cuarentenaActivada || fadeOutRestanteCierreFront > 0 || fadeOutRestanteCuarenta > 0){
+	
+	double fadeOutRestante = fadeOutRestanteCierreFront;
+	if( fadeOutRestanteCuarenta > fadeOutRestanteCierreFront){
+		fadeOutRestante = fadeOutRestanteCuarenta;
+	}
+	if(fronterasCerradas || cuarentenaActivada){
+		fadeOutRestante = main.diasFadeOut;	
+	}
+	
+	efectoResidual = fadeOutRestante/main.diasFadeOut;	
+	
+	efectoPoliticas = efectoPoliticas * (1 - (main.efectoFronterasCerradas * efectoResidual));
+
+	/*traceln("");
+	traceln("Fronteras Cerradas");
+	traceln("Efecto Normal " + main.efectoFronterasCerradas);
+	traceln("Impatcto Residual " + efectoResidual);
+	traceln("Efecto Residual " + (main.efectoFronterasCerradas * efectoResidual));
+	traceln("Efecto Politicas" + efectoPoliticas);*/	
 }
 
 //VIAJES INHABILITADOS
@@ -6396,8 +6769,26 @@ if(viajesInhabilitados || cuarentenaActivada){
 	noHayViajes = true;
 }
 viajesInhabilitados = noHayViajes;
+if(fadeOutRestanteCierreViajes > 0 || fadeOutRestanteCuarenta > 0 ){
 
-]]></Body>
+	double fadeOutRestante = fadeOutRestanteCierreViajes;
+	if( fadeOutRestanteCuarenta > fadeOutRestanteCierreViajes){
+		fadeOutRestante = fadeOutRestanteCuarenta;
+	}
+	
+	efectoResidual = fadeOutRestante/main.diasFadeOut;	
+	
+	probabilidadMovimientoActual = probabilidadMovimientoActual* (1 - efectoResidual);
+	
+	/*traceln("");
+	traceln("Viajes Cerrados");
+	traceln("Probabilidad Normal " +probabilidadMovimientoOriginal);
+	traceln("Impatcto Residual " + efectoResidual);
+	traceln("Efecto Residual " + probabilidadMovimientoActual);*/
+}
+
+/*traceln("");
+traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -6468,7 +6859,7 @@ viajesInhabilitados = noHayViajes;
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>940</Width>
+					<Width>1400</Width>
 					<Height>240</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -6767,6 +7158,156 @@ viajesInhabilitados = noHayViajes;
 					<FillColorCode><![CDATA[cuarentenaActivada ? lawnGreen : paleVioletRed]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Oval>
+    			<TimePlot>
+					<Id>1586186708808</Id>
+					<Name><![CDATA[plot]]></Name>
+					<X>30</X><Y>630</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1586246400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>890</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>810</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Efecto Politicas]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-9807155</Color>
+					<Expression2><![CDATA[efectoPoliticas]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1586192389287</Id>
+					<Name><![CDATA[plot1]]></Name>
+					<X>30</X><Y>850</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1586246400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>900</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>820</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Probabilidad Viajar]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-9807155</Color>
+					<Expression2><![CDATA[!viajesInhabilitados ? probabilidadMovimientoActual : 0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Probilidad Original]]></Title>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-2987746</Color>
+					<Expression2><![CDATA[probabilidadMovimientoOriginal]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[check]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-2448096</Color>
+					<Expression2><![CDATA[probabilidadMovimientoActual]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
 			</Presentation>
 
 				</Level>
@@ -8947,7 +9488,7 @@ salud.onChange();]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if( randomTrue(regionOrigen.probabilidadMovimiento) && (puedeViajar && regionActual == regionOrigen)){
+					<Body><![CDATA[if( randomTrue(regionOrigen.probabilidadMovimientoActual) && (puedeViajar && regionActual == regionOrigen)){
 	regionActual = regionDestino;
 	regionOrigen.infectados.remove(this);
 	regionOrigen.infectadosActuales--;
@@ -9300,6 +9841,9 @@ switch(salud.getActiveSimpleState()){
 			<Parameters>			
 				<Parameter>
 					<ParameterName><![CDATA[duracionPromedioEnfermedad]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[diasFadeOut]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
