@@ -2820,8 +2820,8 @@ traceln("Exportacion Finalizada");]]></Body>
 					<BeginArrowStyle>0</BeginArrowStyle>
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>1185</Dx>
-					<Dy>0</Dy>
+					<Dx>1145</Dx>
+					<Dy>-1</Dy>
 					<Dz>0</Dz>
 				</Line>
 				<RoundedRectangle>
@@ -3369,7 +3369,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>546.128</Width>
+					<Width>470</Width>
 					<Height>600</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
@@ -5453,7 +5453,7 @@ región actual]]></Text>
 					<TextCode><![CDATA[regionesSele.get(index)]]></TextCode>
 					<Font>
 						<Name>Roboto</Name>
-						<Size>12</Size>
+						<Size>10</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5461,7 +5461,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586267083715</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>960</X><Y>160</Y>
+					<X>930</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5479,7 +5479,7 @@ región actual]]></Text>
 					<TextCode><![CDATA[medidasSele.get(index)]]></TextCode>
 					<Font>
 						<Name>Roboto</Name>
-						<Size>12</Size>
+						<Size>10</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -5487,7 +5487,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586267092458</Id>
 					<Name><![CDATA[text39]]></Name>
-					<X>1120</X><Y>160</Y>
+					<X>1055</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5505,15 +5505,15 @@ región actual]]></Text>
 					<TextCode><![CDATA[fechaInicioSel.get(index) + fechaFinSel.get(index)]]></TextCode>
 					<Font>
 						<Name>Roboto</Name>
-						<Size>12</Size>
+						<Size>10</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
 				<Line>
-					<Id>1586269029985</Id>
-					<Name><![CDATA[line18]]></Name>
-					<X>945</X><Y>155</Y>
+					<Id>1586269457680</Id>
+					<Name><![CDATA[line19]]></Name>
+					<X>1050</X><Y>155</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5532,13 +5532,13 @@ región actual]]></Text>
 					<EndArrowStyle>0</EndArrowStyle>
 					<Dx>0</Dx>
 					<Dy>25</Dy>
-					<DyCode><![CDATA[19.65 * regionesSele.size()]]></DyCode>
+					<DyCode><![CDATA[19.6 * regionesSele.size()]]></DyCode>
 					<Dz>0</Dz>
 				</Line>
 				<Line>
-					<Id>1586269457680</Id>
-					<Name><![CDATA[line19]]></Name>
-					<X>1105</X><Y>155</Y>
+					<Id>1586271002492</Id>
+					<Name><![CDATA[line20]]></Name>
+					<X>918</X><Y>155</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5557,7 +5557,7 @@ región actual]]></Text>
 					<EndArrowStyle>0</EndArrowStyle>
 					<Dx>0</Dx>
 					<Dy>25</Dy>
-					<DyCode><![CDATA[19.65 * regionesSele.size()]]></DyCode>
+					<DyCode><![CDATA[19.6 * regionesSele.size()]]></DyCode>
 					<Dz>0</Dz>
 				</Line>
 			</Presentation>
