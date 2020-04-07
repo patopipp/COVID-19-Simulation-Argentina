@@ -20,11 +20,15 @@
 			<Import><![CDATA[import java.text.SimpleDateFormat;
 import java.util.function.IntToDoubleFunction;]]></Import>
 			<StartupCode><![CDATA[cargarRegiones();
-pauseSimulation();
+cargarInfoEnfermedad();
+creoInfectadosIniciales();
+
+actualizoKpis();
 
 String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
+csvOutput.add(headers);
 
-csvOutput.add(headers);]]></StartupCode>
+]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1584450064339</Id>
@@ -802,7 +806,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1585926890679</Id>
 					<Name><![CDATA[exportacionActivada]]></Name>
-					<X>240</X><Y>1310</Y>
+					<X>230</X><Y>950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -955,7 +959,7 @@ csvOutput.add(headers);]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1585761273959</Id>
 					<Name><![CDATA[csvOutput]]></Name>
-					<X>600</X><Y>900</Y>
+					<X>440</X><Y>910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1032,6 +1036,37 @@ csvOutput.add(headers);]]></StartupCode>
 					<Action><![CDATA[cambiosDiarios();
 plot.updateData();
 plot1.updateData();]]></Action>
+				</Event>
+				<Event>
+					<Id>1586264247654</Id>
+					<Name><![CDATA[pauseSimulationOnStart]]></Name>
+					<X>-260</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1586332800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[pauseSimulation();]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -1275,6 +1310,72 @@ if(todas){
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+		}
+	}
+}else{
+	
+	//Cuarentena
+	if( cuarentenaOn ){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioCuarentena);
+			Date fechaFin = sdf.parse(finCuarentena);
+			regSel.inicioCuarentena.restartTo(fechaInicio);
+			regSel.finCuarentena.restartTo(fechaFin);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+			
+	//Distancianmiento Social
+	if( distSocialOn ){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioDistSocial);
+			Date fechaFin = sdf.parse(finDistSocial);
+			regSel.inicioDistanciamiento.restartTo(fechaInicio);
+			regSel.finDistanciamiento.restartTo(fechaFin);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	//Trabajo/Escuela Remoto
+	if (remoticidadOn ){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioRemoticidad);
+			Date fechaFin = sdf.parse(finRemoticidad);
+			regSel.inicioRemoticidad.restartTo(fechaInicio);
+			regSel.finRemoticidad.restartTo(fechaFin);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	//Fronteras Cerradas
+	if( fronterasCerradasOn ){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioFronterasCerradas);
+			Date fechaFin = sdf.parse(finFronterasCerradas);
+			regSel.inicioCierreFronteras.restartTo(fechaInicio);
+			regSel.finCierreFronteras.restartTo(fechaFin);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	//Cerrar Viajes Internos
+	if (cerrarViajesInternos ){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioCierreViajes);
+			Date fechaFin = sdf.parse(finCierreViajes);
+			regSel.inicioCierreViajes.restartTo(fechaInicio);
+			regSel.finCierreViajes.restartTo(fechaFin);
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 }]]></Body>
@@ -1643,7 +1744,7 @@ for (int i = 0 ; i < regions.size();i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585761580526</Id>
 					<Name><![CDATA[exportarResultados]]></Name>
-					<X>400</X><Y>900</Y>
+					<X>230</X><Y>910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1869,7 +1970,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				<TextFile>
 					<Id>1585758638369</Id>
 					<Name><![CDATA[csvResultados]]></Name>
-					<X>600</X><Y>940</Y>
+					<X>440</X><Y>950</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2163,10 +2264,33 @@ traceln("Exportacion Finalizada");]]></Body>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<RoundedRectangle>
+					<Id>1586262551313</Id>
+					<Name><![CDATA[roundRectangle7]]></Name>
+					<X>200</X><Y>850</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>600</Width>
+					<Height>120</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
 				<Image>
 					<Id>1585923662618</Id>
 					<Name><![CDATA[image17]]></Name>
-					<X>10</X><Y>0</Y>
+					<X>-10</X><Y>-30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3920,7 +4044,7 @@ traceln("Exportacion Finalizada");]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585761748279</Id>
 					<Name><![CDATA[button2]]></Name>
-					<X>380</X><Y>920</Y>
+					<X>600</X><Y>910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4906,76 +5030,71 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 			</Presentation>
 
 				</Group>
-				<Group>
-					<Id>1585924080975</Id>
-					<Name><![CDATA[group]]></Name>
-					<X>400</X><Y>395</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[aplicarCambios();
-cargarInfoEnfermedad();
-creoInfectadosIniciales();
-actualizoKpis();
-
-runSimulation();]]></OnClickCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-
-			<Presentation>
-				<RoundedRectangle>
-					<Id>1585923853881</Id>
-					<Name><![CDATA[roundRectangle6]]></Name>
-					<X>-65</X><Y>-35</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+				<Text>
+					<Id>1586262617895</Id>
+					<Name><![CDATA[text35]]></Name>
+					<X>420</X><Y>870</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[aplicarCambios();
-cargarInfoEnfermedad();
-creoInfectadosIniciales();
-actualizoKpis();
-
-runSimulation();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>125</Width>
-					<Height>65</Height>
 					<Rotation>0.0</Rotation>
-					<FillColor>-11116635</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>10</ArcRadius>
-				</RoundedRectangle>
+					<Color>-16777216</Color>
+					<Text><![CDATA[E X P O R T   D A T A]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1586263092788</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>270</X><Y>370</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[aplicarCambios();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>60</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[save (1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 				<Image>
 					<Id>1585923103651</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>-28</X><Y>-27</Y>
+					<X>470</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[aplicarCambios();
-cargarInfoEnfermedad();
-creoInfectadosIniciales();
-actualizoKpis();
-
 runSimulation();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>50</Width>
-					<Height>50</Height>
+					<Width>60</Width>
+					<Height>60</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covid]]></PackageName>
+							<ClassName><![CDATA[play-button.png]]></ClassName>
+						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covid]]></PackageName>
 							<ClassName><![CDATA[play-button (1).png]]></ClassName>
@@ -4983,9 +5102,6 @@ runSimulation();]]></OnClickCode>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
-			</Presentation>
-
-				</Group>
 			</Presentation>
 
 				</Level>
@@ -9841,6 +9957,14 @@ switch(salud.getActiveSimpleState()){
 		</Resource>
 		<Resource>
 			<Path><![CDATA[play-button (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[save (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[play-button.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
