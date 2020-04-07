@@ -1969,6 +1969,7 @@ for( int i = 0 ; i < 209 ; i++){
 
 	double dias = i;
 	double efecto = 1.;
+	double efectoGrafico = 0;
 		
 	//Distanciamiento Social
 	if( distSocialOn){
@@ -1983,7 +1984,8 @@ for( int i = 0 ; i < 209 ; i++){
 							
 			if (diasInicio <= dias && dias < diasFin){
 				if(efectoDistSocial != 0){
-					efecto = efecto * efectoDistSocial;
+					efecto = efecto * (1. - efectoDistSocial);
+					efectoGrafico = efecto;
 				}
 			}
 			
@@ -2005,7 +2007,8 @@ for( int i = 0 ; i < 209 ; i++){
 							
 			if (diasInicio <= dias && dias < diasFin){
 				if(efectoRemoticidad != 0){
-					efecto = efecto * efectoRemoticidad;
+					efecto = efecto * ( 1. - efectoRemoticidad);
+					efectoGrafico =efecto;
 				}
 			}
 			
@@ -2027,7 +2030,8 @@ for( int i = 0 ; i < 209 ; i++){
 							
 			if (diasInicio <= dias && dias < diasFin){
 				if( efectoFronterasCerradas != 0){
-					efecto = efecto * efectoFronterasCerradas;
+					efecto = efecto * (1. - efectoFronterasCerradas);
+					efectoGrafico = efecto;
 				}
 			}
 			
