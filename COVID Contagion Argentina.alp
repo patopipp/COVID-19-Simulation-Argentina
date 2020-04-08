@@ -879,6 +879,36 @@ cargarGrafico();
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586350697631</Id>
+					<Name><![CDATA[efectoHospitalizacion]]></Name>
+					<X>550</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.5]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586350697633</Id>
+					<Name><![CDATA[efectoAislamiento]]></Name>
+					<X>550</X><Y>-120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.25]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -2645,7 +2675,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585923662618</Id>
 					<Name><![CDATA[image17]]></Name>
-					<X>-15</X><Y>-30</Y>
+					<X>5</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2938,7 +2968,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585002977183</Id>
 					<Name><![CDATA[line]]></Name>
-					<X>50</X><Y>66</Y>
+					<X>70</X><Y>96</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2962,7 +2992,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1585003137913</Id>
 					<Name><![CDATA[roundRectangle1]]></Name>
-					<X>50</X><Y>80</Y>
+					<X>70</X><Y>110</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3008,7 +3038,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585003590786</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>97</X><Y>92</Y>
+					<X>117</X><Y>122</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3072,7 +3102,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585003992481</Id>
 					<Name><![CDATA[image6]]></Name>
-					<X>307</X><Y>138</Y>
+					<X>327</X><Y>168</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3094,7 +3124,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585004157074</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>337</X><Y>139</Y>
+					<X>357</X><Y>169</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3115,7 +3145,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585004243058</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>75</X><Y>36</Y>
+					<X>95</X><Y>66</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3136,7 +3166,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585004282252</Id>
 					<Name><![CDATA[line1]]></Name>
-					<X>53</X><Y>119</Y>
+					<X>73</X><Y>149</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3160,7 +3190,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Group>
 					<Id>1585020284409</Id>
 					<Name><![CDATA[groupoElegirProv]]></Name>
-					<X>220</X><Y>43</Y>
+					<X>240</X><Y>73</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3244,7 +3274,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585020751764</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>104</X><Y>139</Y>
+					<X>124</X><Y>169</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3265,7 +3295,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585020832499</Id>
 					<Name><![CDATA[line2]]></Name>
-					<X>294</X><Y>137</Y>
+					<X>314</X><Y>167</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3289,7 +3319,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585020933981</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>82</X><Y>141</Y>
+					<X>102</X><Y>171</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3312,7 +3342,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021000535</Id>
 					<Name><![CDATA[editbox]]></Name>
-					<X>307</X><Y>176</Y>
+					<X>327</X><Y>206</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3336,7 +3366,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021221601</Id>
 					<Name><![CDATA[editbox1]]></Name>
-					<X>400</X><Y>176</Y>
+					<X>420</X><Y>206</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3360,7 +3390,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585021250571</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>81</X><Y>180</Y>
+					<X>101</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3381,7 +3411,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585075856328</Id>
 					<Name><![CDATA[line3]]></Name>
-					<X>492</X><Y>137</Y>
+					<X>512</X><Y>167</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3405,7 +3435,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585075918402</Id>
 					<Name><![CDATA[text12]]></Name>
-					<X>539</X><Y>140</Y>
+					<X>559</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3426,7 +3456,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1585076364757</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
-					<X>50</X><Y>460</Y>
+					<X>70</X><Y>490</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3449,7 +3479,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585076364759</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>105</X><Y>480.112</Y>
+					<X>125</X><Y>510.112</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3470,7 +3500,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585076364755</Id>
 					<Name><![CDATA[image14]]></Name>
-					<X>60</X><Y>480</Y>
+					<X>80</X><Y>510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3492,7 +3522,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1585076435097</Id>
 					<Name><![CDATA[roundRectangle4]]></Name>
-					<X>720</X><Y>80</Y>
+					<X>740</X><Y>110</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3515,7 +3545,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585076435099</Id>
 					<Name><![CDATA[text21]]></Name>
-					<X>760.131</X><Y>95</Y>
+					<X>780.131</X><Y>125</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3536,7 +3566,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585076435101</Id>
 					<Name><![CDATA[image15]]></Name>
-					<X>733.959</X><Y>95</Y>
+					<X>753.959</X><Y>125</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4608,7 +4638,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Text>
 					<Id>1585918720908</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>81</X><Y>220</Y>
+					<X>101</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4629,7 +4659,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Image>
 					<Id>1585919541749</Id>
 					<Name><![CDATA[image1]]></Name>
-					<X>508</X><Y>140</Y>
+					<X>528</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4651,7 +4681,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Image>
 					<Id>1585919559052</Id>
 					<Name><![CDATA[image2]]></Name>
-					<X>60</X><Y>85</Y>
+					<X>80</X><Y>115</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4673,7 +4703,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Image>
 					<Id>1585919579265</Id>
 					<Name><![CDATA[image5]]></Name>
-					<X>55</X><Y>35</Y>
+					<X>75</X><Y>65</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4695,7 +4725,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Image>
 					<Id>1585919597802</Id>
 					<Name><![CDATA[image10]]></Name>
-					<X>249</X><Y>180</Y>
+					<X>269</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4726,7 +4756,7 @@ if(!cuarentenaOn){
 				<Text>
 					<Id>1585919689770</Id>
 					<Name><![CDATA[text26]]></Name>
-					<X>81</X><Y>255</Y>
+					<X>101</X><Y>285</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4747,7 +4777,7 @@ if(!cuarentenaOn){
 				<Text>
 					<Id>1585920169217</Id>
 					<Name><![CDATA[text27]]></Name>
-					<X>81</X><Y>290</Y>
+					<X>101</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4768,7 +4798,7 @@ if(!cuarentenaOn){
 				<Text>
 					<Id>1585920222905</Id>
 					<Name><![CDATA[text28]]></Name>
-					<X>81</X><Y>325</Y>
+					<X>101</X><Y>355</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4789,7 +4819,7 @@ if(!cuarentenaOn){
 				<Image>
 					<Id>1585920301937</Id>
 					<Name><![CDATA[image11]]></Name>
-					<X>249</X><Y>220</Y>
+					<X>269</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4820,7 +4850,7 @@ if(!distSocialOn){
 				<Image>
 					<Id>1585920317057</Id>
 					<Name><![CDATA[image12]]></Name>
-					<X>249</X><Y>255</Y>
+					<X>269</X><Y>285</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4851,7 +4881,7 @@ if(!remoticidadOn){
 				<Image>
 					<Id>1585920330777</Id>
 					<Name><![CDATA[image13]]></Name>
-					<X>249</X><Y>290</Y>
+					<X>269</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4882,7 +4912,7 @@ if(!fronterasCerradasOn){
 				<Image>
 					<Id>1585920339761</Id>
 					<Name><![CDATA[image16]]></Name>
-					<X>249</X><Y>325</Y>
+					<X>269</X><Y>355</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4911,7 +4941,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920352033</Id>
 					<Name><![CDATA[editbox3]]></Name>
-					<X>307</X><Y>218</Y>
+					<X>327</X><Y>248</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4935,7 +4965,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920352035</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>400</X><Y>218</Y>
+					<X>420</X><Y>248</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4960,7 +4990,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920387201</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>307</X><Y>288</Y>
+					<X>327</X><Y>318</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4984,7 +5014,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920387203</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>400</X><Y>288</Y>
+					<X>420</X><Y>318</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5009,7 +5039,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920481026</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>307</X><Y>253</Y>
+					<X>327</X><Y>283</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5033,7 +5063,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920489609</Id>
 					<Name><![CDATA[editbox8]]></Name>
-					<X>307</X><Y>323</Y>
+					<X>327</X><Y>353</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5057,7 +5087,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920541417</Id>
 					<Name><![CDATA[editbox9]]></Name>
-					<X>400</X><Y>253</Y>
+					<X>420</X><Y>283</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5082,7 +5112,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920553289</Id>
 					<Name><![CDATA[editbox10]]></Name>
-					<X>400</X><Y>323</Y>
+					<X>420</X><Y>353</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5106,7 +5136,7 @@ if(!fronterasCerradasOn){
 				<Text>
 					<Id>1585920897488</Id>
 					<Name><![CDATA[text29]]></Name>
-					<X>649</X><Y>220</Y>
+					<X>669</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5128,7 +5158,7 @@ if(!fronterasCerradasOn){
 				<Text>
 					<Id>1585921019791</Id>
 					<Name><![CDATA[text33]]></Name>
-					<X>649</X><Y>185</Y>
+					<X>669</X><Y>215</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5150,7 +5180,7 @@ if(!fronterasCerradasOn){
 				<Text>
 					<Id>1585921174638</Id>
 					<Name><![CDATA[text32]]></Name>
-					<X>594</X><Y>330</Y>
+					<X>614</X><Y>360</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5172,7 +5202,7 @@ if(!fronterasCerradasOn){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585921610289</Id>
 					<Name><![CDATA[slider]]></Name>
-					<X>514</X><Y>212</Y>
+					<X>534</X><Y>242</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5196,7 +5226,7 @@ cargarGrafico();]]></ActionCode>
 				<Text>
 					<Id>1585922284372</Id>
 					<Name><![CDATA[text34]]></Name>
-					<X>564</X><Y>186</Y>
+					<X>584</X><Y>216</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5218,7 +5248,7 @@ cargarGrafico();]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585922309052</Id>
 					<Name><![CDATA[slider1]]></Name>
-					<X>514</X><Y>250</Y>
+					<X>534</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5243,7 +5273,7 @@ cargarGrafico();]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585922310692</Id>
 					<Name><![CDATA[slider2]]></Name>
-					<X>514</X><Y>285</Y>
+					<X>534</X><Y>315</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5267,7 +5297,7 @@ cargarGrafico();]]></ActionCode>
 				<Text>
 					<Id>1585922318124</Id>
 					<Name><![CDATA[text30]]></Name>
-					<X>649</X><Y>255</Y>
+					<X>669</X><Y>285</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5289,7 +5319,7 @@ cargarGrafico();]]></ActionCode>
 				<Text>
 					<Id>1585922320468</Id>
 					<Name><![CDATA[text31]]></Name>
-					<X>649</X><Y>290</Y>
+					<X>669</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5311,7 +5341,7 @@ cargarGrafico();]]></ActionCode>
 				<Group>
 					<Id>1585020200651</Id>
 					<Name><![CDATA[listadoProvincias]]></Name>
-					<X>220</X><Y>63</Y>
+					<X>240</X><Y>93</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -5407,7 +5437,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1586263092788</Id>
 					<Name><![CDATA[image]]></Name>
-					<X>224</X><Y>370</Y>
+					<X>244</X><Y>400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5431,7 +5461,7 @@ guardado = true;]]></OnClickCode>
 				<Image>
 					<Id>1585923103651</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>474</X><Y>370</Y>
+					<X>494</X><Y>400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5451,10 +5481,6 @@ guardado = true;]]></OnClickCode>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covid]]></PackageName>
 							<ClassName><![CDATA[play-button.png]]></ClassName>
-						</ImageResourceReference>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covid]]></PackageName>
-							<ClassName><![CDATA[play-button (1).png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
@@ -5483,7 +5509,7 @@ guardado = true;]]></OnClickCode>
 				<Group>
 					<Id>1586266536415</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>320</X><Y>310</Y>
+					<X>340</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5590,7 +5616,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586266937355</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>740</X><Y>160</Y>
+					<X>760</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5616,7 +5642,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586267083715</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>930</X><Y>160</Y>
+					<X>950</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5642,7 +5668,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586267092458</Id>
 					<Name><![CDATA[text39]]></Name>
-					<X>1055</X><Y>160</Y>
+					<X>1075</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5668,7 +5694,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586269457680</Id>
 					<Name><![CDATA[line19]]></Name>
-					<X>1050</X><Y>155</Y>
+					<X>1070</X><Y>185</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5693,7 +5719,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586271002492</Id>
 					<Name><![CDATA[line20]]></Name>
-					<X>918</X><Y>155</Y>
+					<X>938</X><Y>185</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5718,7 +5744,7 @@ región actual]]></Text>
     			<Plot>
 					<Id>1586273733692</Id>
 					<Name><![CDATA[plot4]]></Name>
-					<X>50</X><Y>510</Y>
+					<X>70</X><Y>540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5804,7 +5830,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586275871986</Id>
 					<Name><![CDATA[line18]]></Name>
-					<X>50</X><Y>510</Y>
+					<X>70</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5825,6 +5851,96 @@ región actual]]></Text>
 					<Dy>1</Dy>
 					<Dz>0</Dz>
 				</Line>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1586350697618</Id>
+					<Name><![CDATA[slider3]]></Name>
+					<X>720</X><Y>-180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoHospitalizacion</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1586350697623</Id>
+					<Name><![CDATA[slider4]]></Name>
+					<X>720</X><Y>-130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoAislamiento</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1586350697627</Id>
+					<Name><![CDATA[text40]]></Name>
+					<X>1210</X><Y>-120</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Los Detectados No Hospitalizados se encuentran en un 
+estado aislado donde se reduce su tasa de contagio]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1586350697629</Id>
+					<Name><![CDATA[text41]]></Name>
+					<X>1220</X><Y>-180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Al estar hospitalizado se reduce la tasa de contagio por 
+encontrarse en un ambiente controlado]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>2</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -6685,7 +6801,7 @@ región actual]]></Text>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1000]]></Code>
+							<Code><![CDATA[10]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1584979845220</Id>
@@ -6995,6 +7111,7 @@ fadeOutCuarentena.restart(1, DAY);]]></Action>
 				<Event>
 					<Id>1585166865066</Id>
 					<Name><![CDATA[renovacionTests]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>180</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -8536,6 +8653,18 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586348111956</Id>
+					<Name><![CDATA[disminucionHospitalizacion]]></Name>
+					<X>1000</X><Y>1000</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584547220632</Id>
 					<Name><![CDATA[edad]]></Name>
@@ -8649,7 +8778,7 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1584897402289</Id>
-					<Name><![CDATA[enfermo]]></Name>
+					<Name><![CDATA[infectado]]></Name>
 					<X>40</X><Y>90</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -8659,7 +8788,7 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
-				<StatechartElement Class="State" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="State" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1584897402307</Id>
 					<Name><![CDATA[asintomatico]]></Name>
 					<X>70</X><Y>150</Y>
@@ -8673,7 +8802,7 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
-				<StatechartElement Class="State" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="State" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1584897402309</Id>
 					<Name><![CDATA[sintomatico]]></Name>
 					<X>70</X><Y>320</Y>
@@ -9017,7 +9146,7 @@ regionActual.pacientesTIsinRespirados++;]]></EntryAction>
 					<Properties>	
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Branch" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="Branch" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1585243085030</Id>
 					<Name><![CDATA[branch4]]></Name>
 					<X>110</X><Y>260</Y>
@@ -9043,7 +9172,7 @@ regionActual.pacientesTIsinRespirados++;]]></EntryAction>
 					<Properties Target="1584897402289">
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="Transition" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1584897402339</Id>
 					<Name><![CDATA[transition11]]></Name>
 					<X>110</X><Y>185</Y>
@@ -9169,7 +9298,7 @@ regionActual.pacientesTIsinRespirados++;]]></EntryAction>
 						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="Transition" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1584898823575</Id>
 					<Name><![CDATA[transition24]]></Name>
 					<X>240</X><Y>90</Y>
@@ -9844,7 +9973,7 @@ viaja();]]></Action>
 					<Properties Target="1584979456754">
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="InitialStatePointer" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="InitialStatePointer" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1585169791429</Id>
 					<Name><![CDATA[initialState4]]></Name>
 					<X>110</X><Y>120</Y>
@@ -9859,7 +9988,7 @@ viaja();]]></Action>
 					<Properties Target="1584897402307">
 					</Properties>	
 				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="enfermo" ParentStateId="1584897402289">
+				<StatechartElement Class="Transition" ParentState="infectado" ParentStateId="1584897402289">
 					<Id>1585243150889</Id>
 					<Name><![CDATA[transition12]]></Name>
 					<X>110</X><Y>270</Y>
@@ -10160,8 +10289,13 @@ if(regionActual != null){
 	
 	//Efecto de hospitalizacino sobre el contagio
 	if(gradoAtencionActual > 0 ){
-		re = re * 0.5;
+		re = re * (1 - main.efectoHospitalizacion);
 	}	
+	//Efecti aislamiento de No Hospitalizados
+	if( salud.isStateActive(noHospitalizado)){
+		re = re * ( 1 - main.efectoAislamiento);
+	}
+
 
 }
 return re;]]></Body>
@@ -10672,10 +10806,6 @@ switch(salud.getActiveSimpleState()){
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Input/Input_Simulador.xlsx]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
-			<Path><![CDATA[play-button (1).png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
