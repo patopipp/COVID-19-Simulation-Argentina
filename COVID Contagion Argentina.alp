@@ -28,6 +28,7 @@ actualizoKpis();
 String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 csvOutput.add(headers);
 
+aplicarCambios();
 cargarGrafico();
 ]]></StartupCode>
 			<Generic>false</Generic>
@@ -909,6 +910,21 @@ cargarGrafico();
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586357788055</Id>
+					<Name><![CDATA[politicaTesteo]]></Name>
+					<X>390</X><Y>2440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -1418,6 +1434,8 @@ if(todas){
 		
 		Region reg = regions.get(i);
 		
+		//Politica de Testeo
+		reg.politicaTesteo = politicaTesteo;
 		
 		//Cuarentena
 		if( cuarentenaOn ){
@@ -1497,6 +1515,9 @@ if(todas){
 }else{
 	
 	regionesSele.add(regSel.nombre);
+	
+	//Politica Testeo
+	regSel.politicaTesteo = politicaTesteo;
 	
 	//Cuarentena
 	if( cuarentenaOn ){
@@ -2532,6 +2553,9 @@ for( int i = 0 ; i < 209 ; i++){
 						<Parameter>
 							<Name><![CDATA[probabilidadMovimientoOriginal]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[politicaTesteo]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -3006,7 +3030,7 @@ for( int i = 0 ; i < 209 ; i++){
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>640</Width>
-					<Height>360</Height>
+					<Height>380</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3456,7 +3480,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1585076364757</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
-					<X>70</X><Y>490</Y>
+					<X>70</X><Y>510</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3470,7 +3494,7 @@ for( int i = 0 ; i < 209 ; i++){
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>640</Width>
-					<Height>190</Height>
+					<Height>171.818</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -3479,7 +3503,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585076364759</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>125</X><Y>510.112</Y>
+					<X>125</X><Y>528.187</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3500,7 +3524,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585076364755</Id>
 					<Name><![CDATA[image14]]></Name>
-					<X>80</X><Y>510</Y>
+					<X>80</X><Y>528.086</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3509,7 +3533,7 @@ for( int i = 0 ; i < 209 ; i++){
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>18</Width>
-					<Height>18</Height>
+					<Height>16.278</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
@@ -5437,7 +5461,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1586263092788</Id>
 					<Name><![CDATA[image]]></Name>
-					<X>244</X><Y>400</Y>
+					<X>270</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5447,8 +5471,8 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 guardado = true;]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>60</Width>
-					<Height>60</Height>
+					<Width>50</Width>
+					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
@@ -5461,7 +5485,7 @@ guardado = true;]]></OnClickCode>
 				<Image>
 					<Id>1585923103651</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>494</X><Y>400</Y>
+					<X>500</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5474,8 +5498,8 @@ guardado = true;]]></OnClickCode>
 }]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>60</Width>
-					<Height>60</Height>
+					<Width>50</Width>
+					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
@@ -5509,7 +5533,7 @@ guardado = true;]]></OnClickCode>
 				<Group>
 					<Id>1586266536415</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>340</X><Y>340</Y>
+					<X>530</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5744,7 +5768,7 @@ región actual]]></Text>
     			<Plot>
 					<Id>1586273733692</Id>
 					<Name><![CDATA[plot4]]></Name>
-					<X>70</X><Y>540</Y>
+					<X>70</X><Y>555.215</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5763,14 +5787,14 @@ región actual]]></Text>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>630</Width>
-					<Height>160</Height>
+					<Height>144.689</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>550</Width>
-						<Height>100</Height>
+						<XOffset>20</XOffset>
+						<YOffset>14.785</YOffset>
+						<Width>590</Width>
+						<Height>110</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -5830,7 +5854,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586275871986</Id>
 					<Name><![CDATA[line18]]></Name>
-					<X>70</X><Y>540</Y>
+					<X>70</X><Y>555.215</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5848,7 +5872,7 @@ región actual]]></Text>
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
 					<Dx>631</Dx>
-					<Dy>1</Dy>
+					<Dy>0</Dy>
 					<Dz>0</Dz>
 				</Line>
 				<Control Type="Slider">
@@ -5941,6 +5965,54 @@ encontrarse en un ambiente controlado]]></Text>
 					</Font>
 					<Alignment>CENTER</Alignment>
 				</Text>
+				<Text>
+					<Id>1586358065407</Id>
+					<Name><![CDATA[text42]]></Name>
+					<X>100</X><Y>400</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777088</Color>
+					<Text><![CDATA[Política de Testeo]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1586358095183</Id>
+					<Name><![CDATA[radio]]></Name>
+					<X>270</X><Y>390</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="320" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-11116635</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[
+]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>HORIZONTAL</Orientation>
+						<Button><![CDATA[Solo Casos Graves]]></Button>
+						<Button><![CDATA[Cualquier Síntoma]]></Button>
+						<Button><![CDATA[Testeo Masivo]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>politicaTesteo</Link>
+					</ExtendedProperties>
+				</Control>
 			</Presentation>
 
 				</Level>
@@ -6791,7 +6863,7 @@ encontrarse en un ambiente controlado]]></Text>
 				<Variable Class="Parameter">
 					<Id>1584979845222</Id>
 					<Name><![CDATA[testDisponibles]]></Name>
-					<X>700</X><Y>310</Y>
+					<X>690</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6971,6 +7043,27 @@ encontrarse en un ambiente controlado]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1586357866913</Id>
+					<Name><![CDATA[politicaTesteo]]></Name>
+					<X>830</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1586357866911</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1584626832881</Id>
 					<Name><![CDATA[infectados]]></Name>
@@ -7111,8 +7204,7 @@ fadeOutCuarentena.restart(1, DAY);]]></Action>
 				<Event>
 					<Id>1585166865066</Id>
 					<Name><![CDATA[renovacionTests]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>180</X><Y>280</Y>
+					<X>690</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7138,7 +7230,7 @@ fadeOutCuarentena.restart(1, DAY);]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[testDisponibles = 1000;]]></Action>
+					<Action><![CDATA[testDisponibles = 10000000;]]></Action>
 				</Event>
 				<Event>
 					<Id>1585854277022</Id>
@@ -10388,10 +10480,45 @@ salud.onChange();
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(enfermedad.isStateActive(sintomatico) && regionActual.testDisponibles > 0){
-	testeado = true;
-	regionActual.testDisponibles--;
-}
+					<Body><![CDATA[boolean hayTests = regionActual.testDisponibles > 0;
+
+// HAY TESTS DISPONIBLES
+switch( regionActual.politicaTesteo ){
+	
+	case 0:
+		//Solo casos Graves/Moderados
+		if ( gradoAtencionRequerido > 0 && hayTests ){
+			testeado = true;
+			regionActual.testDisponibles--;
+		}
+	break;
+	
+	case 1:
+		//Testeo ante cualquier sintoma de la enfermadad
+		if(enfermedad.isStateActive(sintomatico) && hayTests){
+			testeado = true;
+			regionActual.testDisponibles--;
+		}
+	break;
+	
+	case 2:
+		//Testeo Masivo -> se testea toda la poblacion de la region
+		
+		double probabilidaDeTesteo = 1. / (regionActual.susceptibles + regionActual.circulando); //Suscep. + Circulando = poblacion total a testear
+		
+		// Se priorizan los casos con sinomtas -> analogo a case 1
+		if(enfermedad.isStateActive(sintomatico) && hayTests){
+			testeado = true;
+			regionActual.testDisponibles--;
+		}else if( randomTrue (probabilidaDeTesteo) && hayTests){
+			testeado = true;
+			regionActual.testDisponibles--;
+		}
+	break;
+}	
+
+//NO HAY TESTS DISPONIBLES
+
 salud.onChange();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
