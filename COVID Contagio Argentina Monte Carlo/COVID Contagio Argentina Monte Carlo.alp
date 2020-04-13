@@ -1266,31 +1266,25 @@ plot1.updateData();]]></Action>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = inputSimulador;
 
-String source = "Provincias";
+String source = "Regiones";
 // Creo la región con sus atributos básicos
+
 int maxPoblacion = 0;
 double maxDensidad = 0.;
+
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
+	//Atributos básicos
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
 	String nombre = xl.getCellStringValue(source, row, 2);
 	int poblacion = roundToInt(xl.getCellNumericValue(source, row, 3) / divisor);
-	double densidad = xl.getCellNumericValue(source, row, 7);
-	
-	// No se está usando actualmente - esta mal la ubicación de GBA
-	double longitud = xl.getCellNumericValue(source, row, 4);
-	double latitud = xl.getCellNumericValue(source, row, 5);
-	
+	double densidad = xl.getCellNumericValue(source, row, 5);
+	String regionPBI = xl.getCellStringValue(source, row, 6);
+	String regionMacro = xl.getCellStringValue(source, row, 7);	
+		
 	//Valor R0 por region
 	double r0 = xl.getCellNumericValue(source, row, 8);
-	//Sistema de Salud
-	double respiradores = max(xl.getCellNumericValue(source, row, 9) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 9) / divisor));
-	double camaAislamiento = max(xl.getCellNumericValue(source, row, 11) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 11) / divisor));
-	double terapiaIntensiva = max(xl.getCellNumericValue(source, row, 12) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 12) / divisor));
-	
-	// Infectados Iniciales
-	int infectadosIniciales = max(xl.getCellNumericValue(source, row, 10) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 10) / divisor));
-	
+			
 	
 	add_regions();
 	
@@ -1301,30 +1295,27 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	region.poblacion = poblacion;
 	region.susceptibles = poblacion;
 	region.densidadPoblacional = densidad;
-	region.longitud = longitud;
-	region.latitud = latitud;	
+	region.regionPBI = regionPBI;
+	region.regionMacro = regionMacro;
+
 	region.r0 = r0;
 	
-	region.infectadosIniciales = infectadosIniciales;
-
-	region.terapiaIntensivaActual = terapiaIntensiva;
-	region.terapiaIntensivaIniciales = terapiaIntensiva;
-
-	region.respiradoresActual = respiradores;
-	region.respiradoresIniciales= respiradores;
-
-	region.camaAislamientoActual = camaAislamiento;
-	region.camaAislamientoIniciales = camaAislamiento;	
-
 	if(!viajesActivados){
 		region.viajesInhabilitados = true;
 	}
 }
 
-// Cargo el perfil etario de cada región
+
+
+
+
+
+// Cargo el perfil etario de cada región 		|| OK
 source = "Perfil Etário";
+
 double probPrevia = 0.;
 double idPrevia = -1;
+
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	// El id de la región coincide con su indice + 1 en la población
@@ -1340,8 +1331,46 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probPrevia = probDem;
 }
 
+
+
+
+
+
+// Cargo la capacidad sanitaria de cada region
+source = "Capacidad Sanitaria";
+
+for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	
+	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
+	
+	double respiradores = max(xl.getCellNumericValue(source, row, 5) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 5) / divisor));
+	double camaAislamiento = max(xl.getCellNumericValue(source, row, 3) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 3) / divisor));
+	double terapiaIntensiva = max(xl.getCellNumericValue(source, row, 4) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 4) / divisor));
+
+	boolean encontro = false;
+	int i = 0;
+	
+	while(!encontro){
+		Region region = regions.get(i);
+		if( region.id == id){
+			encontro = true;
+			
+			region.terapiaIntensivaActual = terapiaIntensiva;
+			region.terapiaIntensivaIniciales = terapiaIntensiva;
+		
+			region.respiradoresActual = respiradores;
+			region.respiradoresIniciales= respiradores;
+		
+			region.camaAislamientoActual = camaAislamiento;
+			region.camaAislamientoIniciales = camaAislamiento;	
+		}
+		i++;
+	}
+}
+
+
 //VIAJES----------------------------------------------------------------------------
-// Cargo la matriz de OD
+// Cargo la matriz de OD 		|| OK
 source = "matrizOD";
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	double probAcum = 0.;
@@ -1352,7 +1381,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	}
 }
 
-//Cargo % Móvil
+//Cargo % Móvil					|| OK
 source = "Probabilidad de Movimientos";
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
@@ -1373,43 +1402,40 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	}
 }
 
+//Duración de viajes			|| OK 		
 source = "TiposdeMovimientos";
 double[] probabilidad = new double[4];
 double[] estadia = new double[4];
 
-for(int row = 3 ; row <= xl.getLastRowNum(source) ; row ++){
-	probabilidad[row - 3] = xl.getCellNumericValue(source, row, 2);
-	estadia[row - 3] = xl.getCellNumericValue(source, row, 3);
+for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	probabilidad[row - 2] = xl.getCellNumericValue(source, row, 2);
+	estadia[row - 2] = xl.getCellNumericValue(source, row, 3);
 }
 duracionViaje.setArgumentsAndValues(probabilidad, estadia);
 //----------------------------------------------------------------------------------
+//ESTADO INICIAL--------------------------------------------------------------------
 
-//Cargo Region Argentina
-source = "Diccionario";
+source = "Estado Inicial";
+
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
-	String nombre = xl.getCellStringValue(source, row, 1);
-	String regionMov = xl.getCellStringValue(source, row, 2);
-	String regionHosp = xl.getCellStringValue(source, row, 3);
-	String regionPBI = xl.getCellStringValue(source, row, 4);
+	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
 	
+	// Infectados Iniciales
+	int infectadosIniciales = max(xl.getCellNumericValue(source, row, 3) > 0 ? 1 : 0,roundToInt(xl.getCellNumericValue(source, row, 3) / divisor));
 	
 	boolean encontro = false;
 	int i = 0;
 	
 	while(!encontro){
-		Region reg = regions.get(i);
-		//traceln(nombre + " vs " + reg.nombre);
-		if( reg.nombre.equals(nombre)){
+		Region region = regions.get(i);
+		if( region.id == id){
 			encontro = true;
-			reg.regionHosp = regionHosp;
-			reg.regionMov = regionMov;
-			reg.regionPBI = regionPBI;
+			region.infectadosIniciales = infectadosIniciales;
 		}
 		i++;
 	}
 }
-
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2014,7 +2040,7 @@ for (int i = 0 ; i < regions.size();i++){
 	Region r = regions.get(i);
 	
 	//Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;En Evaluación;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
-	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.regionMov + ";" +  r.poblacion*divisor + ";" + r.cuarentenaActivada + ";" + sumaDeEfectos + ";" + r.distanciamientoActivado + ";" + efectoDistSocial + ";" + r.remoticidadActivada + ";" + efectoRemoticidad + ";" + r.fronterasCerradas + ";" + efectoFronterasCerradas + ";" + r.viajesInhabilitados + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor + ";" + r.infectados.size()*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.aislados*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
+	resultados = dateParsed + ";" + r.nombre + ";" + r.regionPBI + ";" + r.regionMacro + ";" +  r.poblacion*divisor + ";" + r.cuarentenaActivada + ";" + sumaDeEfectos + ";" + r.distanciamientoActivado + ";" + efectoDistSocial + ";" + r.remoticidadActivada + ";" + efectoRemoticidad + ";" + r.fronterasCerradas + ";" + efectoFronterasCerradas + ";" + r.viajesInhabilitados + ";" + r.camaAislamientoIniciales*divisor + ";" + r.terapiaIntensivaIniciales*divisor + ";" + r.respiradoresIniciales*divisor + ";" + r.infectados.size()*divisor + ";" + r.asintomaticos*divisor + ";" + r.sintomaticos*divisor + ";" + r.leves*divisor + ";" + r.moderados*divisor + ";" + r.criticas*divisor + ";" + r.noDetectados*divisor + ";" + r.circulando*divisor + ";" + r.aislados*divisor + ";" + r.detectados*divisor + ";" + r.noHospitalizados*divisor + ";" + r.hospitalizados*divisor + ";" + r.pacientesAislados*divisor + ";" + r.pacientesTI*divisor + ";" + r.pacientesTIconRespirados*divisor + ";" + r.pacientesTIsinRespirados*divisor + ";" + r.infectadosTotales*divisor + ";" + r.susceptibles*divisor + ";" + r.recuperados*divisor + ";" + r.fallecidos*divisor;
 	
 	csvOutput.add(resultados);
 }
@@ -2542,12 +2568,6 @@ for( int i = 0 ; i < 209 ; i++){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[nombre]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[latitud]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[longitud]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probabilidadMovimientoActual]]></Name>
@@ -6317,30 +6337,6 @@ encontrarse en un ambiente controlado]]></Text>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1585322796672</Id>
-					<Name><![CDATA[regionMov]]></Name>
-					<X>60</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[String]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1585323203005</Id>
-					<Name><![CDATA[regionHosp]]></Name>
-					<X>180</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[String]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1585582261386</Id>
 					<Name><![CDATA[efectoPoliticas]]></Name>
 					<X>60</X><Y>440</Y>
@@ -6409,7 +6405,7 @@ encontrarse en un ambiente controlado]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1585767800091</Id>
 					<Name><![CDATA[regionPBI]]></Name>
-					<X>290</X><Y>120</Y>
+					<X>60</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6718,6 +6714,18 @@ encontrarse en un ambiente controlado]]></Text>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1586812558029</Id>
+					<Name><![CDATA[regionMacro]]></Name>
+					<X>160</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584451482569</Id>
 					<Name><![CDATA[id]]></Name>
@@ -6751,54 +6759,6 @@ encontrarse en un ambiente controlado]]></Text>
 						<Type><![CDATA[String]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>0</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1584451482571</Id>
-					<Name><![CDATA[latitud]]></Name>
-					<X>390</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[-57.]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>0</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1584451482572</Id>
-					<Name><![CDATA[longitud]]></Name>
-					<X>390</X><Y>280</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[-40.]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
