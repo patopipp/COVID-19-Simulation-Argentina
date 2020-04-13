@@ -822,7 +822,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
+							<Code><![CDATA[true]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -973,6 +973,30 @@ cargarGrafico();
 						<ParameterEditor>
 							<Id>1586178278802</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1586783457752</Id>
+					<Name><![CDATA[montecarlo]]></Name>
+					<X>400</X><Y>2020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1586783457750</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
@@ -1224,7 +1248,9 @@ plot1.updateData();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[pauseSimulation();]]></Action>
+					<Action><![CDATA[if(!montecarlo){
+	pauseSimulation();
+}]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -10890,6 +10916,9 @@ if ( detectado ){
 				<Parameter>
 					<ParameterName><![CDATA[diasFadeOut]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[montecarlo]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -11463,12 +11492,22 @@ traceln("Exportacion Finalizada");]]></Body>
 			<FreeformParamValue>	
 				<Id>1586178278804</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1586783457752</Id>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[true]]></Code>
+				</Expression>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1584976395709</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1586178278804</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1586783457752</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
