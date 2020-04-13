@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID Contagio Argentina Monte Carlo]]></Name>
@@ -8570,7 +8570,7 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1584979630735</Id>
-					<Name><![CDATA[testeado]]></Name>
+					<Name><![CDATA[detectado]]></Name>
 					<X>550</X><Y>910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -8764,21 +8764,6 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1586376500043</Id>
-					<Name><![CDATA[detectado]]></Name>
-					<X>50</X><Y>830</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[boolean]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1586378345097</Id>
 					<Name><![CDATA[enEvaluacion]]></Name>
 					<X>550</X><Y>930</Y>
@@ -8916,7 +8901,7 @@ traceln("Efecto Politicas " + efectoPoliticas);*/]]></Body>
 						<EntryAction><![CDATA[regionActual.noDetectados++;
 gradoAtencionRequerido = 0;]]></EntryAction>
 						<ExitAction><![CDATA[//Contador detectados
-if( detectado){
+if( detectado ){
 	regionActual.detectados--;
 }else{
 	regionActual.noDetectados--;
@@ -9904,7 +9889,7 @@ viaja();]]></Action>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[testeado || gradoAtencionRequerido > 0]]></Condition>
+						<Condition><![CDATA[detectado || gradoAtencionRequerido > 0]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1./calculoTiempoDiagnostico()]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
@@ -10340,14 +10325,16 @@ viaja();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[testeado = true;
+					<Action><![CDATA[detectado = true;
 
 regionActual.testDisponibles--;
 
 main.diagnosticadosTotales++;
 
-regionActual.detectados++;
-regionActual.noDetectados--;
+if(!enfermedad.isStateActive(recuperado) && !enfermedad.isStateActive(muerto)){
+	regionActual.detectados++;
+	regionActual.noDetectados--;
+}
 		]]></Action>
 				</Event>
 			</Events>
@@ -10663,24 +10650,21 @@ switch(enfermedad.getActiveSimpleState()){
 	
 switch(salud.getActiveSimpleState()){
 	case circulando:
-		regionOrigen.noDetectados-= k;
-		regionDestino.noDetectados+= k;
-		
 		regionOrigen.circulando-= k;
 		regionDestino.circulando+= k;
 	break;
 	
 	case noHospitalizado:
-		regionOrigen.detectados-= k;
-		regionDestino.detectados+= k;
+		regionOrigen.aislados-= k;
+		regionDestino.aislados+= k;
 		
 		regionOrigen.noHospitalizados-= k;
 		regionDestino.noHospitalizados+= k;
 	break;
 	
 	case camaAislamiento:
-		regionOrigen.detectados-= k;
-		regionDestino.detectados+= k;
+		regionOrigen.aislados-= k;
+		regionDestino.aislados+= k;
 		
 		regionOrigen.hospitalizados-= k;
 		regionDestino.hospitalizados+= k;
@@ -10690,8 +10674,8 @@ switch(salud.getActiveSimpleState()){
 	break;	
 	
 	case sinRespirador:
-		regionOrigen.detectados-= k;
-		regionDestino.detectados+= k;
+		regionOrigen.aislados-= k;
+		regionDestino.aislados+= k;
 		
 		regionOrigen.hospitalizados-= k;
 		regionDestino.hospitalizados+= k;
@@ -10704,8 +10688,8 @@ switch(salud.getActiveSimpleState()){
 	break;	
 	
 	case conRespirador:
-		regionOrigen.detectados-= k;
-		regionDestino.detectados+= k;
+		regionOrigen.aislados-= k;
+		regionDestino.aislados+= k;
 		
 		regionOrigen.hospitalizados-= k;
 		regionDestino.hospitalizados+= k;
@@ -10716,19 +10700,20 @@ switch(salud.getActiveSimpleState()){
 		regionOrigen.pacientesTIconRespirados-= k;
 		regionDestino.pacientesTIconRespirados+= k;
 	break;	
-	
-	case aislado:
-		regionOrigen.aislados-= k;
-		regionDestino.aislados+= k;
-		
-		regionOrigen.aislados-= k;
-		regionDestino.aislados+= k;
-	break;
 		
 	default:
 		traceln("Error " + this + " " + salud.getActiveSimpleState());
 	break;
 }
+
+if ( detectado ){
+	regionOrigen.detectados -= k;
+	regionDestino.detectados += k;
+}else{
+	regionOrigen.noDetectados -= k;
+	regionDestino.noDetectados += k;
+}
+
 ]]></Body>
 				</Function>
 			</Functions>
