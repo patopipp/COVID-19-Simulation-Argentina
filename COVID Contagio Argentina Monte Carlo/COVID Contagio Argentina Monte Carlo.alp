@@ -1371,7 +1371,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 
 //VIAJES----------------------------------------------------------------------------
 // Cargo la matriz de OD 		|| OK
-source = "matrizOD";
+source = "Matriz Origen-Destino";
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	double probAcum = 0.;
 	for (int col = 2 ; col <= xl.getLastCellNum(source, row) ; col ++){
@@ -1382,7 +1382,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 
 //Cargo % Móvil					|| OK
-source = "Probabilidad de Movimientos";
+source = "Probabilidad de Movimiento";
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
@@ -1403,11 +1403,12 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 
 //Duración de viajes			|| OK 		
-source = "TiposdeMovimientos";
-double[] probabilidad = new double[4];
-double[] estadia = new double[4];
+source = "Tipos de Movimiento";
+double[] probabilidad = new double[xl.getLastRowNum(source)-1];
+double[] estadia = new double[xl.getLastRowNum(source)-1];
 
 for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
+	traceln(xl.getCellNumericValue(source, row, 2));
 	probabilidad[row - 2] = xl.getCellNumericValue(source, row, 2);
 	estadia[row - 2] = xl.getCellNumericValue(source, row, 3);
 }
