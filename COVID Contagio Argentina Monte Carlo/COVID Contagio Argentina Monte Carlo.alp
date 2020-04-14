@@ -1408,7 +1408,6 @@ double[] probabilidad = new double[xl.getLastRowNum(source)-1];
 double[] estadia = new double[xl.getLastRowNum(source)-1];
 
 for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
-	traceln(xl.getCellNumericValue(source, row, 2));
 	probabilidad[row - 2] = xl.getCellNumericValue(source, row, 2);
 	estadia[row - 2] = xl.getCellNumericValue(source, row, 3);
 }
@@ -1734,7 +1733,7 @@ tiempoHospitalizacionMin = xl.getCellNumericValue(source, 15, inf);
 tiempoHospitalizacionMax = xl.getCellNumericValue(source, 15, sup);
 
 //TableFunctions
-source = "tasaLetalidadModerado";
+source = "Tasa de Letalidad Moderada";
 double[] edad = new double[9];
 double[] probabilidad1 = new double[9];
 
@@ -1745,7 +1744,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 probabilidadesFallecimientoLeve.setArgumentsAndValues(edad, probabilidad1);
 //traceln(probabilidad1);
 
-source = "tasaLetalidadSevero";
+source = "Tasa de Letalidad Grave";
 double[] edadGrave = new double[9];
 double[] probabilidadGrave = new double[9];
 
@@ -1755,7 +1754,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 probabilidadesFallecimientoGrave.setArgumentsAndValues(edadGrave, probabilidadGrave);
 
-source = "tasaModerado";
+source = "Tasa de Enfermedad Moderada";
 double[] probabilidad2 = new double[9];
 for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
@@ -1764,7 +1763,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 probabilidadesModeradaCritico.setArgumentsAndValues(edad, probabilidad2);
 //traceln(probabilidad2);
 
-source = "tasaGrave";
+source = "Tasa de Enfermedad Grave";
 double[] probabilidad3 = new double[9];
 for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	edad[row - 2] = xl.getCellNumericValue(source, row, 1);
@@ -1772,7 +1771,7 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 probabilidadesCritico.setArgumentsAndValues(edad, probabilidad3);
 
-source = "agravamiento";
+source = "Agravamiento";
 for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	atencionRequerida.add(roundToInt(xl.getCellNumericValue(source, row, 1)));
 	atencionRecibida.add(roundToInt(xl.getCellNumericValue(source, row, 2)));
