@@ -465,7 +465,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
+							<Code><![CDATA[500]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -3452,7 +3452,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<TimePlot>
 					<Id>1584716801500</Id>
 					<Name><![CDATA[plot1]]></Name>
-					<X>1680</X><Y>60</Y>
+					<X>1680</X><Y>140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3470,14 +3470,14 @@ for( int i = 0 ; i < 209 ; i++){
 						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>721.891</Width>
+					<Width>720</Width>
 					<Height>120.745</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>641.891</Width>
+						<Width>640</Width>
 						<Height>60.745000000000005</Height>
 						<BackgroundColor>-1644806</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -4166,7 +4166,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585232841340</Id>
 					<Name><![CDATA[text22]]></Name>
-					<X>2140</X><Y>119</Y>
+					<X>2140</X><Y>159</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4187,7 +4187,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585233499652</Id>
 					<Name><![CDATA[text23]]></Name>
-					<X>1440</X><Y>420</Y>
+					<X>1440</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4208,7 +4208,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<TimePlot>
 					<Id>1585233521660</Id>
 					<Name><![CDATA[plot2]]></Name>
-					<X>1390</X><Y>410</Y>
+					<X>1390</X><Y>490</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4409,7 +4409,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<TimePlot>
 					<Id>1584713743294</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>1680</X><Y>128.997</Y>
+					<X>1680</X><Y>188.997</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4502,7 +4502,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585232719282</Id>
 					<Name><![CDATA[text19]]></Name>
-					<X>2320</X><Y>202</Y>
+					<X>2320</X><Y>262</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4616,7 +4616,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<TimePlot>
 					<Id>1585316030697</Id>
 					<Name><![CDATA[plot3]]></Name>
-					<X>1890</X><Y>410</Y>
+					<X>1890</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7335,6 +7335,81 @@ Por favor intente nuevamente.]]></Text>
 			</Presentation>
 
 				</Group>
+    			<TimePlot>
+					<Id>1587057856632</Id>
+					<Name><![CDATA[plot6]]></Name>
+					<X>1680</X><Y>60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[8]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>720</Width>
+					<Height>120.745</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>640</Width>
+						<Height>60.745000000000005</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[3]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Test Disponibles]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-16776961</Color>
+					<Expression2><![CDATA[testDisponibles]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Diagnosticados TOtales]]></Title>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[diagnosticadosTotales]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[500]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MM_dd</LabelFormat>
+    			</TimePlot>
 			</Presentation>
 
 				</Level>
@@ -11565,8 +11640,6 @@ viaja();]]></Action>
 					</Properties>
 					<Action><![CDATA[detectado = true;
 
-main.testDisponibles--;
-
 main.diagnosticadosTotales++;
 
 if(!enfermedad.isStateActive(recuperado) && !enfermedad.isStateActive(muerto)){
@@ -11753,6 +11826,7 @@ if(!enEvaluacion){
 			if ( gradoAtencionRequerido > 0 && hayTests ){
 					enEvaluacion = true;
 					diagnostico.restart(calculoTiempoDiagnostico(), DAY);
+					main.testDisponibles--;
 				}
 		break;
 		
@@ -11761,10 +11835,11 @@ if(!enEvaluacion){
 			if(enfermedad.isStateActive(sintomatico) && hayTests){
 				enEvaluacion = true;
 				diagnostico.restart(calculoTiempoDiagnostico(), DAY);
+				main.testDisponibles--;
 			}
 		break;
 		
-		case 2: //FIX ME o no
+		case 2: //FIX ME-> ¿Como simular el gasto de tests en gente sana??
 			//Testeo Masivo -> se testea toda la poblacion de la region
 			
 			double probabilidaDeTesteo = 1. / (regionActual.susceptibles + regionActual.circulando); //Suscep. + Circulando = poblacion total a testear
@@ -11773,9 +11848,11 @@ if(!enEvaluacion){
 			if(enfermedad.isStateActive(sintomatico) && hayTests){
 				enEvaluacion = true;
 				diagnostico.restart(calculoTiempoDiagnostico(), DAY);
+				main.testDisponibles--;
 			}else if( randomTrue (probabilidaDeTesteo) && hayTests){
 				enEvaluacion = true;
 				diagnostico.restart(calculoTiempoDiagnostico(), DAY);
+				main.testDisponibles--;
 			}
 		break;
 	}	
