@@ -1048,7 +1048,7 @@ cargarGrafico();
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
+						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -1063,6 +1063,21 @@ cargarGrafico();
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1587043668115</Id>
+					<Name><![CDATA[errorFormato]]></Name>
+					<X>920</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1368,6 +1383,21 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1587042194669</Id>
+					<Name><![CDATA[logRenovacionTests]]></Name>
+					<X>480</X><Y>-380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -3874,7 +3904,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585075856328</Id>
 					<Name><![CDATA[line3]]></Name>
-					<X>980</X><Y>240</Y>
+					<X>980</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3892,7 +3922,7 @@ for( int i = 0 ; i < 209 ; i++){
 					<EndArrowSize>1</EndArrowSize>
 					<EndArrowStyle>0</EndArrowStyle>
 					<Dx>0</Dx>
-					<Dy>40</Dy>
+					<Dy>90</Dy>
 					<Dz>0</Dz>
 				</Line>
 				<Text>
@@ -3998,7 +4028,7 @@ for( int i = 0 ; i < 209 ; i++){
 					<Text><![CDATA[Medidas Hospitalarias]]></Text>
 					<Font>
 						<Name>Roboto</Name>
-						<Size>16</Size>
+						<Size>14</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -6149,7 +6179,7 @@ encontrarse en un ambiente controlado]]></Text>
 				<Text>
 					<Id>1586358065407</Id>
 					<Name><![CDATA[text42]]></Name>
-					<X>110</X><Y>540</Y>
+					<X>60</X><Y>510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6758,7 +6788,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Text>
 					<Id>1586974780802</Id>
 					<Name><![CDATA[text46]]></Name>
-					<X>780</X><Y>180</Y>
+					<X>780</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6779,7 +6809,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Group>
 					<Id>1586975402323</Id>
 					<Name><![CDATA[group2]]></Name>
-					<X>960</X><Y>330</Y>
+					<X>956</X><Y>329</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6794,9 +6824,26 @@ a traves de los viajes del Exterior]]></Text>
 	
 	calculoProximaRenovacionTests();
 	
+	logRenovacionTests.add(cantidadTests + "  -  " + llegadaTests);
+	
 	cantidadTests = 0;
 	llegadaTests = "dd/mm/aaaa";
 	
+	editbox15.setValueToDefault();
+	editbox14.setValueToDefault();
+	
+	//Pop up y correccion formato
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	
+	try{
+		Date fechaInicio = sdf.parse(fechaRenovacionTests.get(fechaRenovacionTests.size()-1));
+	}catch(Exception e){
+		errorFormato = true;
+		
+		logRenovacionTests.remove(logRenovacionTests.size()-1);
+		cantidadRenovacionTests.remove(cantidadRenovacionTests.size()-1);
+		fechaRenovacionTests.remove(fechaRenovacionTests.size()-1);
+	}
 }]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
@@ -6893,7 +6940,7 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586975456485</Id>
 					<Name><![CDATA[editbox14]]></Name>
-					<X>1020</X><Y>270</Y>
+					<X>1010</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6939,7 +6986,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Image>
 					<Id>1586975603084</Id>
 					<Name><![CDATA[image19]]></Name>
-					<X>1020</X><Y>230</Y>
+					<X>1010</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6961,7 +7008,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Text>
 					<Id>1586975603086</Id>
 					<Name><![CDATA[text45]]></Name>
-					<X>1050</X><Y>230</Y>
+					<X>1040</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6982,7 +7029,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Text>
 					<Id>1586975677418</Id>
 					<Name><![CDATA[text47]]></Name>
-					<X>830</X><Y>230</Y>
+					<X>850</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7003,7 +7050,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Image>
 					<Id>1586975843957</Id>
 					<Name><![CDATA[image20]]></Name>
-					<X>800</X><Y>230</Y>
+					<X>820</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7022,6 +7069,272 @@ a traves de los viajes del Exterior]]></Text>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
+				<Text>
+					<Id>1587042254523</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>810</X><Y>390</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[index < 3 ? 810 : 900]]></XCode>
+					<YCode><![CDATA[index >= 3 ? (390 + (index-3)*20) : (390 + index*20)]]></YCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[logRenovacionTests.size()]]></Code>
+					</ReplicationCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[1000   -   dd/mm/aaaa]]></Text>
+					<TextCode><![CDATA[logRenovacionTests.get(index)]]></TextCode>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1587042866395</Id>
+					<Name><![CDATA[line23]]></Name>
+					<X>750</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-3485697</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>450</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1587042951569</Id>
+					<Name><![CDATA[text48]]></Name>
+					<X>780</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Registro de Envíos de Tests]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Group>
+					<Id>1587044101839</Id>
+					<Name><![CDATA[group4]]></Name>
+					<X>640</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[errorFormato]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1587044027993</Id>
+					<Name><![CDATA[rectangle10]]></Name>
+					<X>-640</X><Y>-360</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1280</Width>
+					<Height>720</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>1609165822</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Group>
+					<Id>1587043649473</Id>
+					<Name><![CDATA[group3]]></Name>
+					<X>60</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[errorFormato]]></VisibleCode>
+					<OnClickCode><![CDATA[errorFormato = false;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<RoundedRectangle>
+					<Id>1587043196334</Id>
+					<Name><![CDATA[roundRectangle10]]></Name>
+					<X>-169.25099999999998</X><Y>-80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>359.251</Width>
+					<Height>168.847</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-11116635</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>2</ArcRadius>
+				</RoundedRectangle>
+				<RoundedRectangle>
+					<Id>1587043196336</Id>
+					<Name><![CDATA[roundRectangle11]]></Name>
+					<X>-179.99900000000002</X><Y>-80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>359.999</Width>
+					<Height>158.099</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1446914</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>2</ArcRadius>
+				</RoundedRectangle>
+				<Image>
+					<Id>1587043304516</Id>
+					<Name><![CDATA[image21]]></Name>
+					<X>-165</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>60</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[caution.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1587043321232</Id>
+					<Name><![CDATA[text49]]></Name>
+					<X>30</X><Y>-60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777088</Color>
+					<Text><![CDATA[¡Oops! 
+Formato Ingresado Incorrecto]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1587043425822</Id>
+					<Name><![CDATA[text50]]></Name>
+					<X>-90</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Parece que el formato ingresado es incorrecto
+o la fecha es anterior al incio de la simulación.
+
+Por favor intente nuevamente.]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1587043609466</Id>
+					<Name><![CDATA[text51]]></Name>
+					<X>156</X><Y>-75</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Cerrar]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 				</Level>
@@ -12515,6 +12828,10 @@ traceln("Exportacion Finalizada");]]></Body>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[injection (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[caution.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
