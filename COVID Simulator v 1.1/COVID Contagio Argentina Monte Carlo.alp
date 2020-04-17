@@ -21,9 +21,9 @@
 import java.util.function.IntToDoubleFunction;]]></Import>
 			<StartupCode><![CDATA[cargarRegiones();
 cargarInfoEnfermedad();
-creoInfectadosIniciales();
+//creoInfectadosIniciales();
 
-actualizoKpis();
+//actualizoKpis();
 
 String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;Aislados;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 csvOutput.add(headers);
@@ -753,7 +753,7 @@ cargarGrafico();
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1585764222886</Id>
-					<Name><![CDATA[finFronterasPoliticaUsuario]]></Name>
+					<Name><![CDATA[finPoliticaUsuario]]></Name>
 					<X>880</X><Y>2278</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -822,7 +822,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[true]]></Code>
+							<Code><![CDATA[false]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1070,6 +1070,21 @@ cargarGrafico();
 					<Id>1587043668115</Id>
 					<Name><![CDATA[errorFormato]]></Name>
 					<X>920</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1587134775271</Id>
+					<Name><![CDATA[errorFechaInicio]]></Name>
+					<X>920</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1655,6 +1670,38 @@ plot1.updateData();]]></Action>
 	calculoProximaRenovacionTests();
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1587134436936</Id>
+					<Name><![CDATA[inicioSimulacion]]></Name>
+					<X>240</X><Y>1080</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1587196800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[creoInfectadosIniciales();
+actualizoKpis();]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -1838,6 +1885,19 @@ for (int row = 5 ; row <= xl.getLastRowNum(source) ; row ++){
 
 source = "Estado Inicial";
 
+String fechaDeInicio = xl.getCellStringValue(source, 2, 5);
+SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+try{
+	Date fechaInicio = sdf.parse(fechaDeInicio);
+	inicioSimulacion.restartTo(fechaInicio);
+	kpis.restartTo(fechaInicio);
+	ingresosDelExterior.restartTo(fechaInicio);
+}catch(Exception e){
+	e.printStackTrace();
+	errorFormato = true;
+	errorFechaInicio = true;
+}
+
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
 	int id = roundToInt(xl.getCellNumericValue(source, row, 1));
@@ -1880,6 +1940,17 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 		inicioCierreFronterasExt.restartTo(fechaInicio);
 		finCierreFrontersExt.restartTo(fechaFin);
 	}catch(Exception e){
+		errorFormato = true;
+				
+		/*medidasSele.remove(medidasSele.size()-1);
+		fechaInicioSel.remove(fechaInicioSel.size()-1);
+		fechaFinSel.remove(fechaFinSel.size()-1);*/
+		
+		inicioCierreFronteras = "dd/mm/aaaa";
+		finCierreFronteras = "dd/mm/aaaa";
+		
+		editbox11.setValueToDefault();
+		editbox12.setValueToDefault();
 		e.printStackTrace();
 	}
 
@@ -1915,7 +1986,7 @@ if(todas){
 		medidasSele.add(nombreCustom);
 		
 		fechaInicioSel.add(inicioPoliticaUsuario  + " - ");
-		fechaFinSel.add(finFronterasPoliticaUsuario);
+		fechaFinSel.add(finPoliticaUsuario);
 	
 	}
 	if (cerrarViajesInternos){
@@ -1943,6 +2014,18 @@ if(todas){
 				reg.inicioCuarentena.restartTo(fechaInicio);
 				reg.finCuarentena.restartTo(fechaFin);
 			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioCuarentena = "dd/mm/aaaa";
+				finCuarentena = "dd/mm/aaaa";
+				
+				editbox.setValueToDefault();
+				editbox1.setValueToDefault();
+				
 				e.printStackTrace();
 			}
 		}
@@ -1958,6 +2041,17 @@ if(todas){
 				reg.inicioDistanciamiento.restartTo(fechaInicio);
 				reg.finDistanciamiento.restartTo(fechaFin);
 			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioDistSocial = "dd/mm/aaaa";
+				finDistSocial = "dd/mm/aaaa";
+				
+				editbox3.setValueToDefault();
+				editbox4.setValueToDefault();
 				e.printStackTrace();
 			}
 		}
@@ -1973,6 +2067,17 @@ if(todas){
 				reg.inicioRemoticidad.restartTo(fechaInicio);
 				reg.finRemoticidad.restartTo(fechaFin);
 			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioRemoticidad = "dd/mm/aaaa";
+				finRemoticidad = "dd/mm/aaaa";
+				
+				editbox7.setValueToDefault();
+				editbox9.setValueToDefault();
 				e.printStackTrace();
 			}
 		}
@@ -1983,11 +2088,23 @@ if(todas){
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			try{
 				Date fechaInicio = sdf.parse(inicioPoliticaUsuario);
-				Date fechaFin = sdf.parse(finFronterasPoliticaUsuario);
+				Date fechaFin = sdf.parse(finPoliticaUsuario);
 				
 				reg.inicioPoliticaUsuario.restartTo(fechaInicio);
 				reg.finPoliticaUsuario.restartTo(fechaFin);
 			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioPoliticaUsuario = "dd/mm/aaaa";
+				finPoliticaUsuario = "dd/mm/aaaa";
+				
+				editbox5.setValueToDefault();
+				editbox6.setValueToDefault();
+			
 				e.printStackTrace();
 			}
 		}
@@ -2003,6 +2120,17 @@ if(todas){
 				reg.inicioCierreViajes.restartTo(fechaInicio);
 				reg.finCierreViajes.restartTo(fechaFin);
 			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioCierreViajes = "dd/mm/aaaa";
+				finCierreViajes = "dd/mm/aaaa";
+				
+				editbox8.setValueToDefault();
+				editbox10.setValueToDefault();
 				e.printStackTrace();
 			}
 		}
@@ -2030,6 +2158,16 @@ if(todas){
 			regSel.inicioCuarentena.restartTo(fechaInicio);
 			regSel.finCuarentena.restartTo(fechaFin);
 		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+
+			inicioCuarentena = "dd/mm/aaaa";
+			finCuarentena = "dd/mm/aaaa";
+			
+			editbox.setValueToDefault();
+			editbox1.setValueToDefault();
+			
 			e.printStackTrace();
 		}
 	}
@@ -2050,6 +2188,15 @@ if(todas){
 			regSel.inicioDistanciamiento.restartTo(fechaInicio);
 			regSel.finDistanciamiento.restartTo(fechaFin);
 		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioDistSocial = "dd/mm/aaaa";
+			finDistSocial = "dd/mm/aaaa";
+			
+			editbox3.setValueToDefault();
+			editbox4.setValueToDefault();
 			e.printStackTrace();
 		}
 	}
@@ -2070,6 +2217,15 @@ if(todas){
 			regSel.inicioRemoticidad.restartTo(fechaInicio);
 			regSel.finRemoticidad.restartTo(fechaFin);
 		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioRemoticidad = "dd/mm/aaaa";
+			finRemoticidad = "dd/mm/aaaa";
+			
+			editbox7.setValueToDefault();
+			editbox9.setValueToDefault();
 			e.printStackTrace();
 		}
 	}
@@ -2082,14 +2238,24 @@ if(todas){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try{
 			Date fechaInicio = sdf.parse(inicioPoliticaUsuario);
-			Date fechaFin = sdf.parse(finFronterasPoliticaUsuario);
+			Date fechaFin = sdf.parse(finPoliticaUsuario);
 						
 			fechaInicioSel.add(inicioPoliticaUsuario + " - ");
-			fechaFinSel.add(finFronterasPoliticaUsuario);
+			fechaFinSel.add(finPoliticaUsuario);
 			
 			regSel.inicioPoliticaUsuario.restartTo(fechaInicio);
 			regSel.finPoliticaUsuario.restartTo(fechaFin);
 		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioPoliticaUsuario = "dd/mm/aaaa";
+			finPoliticaUsuario = "dd/mm/aaaa";
+			
+			editbox5.setValueToDefault();
+			editbox6.setValueToDefault();
+		
 			e.printStackTrace();
 		}
 	}
@@ -2110,6 +2276,15 @@ if(todas){
 			regSel.inicioCierreViajes.restartTo(fechaInicio);
 			regSel.finCierreViajes.restartTo(fechaFin);
 		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+
+			inicioCierreViajes = "dd/mm/aaaa";
+			finCierreViajes = "dd/mm/aaaa";
+			
+			editbox8.setValueToDefault();
+			editbox10.setValueToDefault();
 			e.printStackTrace();
 		}
 	}
@@ -2569,7 +2744,7 @@ for( int i = 0 ; i < 209 ; i++){
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try{
 			Date fechaInicio = sdf.parse(inicioPoliticaUsuario);
-			Date fechaFin = sdf.parse(finFronterasPoliticaUsuario);
+			Date fechaFin = sdf.parse(finPoliticaUsuario);
 			
 			double diasInicio = dateToTime(fechaInicio);
 			double diasFin = dateToTime(fechaFin);
@@ -3210,7 +3385,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1586265255229</Id>
 					<Name><![CDATA[roundRectangle6]]></Name>
-					<X>280</X><Y>1870</Y>
+					<X>320</X><Y>1880</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5502,7 +5677,7 @@ if(!politicaUsuario){
 						<Font Name="Arial" Size="10" Style="0"/>
 						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>finFronterasPoliticaUsuario</Link>
+						<Link>finPoliticaUsuario</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
@@ -7410,6 +7585,163 @@ Por favor intente nuevamente.]]></Text>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MM_dd</LabelFormat>
     			</TimePlot>
+				<Group>
+					<Id>1587134664687</Id>
+					<Name><![CDATA[group5]]></Name>
+					<X>700</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[errorFechaInicio]]></VisibleCode>
+					<OnClickCode><![CDATA[finishSimulation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<RoundedRectangle>
+					<Id>1587134664689</Id>
+					<Name><![CDATA[roundRectangle12]]></Name>
+					<X>-169.25099999999998</X><Y>-80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>359.251</Width>
+					<Height>168.847</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-11116635</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>2</ArcRadius>
+				</RoundedRectangle>
+				<RoundedRectangle>
+					<Id>1587134664691</Id>
+					<Name><![CDATA[roundRectangle13]]></Name>
+					<X>-179.99900000000002</X><Y>-80</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>359.999</Width>
+					<Height>158.099</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1446914</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>2</ArcRadius>
+				</RoundedRectangle>
+				<Image>
+					<Id>1587134664693</Id>
+					<Name><![CDATA[image22]]></Name>
+					<X>-165</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>60</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[caution.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1587134664695</Id>
+					<Name><![CDATA[text52]]></Name>
+					<X>30</X><Y>-70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777088</Color>
+					<Text><![CDATA[¡Oops! 
+Formato Ingresado Incorrecto]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1587134664697</Id>
+					<Name><![CDATA[text53]]></Name>
+					<X>30</X><Y>-30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[La fecha de inicio ingresado no tiene el formato 
+correspondiente:
+			
+			"dd/mm/aaaa"
+
+Por favor modifique el archivo de input y 
+intente nuevamente.]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1587134664699</Id>
+					<Name><![CDATA[text54]]></Name>
+					<X>156</X><Y>-75</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Cerrar]]></Text>
+					<Font>
+						<Name>Roboto</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 				</Level>
@@ -12226,10 +12558,10 @@ if(esImportado){
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
-				<InitialDate><![CDATA[1583020800000]]></InitialDate>	
+				<InitialDate><![CDATA[1577836800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
 				<FinalDate><![CDATA[1618617600000]]></FinalDate>	
-				<FinalTime><![CDATA[412.0]]></FinalTime>	
+				<FinalTime><![CDATA[472.0]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
