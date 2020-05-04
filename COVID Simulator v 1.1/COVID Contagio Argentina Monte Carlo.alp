@@ -919,7 +919,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586357788055</Id>
 					<Name><![CDATA[politicaTesteo]]></Name>
-					<X>430</X><Y>2580</Y>
+					<X>420</X><Y>2620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1097,6 +1097,18 @@ cargarGrafico();
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[false]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1588599499380</Id>
+					<Name><![CDATA[efectoEsperadoPolitViajes]]></Name>
+					<X>720</X><Y>2580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -2409,7 +2421,15 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	agravamiento.add(xl.getCellNumericValue(source, row, 3));
 }
 
-//traceln(probabilidad3);]]></Body>
+//Efecto politicas
+source = "Estimación Efecto Politicas";
+
+efectoRemoticidad = xl.getCellNumericValue(source, 14, 2);
+efectoDistSocial = xl.getCellNumericValue(source, 15, 2);
+efectoEsperadoPolitViajes = xl.getCellNumericValue(source, 16, 2);
+slider.setValueToDefault();
+slider1.setValueToDefault();
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -7766,6 +7786,28 @@ intente nuevamente.]]></Text>
 			</Presentation>
 
 				</Group>
+				<Rectangle>
+					<Id>1588599529580</Id>
+					<Name><![CDATA[rectangle11]]></Name>
+					<X>400</X><Y>2560</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>810</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-3308225</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
 			</Presentation>
 
 				</Level>
