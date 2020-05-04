@@ -465,7 +465,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[500]]></Code>
+							<Code><![CDATA[1000]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
