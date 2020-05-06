@@ -3431,12 +3431,12 @@ for( int i = 0 ; i < 209 ; i++){
 							<ClassName><![CDATA[Mockup 1.4.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 				<RoundedRectangle>
 					<Id>1588776720205</Id>
 					<Name><![CDATA[roundRectangle15]]></Name>
-					<X>760</X><Y>450</Y>
+					<X>730</X><Y>730</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3954,7 +3954,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021000535</Id>
 					<Name><![CDATA[editbox]]></Name>
-					<X>296</X><Y>202</Y>
+					<X>291</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3978,7 +3978,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585021221601</Id>
 					<Name><![CDATA[editbox1]]></Name>
-					<X>386</X><Y>202</Y>
+					<X>391</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4025,7 +4025,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585076364759</Id>
 					<Name><![CDATA[text20]]></Name>
-					<X>800</X><Y>500</Y>
+					<X>790</X><Y>760</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4046,7 +4046,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Image>
 					<Id>1585076364755</Id>
 					<Name><![CDATA[image14]]></Name>
-					<X>750</X><Y>500</Y>
+					<X>750</X><Y>760</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5118,7 +5118,7 @@ a traves de los viajes inter regionales]]></Text>
 				<Image>
 					<Id>1585919597802</Id>
 					<Name><![CDATA[image10]]></Name>
-					<X>213</X><Y>204</Y>
+					<X>213</X><Y>202</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5149,7 +5149,7 @@ if(!cuarentenaOn){
 				<Image>
 					<Id>1585920301937</Id>
 					<Name><![CDATA[image11]]></Name>
-					<X>213</X><Y>255</Y>
+					<X>213</X><Y>257</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5180,7 +5180,7 @@ if(!distSocialOn){
 				<Image>
 					<Id>1585920317057</Id>
 					<Name><![CDATA[image12]]></Name>
-					<X>213</X><Y>300</Y>
+					<X>213</X><Y>311</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5211,7 +5211,7 @@ if(!remoticidadOn){
 				<Image>
 					<Id>1585920330777</Id>
 					<Name><![CDATA[image13]]></Name>
-					<X>213</X><Y>361</Y>
+					<X>213</X><Y>363</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5271,7 +5271,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920352033</Id>
 					<Name><![CDATA[editbox3]]></Name>
-					<X>296</X><Y>256</Y>
+					<X>291</X><Y>255</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5295,7 +5295,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920352035</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>386</X><Y>256</Y>
+					<X>391</X><Y>255</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5320,7 +5320,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920387201</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>296</X><Y>360</Y>
+					<X>291</X><Y>361</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5344,7 +5344,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920387203</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>386</X><Y>360</Y>
+					<X>391</X><Y>361</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5369,7 +5369,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920481026</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>296</X><Y>309</Y>
+					<X>291</X><Y>309</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5393,7 +5393,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920489609</Id>
 					<Name><![CDATA[editbox8]]></Name>
-					<X>296</X><Y>544</Y>
+					<X>291</X><Y>544</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5417,7 +5417,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920541417</Id>
 					<Name><![CDATA[editbox9]]></Name>
-					<X>386</X><Y>309</Y>
+					<X>391</X><Y>309</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5442,7 +5442,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585920553289</Id>
 					<Name><![CDATA[editbox10]]></Name>
-					<X>386</X><Y>544</Y>
+					<X>391</X><Y>544</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5466,7 +5466,7 @@ if(!politicaUsuario){
 				<Text>
 					<Id>1585920897488</Id>
 					<Name><![CDATA[text29]]></Name>
-					<X>669</X><Y>270</Y>
+					<X>669</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5488,7 +5488,7 @@ if(!politicaUsuario){
 				<Text>
 					<Id>1585921019791</Id>
 					<Name><![CDATA[text33]]></Name>
-					<X>669</X><Y>215</Y>
+					<X>595</X><Y>207</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5511,7 +5511,7 @@ if(!politicaUsuario){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585921610289</Id>
 					<Name><![CDATA[slider]]></Name>
-					<X>534</X><Y>262</Y>
+					<X>534</X><Y>252</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5536,7 +5536,7 @@ cargarGrafico();]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585922309052</Id>
 					<Name><![CDATA[slider1]]></Name>
-					<X>534</X><Y>300</Y>
+					<X>534</X><Y>305</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5561,7 +5561,7 @@ cargarGrafico();]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585922310692</Id>
 					<Name><![CDATA[slider2]]></Name>
-					<X>534</X><Y>335</Y>
+					<X>534</X><Y>359</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5585,7 +5585,7 @@ cargarGrafico();]]></ActionCode>
 				<Text>
 					<Id>1585922318124</Id>
 					<Name><![CDATA[text30]]></Name>
-					<X>669</X><Y>305</Y>
+					<X>669</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5607,7 +5607,7 @@ cargarGrafico();]]></ActionCode>
 				<Text>
 					<Id>1585922320468</Id>
 					<Name><![CDATA[text31]]></Name>
-					<X>669</X><Y>340</Y>
+					<X>669</X><Y>367</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5629,7 +5629,7 @@ cargarGrafico();]]></ActionCode>
 				<Group>
 					<Id>1585020200651</Id>
 					<Name><![CDATA[listadoProvincias]]></Name>
-					<X>195</X><Y>-322</Y>
+					<X>400</X><Y>-340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -5725,7 +5725,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1586263092788</Id>
 					<Name><![CDATA[image]]></Name>
-					<X>330</X><Y>790</Y>
+					<X>190</X><Y>920</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5749,7 +5749,7 @@ guardado = true;]]></OnClickCode>
 				<Image>
 					<Id>1585923103651</Id>
 					<Name><![CDATA[image7]]></Name>
-					<X>410</X><Y>790</Y>
+					<X>270</X><Y>920</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5797,7 +5797,7 @@ guardado = true;]]></OnClickCode>
     			<Plot>
 					<Id>1586273733692</Id>
 					<Name><![CDATA[plot4]]></Name>
-					<X>760</X><Y>530</Y>
+					<X>790</X><Y>460</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5815,15 +5815,15 @@ guardado = true;]]></OnClickCode>
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>460</Width>
-					<Height>150</Height>
+					<Width>430</Width>
+					<Height>200</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>20</XOffset>
 						<YOffset>14.785</YOffset>
-						<Width>420</Width>
-						<Height>115.311</Height>
+						<Width>390</Width>
+						<Height>165.311</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -5883,7 +5883,7 @@ guardado = true;]]></OnClickCode>
 				<Line>
 					<Id>1586275871986</Id>
 					<Name><![CDATA[line18]]></Name>
-					<X>760</X><Y>530</Y>
+					<X>740</X><Y>790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5998,7 +5998,7 @@ encontrarse en un ambiente controlado]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586358095183</Id>
 					<Name><![CDATA[radio]]></Name>
-					<X>960</X><Y>370</Y>
+					<X>440</X><Y>840</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6024,7 +6024,7 @@ encontrarse en un ambiente controlado]]></Text>
 				<Group>
 					<Id>1586266536415</Id>
 					<Name><![CDATA[group]]></Name>
-					<X>220</X><Y>830</Y>
+					<X>80</X><Y>960</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6224,7 +6224,7 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586970568287</Id>
 					<Name><![CDATA[editbox2]]></Name>
-					<X>60</X><Y>380</Y>
+					<X>330</X><Y>755</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6248,7 +6248,7 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586971114473</Id>
 					<Name><![CDATA[editbox11]]></Name>
-					<X>296</X><Y>499</Y>
+					<X>291</X><Y>499</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6272,7 +6272,7 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586971129984</Id>
 					<Name><![CDATA[editbox12]]></Name>
-					<X>386</X><Y>499</Y>
+					<X>391</X><Y>499</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6296,7 +6296,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Image>
 					<Id>1586971189399</Id>
 					<Name><![CDATA[image18]]></Name>
-					<X>213</X><Y>500</Y>
+					<X>213</X><Y>501</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6564,7 +6564,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Group>
 					<Id>1586975402323</Id>
 					<Name><![CDATA[group2]]></Name>
-					<X>956</X><Y>329</Y>
+					<X>660</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6695,13 +6695,13 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586975456485</Id>
 					<Name><![CDATA[editbox14]]></Name>
-					<X>1010</X><Y>270</Y>
+					<X>1060</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="142" Height="20">
+					<BasicProperties Width="100" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
@@ -6719,16 +6719,17 @@ a traves de los viajes del Exterior]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586975496777</Id>
 					<Name><![CDATA[editbox15]]></Name>
-					<X>810</X><Y>270</Y>
+					<X>770</X><Y>200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="140" Height="20">
+					<BasicProperties Width="190" Height="20">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
+						<VisibleCode><![CDATA[Nro]]></VisibleCode>
 						<Enabled>true</Enabled>
 					</BasicProperties>
 					<ExtendedProperties>
@@ -6741,7 +6742,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Text>
 					<Id>1587042254523</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>810</X><Y>390</Y>
+					<X>530</X><Y>790</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6768,7 +6769,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Text>
 					<Id>1587042951569</Id>
 					<Name><![CDATA[text48]]></Name>
-					<X>780</X><Y>360</Y>
+					<X>550</X><Y>750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7251,6 +7252,429 @@ intente nuevamente.]]></Text>
 			</Presentation>
 
 				</Group>
+				<Image>
+					<Id>1588782498090</Id>
+					<Name><![CDATA[image1]]></Name>
+					<X>1020</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>95</Width>
+					<Height>25</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 452.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 452(1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>true</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1588782516305</Id>
+					<Name><![CDATA[image2]]></Name>
+					<X>910</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>95</Width>
+					<Height>25</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 454.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 454(1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>true</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1588782533090</Id>
+					<Name><![CDATA[image5]]></Name>
+					<X>800</X><Y>360</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>95</Width>
+					<Height>25</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 455 (1).png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 455.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>true</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1588782721085</Id>
+					<Name><![CDATA[image15]]></Name>
+					<X>980</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1588782790335</Id>
+					<Name><![CDATA[editbox16]]></Name>
+					<X>770</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="190" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<VisibleCode><![CDATA[Nro]]></VisibleCode>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA[""]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>cantidadTests</Link>
+					</ExtendedProperties>
+				</Control>
+				<Image>
+					<Id>1588782797139</Id>
+					<Name><![CDATA[image19]]></Name>
+					<X>980</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1588782806381</Id>
+					<Name><![CDATA[editbox17]]></Name>
+					<X>1060</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="20">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>llegadaTests</Link>
+					</ExtendedProperties>
+				</Control>
+				<Image>
+					<Id>1588783004145</Id>
+					<Name><![CDATA[image20]]></Name>
+					<X>215</X><Y>415</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[politicaUsuario2 = !politicaUsuario2;
+if(!politicaUsuario2){
+	cargarGrafico();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[politicaUsuario2 ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1588783094911</Id>
+					<Name><![CDATA[editbox13]]></Name>
+					<X>290</X><Y>413</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="84" Height="23">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[politicaUsuario]]></EnableExpression>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>inicioPoliticaUsuario</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1588783094914</Id>
+					<Name><![CDATA[editbox18]]></Name>
+					<X>390</X><Y>413</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="84" Height="23">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor>-16777088</TextColor>
+						<Enabled>true</Enabled>
+						<EnableExpression><![CDATA[politicaUsuario]]></EnableExpression>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Arial" Size="10" Style="0"/>
+						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>finPoliticaUsuario</Link>
+					</ExtendedProperties>
+				</Control>
+				<Image>
+					<Id>1588783335242</Id>
+					<Name><![CDATA[image24]]></Name>
+					<X>213</X><Y>257</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[distSocialOn = !distSocialOn;
+if(!distSocialOn){
+	cargarGrafico();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[distSocialOn ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1588783398967</Id>
+					<Name><![CDATA[slider6]]></Name>
+					<X>534</X><Y>410</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
+cargarGrafico();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.]]></MinValue>
+						<MaxValue><![CDATA[1.]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>efectoPoliticaUsuario</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1588783398969</Id>
+					<Name><![CDATA[text34]]></Name>
+					<X>669</X><Y>418</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[XX %]]></Text>
+					<TextCode><![CDATA[efectoPoliticaUsuario == 0 ? "- %" : roundToInt(efectoPoliticaUsuario * 100) + " %"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>11</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1588783689224</Id>
+					<Name><![CDATA[image25]]></Name>
+					<X>213</X><Y>364</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[politicaUsuario = !politicaUsuario;
+if(!politicaUsuario){
+	cargarGrafico();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[politicaUsuario ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1588783789213</Id>
+					<Name><![CDATA[image26]]></Name>
+					<X>213</X><Y>499</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[cierreFronterasExternas = !cierreFronterasExternas;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[cierreFronterasExternas ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1588783817796</Id>
+					<Name><![CDATA[image27]]></Name>
+					<X>213</X><Y>545</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[cerrarViajesInternos = !cerrarViajesInternos;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>43</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 380.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 381.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[cerrarViajesInternos ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>true</OriginalSize>
+				</Image>
 			</Presentation>
 
 				</Level>
@@ -13106,6 +13530,30 @@ traceln("Experimento Finalizado");]]></AfterExperimentCode>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Mockup Base Español  1.4.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 452.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 454.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 455 (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 455.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 454(1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 452(1).png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
