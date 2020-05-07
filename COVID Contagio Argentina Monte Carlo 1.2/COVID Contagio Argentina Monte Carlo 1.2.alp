@@ -130,7 +130,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1584712979806</Id>
 					<Name><![CDATA[duracionPromedio]]></Name>
-					<X>1120</X><Y>1530</Y>
+					<X>920</X><Y>1930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -145,7 +145,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1584713473315</Id>
 					<Name><![CDATA[recuperadosTotales]]></Name>
-					<X>880</X><Y>1530</Y>
+					<X>680</X><Y>1930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -157,7 +157,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1584713481372</Id>
 					<Name><![CDATA[fallecidosTotales]]></Name>
-					<X>880</X><Y>1550</Y>
+					<X>680</X><Y>1950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -169,7 +169,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585020299467</Id>
 					<Name><![CDATA[regSel]]></Name>
-					<X>1920</X><Y>1080</Y>
+					<X>1720</X><Y>1480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -184,7 +184,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585052833474</Id>
 					<Name><![CDATA[cuarentenaOn]]></Name>
-					<X>1510</X><Y>1190</Y>
+					<X>1310</X><Y>1590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -199,7 +199,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585053252393</Id>
 					<Name><![CDATA[inicioCuarentena]]></Name>
-					<X>2000</X><Y>1180</Y>
+					<X>1800</X><Y>1580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -214,7 +214,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585053266127</Id>
 					<Name><![CDATA[finCuarentena]]></Name>
-					<X>2000</X><Y>1200</Y>
+					<X>1800</X><Y>1600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -229,7 +229,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140334403</Id>
 					<Name><![CDATA[porcentajeContagiosAsintomaticos]]></Name>
-					<X>960</X><Y>1220</Y>
+					<X>760</X><Y>1620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -241,7 +241,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140659032</Id>
 					<Name><![CDATA[porcentajeCriticosSobreDiagnosticados]]></Name>
-					<X>960</X><Y>1240</Y>
+					<X>760</X><Y>1640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -253,7 +253,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140735981</Id>
 					<Name><![CDATA[probabilidadRespirador]]></Name>
-					<X>240</X><Y>1650</Y>
+					<X>40</X><Y>2050</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -265,7 +265,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140810721</Id>
 					<Name><![CDATA[duracionIncubacionMedia]]></Name>
-					<X>240</X><Y>1410</Y>
+					<X>40</X><Y>1810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -277,7 +277,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140825373</Id>
 					<Name><![CDATA[duracionMediaEnfermedadLeve]]></Name>
-					<X>240</X><Y>1710</Y>
+					<X>40</X><Y>2110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -289,7 +289,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585140835882</Id>
 					<Name><![CDATA[duracionMinEnfermedadGrave]]></Name>
-					<X>240</X><Y>1740</Y>
+					<X>40</X><Y>2140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -301,7 +301,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585147124771</Id>
 					<Name><![CDATA[duracionMaxEnfermedadGrave]]></Name>
-					<X>240</X><Y>1770</Y>
+					<X>40</X><Y>2170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -313,7 +313,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585163959082</Id>
 					<Name><![CDATA[probabilidadNoSintomas]]></Name>
-					<X>240</X><Y>1530</Y>
+					<X>40</X><Y>1930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -328,7 +328,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585164105903</Id>
 					<Name><![CDATA[tiempoHospitalizacionMax]]></Name>
-					<X>880</X><Y>1410</Y>
+					<X>680</X><Y>1810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -340,7 +340,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585164138755</Id>
 					<Name><![CDATA[tiempoHospitalizacionMedio]]></Name>
-					<X>880</X><Y>1390</Y>
+					<X>680</X><Y>1790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -352,7 +352,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585231561775</Id>
 					<Name><![CDATA[susceptiblesTotales]]></Name>
-					<X>880</X><Y>1570</Y>
+					<X>680</X><Y>1970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -364,7 +364,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585231579118</Id>
 					<Name><![CDATA[respiradoresDisponibles]]></Name>
-					<X>880</X><Y>1720</Y>
+					<X>680</X><Y>2120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -376,7 +376,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585231613385</Id>
 					<Name><![CDATA[terapiaIntensivaDisponibles]]></Name>
-					<X>880</X><Y>1740</Y>
+					<X>680</X><Y>2140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -388,7 +388,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585231630780</Id>
 					<Name><![CDATA[camaAislamientoDisponibles]]></Name>
-					<X>880</X><Y>1760</Y>
+					<X>680</X><Y>2160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -400,7 +400,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585253912127</Id>
 					<Name><![CDATA[diagnosticadosTotales]]></Name>
-					<X>880</X><Y>1490</Y>
+					<X>680</X><Y>1890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -412,7 +412,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585254297488</Id>
 					<Name><![CDATA[infectadosTotales]]></Name>
-					<X>880</X><Y>1510</Y>
+					<X>680</X><Y>1910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -424,7 +424,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585311165849</Id>
 					<Name><![CDATA[porcentajeRecuperados]]></Name>
-					<X>880</X><Y>1620</Y>
+					<X>680</X><Y>2020</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -436,7 +436,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585311182501</Id>
 					<Name><![CDATA[porcentajeInfectados]]></Name>
-					<X>880</X><Y>1640</Y>
+					<X>680</X><Y>2040</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -448,7 +448,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585311189073</Id>
 					<Name><![CDATA[porcentajeFallecidos]]></Name>
-					<X>880</X><Y>1660</Y>
+					<X>680</X><Y>2060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -460,7 +460,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585334470256</Id>
 					<Name><![CDATA[divisor]]></Name>
-					<X>240</X><Y>1200</Y>
+					<X>40</X><Y>1600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -475,7 +475,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585582798899</Id>
 					<Name><![CDATA[efectoDistSocial]]></Name>
-					<X>1750</X><Y>1255</Y>
+					<X>1550</X><Y>1655</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -490,7 +490,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585584815933</Id>
 					<Name><![CDATA[duracionIncubacionMin]]></Name>
-					<X>240</X><Y>1440</Y>
+					<X>40</X><Y>1840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -502,7 +502,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585584817997</Id>
 					<Name><![CDATA[duracionIncubacionMax]]></Name>
-					<X>240</X><Y>1470</Y>
+					<X>40</X><Y>1870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -514,7 +514,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585585248309</Id>
 					<Name><![CDATA[tiempoDiagnosticoMedio]]></Name>
-					<X>540</X><Y>1630</Y>
+					<X>340</X><Y>2030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -526,7 +526,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585585261108</Id>
 					<Name><![CDATA[tiempoDiagnosticoMin]]></Name>
-					<X>540</X><Y>1660</Y>
+					<X>340</X><Y>2060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -538,7 +538,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585585277204</Id>
 					<Name><![CDATA[tiempoDiagnosticoMax]]></Name>
-					<X>540</X><Y>1690</Y>
+					<X>340</X><Y>2090</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -550,7 +550,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585586103946</Id>
 					<Name><![CDATA[tiempoHospitalizacionMin]]></Name>
-					<X>880</X><Y>1430</Y>
+					<X>680</X><Y>1830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -562,7 +562,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585694622162</Id>
 					<Name><![CDATA[viajesActivados]]></Name>
-					<X>240</X><Y>1290</Y>
+					<X>40</X><Y>1690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -577,7 +577,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585695001996</Id>
 					<Name><![CDATA[maxInfectadosCantidad]]></Name>
-					<X>1120</X><Y>1620</Y>
+					<X>920</X><Y>2020</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -592,7 +592,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585695013156</Id>
 					<Name><![CDATA[maxInfectadosFecha]]></Name>
-					<X>1120</X><Y>1640</Y>
+					<X>920</X><Y>2040</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -607,7 +607,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763797279</Id>
 					<Name><![CDATA[efectoRemoticidad]]></Name>
-					<X>1750</X><Y>1320</Y>
+					<X>1550</X><Y>1720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -622,7 +622,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763897933</Id>
 					<Name><![CDATA[efectoPoliticaUsuario]]></Name>
-					<X>1750</X><Y>1390</Y>
+					<X>1550</X><Y>1790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -637,7 +637,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763929765</Id>
 					<Name><![CDATA[distSocialOn]]></Name>
-					<X>1540</X><Y>1255</Y>
+					<X>1340</X><Y>1655</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -652,7 +652,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763940645</Id>
 					<Name><![CDATA[politicaUsuario1]]></Name>
-					<X>1540</X><Y>1380</Y>
+					<X>1340</X><Y>1780</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -667,7 +667,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763960821</Id>
 					<Name><![CDATA[remoticidadOn]]></Name>
-					<X>1540</X><Y>1320</Y>
+					<X>1340</X><Y>1720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -682,7 +682,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764005669</Id>
 					<Name><![CDATA[inicioDistSocial]]></Name>
-					<X>2000</X><Y>1245</Y>
+					<X>1800</X><Y>1645</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -697,7 +697,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764005671</Id>
 					<Name><![CDATA[finDistSocial]]></Name>
-					<X>2000</X><Y>1265</Y>
+					<X>1800</X><Y>1665</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -712,7 +712,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764051900</Id>
 					<Name><![CDATA[inicioRemoticidad]]></Name>
-					<X>2000</X><Y>1310</Y>
+					<X>1800</X><Y>1710</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -727,7 +727,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764051902</Id>
 					<Name><![CDATA[finRemoticidad]]></Name>
-					<X>2000</X><Y>1330</Y>
+					<X>1800</X><Y>1730</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -742,7 +742,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764222884</Id>
 					<Name><![CDATA[inicioPoliticaUsuario]]></Name>
-					<X>2000</X><Y>1378</Y>
+					<X>1800</X><Y>1778</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -757,7 +757,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585764222886</Id>
 					<Name><![CDATA[finPoliticaUsuario]]></Name>
-					<X>2000</X><Y>1398</Y>
+					<X>1800</X><Y>1798</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -772,7 +772,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585854463134</Id>
 					<Name><![CDATA[cerrarViajesInternos]]></Name>
-					<X>1540</X><Y>1630</Y>
+					<X>1340</X><Y>2030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -787,7 +787,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585854494199</Id>
 					<Name><![CDATA[inicioCierreViajes]]></Name>
-					<X>2000</X><Y>1620</Y>
+					<X>1800</X><Y>2020</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -802,7 +802,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585854494201</Id>
 					<Name><![CDATA[finCierreViajes]]></Name>
-					<X>2000</X><Y>1640</Y>
+					<X>1800</X><Y>2040</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -817,7 +817,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585926890679</Id>
 					<Name><![CDATA[exportacionActivada]]></Name>
-					<X>900</X><Y>1090</Y>
+					<X>700</X><Y>1490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -832,7 +832,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585927608600</Id>
 					<Name><![CDATA[sumaDeEfectos]]></Name>
-					<X>1920</X><Y>1120</Y>
+					<X>1720</X><Y>1520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -847,7 +847,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586266106087</Id>
 					<Name><![CDATA[guardado]]></Name>
-					<X>2070</X><Y>1080</Y>
+					<X>1870</X><Y>1480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -862,7 +862,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586266177660</Id>
 					<Name><![CDATA[mensajeAlerta]]></Name>
-					<X>2070</X><Y>1100</Y>
+					<X>1870</X><Y>1500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -877,7 +877,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586266509723</Id>
 					<Name><![CDATA[mensajeCerrado]]></Name>
-					<X>2070</X><Y>1120</Y>
+					<X>1870</X><Y>1520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -922,7 +922,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586357788055</Id>
 					<Name><![CDATA[politicaTesteo]]></Name>
-					<X>1540</X><Y>1740</Y>
+					<X>1340</X><Y>2140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -937,7 +937,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586895889497</Id>
 					<Name><![CDATA[ingresosExtranjerosDiarios]]></Name>
-					<X>2150</X><Y>1470</Y>
+					<X>1950</X><Y>1870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -949,7 +949,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586895964194</Id>
 					<Name><![CDATA[probabilidadExtranjerosInfectados]]></Name>
-					<X>2150</X><Y>1490</Y>
+					<X>1950</X><Y>1890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -961,7 +961,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586965200012</Id>
 					<Name><![CDATA[inicioCierreFronteras]]></Name>
-					<X>2000</X><Y>1448</Y>
+					<X>1800</X><Y>1848</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -976,7 +976,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586965200014</Id>
 					<Name><![CDATA[finCierreFronteras]]></Name>
-					<X>2000</X><Y>1468</Y>
+					<X>1800</X><Y>1868</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -991,7 +991,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586965210139</Id>
 					<Name><![CDATA[cierreFronterasExternas]]></Name>
-					<X>1540</X><Y>1460</Y>
+					<X>1340</X><Y>1860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1006,7 +1006,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586971241707</Id>
 					<Name><![CDATA[nombreCustom1]]></Name>
-					<X>1540</X><Y>1400</Y>
+					<X>1340</X><Y>1800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1021,7 +1021,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586971884292</Id>
 					<Name><![CDATA[fronterasExtCerradas]]></Name>
-					<X>2000</X><Y>1500</Y>
+					<X>1800</X><Y>1900</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1036,7 +1036,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586973184886</Id>
 					<Name><![CDATA[casosImportados]]></Name>
-					<X>2150</X><Y>1560</Y>
+					<X>1950</X><Y>1960</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1047,8 +1047,8 @@ cargarGrafico();
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1586975535219</Id>
-					<Name><![CDATA[cantidadTests]]></Name>
-					<X>670</X><Y>-340</Y>
+					<Name><![CDATA[cantidadTests1]]></Name>
+					<X>1860</X><Y>2190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1059,8 +1059,8 @@ cargarGrafico();
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1586975542175</Id>
-					<Name><![CDATA[llegadaTests]]></Name>
-					<X>660</X><Y>-310</Y>
+					<Name><![CDATA[llegadaTests1]]></Name>
+					<X>2030</X><Y>2190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1105,7 +1105,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1588599499380</Id>
 					<Name><![CDATA[efectoEsperadoPolitViajes]]></Name>
-					<X>1840</X><Y>1700</Y>
+					<X>1640</X><Y>2100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1117,7 +1117,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1588799962051</Id>
 					<Name><![CDATA[idioma]]></Name>
-					<X>1150</X><Y>-450</Y>
+					<X>450</X><Y>-550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1129,10 +1129,37 @@ cargarGrafico();
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1588853626830</Id>
+					<Name><![CDATA[cantidadTests2]]></Name>
+					<X>1860</X><Y>2216</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1588853626832</Id>
+					<Name><![CDATA[llegadaTests2]]></Name>
+					<X>2030</X><Y>2216</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
-					<X>1120</X><Y>1510</Y>
+					<X>920</X><Y>1910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1156,7 +1183,7 @@ cargarGrafico();
 				<Variable Class="Parameter">
 					<Id>1586178278804</Id>
 					<Name><![CDATA[diasFadeOut]]></Name>
-					<X>1760</X><Y>1100</Y>
+					<X>1560</X><Y>1500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1180,7 +1207,7 @@ cargarGrafico();
 				<Variable Class="Parameter">
 					<Id>1586783457752</Id>
 					<Name><![CDATA[montecarlo]]></Name>
-					<X>1520</X><Y>1140</Y>
+					<X>1320</X><Y>1540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1204,7 +1231,7 @@ cargarGrafico();
 				<Variable Class="Parameter">
 					<Id>1586974439106</Id>
 					<Name><![CDATA[testDisponibles]]></Name>
-					<X>370</X><Y>-310</Y>
+					<X>1310</X><Y>2200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1228,7 +1255,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1585250016873</Id>
 					<Name><![CDATA[atencionRequerida]]></Name>
-					<X>560</X><Y>1500</Y>
+					<X>360</X><Y>1900</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1243,7 +1270,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1585250031092</Id>
 					<Name><![CDATA[atencionRecibida]]></Name>
-					<X>560</X><Y>1530</Y>
+					<X>360</X><Y>1930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1258,7 +1285,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1585250047667</Id>
 					<Name><![CDATA[agravamiento]]></Name>
-					<X>560</X><Y>1560</Y>
+					<X>360</X><Y>1960</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1288,7 +1315,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1585587707183</Id>
 					<Name><![CDATA[infectadosAEliminar]]></Name>
-					<X>590</X><Y>1270</Y>
+					<X>390</X><Y>1670</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1303,7 +1330,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1585761273959</Id>
 					<Name><![CDATA[csvOutput]]></Name>
-					<X>1140</X><Y>1090</Y>
+					<X>940</X><Y>1490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1318,7 +1345,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586266958851</Id>
 					<Name><![CDATA[regionesSele]]></Name>
-					<X>2220</X><Y>1060</Y>
+					<X>2020</X><Y>1460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1333,7 +1360,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586266991643</Id>
 					<Name><![CDATA[medidasSele]]></Name>
-					<X>2220</X><Y>1080</Y>
+					<X>2020</X><Y>1480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1348,7 +1375,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586267018929</Id>
 					<Name><![CDATA[fechaInicioSel]]></Name>
-					<X>2220</X><Y>1100</Y>
+					<X>2020</X><Y>1500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1363,7 +1390,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586267028719</Id>
 					<Name><![CDATA[fechaFinSel]]></Name>
-					<X>2220</X><Y>1120</Y>
+					<X>2020</X><Y>1520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1378,7 +1405,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586896008467</Id>
 					<Name><![CDATA[destinosExterior]]></Name>
-					<X>2150</X><Y>1510</Y>
+					<X>1950</X><Y>1910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1393,7 +1420,7 @@ cargarGrafico();
 				<Variable Class="CollectionVariable">
 					<Id>1586896050343</Id>
 					<Name><![CDATA[probabilidadDestinosExterior]]></Name>
-					<X>2150</X><Y>1530</Y>
+					<X>1950</X><Y>1930</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1405,57 +1432,12 @@ cargarGrafico();
 					</Properties>
 
 				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1586974549358</Id>
-					<Name><![CDATA[fechaRenovacionTests]]></Name>
-					<X>490</X><Y>-340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1586974575663</Id>
-					<Name><![CDATA[cantidadRenovacionTests]]></Name>
-					<X>490</X><Y>-310</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Integer]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1587042194669</Id>
-					<Name><![CDATA[logRenovacionTests]]></Name>
-					<X>480</X><Y>-380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
 			</Variables>
 			<Events>
 				<Event>
 					<Id>1585232158628</Id>
 					<Name><![CDATA[kpis]]></Name>
-					<X>930</X><Y>1330</Y>
+					<X>730</X><Y>1730</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1488,7 +1470,7 @@ actualizoKpis();]]></Action>
 				<Event>
 					<Id>1585332723071</Id>
 					<Name><![CDATA[contagioPoblacionDiario]]></Name>
-					<X>540</X><Y>1240</Y>
+					<X>340</X><Y>1640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1521,7 +1503,7 @@ plot1.updateData();]]></Action>
 				<Event>
 					<Id>1586264247654</Id>
 					<Name><![CDATA[pauseSimulationOnStart]]></Name>
-					<X>1520</X><Y>1120</Y>
+					<X>1320</X><Y>1520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1554,7 +1536,7 @@ plot1.updateData();]]></Action>
 				<Event>
 					<Id>1586895520563</Id>
 					<Name><![CDATA[ingresosDelExterior]]></Name>
-					<X>2000</X><Y>1520</Y>
+					<X>1800</X><Y>1920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1607,7 +1589,7 @@ if(!fronterasExtCerradas){
 				<Event>
 					<Id>1586971804407</Id>
 					<Name><![CDATA[inicioCierreFronterasExt]]></Name>
-					<X>2000</X><Y>1540</Y>
+					<X>1800</X><Y>1940</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1638,7 +1620,7 @@ if(!fronterasExtCerradas){
 				<Event>
 					<Id>1586971804422</Id>
 					<Name><![CDATA[finCierreFrontersExt]]></Name>
-					<X>2000</X><Y>1560</Y>
+					<X>1800</X><Y>1960</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1668,8 +1650,8 @@ if(!fronterasExtCerradas){
 				</Event>
 				<Event>
 					<Id>1586976117922</Id>
-					<Name><![CDATA[renovacionTests]]></Name>
-					<X>370</X><Y>-340</Y>
+					<Name><![CDATA[renovacionTests1]]></Name>
+					<X>1670</X><Y>2190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1695,22 +1677,12 @@ if(!fronterasExtCerradas){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if(cantidadRenovacionTests.size()>0){
-	
-	testDisponibles += cantidadRenovacionTests.get(0);
-
-	traceln("Se agregaron " + cantidadRenovacionTests.get(0) + " tests el " + date());
-	
-	cantidadRenovacionTests.remove(0);
-	fechaRenovacionTests.remove(0);
-	
-	calculoProximaRenovacionTests();
-}]]></Action>
+					<Action><![CDATA[testDisponibles += cantidadTests1;]]></Action>
 				</Event>
 				<Event>
 					<Id>1587134436936</Id>
 					<Name><![CDATA[inicioSimulacion]]></Name>
-					<X>660</X><Y>1040</Y>
+					<X>460</X><Y>1440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1745,6 +1717,38 @@ creoInfectadosIniciales();
 
 actualizoKpis();]]></Action>
 				</Event>
+				<Event>
+					<Id>1588853626835</Id>
+					<Name><![CDATA[renovacionTests2]]></Name>
+					<X>1670</X><Y>2217</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="userControls">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1587024000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[testDisponibles += cantidadTests2;
+]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -1752,7 +1756,7 @@ actualizoKpis();]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1584670848023</Id>
 					<Name><![CDATA[cargarRegiones]]></Name>
-					<X>240</X><Y>1160</Y>
+					<X>40</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1974,7 +1978,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585053136094</Id>
 					<Name><![CDATA[aplicarCambios]]></Name>
-					<X>1520</X><Y>1080</Y>
+					<X>1320</X><Y>1480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2354,7 +2358,7 @@ fechaFinSel.add("");]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585145230081</Id>
 					<Name><![CDATA[cargarInfoEnfermedad]]></Name>
-					<X>420</X><Y>1360</Y>
+					<X>220</X><Y>1760</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2455,7 +2459,7 @@ slider1.setValueToDefault();
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585231746812</Id>
 					<Name><![CDATA[actualizoKpis]]></Name>
-					<X>1080</X><Y>1330</Y>
+					<X>880</X><Y>1730</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2517,7 +2521,7 @@ if(infectados.size() == 0){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585243402217</Id>
 					<Name><![CDATA[creoInfectadosIniciales]]></Name>
-					<X>540</X><Y>1160</Y>
+					<X>340</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2536,7 +2540,7 @@ if(infectados.size() == 0){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585243486241</Id>
 					<Name><![CDATA[creoInfectado]]></Name>
-					<X>540</X><Y>1190</Y>
+					<X>340</X><Y>1590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2589,7 +2593,7 @@ inf.regionOrigen.susceptibles --;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585250150030</Id>
 					<Name><![CDATA[calculoAgravamiento]]></Name>
-					<X>540</X><Y>1470</Y>
+					<X>340</X><Y>1870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2667,7 +2671,7 @@ for(int i = 1 ; i <= cantidad ; i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585332596795</Id>
 					<Name><![CDATA[cambiosDiarios]]></Name>
-					<X>590</X><Y>1300</Y>
+					<X>390</X><Y>1700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2727,7 +2731,7 @@ for (int i = 0 ; i < regions.size();i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1585761580526</Id>
 					<Name><![CDATA[exportarResultados]]></Name>
-					<X>900</X><Y>1070</Y>
+					<X>700</X><Y>1470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2744,7 +2748,7 @@ traceln("Exportacion Finalizada");]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1586273018399</Id>
 					<Name><![CDATA[cargarGrafico]]></Name>
-					<X>210</X><Y>-70</Y>
+					<X>450</X><Y>-520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2855,31 +2859,53 @@ for( int i = 0 ; i < 209 ; i++){
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1586976101124</Id>
-					<Name><![CDATA[calculoProximaRenovacionTests]]></Name>
-					<X>370</X><Y>-280</Y>
+					<Name><![CDATA[calculoRenovacionTests]]></Name>
+					<X>1490</X><Y>2200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(fechaRenovacionTests.size()>0){
-	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	
-	try{
-		Date fechaInicio = sdf.parse(fechaRenovacionTests.get(0));
-		renovacionTests.restartTo(fechaInicio);
-	}catch(Exception e){
-		e.printStackTrace();
-	}
+					<Parameter>
+						<Name><![CDATA[cantidadTests]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[llegadaTests]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[renovacionTests]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-}]]></Body>
+try{
+	Date fechaInicio = sdf.parse(llegadaTests);
+	if (renovacionTests == 1){
+		renovacionTests1.restartTo(fechaInicio);
+		editboxLlegadaTests1.setTextColor(navy);
+	}else{
+		renovacionTests2.restartTo(fechaInicio);
+		editboxLlegadaTests2.setTextColor(navy);
+	}
+}catch(Exception e){
+	e.printStackTrace();
+	if(renovacionTests == 1){
+		editboxLlegadaTests1.setTextColor(red);
+	}else{
+		editboxLlegadaTests2.setTextColor(red);
+	}
+	
+}
+
+]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435244</Id>
 					<Name><![CDATA[probabilidadesModeradaCritico]]></Name>
-					<X>240</X><Y>1590</Y>
+					<X>40</X><Y>1990</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2902,7 +2928,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435259</Id>
 					<Name><![CDATA[probabilidadesCritico]]></Name>
-					<X>240</X><Y>1620</Y>
+					<X>40</X><Y>2020</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2925,7 +2951,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1584710435271</Id>
 					<Name><![CDATA[probabilidadesFallecimientoLeve]]></Name>
-					<X>540</X><Y>1410</Y>
+					<X>340</X><Y>1810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2948,7 +2974,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1585248689917</Id>
 					<Name><![CDATA[probabilidadesFallecimientoGrave]]></Name>
-					<X>540</X><Y>1440</Y>
+					<X>340</X><Y>1840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2971,7 +2997,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<TableFunction AccessType="public" StaticFunction="false">
 					<Id>1585599559361</Id>
 					<Name><![CDATA[duracionViaje]]></Name>
-					<X>240</X><Y>1240</Y>
+					<X>40</X><Y>1640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2998,7 +3024,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<DataSet>
 					<Id>1584713068702</Id>
 					<Name><![CDATA[duracionesEnfermedad]]></Name>
-					<X>1120</X><Y>1450</Y>
+					<X>920</X><Y>1850</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3020,7 +3046,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<DataSet>
 					<Id>1584716316061</Id>
 					<Name><![CDATA[cantidadContagios]]></Name>
-					<X>1120</X><Y>1390</Y>
+					<X>920</X><Y>1790</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3042,7 +3068,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<DataSet>
 					<Id>1585315585168</Id>
 					<Name><![CDATA[duracionHospLeve]]></Name>
-					<X>1120</X><Y>1410</Y>
+					<X>920</X><Y>1810</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3064,7 +3090,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<DataSet>
 					<Id>1585315598877</Id>
 					<Name><![CDATA[duracionHospGrave]]></Name>
-					<X>1120</X><Y>1430</Y>
+					<X>920</X><Y>1830</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3086,7 +3112,7 @@ for( int i = 0 ; i < 209 ; i++){
     			<DataSet>
 					<Id>1586272903602</Id>
 					<Name><![CDATA[efectoPoliticasGrafico]]></Name>
-					<X>180</X><Y>-105</Y>
+					<X>490</X><Y>-490</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3110,7 +3136,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<TextFile>
 					<Id>1585758638369</Id>
 					<Name><![CDATA[csvResultados]]></Name>
-					<X>1140</X><Y>1070</Y>
+					<X>940</X><Y>1470</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3128,7 +3154,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<ExcelFile>
 					<Id>1584670867270</Id>
 					<Name><![CDATA[inputSimulador]]></Name>
-					<X>460</X><Y>1080</Y>
+					<X>260</X><Y>1480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3168,7 +3194,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<EmbeddedObject>
 					<Id>0</Id>
 					<Name><![CDATA[infectados]]></Name>
-					<X>540</X><Y>1130</Y>
+					<X>340</X><Y>1530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3247,7 +3273,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<EmbeddedObject>
 					<Id>0</Id>
 					<Name><![CDATA[regions]]></Name>
-					<X>240</X><Y>1128</Y>
+					<X>40</X><Y>1528</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3479,7 +3505,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1586265255229</Id>
 					<Name><![CDATA[roundRectangle6]]></Name>
-					<X>1440</X><Y>1000</Y>
+					<X>1240</X><Y>1400</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3502,7 +3528,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1586262551313</Id>
 					<Name><![CDATA[roundRectangle7]]></Name>
-					<X>840</X><Y>1000</Y>
+					<X>640</X><Y>1400</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3525,7 +3551,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Rectangle>
 					<Id>1585853930581</Id>
 					<Name><![CDATA[rectangle7]]></Name>
-					<X>1480</X><Y>1160</Y>
+					<X>1280</X><Y>1560</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3547,7 +3573,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Rectangle>
 					<Id>1585853884262</Id>
 					<Name><![CDATA[rectangle6]]></Name>
-					<X>1520</X><Y>1356</Y>
+					<X>1320</X><Y>1756</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3569,7 +3595,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Rectangle>
 					<Id>1585853850064</Id>
 					<Name><![CDATA[rectangle5]]></Name>
-					<X>1520</X><Y>1290</Y>
+					<X>1320</X><Y>1690</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3591,7 +3617,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Rectangle>
 					<Id>1585853786449</Id>
 					<Name><![CDATA[rectangle4]]></Name>
-					<X>1520</X><Y>1225</Y>
+					<X>1320</X><Y>1625</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3613,7 +3639,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1585585711795</Id>
 					<Name><![CDATA[roundRectangle5]]></Name>
-					<X>200</X><Y>1000</Y>
+					<X>0</X><Y>1400</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3677,7 +3703,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<RoundedRectangle>
 					<Id>1584710407550</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>840</X><Y>1120</Y>
+					<X>640</X><Y>1520</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3701,7 +3727,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1584713200852</Id>
 					<Name><![CDATA[button]]></Name>
-					<X>1160</X><Y>1540</Y>
+					<X>960</X><Y>1940</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3953,7 +3979,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585159047212</Id>
 					<Name><![CDATA[text15]]></Name>
-					<X>460</X><Y>1020</Y>
+					<X>260</X><Y>1420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3974,7 +4000,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585159073984</Id>
 					<Name><![CDATA[text16]]></Name>
-					<X>1040</X><Y>1150</Y>
+					<X>840</X><Y>1550</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3995,7 +4021,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585159090588</Id>
 					<Name><![CDATA[line4]]></Name>
-					<X>220</X><Y>1480</Y>
+					<X>20</X><Y>1880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4019,7 +4045,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585231499732</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>1010</X><Y>1280</Y>
+					<X>810</X><Y>1680</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4604,7 +4630,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585584978684</Id>
 					<Name><![CDATA[line5]]></Name>
-					<X>220</X><Y>1660</Y>
+					<X>20</X><Y>2060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4628,7 +4654,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585584980644</Id>
 					<Name><![CDATA[line6]]></Name>
-					<X>220</X><Y>1540</Y>
+					<X>20</X><Y>1940</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4652,7 +4678,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585585178084</Id>
 					<Name><![CDATA[line7]]></Name>
-					<X>220</X><Y>1780</Y>
+					<X>20</X><Y>2180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4676,7 +4702,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585585198164</Id>
 					<Name><![CDATA[line8]]></Name>
-					<X>220</X><Y>1720</Y>
+					<X>20</X><Y>2120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4700,7 +4726,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585585286948</Id>
 					<Name><![CDATA[line9]]></Name>
-					<X>520</X><Y>1700</Y>
+					<X>320</X><Y>2100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4724,7 +4750,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585585566395</Id>
 					<Name><![CDATA[line10]]></Name>
-					<X>520</X><Y>1580</Y>
+					<X>320</X><Y>1980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4748,7 +4774,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585585575468</Id>
 					<Name><![CDATA[line11]]></Name>
-					<X>540</X><Y>1570</Y>
+					<X>340</X><Y>1970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4773,7 +4799,7 @@ for( int i = 0 ; i < 209 ; i++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1585761748279</Id>
 					<Name><![CDATA[button2]]></Name>
-					<X>1128</X><Y>1013</Y>
+					<X>928</X><Y>1413</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4793,7 +4819,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585764072608</Id>
 					<Name><![CDATA[line12]]></Name>
-					<X>1980</X><Y>1210</Y>
+					<X>1780</X><Y>1610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4817,7 +4843,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585764105028</Id>
 					<Name><![CDATA[line13]]></Name>
-					<X>1980</X><Y>1275</Y>
+					<X>1780</X><Y>1675</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4841,7 +4867,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585764107452</Id>
 					<Name><![CDATA[line14]]></Name>
-					<X>1980</X><Y>1340</Y>
+					<X>1780</X><Y>1740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4865,7 +4891,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585764144637</Id>
 					<Name><![CDATA[line15]]></Name>
-					<X>1980</X><Y>1478</Y>
+					<X>1780</X><Y>1878</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4889,7 +4915,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Line>
 					<Id>1585764249260</Id>
 					<Name><![CDATA[line16]]></Name>
-					<X>1510</X><Y>1550</Y>
+					<X>1310</X><Y>1950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4913,7 +4939,7 @@ for( int i = 0 ; i < 209 ; i++){
 				<Text>
 					<Id>1585853721130</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>1800</X><Y>1180</Y>
+					<X>1600</X><Y>1580</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4935,7 +4961,7 @@ las distintas mediads que lo compoene]]></Text>
 				<Rectangle>
 					<Id>1585854501669</Id>
 					<Name><![CDATA[rectangle8]]></Name>
-					<X>1520</X><Y>1597</Y>
+					<X>1320</X><Y>1997</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4957,7 +4983,7 @@ las distintas mediads que lo compoene]]></Text>
 				<Line>
 					<Id>1585854494197</Id>
 					<Name><![CDATA[line17]]></Name>
-					<X>1980</X><Y>1650</Y>
+					<X>1780</X><Y>2050</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4981,7 +5007,7 @@ las distintas mediads que lo compoene]]></Text>
 				<Text>
 					<Id>1585854639557</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>1840</X><Y>1620</Y>
+					<X>1640</X><Y>2020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5558,7 +5584,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Text>
 					<Id>1586262617895</Id>
 					<Name><![CDATA[text35]]></Name>
-					<X>890</X><Y>1020</Y>
+					<X>690</X><Y>1420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5630,7 +5656,7 @@ guardado = true;]]></OnClickCode>
 				<Text>
 					<Id>1586265285138</Id>
 					<Name><![CDATA[text36]]></Name>
-					<X>1720</X><Y>1020</Y>
+					<X>1520</X><Y>1420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5713,27 +5739,6 @@ guardado = true;]]></OnClickCode>
 					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
 					<HorScaleType>AUTO</HorScaleType>
     			</Plot>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1586274506653</Id>
-					<Name><![CDATA[button1]]></Name>
-					<X>360</X><Y>-80</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor/>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[button]]></LabelText>
-					</ExtendedProperties>
-				</Control>
 				<Control Type="Slider">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586350697618</Id>
@@ -5934,7 +5939,7 @@ región actual]]></Text>
 				<Rectangle>
 					<Id>1586965044184</Id>
 					<Name><![CDATA[rectangle9]]></Name>
-					<X>1520</X><Y>1430</Y>
+					<X>1320</X><Y>1830</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5956,7 +5961,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586965096817</Id>
 					<Name><![CDATA[line21]]></Name>
-					<X>1980</X><Y>1410</Y>
+					<X>1780</X><Y>1810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5980,7 +5985,7 @@ región actual]]></Text>
 				<Line>
 					<Id>1586965200010</Id>
 					<Name><![CDATA[line22]]></Name>
-					<X>1980</X><Y>1480</Y>
+					<X>1780</X><Y>1880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6004,7 +6009,7 @@ región actual]]></Text>
 				<Text>
 					<Id>1586965220370</Id>
 					<Name><![CDATA[text43]]></Name>
-					<X>1840</X><Y>1450</Y>
+					<X>1640</X><Y>1850</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6127,7 +6132,7 @@ a traves de los viajes del Exterior]]></Text>
     			<TimePlot>
 					<Id>1586973270299</Id>
 					<Name><![CDATA[plot5]]></Name>
-					<X>1520</X><Y>1480</Y>
+					<X>1320</X><Y>1880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6367,6 +6372,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Group>
 					<Id>1586975402323</Id>
 					<Name><![CDATA[group2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>920</X><Y>-960</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -6497,7 +6503,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586975456485</Id>
-					<Name><![CDATA[editbox14]]></Name>
+					<Name><![CDATA[editboxLlegadaTests1]]></Name>
 					<X>1065</X><Y>201</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -6509,19 +6515,19 @@ a traves de los viajes del Exterior]]></Text>
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[renovacionTests1.reset();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
 						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>llegadaTests</Link>
+						<Link>llegadaTests1</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1586975496777</Id>
-					<Name><![CDATA[editbox15]]></Name>
+					<Name><![CDATA[editboxCantidadTests1]]></Name>
 					<X>770</X><Y>198</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -6533,17 +6539,19 @@ a traves de los viajes del Exterior]]></Text>
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[renovacionTests1.reset();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
 						<DefaultValueCode><![CDATA[""]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>cantidadTests</Link>
+						<Link>cantidadTests1</Link>
 					</ExtendedProperties>
 				</Control>
 				<Text>
 					<Id>1587042254523</Id>
 					<Name><![CDATA[text3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1090</X><Y>-1110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -6646,7 +6654,7 @@ a traves de los viajes del Exterior]]></Text>
 				<Rectangle>
 					<Id>1588599529580</Id>
 					<Name><![CDATA[rectangle11]]></Name>
-					<X>1520</X><Y>1680</Y>
+					<X>1320</X><Y>2080</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7126,6 +7134,11 @@ intente nuevamente.]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[if( renovacionTests1.isActive()){
+	renovacionTests1.reset();
+}else{
+	calculoRenovacionTests(cantidadTests1, llegadaTests1, 1);
+}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>43</Width>
@@ -7141,12 +7154,13 @@ intente nuevamente.]]></Text>
 							<ClassName><![CDATA[Group 381.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
+					<ImageIndexCode><![CDATA[renovacionTests1.isActive() ? 1 : 0]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1588782790335</Id>
-					<Name><![CDATA[editbox16]]></Name>
+					<Name><![CDATA[editboxCantidadTests2]]></Name>
 					<X>770</X><Y>257</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -7158,12 +7172,13 @@ intente nuevamente.]]></Text>
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[renovacionTests2.reset();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
 						<DefaultValueCode><![CDATA[""]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>cantidadTests</Link>
+						<Link>cantidadTests2</Link>
 					</ExtendedProperties>
 				</Control>
 				<Image>
@@ -7175,6 +7190,11 @@ intente nuevamente.]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[if( renovacionTests2.isActive()){
+	renovacionTests2.reset();
+}else{
+	calculoRenovacionTests(cantidadTests2, llegadaTests2, 2);
+}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>43</Width>
@@ -7190,12 +7210,13 @@ intente nuevamente.]]></Text>
 							<ClassName><![CDATA[Group 381.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
+					<ImageIndexCode><![CDATA[renovacionTests2.isActive() ? 1 : 0]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1588782806381</Id>
-					<Name><![CDATA[editbox17]]></Name>
+					<Name><![CDATA[editboxLlegadaTests2]]></Name>
 					<X>1065</X><Y>258</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -7207,13 +7228,13 @@ intente nuevamente.]]></Text>
 						<FillColor/>
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[renovacionTests2.reset();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
 						<DefaultValueCode><![CDATA["dd/mm/aaaa"]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
-						<Link>llegadaTests</Link>
+						<Link>llegadaTests2</Link>
 					</ExtendedProperties>
 				</Control>
 				<Image>
@@ -7518,6 +7539,28 @@ if(!politicaUsuario1){
 					<ImageIndexCode><![CDATA[idioma == "english" ? 0 : 1]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
+				<Rectangle>
+					<Id>1588855052429</Id>
+					<Name><![CDATA[rectangle12]]></Name>
+					<X>1290</X><Y>2170</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>0</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>850</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5192482</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
 			</Presentation>
 
 				</Level>
