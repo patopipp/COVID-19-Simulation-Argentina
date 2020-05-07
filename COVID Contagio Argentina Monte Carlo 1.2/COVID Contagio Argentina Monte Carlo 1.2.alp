@@ -208,7 +208,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["20/03/2020"]]></Code>
+							<Code><![CDATA[inicioCuarenStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -223,7 +223,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["10/05/2020"]]></Code>
+							<Code><![CDATA[finCuarenStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -476,7 +476,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585582798899</Id>
 					<Name><![CDATA[efectoDistSocial]]></Name>
-					<X>1490</X><Y>1655</Y>
+					<X>1490</X><Y>1642</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -608,7 +608,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1585763797279</Id>
 					<Name><![CDATA[efectoRemoticidad]]></Name>
-					<X>1490</X><Y>1720</Y>
+					<X>1490</X><Y>1708</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -691,7 +691,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[inicioDSStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -706,7 +706,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[finDSStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -721,7 +721,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[inicioRemotStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -736,7 +736,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[finRemotStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -751,7 +751,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[inicioPP1Std]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -766,7 +766,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[finPP1Std]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -796,7 +796,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[inicioFIStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -811,7 +811,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+							<Code><![CDATA[finFIStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -938,7 +938,7 @@ cargarGrafico();
 				<Variable Class="PlainVariable">
 					<Id>1586895889497</Id>
 					<Name><![CDATA[ingresosExtranjerosDiarios]]></Name>
-					<X>1890</X><Y>1870</Y>
+					<X>1740</X><Y>1980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -970,7 +970,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["20/03/2020"]]></Code>
+							<Code><![CDATA[inicioFEStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -985,7 +985,7 @@ cargarGrafico();
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA["01/09/2020"]]></Code>
+							<Code><![CDATA[finFEStd]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -1256,7 +1256,7 @@ cargarGrafico();
 				<Variable Class="Parameter">
 					<Id>1588857345349</Id>
 					<Name><![CDATA[efectDSEstandar]]></Name>
-					<X>1940</X><Y>1660</Y>
+					<X>1490</X><Y>1668</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1277,7 +1277,7 @@ cargarGrafico();
 				<Variable Class="Parameter">
 					<Id>1588857358829</Id>
 					<Name><![CDATA[efectRemotEstandar]]></Name>
-					<X>1940</X><Y>1720</Y>
+					<X>1490</X><Y>1734</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1288,6 +1288,294 @@ cargarGrafico();
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1588857358827</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863720383</Id>
+					<Name><![CDATA[inicioCuarenStd]]></Name>
+					<X>1932</X><Y>1580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["20/03/2020"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863720381</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863735514</Id>
+					<Name><![CDATA[finCuarenStd]]></Name>
+					<X>1932</X><Y>1600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["10/05/2020"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863735512</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863746623</Id>
+					<Name><![CDATA[finDSStd]]></Name>
+					<X>1931</X><Y>1667</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863746621</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863763390</Id>
+					<Name><![CDATA[finRemotStd]]></Name>
+					<X>1928</X><Y>1733</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863763388</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863771944</Id>
+					<Name><![CDATA[finPP1Std]]></Name>
+					<X>1930</X><Y>1800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863771942</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863784741</Id>
+					<Name><![CDATA[inicioPP1Std]]></Name>
+					<X>1930</X><Y>1780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863784739</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863792852</Id>
+					<Name><![CDATA[inicioRemotStd]]></Name>
+					<X>1928</X><Y>1713</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863792850</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863805176</Id>
+					<Name><![CDATA[inicioDSStd]]></Name>
+					<X>1931</X><Y>1646</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863805174</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863911814</Id>
+					<Name><![CDATA[finFIStd]]></Name>
+					<X>1920</X><Y>2040</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863911812</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863911817</Id>
+					<Name><![CDATA[inicioFIStd]]></Name>
+					<X>1920</X><Y>2020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["dd/mm/aaaa"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863911815</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863955488</Id>
+					<Name><![CDATA[finFEStd]]></Name>
+					<X>1920</X><Y>1860</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["01/09/2020"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863955486</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1588863955491</Id>
+					<Name><![CDATA[inicioFEStd]]></Name>
+					<X>1920</X><Y>1840</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["20/03/2020"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1588863955489</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1472,25 +1760,6 @@ cargarGrafico();
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1588857624689</Id>
-					<Name><![CDATA[UIElementsMG]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>460</X><Y>-380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[EditBox]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-						<CollectionInitializer Class="CodeValue">
-							<Code><![CDATA[{ editboxCuarent1, editboxCuarent2, editboxDS1, editboxDS2, editboxRemot1, editboxRemot2, editboxPP11, editboxPP12, editboxPP21, editboxPP22, editboxFE1, editboxFE2, editboxFI1, editboxFI2 }]]></Code>
-						</CollectionInitializer>
 					</Properties>
 
 				</Variable>
@@ -2820,7 +3089,8 @@ traceln("Exportacion Finalizada");]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[efectoPoliticasGrafico.reset();
+					<Body><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
+efectoPoliticasGrafico.reset();
 for( int i = 0 ; i < 209 ; i++){
 
 	double dias = i;
@@ -2972,7 +3242,6 @@ try{
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1588857310106</Id>
 					<Name><![CDATA[resetUI]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>460</X><Y>-420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2983,11 +3252,63 @@ try{
 						<Type><![CDATA[boolean]]></Type>
 					</Parameter>
 					<Body><![CDATA[if(medidasGob){
-	for(int i = 0 ; i < UIElementsMG.size() ; i++){
-		UIElementsMG.get(i).
-	} 
+	
+	cuarentenaOn = false;
+	inicioCuarentena = inicioCuarenStd;
+	editboxCuarent1.setValueToDefault();
+	finCuarentena = finCuarenStd;
+	editboxCuarent2.setValueToDefault();
+	
+	distSocialOn = false;
+	inicioDistSocial = inicioDSStd;
+	editboxDS1.setValueToDefault();
+	finDistSocial = finDSStd;
+	editboxDS2.setValueToDefault();
+	efectoDistSocial = efectDSEstandar;
+	sliderDS.setValueToDefault();
+	
+	remoticidadOn = false;
+	inicioRemoticidad = inicioRemotStd;
+	editboxRemot1.setValueToDefault();
+	finRemoticidad = finRemotStd;
+	editboxRemot2.setValueToDefault();
+	efectoRemoticidad = efectRemotEstandar;
+	sliderRemot.setValueToDefault();
+	
+	politicaUsuario1 = false;
+	inicioPoliticaUsuario = inicioPP1Std;
+	editboxPP11.setValueToDefault();
+	finPoliticaUsuario = finPP1Std;
+	editboxPP12.setValueToDefault();
+	efectoPoliticaUsuario = 0.;
+	sliderPP1.setValueToDefault();
+	
+	cierreFronterasExternas = false;
+	inicioCierreFronteras = inicioFEStd;
+	editboxFE1.setValueToDefault();
+	finCierreFronteras = finFEStd;
+	editboxFE2.setValueToDefault();
+	
+	cerrarViajesInternos = false;
+	inicioCierreViajes = inicioFIStd;
+	editboxFI1.setValueToDefault();
+	finCierreViajes = finFIStd;
+	editboxFI2.setValueToDefault();
+	
+	cargarGrafico();
+		
 }else{
-
+	cantidadTests1 = 0;
+	editboxCantidadTests1.setValueToDefault();;
+	llegadaTests1 = "dd/mm/aaaa";
+	editboxLlegadaTests1.setValueToDefault();
+	renovacionTests1.reset();
+	
+	cantidadTests2 = 0;
+	editboxCantidadTests2.setValueToDefault();
+	llegadaTests2 = "dd/mm/aaaa";
+	editboxLlegadaTests2.setValueToDefault();
+	renovacionTests2.reset();
 }]]></Body>
 				</Function>
 			</Functions>
@@ -3600,11 +3921,11 @@ try{
 					<ImageFiles>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Mockup Base Español  1.4.png]]></ClassName>
+							<ClassName><![CDATA[Mockup Base English 1.4.png]]></ClassName>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Mockup Base English 1.4.png]]></ClassName>
+							<ClassName><![CDATA[Mockup Base Español  1.4.png]]></ClassName>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
@@ -5512,8 +5833,7 @@ if(!remoticidadOn){
 					<BasicProperties Width="165" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
-cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
@@ -5537,8 +5857,7 @@ cargarGrafico();]]></ActionCode>
 					<BasicProperties Width="165" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
-cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
@@ -5562,8 +5881,7 @@ cargarGrafico();]]></ActionCode>
 					<BasicProperties Width="165" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
-cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
@@ -7474,8 +7792,7 @@ if(!distSocialOn){
 					<BasicProperties Width="165" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[sumaDeEfectos = (1 - efectoDistSocial) * (1 - efectoPoliticaUsuario) * (1 - efectoRemoticidad) ;
-cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<DefaultValueCode><![CDATA[0.2]]></DefaultValueCode>
@@ -7704,6 +8021,7 @@ if(!politicaUsuario1){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[resetUI(true);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>21</Width>
@@ -7726,6 +8044,7 @@ if(!politicaUsuario1){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[resetUI(false);]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>21</Width>
@@ -12819,6 +13138,42 @@ if(esImportado){
 				<Parameter>
 					<ParameterName><![CDATA[efectRemotEstandar]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioCuarenStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finCuarenStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finDSStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finRemotStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finPP1Std]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioPP1Std]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioRemotStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioDSStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finFIStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioFIStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[finFEStd]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[inicioFEStd]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -13532,6 +13887,42 @@ traceln("Experimento Finalizado");]]></AfterExperimentCode>
 			<FreeformParamValue>	
 				<Id>1588857358829</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863720383</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863735514</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863746623</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863763390</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863771944</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863784741</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863792852</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863805176</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863911814</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863911817</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863955488</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1588863955491</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1584976395709</Id>
 				<Type>FIXED</Type>
@@ -13554,6 +13945,54 @@ traceln("Experimento Finalizado");]]></AfterExperimentCode>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1588857358829</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863720383</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863735514</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863746623</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863763390</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863771944</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863784741</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863792852</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863805176</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863911814</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863911817</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863955488</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1588863955491</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
