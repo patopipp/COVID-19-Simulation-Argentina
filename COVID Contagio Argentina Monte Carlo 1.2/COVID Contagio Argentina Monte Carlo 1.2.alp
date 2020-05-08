@@ -1239,7 +1239,7 @@ cargarGrafico();
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[14]]></Code>
+							<Code><![CDATA[90]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1586178278802</Id>
@@ -10234,22 +10234,23 @@ calculoEfectoTotalPoliticas();]]></Action>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[efectoPoliticas = 1;
+					<Body><![CDATA[boolean tracelnOn = true;
+efectoPoliticas = 1;
 
 //CUARENTENA
 	//Cuarentena activa toda las demas politicas
 
 //DISTANCIAMIENTO SOCIAL
-efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, distanciamientoActivado, fadeOutRestanteCuarenta, fadeOutRestanteDistSoc, main.efectoDistSocial, efectoPoliticas, false);
+efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, distanciamientoActivado, fadeOutRestanteCuarenta, fadeOutRestanteDistSoc, main.efectoDistSocial, efectoPoliticas, tracelnOn );
 
 //REMOTICIDAD
-efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, remoticidadActivada, fadeOutRestanteCuarenta, fadeOutRestanteRemoticidad, main.efectoRemoticidad, efectoPoliticas, false);
+efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, remoticidadActivada, fadeOutRestanteCuarenta, fadeOutRestanteRemoticidad, main.efectoRemoticidad, efectoPoliticas, tracelnOn );
 
 //Politica Usuario 1
-efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, politicaUsuario1, fadeOutRestanteCuarenta, fadeOutRestantePoliticaUsuario1, main.efectoPoliticaUsuario1, efectoPoliticas, false);
+efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, politicaUsuario1, fadeOutRestanteCuarenta, fadeOutRestantePoliticaUsuario1, main.efectoPoliticaUsuario1, efectoPoliticas, tracelnOn );
 
 //Politica Usuario 2
-efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, politicaUsuario2, fadeOutRestanteCuarenta, fadeOutRestantePoliticaUsuario2, main.efectoPoliticaUsuario2, efectoPoliticas, false);
+efectoPoliticas = calculoEfectoIndividualPoliticas(cuarentenaActivada, politicaUsuario2, fadeOutRestanteCuarenta, fadeOutRestantePoliticaUsuario2, main.efectoPoliticaUsuario2, efectoPoliticas, tracelnOn );
 
 //VIAJES INHABILITADOS
 boolean noHayViajes = false;
@@ -10333,7 +10334,7 @@ if(politicaActivada || cuarentenaActivada || fadeOutRestantePolitica > 0 || fade
 	
 	efectoResidual = fadeOutRestante/main.diasFadeOut;
 	
-	efectoSumadoPoliticas = efectoPoliticaAplicada* (1 - (efectoPoliticaAplicada* efectoResidual));
+	efectoSumadoPoliticas = efectoSumadoPoliticas * (1 - (efectoPoliticaAplicada* efectoResidual));
 	
 }
 
@@ -13617,27 +13618,28 @@ if(esImportado){
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 
 			<Presentation>
-				<Text>
-					<Id>0</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>50</X><Y>30</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<Image>
+					<Id>1588966597383</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
+					<Width>1280</Width>
+					<Height>720</Height>
 					<Rotation>0.0</Rotation>
-					<Color>-12490271</Color>
-					<Text><![CDATA[Impact of Non Pharmaceutical Interventions on Healthcare Demand in Argentina]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>24</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Mockup 1.4 Simulation.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 			</Presentation>
 
 			<Parameters>			
@@ -14680,6 +14682,10 @@ traceln("Experimento Finalizado");]]></AfterExperimentCode>
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Todas (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Mockup 1.4 Simulation.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
