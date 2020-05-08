@@ -1005,21 +1005,6 @@ cargarGrafico();
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1586971241707</Id>
-					<Name><![CDATA[nombreCustom1]]></Name>
-					<X>1280</X><Y>1800</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[String]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA["Política Personalizada"]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1586971884292</Id>
 					<Name><![CDATA[fronterasExtCerradas]]></Name>
 					<X>1740</X><Y>2080</Y>
@@ -1782,66 +1767,6 @@ cargarGrafico();
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1586266958851</Id>
-					<Name><![CDATA[regionesSele]]></Name>
-					<X>1960</X><Y>1460</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1586266991643</Id>
-					<Name><![CDATA[medidasSele]]></Name>
-					<X>1960</X><Y>1480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1586267018929</Id>
-					<Name><![CDATA[fechaInicioSel]]></Name>
-					<X>1960</X><Y>1500</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1586267028719</Id>
-					<Name><![CDATA[fechaFinSel]]></Name>
-					<X>1960</X><Y>1520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
 					<Id>1586896008467</Id>
 					<Name><![CDATA[destinosExterior]]></Name>
 					<X>1890</X><Y>2090</Y>
@@ -1868,6 +1793,60 @@ cargarGrafico();
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1588940812905</Id>
+					<Name><![CDATA[politicasActivas]]></Name>
+					<X>1280</X><Y>1920</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Boolean]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ cuarentenaOn, distSocialOn, remoticidadOn, politicaUsuario1, politicaUsuario2, cerrarViajesInternos }]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1588940839807</Id>
+					<Name><![CDATA[inicioPoliticasString]]></Name>
+					<X>1280</X><Y>1960</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ inicioCuarentena, inicioDistSocial, inicioRemoticidad, inicioPoliticaUsuario1, inicioPoliticaUsuario2, inicioCierreViajes }]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1588940887737</Id>
+					<Name><![CDATA[finPoliticasString]]></Name>
+					<X>1280</X><Y>1980</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ finCuarentena, finDistSocial, finRemoticidad, finPoliticaUsuario1, finPoliticaUsuario2, finCierreViajes }]]></Code>
+						</CollectionInitializer>
 					</Properties>
 
 				</Variable>
@@ -2422,355 +2401,59 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(cierreFronterasExternas){
-	try{
-		inicioCierreFronterasExt.restartTo(parseDate(inicioCierreFronteras));
-		finCierreFrontersExt.restartTo(parseDate(finCierreFronteras));
-	}catch(Exception e){
-		errorFormato = true;
-		
-		inicioCierreFronteras = "dd/mm/aaaa";
-		finCierreFronteras = "dd/mm/aaaa";
-		
-		editboxFE1.setValueToDefault();
-		editboxFE2.setValueToDefault();
-
-	}
-
-}
+					<Body><![CDATA[SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+actualizarPoliticas();
 
 // Se activan los eventos para booleans de las distintas politicas 
 // en las regiones seleccionadas.
-
 boolean todas = regSel == null;
-if(todas){
 
-	regionesSele.add("Todas");
+for(int i = 0; i < regions.size(); i++){
 	
-	if( cuarentenaOn){
-		medidasSele.add("Cuarentena Total");
-		
-		fechaInicioSel.add(inicioCuarentena  + " - ");
-		fechaFinSel.add(finCuarentena);
-	}
-	if ( distSocialOn ){
-		medidasSele.add("Distanciamiento Social");
-		
-		fechaInicioSel.add(inicioDistSocial + " - ");
-		fechaFinSel.add(finDistSocial);
-	}
-	if ( remoticidadOn ){
-		medidasSele.add("Trabajo/Escuelas Remotas");
-		
-		fechaInicioSel.add(inicioRemoticidad  + " - ");
-		fechaFinSel.add(finRemoticidad);
-	}
-	if (politicaUsuario1){
-		medidasSele.add(nombreCustom1);
-		
-		fechaInicioSel.add(inicioPoliticaUsuario1  + " - ");
-		fechaFinSel.add(finPoliticaUsuario1);
-	
-	}
-	if (cerrarViajesInternos){
-		medidasSele.add("Cierre de Fronteras Int.");
-		
-		fechaInicioSel.add(inicioCierreViajes  + " - ");
-		fechaFinSel.add(finCierreViajes);
-	}
-	
-	for(int i = 0; i < regions.size(); i++){
-		
-		Region reg = regions.get(i);
+	Region reg = regions.get(i);
+
+	if ( todas || reg == regSel){	
 		
 		//Politica de Testeo
 		reg.politicaTesteo = politicaTesteo;
 		
-		//Cuarentena
-		if( cuarentenaOn ){
-			try{
-				reg.inicioCuarentena.restartTo(parseDate(inicioCuarentena));
-				reg.finCuarentena.restartTo(parseDate(finCuarentena));
-			}catch(Exception e){
-				errorFormato = true;
+		for ( int j = 0; j < politicasActivas.size() ; j++){
+			if(politicasActivas.get(j)){
+				try{
+					resetTextboxColor(j);
 				
-				medidasSele.remove(medidasSele.size()-1);
-				fechaInicioSel.remove(fechaInicioSel.size()-1);
-				fechaFinSel.remove(fechaFinSel.size()-1);
-				
-				inicioCuarentena = "dd/mm/aaaa";
-				finCuarentena = "dd/mm/aaaa";
-				
-				editboxCuarent1.setValueToDefault();
-				editboxCuarent2.setValueToDefault();
-				
-				e.printStackTrace();
-			}
-		}
-				
-		//Distancianmiento Social
-		if( distSocialOn ){		
-			try{
-				reg.inicioDistanciamiento.restartTo(parseDate(inicioDistSocial));
-				reg.finDistanciamiento.restartTo(parseDate(finDistSocial));
-			}catch(Exception e){
-				errorFormato = true;
-				
-				medidasSele.remove(medidasSele.size()-1);
-				fechaInicioSel.remove(fechaInicioSel.size()-1);
-				fechaFinSel.remove(fechaFinSel.size()-1);
-				
-				inicioDistSocial = "dd/mm/aaaa";
-				finDistSocial = "dd/mm/aaaa";
-				
-				editboxDS1.setValueToDefault();
-				editboxDS2.setValueToDefault();
-				e.printStackTrace();
-			}
-		}
-		
-		//Trabajo/Escuela Remoto
-		if (remoticidadOn ){
-		
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			try{
-				Date fechaInicio = sdf.parse(inicioRemoticidad);
-				Date fechaFin = sdf.parse(finRemoticidad);
-				
-				reg.inicioRemoticidad.restartTo(fechaInicio);
-				reg.finRemoticidad.restartTo(fechaFin);
-			}catch(Exception e){
-				errorFormato = true;
-				
-				medidasSele.remove(medidasSele.size()-1);
-				fechaInicioSel.remove(fechaInicioSel.size()-1);
-				fechaFinSel.remove(fechaFinSel.size()-1);
-				
-				inicioRemoticidad = "dd/mm/aaaa";
-				finRemoticidad = "dd/mm/aaaa";
-				
-				editboxRemot1.setValueToDefault();
-				editboxRemot2.setValueToDefault();
-				e.printStackTrace();
-			}
-		}
-		
-		//Politica del Usuario
-		if( politicaUsuario1 ){
-		
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			try{
-				Date fechaInicio = sdf.parse(inicioPoliticaUsuario1);
-				Date fechaFin = sdf.parse(finPoliticaUsuario1);
-				
-				reg.inicioPoliticaUsuario1.restartTo(fechaInicio);
-				reg.finPoliticaUsuario1.restartTo(fechaFin);
-			}catch(Exception e){
-				errorFormato = true;
-				
-				medidasSele.remove(medidasSele.size()-1);
-				fechaInicioSel.remove(fechaInicioSel.size()-1);
-				fechaFinSel.remove(fechaFinSel.size()-1);
-				
-				inicioPoliticaUsuario1 = "dd/mm/aaaa";
-				finPoliticaUsuario1 = "dd/mm/aaaa";
-				
-				editboxPP11.setValueToDefault();
-				editboxPP12.setValueToDefault();
-			
-				e.printStackTrace();
-			}
-		}
-		
-		//Cerrar Viajes Internos
-		if (cerrarViajesInternos ){
-		
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			try{
-				Date fechaInicio = sdf.parse(inicioCierreViajes);
-				Date fechaFin = sdf.parse(finCierreViajes);
-				
-				reg.inicioCierreViajes.restartTo(fechaInicio);
-				reg.finCierreViajes.restartTo(fechaFin);
-			}catch(Exception e){
-				errorFormato = true;
-				
-				medidasSele.remove(medidasSele.size()-1);
-				fechaInicioSel.remove(fechaInicioSel.size()-1);
-				fechaFinSel.remove(fechaFinSel.size()-1);
-				
-				inicioCierreViajes = "dd/mm/aaaa";
-				finCierreViajes = "dd/mm/aaaa";
-				
-				editboxFI1.setValueToDefault();
-				editboxFI2.setValueToDefault();
-				e.printStackTrace();
-			}
-		}
-	}
-}else{
-	
-	regionesSele.add(regSel.nombre);
-	
-	//Politica Testeo
-	regSel.politicaTesteo = politicaTesteo;
-	
-	//Cuarentena
-	if( cuarentenaOn ){
-
-		medidasSele.add("Cuarentena Total");
-	
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioCuarentena);
-			Date fechaFin = sdf.parse(finCuarentena);
-
-			fechaInicioSel.add(inicioCuarentena  + " - ");
-			fechaFinSel.add(finCuarentena);
-
-			regSel.inicioCuarentena.restartTo(fechaInicio);
-			regSel.finCuarentena.restartTo(fechaFin);
-		}catch(Exception e){
-			errorFormato = true;
-			
-			medidasSele.remove(medidasSele.size()-1);
-
-			inicioCuarentena = "dd/mm/aaaa";
-			finCuarentena = "dd/mm/aaaa";
-			
-			editboxCuarent1.setValueToDefault();
-			editboxCuarent2.setValueToDefault();
-			
-			e.printStackTrace();
-		}
-	}
-			
-	//Distancianmiento Social
-	if( distSocialOn ){
-	
-		medidasSele.add("Distanciamiento Social");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioDistSocial);
-			Date fechaFin = sdf.parse(finDistSocial);
+					Date fechaInicio = sdf.parse(inicioPoliticasString.get(j));
+					Date fechaFin = sdf.parse(finPoliticasString.get(j));
 					
-			fechaInicioSel.add(inicioDistSocial + " - ");
-			fechaFinSel.add(finDistSocial);
+					if( fechaInicio.before(fechaFin)){
+						reg.startEvents.get(j).restartTo(fechaInicio);
+						reg.endEvents.get(j).restartTo(fechaFin);
+					}else{
+						resetPoliticas(j, false);
+					}
+					
+				}catch(Exception e){
+					//e.printStackTrace();
+					traceln("Error en j = " + j);
+					resetPoliticas(j, false);
+				}
 			
-			regSel.inicioDistanciamiento.restartTo(fechaInicio);
-			regSel.finDistanciamiento.restartTo(fechaFin);
-		}catch(Exception e){
-			errorFormato = true;
-			
-			medidasSele.remove(medidasSele.size()-1);
-			
-			inicioDistSocial = "dd/mm/aaaa";
-			finDistSocial = "dd/mm/aaaa";
-			
-			editboxDS1.setValueToDefault();
-			editboxDS2.setValueToDefault();
-			e.printStackTrace();
-		}
-	}
-	
-	//Trabajo/Escuela Remoto
-	if (remoticidadOn ){
-		
-		medidasSele.add("Trabajo/Escuelas Remotas");
-	
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioRemoticidad);
-			Date fechaFin = sdf.parse(finRemoticidad);
-			
-			fechaInicioSel.add(inicioRemoticidad + " - ");
-			fechaFinSel.add(finRemoticidad);
-			
-			regSel.inicioRemoticidad.restartTo(fechaInicio);
-			regSel.finRemoticidad.restartTo(fechaFin);
-		}catch(Exception e){
-			errorFormato = true;
-			
-			medidasSele.remove(medidasSele.size()-1);
-			
-			inicioRemoticidad = "dd/mm/aaaa";
-			finRemoticidad = "dd/mm/aaaa";
-			
-			editboxRemot1.setValueToDefault();
-			editboxRemot2.setValueToDefault();
-			e.printStackTrace();
-		}
-	}
-	
-	//Politica del Usuario
-	if( politicaUsuario1 ){
-	
-		medidasSele.add(nombreCustom1);
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioPoliticaUsuario1);
-			Date fechaFin = sdf.parse(finPoliticaUsuario1);
-						
-			fechaInicioSel.add(inicioPoliticaUsuario1 + " - ");
-			fechaFinSel.add(finPoliticaUsuario1);
-			
-			regSel.inicioPoliticaUsuario1.restartTo(fechaInicio);
-			regSel.finPoliticaUsuario1.restartTo(fechaFin);
-		}catch(Exception e){
-			errorFormato = true;
-			
-			medidasSele.remove(medidasSele.size()-1);
-			
-			inicioPoliticaUsuario1 = "dd/mm/aaaa";
-			finPoliticaUsuario1 = "dd/mm/aaaa";
-			
-			editboxPP11.setValueToDefault();
-			editboxPP12.setValueToDefault();
-		
-			e.printStackTrace();
-		}
-	}
-	
-	//Cerrar Viajes Internos
-	if (cerrarViajesInternos ){
-	
-		medidasSele.add("Cierre de Fronteras Int.");
-	
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try{
-			Date fechaInicio = sdf.parse(inicioCierreViajes);
-			Date fechaFin = sdf.parse(finCierreViajes);
-						
-			fechaInicioSel.add(inicioCierreViajes + " - ");
-			fechaFinSel.add(finCierreViajes);
-			
-			regSel.inicioCierreViajes.restartTo(fechaInicio);
-			regSel.finCierreViajes.restartTo(fechaFin);
-		}catch(Exception e){
-			errorFormato = true;
-			
-			medidasSele.remove(medidasSele.size()-1);
-
-			inicioCierreViajes = "dd/mm/aaaa";
-			finCierreViajes = "dd/mm/aaaa";
-			
-			editboxFI1.setValueToDefault();
-			editboxFI2.setValueToDefault();
-			e.printStackTrace();
+			}
 		}
 	}
 }
 
-for( int i = 0; i < medidasSele.size()-regionesSele.size(); i++){
-	regionesSele.add(" ");
-}
+//Medidas Globales
+if(cierreFronterasExternas){
+	try{
+		inicioCierreFronterasExt.restartTo(sdf.parse(inicioCierreFronteras));
+		finCierreFrontersExt.restartTo(sdf.parse(finCierreFronteras));
+	}catch(Exception e){
+		e.printStackTrace();
+		resetPoliticas(6, false);
+	}
 
-regionesSele.add("");
-medidasSele.add("");
-fechaInicioSel.add("");
-fechaFinSel.add("");]]></Body>
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3204,7 +2887,7 @@ for( int i = 0 ; i < 209 ; i++){
 			}
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
@@ -3341,49 +3024,10 @@ try{
 					</Parameter>
 					<Body><![CDATA[if(medidasGob){
 	
-	cuarentenaOn = false;
-	inicioCuarentena = inicioCuarenStd;
-	editboxCuarent1.setValueToDefault();
-	finCuarentena = finCuarenStd;
-	editboxCuarent2.setValueToDefault();
-	
-	distSocialOn = false;
-	inicioDistSocial = inicioDSStd;
-	editboxDS1.setValueToDefault();
-	finDistSocial = finDSStd;
-	editboxDS2.setValueToDefault();
-	efectoDistSocial = efectDSEstandar;
-	sliderDS.setValueToDefault();
-	
-	remoticidadOn = false;
-	inicioRemoticidad = inicioRemotStd;
-	editboxRemot1.setValueToDefault();
-	finRemoticidad = finRemotStd;
-	editboxRemot2.setValueToDefault();
-	efectoRemoticidad = efectRemotEstandar;
-	sliderRemot.setValueToDefault();
-	
-	politicaUsuario1 = false;
-	inicioPoliticaUsuario1 = inicioPP1Std;
-	editboxPP11.setValueToDefault();
-	finPoliticaUsuario1 = finPP1Std;
-	editboxPP12.setValueToDefault();
-	efectoPoliticaUsuario1 = 0.;
-	sliderPP1.setValueToDefault();
-	
-	cierreFronterasExternas = false;
-	inicioCierreFronteras = inicioFEStd;
-	editboxFE1.setValueToDefault();
-	finCierreFronteras = finFEStd;
-	editboxFE2.setValueToDefault();
-	
-	cerrarViajesInternos = false;
-	inicioCierreViajes = inicioFIStd;
-	editboxFI1.setValueToDefault();
-	finCierreViajes = finFIStd;
-	editboxFI2.setValueToDefault();
-	
-	cargarGrafico();
+	for(int i = 0 ; i <= 6 ; i++){
+		resetPoliticas(i, true);
+		resetTextboxColor(i);
+	}
 		
 }else{
 	cantidadTests1 = 0;
@@ -3400,27 +3044,630 @@ try{
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[Date]]></ReturnType>
-					<Id>1588885611381</Id>
-					<Name><![CDATA[parseDate]]></Name>
-					<X>1260</X><Y>1460</Y>
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1588940750416</Id>
+					<Name><![CDATA[aplicarCambiosbackup]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1300</X><Y>1320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+//Medidas Globales
+if(cierreFronterasExternas){
+	try{
+		inicioCierreFronterasExt.restartTo(sdf.parse(inicioCierreFronteras));
+		finCierreFrontersExt.restartTo(sdf.parse(finCierreFronteras));
+	}catch(Exception e){
+		errorFormato = true;
+		
+		inicioCierreFronteras = "dd/mm/aaaa";
+		finCierreFronteras = "dd/mm/aaaa";
+		
+		editboxFE1.setValueToDefault();
+		editboxFE2.setValueToDefault();
+
+	}
+
+}
+
+// Se activan los eventos para booleans de las distintas politicas 
+// en las regiones seleccionadas.
+
+boolean todas = regSel == null;
+if(todas){
+
+	regionesSele.add("Todas");
+	
+	if( cuarentenaOn){
+		medidasSele.add("Cuarentena Total");
+		
+		fechaInicioSel.add(inicioCuarentena  + " - ");
+		fechaFinSel.add(finCuarentena);
+	}
+	if ( distSocialOn ){
+		medidasSele.add("Distanciamiento Social");
+		
+		fechaInicioSel.add(inicioDistSocial + " - ");
+		fechaFinSel.add(finDistSocial);
+	}
+	if ( remoticidadOn ){
+		medidasSele.add("Trabajo/Escuelas Remotas");
+		
+		fechaInicioSel.add(inicioRemoticidad  + " - ");
+		fechaFinSel.add(finRemoticidad);
+	}
+	if (politicaUsuario1){
+		medidasSele.add(nombreCustom1);
+		
+		fechaInicioSel.add(inicioPoliticaUsuario1  + " - ");
+		fechaFinSel.add(finPoliticaUsuario1);
+	
+	}
+	if (cerrarViajesInternos){
+		medidasSele.add("Cierre de Fronteras Int.");
+		
+		fechaInicioSel.add(inicioCierreViajes  + " - ");
+		fechaFinSel.add(finCierreViajes);
+	}
+	
+	for(int i = 0; i < regions.size(); i++){
+		
+		Region reg = regions.get(i);
+		
+		//Politica de Testeo
+		reg.politicaTesteo = politicaTesteo;
+		
+		//Cuarentena
+		if( cuarentenaOn ){
+			try{
+				//reg.startEvents.get(0).restartTo(sdf.parse(inicioCuarentena));
+				reg.inicioCuarentena.restartTo(sdf.parse(inicioCuarentena));
+				reg.finCuarentena.restartTo(sdf.parse(finCuarentena));
+			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioCuarentena = "dd/mm/aaaa";
+				finCuarentena = "dd/mm/aaaa";
+				
+				editboxCuarent1.setValueToDefault();
+				editboxCuarent2.setValueToDefault();
+				
+				e.printStackTrace();
+			}
+		}
+				
+		//Distancianmiento Social
+		if( distSocialOn ){		
+			try{
+				reg.inicioDistanciamiento.restartTo(sdf.parse(inicioDistSocial));
+				reg.finDistanciamiento.restartTo(sdf.parse(finDistSocial));
+			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioDistSocial = "dd/mm/aaaa";
+				finDistSocial = "dd/mm/aaaa";
+				
+				editboxDS1.setValueToDefault();
+				editboxDS2.setValueToDefault();
+				e.printStackTrace();
+			}
+		}
+		
+		//Trabajo/Escuela Remoto
+		if (remoticidadOn ){
+		
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioRemoticidad);
+				Date fechaFin = sdf.parse(finRemoticidad);
+				
+				reg.inicioRemoticidad.restartTo(sdf.parse(inicioRemoticidad));
+				reg.finRemoticidad.restartTo(sdf.parse(finRemoticidad));
+			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioRemoticidad = "dd/mm/aaaa";
+				finRemoticidad = "dd/mm/aaaa";
+				
+				editboxRemot1.setValueToDefault();
+				editboxRemot2.setValueToDefault();
+				e.printStackTrace();
+			}
+		}
+		
+		//Politica del Usuario
+		if( politicaUsuario1 ){
+		
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioPoliticaUsuario1);
+				Date fechaFin = sdf.parse(finPoliticaUsuario1);
+				
+				reg.inicioPoliticaUsuario1.restartTo(fechaInicio);
+				reg.finPoliticaUsuario1.restartTo(fechaFin);
+			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioPoliticaUsuario1 = "dd/mm/aaaa";
+				finPoliticaUsuario1 = "dd/mm/aaaa";
+				
+				editboxPP11.setValueToDefault();
+				editboxPP12.setValueToDefault();
+			
+				e.printStackTrace();
+			}
+		}
+		
+		//Cerrar Viajes Internos
+		if (cerrarViajesInternos ){
+		
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try{
+				Date fechaInicio = sdf.parse(inicioCierreViajes);
+				Date fechaFin = sdf.parse(finCierreViajes);
+				
+				reg.inicioCierreViajes.restartTo(fechaInicio);
+				reg.finCierreViajes.restartTo(fechaFin);
+			}catch(Exception e){
+				errorFormato = true;
+				
+				medidasSele.remove(medidasSele.size()-1);
+				fechaInicioSel.remove(fechaInicioSel.size()-1);
+				fechaFinSel.remove(fechaFinSel.size()-1);
+				
+				inicioCierreViajes = "dd/mm/aaaa";
+				finCierreViajes = "dd/mm/aaaa";
+				
+				editboxFI1.setValueToDefault();
+				editboxFI2.setValueToDefault();
+				e.printStackTrace();
+			}
+		}
+	}
+}else{
+	
+	regionesSele.add(regSel.nombre);
+	
+	//Politica Testeo
+	regSel.politicaTesteo = politicaTesteo;
+	
+	//Cuarentena
+	if( cuarentenaOn ){
+
+		medidasSele.add("Cuarentena Total");
+	
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioCuarentena);
+			Date fechaFin = sdf.parse(finCuarentena);
+
+			fechaInicioSel.add(inicioCuarentena  + " - ");
+			fechaFinSel.add(finCuarentena);
+
+			regSel.inicioCuarentena.restartTo(fechaInicio);
+			regSel.finCuarentena.restartTo(fechaFin);
+		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+
+			inicioCuarentena = "dd/mm/aaaa";
+			finCuarentena = "dd/mm/aaaa";
+			
+			editboxCuarent1.setValueToDefault();
+			editboxCuarent2.setValueToDefault();
+			
+			e.printStackTrace();
+		}
+	}
+			
+	//Distancianmiento Social
+	if( distSocialOn ){
+	
+		medidasSele.add("Distanciamiento Social");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioDistSocial);
+			Date fechaFin = sdf.parse(finDistSocial);
+					
+			fechaInicioSel.add(inicioDistSocial + " - ");
+			fechaFinSel.add(finDistSocial);
+			
+			regSel.inicioDistanciamiento.restartTo(fechaInicio);
+			regSel.finDistanciamiento.restartTo(fechaFin);
+		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioDistSocial = "dd/mm/aaaa";
+			finDistSocial = "dd/mm/aaaa";
+			
+			editboxDS1.setValueToDefault();
+			editboxDS2.setValueToDefault();
+			e.printStackTrace();
+		}
+	}
+	
+	//Trabajo/Escuela Remoto
+	if (remoticidadOn ){
+		
+		medidasSele.add("Trabajo/Escuelas Remotas");
+	
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioRemoticidad);
+			Date fechaFin = sdf.parse(finRemoticidad);
+			
+			fechaInicioSel.add(inicioRemoticidad + " - ");
+			fechaFinSel.add(finRemoticidad);
+			
+			regSel.inicioRemoticidad.restartTo(fechaInicio);
+			regSel.finRemoticidad.restartTo(fechaFin);
+		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioRemoticidad = "dd/mm/aaaa";
+			finRemoticidad = "dd/mm/aaaa";
+			
+			editboxRemot1.setValueToDefault();
+			editboxRemot2.setValueToDefault();
+			e.printStackTrace();
+		}
+	}
+	
+	//Politica del Usuario
+	if( politicaUsuario1 ){
+	
+		medidasSele.add(nombreCustom1);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioPoliticaUsuario1);
+			Date fechaFin = sdf.parse(finPoliticaUsuario1);
+						
+			fechaInicioSel.add(inicioPoliticaUsuario1 + " - ");
+			fechaFinSel.add(finPoliticaUsuario1);
+			
+			regSel.inicioPoliticaUsuario1.restartTo(fechaInicio);
+			regSel.finPoliticaUsuario1.restartTo(fechaFin);
+		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+			
+			inicioPoliticaUsuario1 = "dd/mm/aaaa";
+			finPoliticaUsuario1 = "dd/mm/aaaa";
+			
+			editboxPP11.setValueToDefault();
+			editboxPP12.setValueToDefault();
+		
+			e.printStackTrace();
+		}
+	}
+	
+	//Cerrar Viajes Internos
+	if (cerrarViajesInternos ){
+	
+		medidasSele.add("Cierre de Fronteras Int.");
+	
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date fechaInicio = sdf.parse(inicioCierreViajes);
+			Date fechaFin = sdf.parse(finCierreViajes);
+						
+			fechaInicioSel.add(inicioCierreViajes + " - ");
+			fechaFinSel.add(finCierreViajes);
+			
+			regSel.inicioCierreViajes.restartTo(fechaInicio);
+			regSel.finCierreViajes.restartTo(fechaFin);
+		}catch(Exception e){
+			errorFormato = true;
+			
+			medidasSele.remove(medidasSele.size()-1);
+
+			inicioCierreViajes = "dd/mm/aaaa";
+			finCierreViajes = "dd/mm/aaaa";
+			
+			editboxFI1.setValueToDefault();
+			editboxFI2.setValueToDefault();
+			e.printStackTrace();
+		}
+	}
+}
+
+for( int i = 0; i < medidasSele.size()-regionesSele.size(); i++){
+	regionesSele.add(" ");
+}
+
+regionesSele.add("");
+medidasSele.add("");
+fechaInicioSel.add("");
+fechaFinSel.add("");]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1588942381139</Id>
+					<Name><![CDATA[resetPoliticas]]></Name>
+					<X>460</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[fechaString]]></Name>
-						<Type><![CDATA[String]]></Type>
+						<Name><![CDATA[indice]]></Name>
+						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					<Parameter>
+						<Name><![CDATA[esReset]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch(indice){
+	case 0:	
+		//CUARENTENA			
+		if(esReset){
+			cuarentenaOn = false;
+			
+			inicioCuarentena = inicioCuarenStd;
+			finCuarentena = finCuarenStd;
+			
+			editboxCuarent1.setValueToDefault();
+			editboxCuarent2.setValueToDefault();
+		}else{
+			editboxCuarent1.setTextColor(red);
+			editboxCuarent2.setTextColor(red);
+		}
+	break;
+	
+	case 1:
+		//DIST SOC
+		if(esReset){
+			distSocialOn = false;
+		
+			inicioDistSocial = inicioDSStd;
+			finDistSocial= finDSStd;
+		
+			editboxDS1.setValueToDefault();
+			editboxDS2.setValueToDefault();	
+			
+			efectoDistSocial = efectDSEstandar;
+			sliderDS.setValueToDefault();
+		}else{
+			editboxDS1.setTextColor(red);
+			editboxDS2.setTextColor(red);	
+		}
+	break;
+	
+	case 2:
+		//REMOTICIDAD
+		if(esReset){
+			remoticidadOn = false;
+			
+			inicioRemoticidad= inicioRemotStd;
+			finDistSocial= finRemotStd;
+		
+			editboxRemot1.setValueToDefault();
+			editboxRemot2.setValueToDefault();	
+		
+			efectoRemoticidad = efectRemotEstandar;
+			sliderRemot.setValueToDefault();
+		}else{
+			editboxRemot1.setTextColor(red);
+			editboxRemot2.setTextColor(red);	
+		}
+	break;
+			
+	case 3:
+		//PP1
+	
+		
+		if(esReset){
+			politicaUsuario1 = false;
+		
+			inicioPoliticaUsuario1= inicioPP1Std;
+			finPoliticaUsuario1= finPP1Std;
+		
+			editboxPP11.setValueToDefault();
+			editboxPP12.setValueToDefault();
+				
+			efectoPoliticaUsuario1 = 0.;
+			sliderPP1.setValueToDefault();
+		}else{
+			editboxPP11.setTextColor(red);
+			editboxPP12.setTextColor(red);
+		}
+	break;
 
-try{
-	Date fecha = sdf.parse(fechaString);
-}finally{
-	return fecha;
+	case 4:
+		//PP2
+		
+		if(esReset){
+			politicaUsuario2 = false;
+		
+			inicioPoliticaUsuario2= inicioPP2Std;
+			finPoliticaUsuario2= finPP2Std;
+		
+			editboxPP21.setValueToDefault();
+			editboxPP22.setValueToDefault();
+			
+			efectoPoliticaUsuario2 = 0.;
+			sliderPP2.setValueToDefault();
+		}else{
+			editboxPP21.setTextColor(red);
+			editboxPP22.setTextColor(red);
+		}
+	break;
+	
+	case 5:
+		//VIAJES INTERNOS
+
+		if(esReset){
+			cerrarViajesInternos = false;
+			
+			inicioCierreViajes= inicioFIStd;
+			finCierreViajes= finFIStd;
+		
+			editboxFI1.setValueToDefault();
+			editboxFI2.setValueToDefault();
+		}else{
+			editboxFI1.setTextColor(red);
+			editboxFI2.setTextColor(red);
+		}	
+	break;
+	
+	case 6:
+		//VIAJES EXTERNOS
+		
+		
+		if(esReset){
+			cierreFronterasExternas = false;
+			
+			inicioCierreFronteras= inicioFIStd;
+			finCierreFronteras= finFIStd;
+		
+			editboxFE1.setValueToDefault();
+			editboxFE2.setValueToDefault();
+		}else{
+			editboxFE1.setTextColor(red);
+			editboxFE2.setTextColor(red);
+		}	
+	break;
 }
 
+actualizarPoliticas();
+cargarGrafico();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1588949138545</Id>
+					<Name><![CDATA[actualizarPoliticas]]></Name>
+					<X>460</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[politicasActivas.clear();
+inicioPoliticasString.clear();
+finPoliticasString.clear();
+
+//Cuarentena
+politicasActivas.add(cuarentenaOn);
+inicioPoliticasString.add(inicioCuarentena);
+finPoliticasString.add(finCuarentena);
+
+//Dist Social
+politicasActivas.add(distSocialOn);
+inicioPoliticasString.add(inicioDistSocial);
+finPoliticasString.add(finDistSocial);
+
+//Remoticidad
+politicasActivas.add(remoticidadOn);
+inicioPoliticasString.add(inicioRemoticidad);
+finPoliticasString.add(finRemoticidad);
+
+//PP1
+politicasActivas.add(politicaUsuario1);
+inicioPoliticasString.add(inicioPoliticaUsuario1);
+finPoliticasString.add(finPoliticaUsuario1);
+
+//PP2
+politicasActivas.add(politicaUsuario2);
+inicioPoliticasString.add(inicioPoliticaUsuario2);
+finPoliticasString.add(finPoliticaUsuario2);
+
+//FI
+politicasActivas.add(cerrarViajesInternos);
+inicioPoliticasString.add(inicioCierreViajes);
+finPoliticasString.add(finCierreViajes);
+
+/*/FE
+politicasActivas.set(6, cierreFronterasExternas);
+inicioPoliticasString.set(6, inicioCierreFronteras);
+finPoliticasString.set(6, finCierreFronteras);*/
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1588964542716</Id>
+					<Name><![CDATA[resetTextboxColor]]></Name>
+					<X>460</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[indice]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch(indice){
+	case 0:	
+		//CUARENTENA			
+		editboxCuarent1.setTextColor(navy);
+		editboxCuarent2.setTextColor(navy);
+	break;
+	
+	case 1:
+		//DIST SOC
+		editboxDS1.setTextColor(navy);
+		editboxDS2.setTextColor(navy);	
+	break;
+	
+	case 2:
+		//Remot
+		editboxRemot1.setTextColor(navy);
+		editboxRemot2.setTextColor(navy);	
+	break;
+			
+	case 3:
+		//PP1
+		editboxPP11.setTextColor(navy);
+		editboxPP12.setTextColor(navy);
+	break;
+
+	case 4:
+		//PP2
+		editboxPP21.setTextColor(navy);
+		editboxPP22.setTextColor(navy);
+	break;
+	
+	case 5:
+		//VIAJES INTERNOS
+		editboxFI1.setTextColor(navy);
+		editboxFI2.setTextColor(navy);
+	break;
+	
+	case 6:
+		//VIAJES EXTERNOS
+		editboxFE1.setTextColor(navy);
+		editboxFE2.setTextColor(navy);	
+	break;
+}
 ]]></Body>
 				</Function>
 			</Functions>
@@ -4488,6 +4735,8 @@ try{
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[cuarentenaOn]]></EnableExpression>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -4512,7 +4761,8 @@ try{
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[cuarentenaOn]]></EnableExpression>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5581,6 +5831,7 @@ a traves de los viajes inter regionales]]></Text>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[cuarentenaOn = !cuarentenaOn;
+actualizoKpis();
 if(!cuarentenaOn){
 	cargarGrafico();
 }]]></OnClickCode>
@@ -5643,6 +5894,7 @@ if(!distSocialOn){
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[remoticidadOn = !remoticidadOn;
+actualizoKpis();
 if(!remoticidadOn){
 	cargarGrafico();
 }]]></OnClickCode>
@@ -5708,6 +5960,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[distSocialOn]]></EnableExpression>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5732,7 +5986,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[distSocialOn]]></EnableExpression>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5757,6 +6012,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[politicaUsuario1]]></EnableExpression>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5781,7 +6038,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[politicaUsuario1]]></EnableExpression>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5806,6 +6064,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[remoticidadOn]]></EnableExpression>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -5854,7 +6114,8 @@ if(!remoticidadOn){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[remoticidadOn]]></EnableExpression>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -6662,180 +6923,6 @@ a traves de los viajes del Exterior]]></Text>
 					<FillAreaUnderLine>true</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
-				<RoundedRectangle>
-					<Id>1586973854579</Id>
-					<Name><![CDATA[roundRectangle8]]></Name>
-					<X>-700</X><Y>100</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>480</Width>
-					<Height>350</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-11116635</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>2</ArcRadius>
-				</RoundedRectangle>
-				<RoundedRectangle>
-					<Id>1586973873584</Id>
-					<Name><![CDATA[roundRectangle9]]></Name>
-					<X>-720</X><Y>80</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>480</Width>
-					<Height>350</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1446914</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>2</ArcRadius>
-				</RoundedRectangle>
-				<Text>
-					<Id>1586266937355</Id>
-					<Name><![CDATA[text10]]></Name>
-					<X>-700</X><Y>120</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<YCode><![CDATA[160 + index * 20]]></YCode>
-					<ReplicationCode Class="CodeValue">
-						<Code><![CDATA[regionesSele.size()]]></Code>
-					</ReplicationCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
-					<Text><![CDATA[24 Patidos del Gran Buenos Aires]]></Text>
-					<TextCode><![CDATA[regionesSele.get(index)]]></TextCode>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>10</Size>
-						<Style>1</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1586267083715</Id>
-					<Name><![CDATA[text11]]></Name>
-					<X>-510</X><Y>120</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<YCode><![CDATA[160 + index * 20]]></YCode>
-					<ReplicationCode Class="CodeValue">
-						<Code><![CDATA[medidasSele.size()]]></Code>
-					</ReplicationCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
-					<Text><![CDATA[Cierre de Fronteras Ext.]]></Text>
-					<TextCode><![CDATA[medidasSele.get(index)]]></TextCode>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1586267092458</Id>
-					<Name><![CDATA[text39]]></Name>
-					<X>-385</X><Y>120</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<YCode><![CDATA[160 + index * 20]]></YCode>
-					<ReplicationCode Class="CodeValue">
-						<Code><![CDATA[fechaInicioSel.size()]]></Code>
-					</ReplicationCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-11116635</Color>
-					<Text><![CDATA[03/03/2020 - 20/03/2020]]></Text>
-					<TextCode><![CDATA[fechaInicioSel.get(index) + fechaFinSel.get(index)]]></TextCode>
-					<Font>
-						<Name>Roboto</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Line>
-					<Id>1586269457680</Id>
-					<Name><![CDATA[line19]]></Name>
-					<X>-390</X><Y>115</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777088</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>0</Dx>
-					<Dy>25</Dy>
-					<DyCode><![CDATA[19.6 * regionesSele.size()]]></DyCode>
-					<Dz>0</Dz>
-				</Line>
-				<Line>
-					<Id>1586271002492</Id>
-					<Name><![CDATA[line20]]></Name>
-					<X>-522</X><Y>115</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777088</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<BeginArrowSize>1</BeginArrowSize>
-					<BeginArrowStyle>0</BeginArrowStyle>
-					<EndArrowSize>1</EndArrowSize>
-					<EndArrowStyle>0</EndArrowStyle>
-					<Dx>0</Dx>
-					<Dy>25</Dy>
-					<DyCode><![CDATA[19.6 * regionesSele.size()]]></DyCode>
-					<Dz>0</Dz>
-				</Line>
 				<Group>
 					<Id>1586975402323</Id>
 					<Name><![CDATA[group2]]></Name>
@@ -7715,6 +7802,7 @@ intente nuevamente.]]></Text>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[politicaUsuario2 = !politicaUsuario2;
+actualizoKpis();
 if(!politicaUsuario2){
 	cargarGrafico();
 }]]></OnClickCode>
@@ -7752,6 +7840,8 @@ if(!politicaUsuario2){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[politicaUsuario2]]></EnableExpression>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -7776,7 +7866,8 @@ if(!politicaUsuario2){
 						<TextColor>-16777088</TextColor>
 						<Enabled>true</Enabled>
 						<EnableExpression><![CDATA[politicaUsuario2]]></EnableExpression>
-						<ActionCode><![CDATA[cargarGrafico();]]></ActionCode>
+						<ActionCode><![CDATA[aplicarCambios();
+cargarGrafico();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Arial" Size="10" Style="0"/>
@@ -7795,6 +7886,7 @@ if(!politicaUsuario2){
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[distSocialOn = !distSocialOn;
+actualizoKpis();
 if(!distSocialOn){
 	cargarGrafico();
 }]]></OnClickCode>
@@ -7872,6 +7964,7 @@ if(!distSocialOn){
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[politicaUsuario1 = !politicaUsuario1;
+actualizoKpis();
 if(!politicaUsuario1){
 	cargarGrafico();
 }]]></OnClickCode>
@@ -7902,7 +7995,8 @@ if(!politicaUsuario1){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[cierreFronterasExternas = !cierreFronterasExternas;]]></OnClickCode>
+					<OnClickCode><![CDATA[cierreFronterasExternas = !cierreFronterasExternas;
+actualizoKpis();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>43</Width>
@@ -7930,7 +8024,8 @@ if(!politicaUsuario1){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[cerrarViajesInternos = !cerrarViajesInternos;]]></OnClickCode>
+					<OnClickCode><![CDATA[cerrarViajesInternos = !cerrarViajesInternos;
+actualizoKpis();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>43</Width>
@@ -9403,6 +9498,42 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1588939985671</Id>
+					<Name><![CDATA[startEvents]]></Name>
+					<X>520</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[EventTimeout]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ inicioCuarentena, inicioDistanciamiento, inicioRemoticidad, inicioPoliticaUsuario1, inicioPoliticaUsuario2, inicioCierreViajes }]]></Code>
+						</CollectionInitializer>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1588940918616</Id>
+					<Name><![CDATA[endEvents]]></Name>
+					<X>700</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[EventTimeout]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionInitializer Class="CodeValue">
+							<Code><![CDATA[{ finCuarentena, finDistanciamiento, finRemoticidad, finPoliticaUsuario1, finPoliticaUsuario2, finCierreViajes }]]></Code>
+						</CollectionInitializer>
 					</Properties>
 
 				</Variable>
