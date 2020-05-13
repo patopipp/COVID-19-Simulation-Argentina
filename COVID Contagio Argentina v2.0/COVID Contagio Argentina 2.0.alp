@@ -21,20 +21,16 @@
 import java.util.function.IntToDoubleFunction;
 import repackage.EditBuildScript;
 import com.google.common.collect.ArrayListMultimap;]]></Import>
-			<StartupCode><![CDATA[cargarRegiones();
-cargoMatricesContacto();
-cargarInfoEnfermedad();
-cargoPoliticas();
-//creoInfectadosIniciales();
-
-//actualizoKpis();
-
-if(!montecarlo){	
+			<StartupCode><![CDATA[if(!montecarlo){	
 	//String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;Aislados;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 	//csvOutput.add(headers);
+}else{
+	cargarRegiones();
+	cargoMatricesContacto();
+	cargarInfoEnfermedad();
+	cargoPoliticas();
 }
 
-//aplicarCambios();
 ]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -1217,6 +1213,21 @@ if(!montecarlo){
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589383745841</Id>
+					<Name><![CDATA[simulationFinished]]></Name>
+					<X>1000</X><Y>1740</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -2360,10 +2371,9 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	probPrevia = probDem;
 }
 
-
-
-
-
+//----------------------------------------------------------------------------------------------
+regionsOk = true;
+//----------------------------------------------------------------------------------------------
 
 // Cargo la capacidad sanitaria de cada region
 source = "Capacidad Sanitaria";
@@ -2400,6 +2410,9 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	}
 }
 
+//----------------------------------------------------------------------------------------------
+healthSystemOk = true;
+//----------------------------------------------------------------------------------------------
 
 //VIAJES----------------------------------------------------------------------------
 // Cargo la matriz de OD 		|| OK
@@ -2459,10 +2472,13 @@ for (int row = 5 ; row <= xl.getLastRowNum(source) ; row ++){
 	destinosExterior.add(reg);
 	probabilidadDestinosExterior.add(probabilidadAcumulada);
 }
-	
+
+//----------------------------------------------------------------------------------------------	
+movementsOk = true;
+//----------------------------------------------------------------------------------------------
 
 
-//----------------------------------------------------------------------------------
+
 //ESTADO INICIAL--------------------------------------------------------------------
 
 source = "Estado Inicial";
@@ -2670,6 +2686,10 @@ for(int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	atencionRecibida.add(roundToInt(xl.getCellNumericValue(source, row, 2)));
 	agravamiento.add(xl.getCellNumericValue(source, row, 3));
 }
+
+//----------------------------------------------------------------------------------------------
+covidOk = true;
+//----------------------------------------------------------------------------------------------
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2728,10 +2748,12 @@ porcentajeFallecidos = fallecidosTotales / poblacion;
 calcularTopRegiones(25);
 
 if(infectados.size() == 0){
-	finishSimulation();
+	traceln("WAHT");
+	simulationFinished = true;
 	if(exportacionActivada){
 		exportarResultados();
 	}
+	finishSimulation();
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3558,9 +3580,15 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 			e.printStackTrace();
 		}	
 	}else{
+		//----------------------------------------------------------------------------------------------
+		policiesOk = true;
+		//----------------------------------------------------------------------------------------------
 		break;
 	}
-}]]></Body>
+}
+
+policiesOk = true;
+]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -4288,6 +4316,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1780 : 1825]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -4310,6 +4339,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1746 : 1781]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -4332,6 +4362,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1769 : 1804]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -4376,6 +4407,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1717 : 1742]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -6446,7 +6478,7 @@ el total de su enfermedad)]]></Text>
 							<ClassName><![CDATA[Group 518 (1).png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 				<Image>
 					<Id>1589315229949</Id>
@@ -6480,7 +6512,7 @@ simulacion.navigateTo();]]></OnClickCode>
 				<Image>
 					<Id>1589315229951</Id>
 					<Name><![CDATA[image41]]></Name>
-					<X>-190</X><Y>-90</Y>
+					<X>-180</X><Y>-90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6498,7 +6530,7 @@ simulacion.navigateTo();]]></OnClickCode>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 519.png]]></ClassName>
+							<ClassName><![CDATA[Group 524.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
 					<ImageIndexCode><![CDATA[regionsOk ? 0 : 1]]></ImageIndexCode>
@@ -6507,7 +6539,7 @@ simulacion.navigateTo();]]></OnClickCode>
 				<Image>
 					<Id>1589315229953</Id>
 					<Name><![CDATA[image42]]></Name>
-					<X>-18</X><Y>-90</Y>
+					<X>-17</X><Y>-90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6525,16 +6557,16 @@ simulacion.navigateTo();]]></OnClickCode>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 519.png]]></ClassName>
+							<ClassName><![CDATA[Group 524.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<ImageIndexCode><![CDATA[healthSystemOk ? 0 : 1]]></ImageIndexCode>
+					<ImageIndexCode><![CDATA[policiesOk ? 0 : 1]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Image>
 					<Id>1589315229955</Id>
 					<Name><![CDATA[image43]]></Name>
-					<X>160</X><Y>-90</Y>
+					<X>144</X><Y>-90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6552,16 +6584,16 @@ simulacion.navigateTo();]]></OnClickCode>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 519.png]]></ClassName>
+							<ClassName><![CDATA[Group 524.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<ImageIndexCode><![CDATA[covidOk ? 0 : 1]]></ImageIndexCode>
+					<ImageIndexCode><![CDATA[movementsOk ? 0 : 1]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Image>
 					<Id>1589315229957</Id>
 					<Name><![CDATA[image44]]></Name>
-					<X>-106</X><Y>10</Y>
+					<X>-87</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6579,11 +6611,11 @@ simulacion.navigateTo();]]></OnClickCode>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 519.png]]></ClassName>
+							<ClassName><![CDATA[Group 524.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<ImageIndexCode><![CDATA[policiesOk ? 0 : 1]]></ImageIndexCode>
-					<OriginalSize>false</OriginalSize>
+					<ImageIndexCode><![CDATA[covidOk ? 0 : 1]]></ImageIndexCode>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 				<Image>
 					<Id>1589315229959</Id>
@@ -6606,16 +6638,16 @@ simulacion.navigateTo();]]></OnClickCode>
 						</ImageResourceReference>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 519.png]]></ClassName>
+							<ClassName><![CDATA[Group 524.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<ImageIndexCode><![CDATA[movementsOk ? 0 : 1]]></ImageIndexCode>
+					<ImageIndexCode><![CDATA[healthSystemOk ? 0 : 1]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Text>
 					<Id>1589315229961</Id>
 					<Name><![CDATA[text79]]></Name>
-					<X>-172</X><Y>-40</Y>
+					<X>-162</X><Y>-40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6637,7 +6669,7 @@ simulacion.navigateTo();]]></OnClickCode>
 				<Text>
 					<Id>1589315229963</Id>
 					<Name><![CDATA[text80]]></Name>
-					<X>0</X><Y>-40</Y>
+					<X>85</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6647,8 +6679,9 @@ simulacion.navigateTo();]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Sistema hospitalario]]></Text>
-					<TextCode><![CDATA[idioma == "english" ? "Health System" : "Sistema Hospitalario"]]></TextCode>
+					<Text><![CDATA[Sistema
+hospitalario]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? "Health System" : "Sistema\nHospitalario"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>12</Size>
@@ -6659,7 +6692,7 @@ simulacion.navigateTo();]]></OnClickCode>
 				<Text>
 					<Id>1589315229965</Id>
 					<Name><![CDATA[text81]]></Name>
-					<X>180</X><Y>-40</Y>
+					<X>-70</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6671,7 +6704,7 @@ simulacion.navigateTo();]]></OnClickCode>
 					<Color>-11116635</Color>
 					<Text><![CDATA[Características
 enfermedad]]></Text>
-					<TextCode><![CDATA[idioma == "english" ? "COVID\nCharacteristics" : "Características\nEnfermedad"]]></TextCode>
+					<TextCode><![CDATA[idioma == "english" ? "COVID Characteristics" : "Características\nEnfermedad"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>12</Size>
@@ -6682,7 +6715,7 @@ enfermedad]]></Text>
 				<Text>
 					<Id>1589315229967</Id>
 					<Name><![CDATA[text82]]></Name>
-					<X>-87</X><Y>55</Y>
+					<X>0</X><Y>-40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6704,7 +6737,7 @@ enfermedad]]></Text>
 				<Text>
 					<Id>1589315229969</Id>
 					<Name><![CDATA[text83]]></Name>
-					<X>85</X><Y>55</Y>
+					<X>162</X><Y>-40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6779,7 +6812,11 @@ enfermedad]]></Text>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<OnClickCode><![CDATA[grupoUploadInfo.setVisible(false);
-grupoEstadoInfo.setVisible(true);]]></OnClickCode>
+grupoEstadoInfo.setVisible(true);
+cargarRegiones();
+cargoMatricesContacto();
+cargarInfoEnfermedad();
+cargoPoliticas();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>153</Width>
@@ -6837,7 +6874,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Utilización respiradores]]></Text>
+					<Text><![CDATA[Ventilators usage]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Ventilators usage" : "Utilización respiradores"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -6859,7 +6896,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Muertes]]></Text>
+					<Text><![CDATA[Deaths]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Deaths" : "Fatalidades"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -6946,7 +6983,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 						<Title><![CDATA[Camas Aislamiento]]></Title>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-10655817</Color>
-					<Expression2><![CDATA[(1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.]]></Expression2>
+					<Expression2><![CDATA[regionsOk ? ((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.) : 0]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -6955,7 +6992,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 						<Title><![CDATA[Camas TI]]></Title>
 					<Expression><![CDATA[my_dataset3]]></Expression>
 					<Color>-4892768</Color>
-					<Expression2><![CDATA[(1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial())) * 100.]]></Expression2>
+					<Expression2><![CDATA[regionsOk ? ((1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial())) * 100.) : 0 ]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -6964,7 +7001,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 						<Title><![CDATA[Respiradores]]></Title>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-6314008</Color>
-					<Expression2><![CDATA[(1. - (regions.sumRespiradoresLibres()/regions.sumRespiradoresIniciales())) * 100.]]></Expression2>
+					<Expression2><![CDATA[regionsOk ? ((1. - (regions.sumRespiradoresLibres()/regions.sumRespiradoresIniciales())) * 100.) : 0]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -7010,7 +7047,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Moderados]]></Text>
+					<Text><![CDATA[Moderate]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Moderate" : "Moderado"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7056,7 +7093,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[U. Respiradores [%]]]></Text>
+					<Text><![CDATA[Ventilators [%]]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Ventilators [%]" : "U. Respiradores [%]"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7097,12 +7134,13 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1809 : 1829]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[100]]></Text>
-					<TextCode><![CDATA[infectados.size() * divisor]]></TextCode>
+					<Text><![CDATA[100% - 100]]></Text>
+					<TextCode><![CDATA[roundToInt(infectadosTotales/regions.sumPoblacion() * 100) + "% - " +  infectadosTotales * divisor]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>12</Size>
@@ -7119,6 +7157,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1737 : 1752]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7141,6 +7180,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1737 : 1752]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7168,7 +7208,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Cama TI [%]]]></Text>
+					<Text><![CDATA[ICU usage [%]]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "ICU usage [%]" : "Cama TI [%]"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7274,7 +7314,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Utilización cama aislamiento]]></Text>
+					<Text><![CDATA[Isolation bed usage]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Isolation bed usage" : "Utilización cama aislamiento"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7292,6 +7332,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1780 : 1825]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7319,7 +7360,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Infectados]]></Text>
+					<Text><![CDATA[Infected]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Infected" : "Infectados"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7359,11 +7400,12 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 2482 : 2442]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Cama Aislamiento [%]]]></Text>
+					<Text><![CDATA[Isolation Bed [%]]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Isolation Bed [%]" : "Cama Aislamiento [%]"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7631,6 +7673,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1717 : 1742]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7769,7 +7812,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Utilización cama TI]]></Text>
+					<Text><![CDATA[IC unit usage]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "IC unit usage" : "Utilización cama TI"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -7787,6 +7830,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 2465 : 2425]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7810,6 +7854,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1746 : 1781]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -7918,12 +7963,13 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1804 : 1829]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[100]]></Text>
-					<TextCode><![CDATA[regions.sumDeaths() * divisor]]></TextCode>
+					<Text><![CDATA[100% - 100]]></Text>
+					<TextCode><![CDATA[infectadosTotales > 0 ? (roundToInt(regions.sumDeaths()/infectadosTotales * 100) + "% - " + regions.sumDeaths() * divisor) : "0% - 0" ]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>12</Size>
@@ -8122,7 +8168,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Recuperados]]></Text>
+					<Text><![CDATA[Recovered]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Recovered" : "Recuperados"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -8144,7 +8190,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[Fatalidades]]></Text>
+					<Text><![CDATA[Deaths]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Deaths" : "Fatalidades"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -8170,10 +8216,14 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<ImageFiles>
 						<ImageResourceReference>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 520.png]]></ClassName>
+							<ClassName><![CDATA[Group 525.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 526.png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 				<RoundedRectangle>
 					<Id>1589315404379</Id>
@@ -8231,6 +8281,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1856 : 1891]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -8247,12 +8298,20 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 				<Image>
 					<Id>1589315404385</Id>
 					<Name><![CDATA[image33]]></Name>
-					<X>2731</X><Y>26</Y>
+					<X>2606</X><Y>26</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[if(simulationFinished){
+	for (int i = 0; i < csvOutput.size(); i++){
+	csvResultados.println(csvOutput.get(i));
+	}
+	
+	csvResultados.close();
+	traceln("Exportacion Finalizada");
+}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>105</Width>
@@ -8263,7 +8322,20 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
 							<ClassName><![CDATA[Group 510.png]]></ClassName>
 						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 527.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 521.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 528.png]]></ClassName>
+						</ImageResourceReference>
 					</ImageFiles>
+					<ImageIndexCode><![CDATA[idioma == "english" ? (simulationFinished ? 0 : 1 ) : (simulationFinished ? 2 : 3)]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
 				<Text>
@@ -8279,7 +8351,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Recuperados]]></Text>
+					<Text><![CDATA[Recovered]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Recovered" : "Recuperados"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -8448,6 +8520,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1833 : 1868]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -8497,7 +8570,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11908534</Color>
-					<Text><![CDATA[Infectados]]></Text>
+					<Text><![CDATA[Infected]]></Text>
 					<TextCode><![CDATA[idioma == "english" ? "Infected" : "Infectados"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
@@ -8515,6 +8588,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1769 : 1804]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -8583,6 +8657,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1722 : 1742]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -8605,12 +8680,13 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1824 : 1839]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
-					<Text><![CDATA[100]]></Text>
-					<TextCode><![CDATA[recuperadosTotales * divisor]]></TextCode>
+					<Text><![CDATA[100% + - 100]]></Text>
+					<TextCode><![CDATA[recuperadosTotales > 0 ? (roundToInt((recuperadosTotales*100.)/(infectadosTotales*100.)*100) + "% - " + recuperadosTotales * divisor) : "0% - 0"]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>12</Size>
@@ -8748,6 +8824,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1722 : 1742]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -8757,7 +8834,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<LineStyle>SOLID</LineStyle>
 					<Width>15</Width>
 					<Height>8</Height>
-					<WidthCode><![CDATA[(infectados.size()/regions.sumPoblacion())*80.]]></WidthCode>
+					<WidthCode><![CDATA[(infectadosTotales/regions.sumPoblacion())*80.]]></WidthCode>
 					<Rotation>0.0</Rotation>
 					<FillColor>-628814</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -8771,6 +8848,7 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[idioma == "english" ? 1867 : 1912]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -8806,6 +8884,34 @@ grupoEstadoInfo.setVisible(true);]]></OnClickCode>
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Oval>
+				<Image>
+					<Id>1589381018057</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>2725</X><Y>26</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[stopSimulation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>105</Width>
+					<Height>27</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 519.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 520.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[idioma == "english" ? 0 : 1]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 			</Presentation>
 
 				</Level>
@@ -14217,6 +14323,10 @@ return tasaContagio;]]></Body>
 							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
 							<ClassName><![CDATA[Group 464.png]]></ClassName>
 						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 523.png]]></ClassName>
+						</ImageResourceReference>
 					</ImageFiles>
 					<OriginalSize>false</OriginalSize>
 				</Image>
@@ -14365,8 +14475,8 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></OnClickCode>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
 				<InitialDate><![CDATA[1577836800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1618617600000]]></FinalDate>	
-				<FinalTime><![CDATA[472.0]]></FinalTime>	
+				<FinalDate><![CDATA[1640908800000]]></FinalDate>	
+				<FinalTime><![CDATA[730.0]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
@@ -15406,6 +15516,34 @@ public class Politica implements Serializable {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[thermometer.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 521.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 523.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 524.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 525.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 526.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 527.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 528.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
