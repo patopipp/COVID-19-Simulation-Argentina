@@ -4285,6 +4285,113 @@ policiesOk = true;
 					<FillColor>-854276</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
+				<Oval>
+					<Id>1589385541411</Id>
+					<Name><![CDATA[oval3]]></Name>
+					<X>1766</X><Y>439</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>55</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-3354113</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
+    			<PieChart>
+					<Id>1589315404345</Id>
+					<Name><![CDATA[chart2]]></Name>
+					<X>1701</X><Y>374</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1589011200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>129.78</Width>
+					<Height>129.78</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>10</XOffset>
+						<YOffset>10</YOffset>
+						<Width>109.78</Width>
+						<Height>109.78</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<DataItem>
+					<Expression><![CDATA[regions.sumCriticos()]]></Expression>
+					<Color>-433786</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[item]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[regions.sumModerados()]]></Expression>
+					<Color>-417402</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[item1]]></Title>
+					</DataItem>
+					<DataItem>
+					<Expression><![CDATA[regions.sumLeves()]]></Expression>
+					<Color>-927591</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[item2]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Oval>
+					<Id>1589315404317</Id>
+					<Name><![CDATA[oval2]]></Name>
+					<X>1765.89</X><Y>438.89</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>45</RadiusX>
+					<RadiusY>40</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor>-854276</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
 				<Rectangle>
 					<Id>1589315404371</Id>
 					<Name><![CDATA[rectangle19]]></Name>
@@ -7869,69 +7976,6 @@ cargoPoliticas();]]></OnClickCode>
 					<FillColor>-6314008</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
-    			<PieChart>
-					<Id>1589315404345</Id>
-					<Name><![CDATA[chart2]]></Name>
-					<X>1701</X><Y>374</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1589011200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>129.78</Width>
-					<Height>129.78</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>10</XOffset>
-						<YOffset>10</YOffset>
-						<Width>109.78</Width>
-						<Height>109.78</Height>
-						<BorderColor/>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>40</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<ShowLegend>false</ShowLegend>
-					<DataItem>
-					<Expression><![CDATA[regions.sumCriticos()]]></Expression>
-					<Color>-433786</Color>
-					<Expression2Flag>true</Expression2Flag>
-						<Title><![CDATA[item]]></Title>
-					</DataItem>
-					<DataItem>
-					<Expression><![CDATA[regions.sumModerados()]]></Expression>
-					<Color>-417402</Color>
-					<Expression2Flag>true</Expression2Flag>
-						<Title><![CDATA[item1]]></Title>
-					</DataItem>
-					<DataItem>
-					<Expression><![CDATA[regions.sumLeves()]]></Expression>
-					<Color>-927591</Color>
-					<Expression2Flag>true</Expression2Flag>
-						<Title><![CDATA[item2]]></Title>
-					</DataItem>
-    			</PieChart>
 				<Text>
 					<Id>1589315404349</Id>
 					<Name><![CDATA[text58]]></Name>
@@ -8862,28 +8906,6 @@ cargoPoliticas();]]></OnClickCode>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Oval>
-					<Id>1589315404317</Id>
-					<Name><![CDATA[oval2]]></Name>
-					<X>1765.89</X><Y>438.89</Y>
-					<Label><X>0</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<RadiusX>45</RadiusX>
-					<RadiusY>40</RadiusY>
-					<Rotation>0.0</Rotation>
-					<FillColor>-854276</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Oval>
 				<Image>
 					<Id>1589381018057</Id>
 					<Name><![CDATA[image]]></Name>
