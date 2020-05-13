@@ -20,7 +20,8 @@
 			<Import><![CDATA[import java.text.SimpleDateFormat;
 import java.util.function.IntToDoubleFunction;
 import repackage.EditBuildScript;
-import com.google.common.collect.ArrayListMultimap;]]></Import>
+import com.google.common.collect.ArrayListMultimap;
+import java.util.TimerTask;]]></Import>
 			<StartupCode><![CDATA[if(!montecarlo){	
 	//String headers = "Fecha;Región;Región Mapa;Zona;Población;Cuarentena Total;Efecto Curentena (Suma de Efectos);Distanciamiento Social;Efecto Dist. Social;Trabajo/Escuelas Remotos;Efecto Remoticidad;Cierre de Fronteras Ext.;Efecto Front. Ext. Cerradas.;Cierre de Fronteras Internas;# Camas de Aislamiento;# Camas de TI; # Respiradores;Infectados;Asintomáticos;Sintomáticos;Leves;Moderados;Críticos;No Detectados;Circulando;Aislados;Detectados;No Hospitlizados;Hospitalizados;Pacientes Aislados;Pacientes en TI;Pacientes Con Respirador;Pacientes Sin Respirador;Infectados Acumulados;Susceptibles;Recuperados;Fallecidos";
 	//csvOutput.add(headers);
@@ -1217,6 +1218,21 @@ import com.google.common.collect.ArrayListMultimap;]]></Import>
 					<Id>1589383745841</Id>
 					<Name><![CDATA[simulationFinished]]></Name>
 					<X>1000</X><Y>1740</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589390996023</Id>
+					<Name><![CDATA[movementFlag]]></Name>
+					<X>60</X><Y>810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3589,6 +3605,184 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 
 policiesOk = true;
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1589390996017</Id>
+					<Name><![CDATA[smoothLinearMovement]]></Name>
+					<X>60</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[group]]></Name>
+						<Type><![CDATA[Shape]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[verticalMovement]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[movementDuration]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destinationPos]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[long delay = 0;
+long interval = 5;
+double originPos = verticalMovement? group.getY() : group.getX();
+double dif = destinationPos - originPos;
+double sigmoidDomain = 12;
+double steps = movementDuration/(double)interval;
+
+if (!movementFlag) {
+	movementFlag = true;
+	TimerTask timerTask = new TimerTask(){
+		double t = -sigmoidDomain*0.5;
+		@Override
+		public void run() {
+			double sigmoidResult = 1/(1+exp(-t));
+			if (verticalMovement) {
+				group.setY(originPos + dif*sigmoidResult);	
+			} else {
+				group.setX(originPos + dif*sigmoidResult);
+			}
+			t += sigmoidDomain/steps;
+			double currentPos = verticalMovement? group.getY() : group.getX();
+			if (abs(currentPos - destinationPos) <= 2.5) {
+				if (verticalMovement) {
+					group.setY(destinationPos);
+				} else {
+					group.setX(destinationPos);
+				}
+				movementFlag = false;
+				this.cancel();
+			}
+		};
+	};
+	
+	Timer timer = new Timer();
+	timer.scheduleAtFixedRate(timerTask, delay, interval);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1589390996019</Id>
+					<Name><![CDATA[smoothRotation]]></Name>
+					<X>60</X><Y>840</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[shape]]></Name>
+						<Type><![CDATA[Shape]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[clockwise]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[movementDuration]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[long delay = 0;
+long interval = 5;
+double originRotation = shape.getRotation();
+double dif = clockwise? 2*PI : -2*PI;
+double sigmoidDomain = 12;
+double steps = movementDuration/(double)interval;
+
+if (!movementFlag) {
+	movementFlag = true;
+	TimerTask timerTask = new TimerTask(){
+		double t = -sigmoidDomain*0.5;
+		@Override
+		public void run() {
+			double sigmoidResult = 1/(1+exp(-t));
+			shape.setRotation(originRotation + dif*sigmoidResult);
+			t += sigmoidDomain/steps;
+			double currentRotation =  shape.getRotation();
+			if (abs(currentRotation - dif) <= 0.01) {
+				shape.setRotation(0);
+				movementFlag = false;
+				this.cancel();
+			}
+		};
+	};
+	
+	Timer timer = new Timer();
+	timer.scheduleAtFixedRate(timerTask, delay, interval);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1589390996021</Id>
+					<Name><![CDATA[smoothPopUp]]></Name>
+					<X>60</X><Y>870</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[shape]]></Name>
+						<Type><![CDATA[Shape]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[movementDuration]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[initialScale]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[finalScale]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[open]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Body><![CDATA[long delay = 0;
+long interval = 5;
+double dif = finalScale - initialScale;
+double sigmoidDomain = 6;
+double steps = movementDuration/(double)interval;
+
+if (!movementFlag) {
+	movementFlag = true;
+	TimerTask timerTask = new TimerTask(){
+		double t = -sigmoidDomain;
+		@Override
+		public void run() {
+			double sigmoidResult = 1/(1+exp(-t));
+			shape.setScaleY(initialScale + dif*sigmoidResult);
+			if (open) {
+				shape.setVisible(true);
+			}
+			t += sigmoidDomain/steps;
+			double currentScale =  shape.getScaleY();
+			if (abs(currentScale - finalScale) <= 0.005) {
+				shape.setScaleY(finalScale);
+				movementFlag = false;
+				if (!open) {
+					shape.setVisible(false);
+				}
+				this.cancel();
+			}
+		};
+	};
+	
+	Timer timer = new Timer();
+	timer.scheduleAtFixedRate(timerTask, delay, interval);
+}]]></Body>
 				</Function>
 			</Functions>
 			<TableFunctions>
@@ -14276,6 +14470,7 @@ return tasaContagio;]]></Body>
 			<Id>1584450064369</Id>
 			<Name><![CDATA[Simulation]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Import><![CDATA[import java.util.TimerTask;]]></Import>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>4096</MaximumMemory>
 			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
@@ -14300,7 +14495,55 @@ return tasaContagio;]]></Body>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589390955214</Id>
+					<Name><![CDATA[pausarRotacion]]></Name>
+					<X>-190</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1589390955209</Id>
+					<Name><![CDATA[animation]]></Name>
+					<X>-190</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//oval.setVisible(false);
+//roundRectangle16.setVisible(false);
+pausarRotacion = false;
+TimerTask timerTask = new TimerTask(){
+	@Override
+	public void run() {
+		double velocidadRotacion = 0.0001;
+
+		group.setRotation(group.getRotation() + velocidadRotacion);
+
+		//((Presentation)getPresentation()).refresh();
+		if (pausarRotacion) {
+			this.cancel();
+		}
+	};
+};
+Timer timer = new Timer();
+long delay = 0;
+long intevalPeriod = 1;
+timer.scheduleAtFixedRate(timerTask, delay, intevalPeriod);]]></Body>
+				</Function>
+			</Functions>
 
 			<Presentation>
 				<Image>
@@ -14415,6 +14658,58 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></OnClickCode>
 					<ImageIndexCode><![CDATA[idioma == "english" ? 0 : 1]]></ImageIndexCode>
 					<OriginalSize>false</OriginalSize>
 				</Image>
+				<Group>
+					<Id>1589390967185</Id>
+					<Name><![CDATA[group]]></Name>
+					<X>410</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[animation();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Polyline>
+					<Id>1589390967187</Id>
+					<Name><![CDATA[polyline]]></Name>
+					<X>-60</X><Y>-65</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-1644289</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor>-1644289</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>72</X><Y>-23</Y><Z>0</Z></Point>
+					   <Point><X>135</X><Y>19</Y><Z>0</Z></Point>
+					   <Point><X>143</X><Y>93</Y><Z>0</Z></Point>
+					   <Point><X>90</X><Y>145</Y><Z>0</Z></Point>
+					   <Point><X>15</X><Y>135</Y><Z>0</Z></Point>
+					   <Point><X>-25</X><Y>70</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>true</Closed>
+				</Polyline>
+			</Presentation>
+
+				</Group>
 			</Presentation>
 
 			<Parameters>			
