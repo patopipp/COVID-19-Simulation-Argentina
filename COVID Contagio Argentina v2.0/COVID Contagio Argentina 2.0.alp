@@ -641,7 +641,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1589221547306</Id>
 					<Name><![CDATA[avgHome]]></Name>
-					<X>-370</X><Y>1600</Y>
+					<X>1670</X><Y>1160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -653,7 +653,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1589221562645</Id>
 					<Name><![CDATA[avgSchool]]></Name>
-					<X>-370</X><Y>1620</Y>
+					<X>1670</X><Y>1180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -665,7 +665,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1589221569806</Id>
 					<Name><![CDATA[avgWork]]></Name>
-					<X>-370</X><Y>1640</Y>
+					<X>1670</X><Y>1200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -677,7 +677,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1589221575411</Id>
 					<Name><![CDATA[avgOther]]></Name>
-					<X>-370</X><Y>1660</Y>
+					<X>1670</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -821,6 +821,21 @@ if(!montecarlo){
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589409813478</Id>
+					<Name><![CDATA[datosItalia]]></Name>
+					<X>1280</X><Y>1060</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -896,7 +911,7 @@ if(!montecarlo){
 				<Variable Class="Parameter">
 					<Id>1588968439287</Id>
 					<Name><![CDATA[idioma]]></Name>
-					<X>-1000</X><Y>1560</Y>
+					<X>1040</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -920,7 +935,7 @@ if(!montecarlo){
 				<Variable Class="Parameter">
 					<Id>1589221493763</Id>
 					<Name><![CDATA[testDisponibles]]></Name>
-					<X>-1000</X><Y>1680</Y>
+					<X>1040</X><Y>1240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1082,7 +1097,7 @@ if(!montecarlo){
 				<Variable Class="CollectionVariable">
 					<Id>1589221509222</Id>
 					<Name><![CDATA[matrizHome]]></Name>
-					<X>-480</X><Y>1600</Y>
+					<X>1560</X><Y>1160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1097,7 +1112,7 @@ if(!montecarlo){
 				<Variable Class="CollectionVariable">
 					<Id>1589221527722</Id>
 					<Name><![CDATA[matrizSchool]]></Name>
-					<X>-480</X><Y>1620</Y>
+					<X>1560</X><Y>1180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1112,7 +1127,7 @@ if(!montecarlo){
 				<Variable Class="CollectionVariable">
 					<Id>1589221534703</Id>
 					<Name><![CDATA[matrizWork]]></Name>
-					<X>-480</X><Y>1640</Y>
+					<X>1560</X><Y>1200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1127,7 +1142,7 @@ if(!montecarlo){
 				<Variable Class="CollectionVariable">
 					<Id>1589221540212</Id>
 					<Name><![CDATA[matrizOther]]></Name>
-					<X>-480</X><Y>1660</Y>
+					<X>1560</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1142,7 +1157,7 @@ if(!montecarlo){
 				<Variable Class="CollectionVariable">
 					<Id>1589226020963</Id>
 					<Name><![CDATA[listaPoliticas]]></Name>
-					<X>-760</X><Y>1630</Y>
+					<X>1280</X><Y>1190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1365,7 +1380,7 @@ actualizoKpis();]]></Action>
 				<Event>
 					<Id>1589226035736</Id>
 					<Name><![CDATA[politicasActivas]]></Name>
-					<X>-760</X><Y>1660</Y>
+					<X>1280</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1444,7 +1459,9 @@ for(int i = 0; i < regions.size(); i++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = inputSimulador;
-
+if(datosItalia){
+	xl = inputSimuladorItalia;
+}
 String source = "Regiones";
 // Creo la región con sus atributos básicos
 
@@ -1669,7 +1686,11 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Parámetros asociados a la enfermedad
 String source;
+
 ExcelFile xl = inputSimulador;
+if(datosItalia){
+	xl = inputSimuladorItalia;
+}
 
 source = "Enfermedad";
 int valor = 4;
@@ -2057,12 +2078,16 @@ traceln("Exportacion Finalizada");]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589221582171</Id>
 					<Name><![CDATA[cargoMatricesContacto]]></Name>
-					<X>-480</X><Y>1560</Y>
+					<X>1560</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = matricesContacto;
+if(datosItalia){
+	xl = matricesContactoItalia;
+}
+
 String matrices[] = {"Home" , "School" , "Work" , "Others"};
 
 for ( int i = 0 ; i < matrices.length; i++){
@@ -2105,7 +2130,7 @@ for ( int i = 0 ; i < matrices.length; i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589226689728</Id>
 					<Name><![CDATA[calculoMatrizEfectiva]]></Name>
-					<X>-640</X><Y>1700</Y>
+					<X>1400</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2238,12 +2263,15 @@ for(int i = 0; i < listaPoliticas.size(); i++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589307738721</Id>
 					<Name><![CDATA[cargoPoliticas]]></Name>
-					<X>-640</X><Y>1660</Y>
+					<X>1400</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[ExcelFile xl = politicas;
+if(datosItalia){
+	xl = politicas_Italia;
+}
 String source = "Políticas Aplicadas";
 
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
@@ -2574,7 +2602,7 @@ rotacionPentagonos();]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589402899145</Id>
 					<Name><![CDATA[calculoViajesPoliticas]]></Name>
-					<X>-640</X><Y>1740</Y>
+					<X>1400</X><Y>1300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2859,7 +2887,7 @@ r.nViajesExt = r.nViajesExt * p.nViajesExternos;]]></Body>
 				<ExcelFile>
 					<Id>1589221605546</Id>
 					<Name><![CDATA[matricesContacto]]></Name>
-					<X>-760</X><Y>1590</Y>
+					<X>1280</X><Y>1140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2875,7 +2903,7 @@ r.nViajesExt = r.nViajesExt * p.nViajesExternos;]]></Body>
 				<ExcelFile>
 					<Id>1589293738215</Id>
 					<Name><![CDATA[politicas]]></Name>
-					<X>-760</X><Y>1550</Y>
+					<X>1280</X><Y>1110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2883,6 +2911,54 @@ r.nViajesExt = r.nViajesExt * p.nViajesExternos;]]></Body>
 					<ResourceReference>
 						<PackageName><![CDATA[covidmontecarlo]]></PackageName>
 						<ClassName><![CDATA[Input/Input_Politicas.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+				<ExcelFile>
+					<Id>1589409740946</Id>
+					<Name><![CDATA[matricesContactoItalia]]></Name>
+					<X>1280</X><Y>1160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+						<ClassName><![CDATA[Input/Matriz_Contacto_Italia.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+				<ExcelFile>
+					<Id>1589409845037</Id>
+					<Name><![CDATA[inputSimuladorItalia]]></Name>
+					<X>380</X><Y>1480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+						<ClassName><![CDATA[Input/Input_Simulador_Italia.xlsx]]></ClassName>
+					</ResourceReference>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>true</LoadOnStartup>
+					<SaveOnDispose>true</SaveOnDispose>
+				</ExcelFile>
+				<ExcelFile>
+					<Id>1589410717684</Id>
+					<Name><![CDATA[politicas_Italia]]></Name>
+					<X>1360</X><Y>1100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+						<ClassName><![CDATA[Input/Input_Politicas_Italia.xlsx]]></ClassName>
 					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>true</LoadOnStartup>
@@ -13718,6 +13794,18 @@ public class Politica implements Serializable {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Group 529.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Input/Matriz_Contacto_Italia.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Input/Input_Simulador_Italia.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Input/Input_Politicas_Italia.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
