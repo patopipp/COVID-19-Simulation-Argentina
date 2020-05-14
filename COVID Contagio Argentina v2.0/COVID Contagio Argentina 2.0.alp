@@ -31,7 +31,9 @@ if(!montecarlo){
 	cargoMatricesContacto();
 	cargarInfoEnfermedad();
 	cargoPoliticas();
-}]]></StartupCode>
+}
+
+]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1584450064339</Id>
@@ -167,7 +169,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1585020299467</Id>
 					<Name><![CDATA[regSel]]></Name>
-					<X>1440</X><Y>1340</Y>
+					<X>1950</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -809,7 +811,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1589393311663</Id>
 					<Name><![CDATA[pausarRotacion]]></Name>
-					<X>580</X><Y>-200</Y>
+					<X>240</X><Y>820</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -944,7 +946,7 @@ if(!montecarlo){
 				<Variable Class="Parameter">
 					<Id>1589393950952</Id>
 					<Name><![CDATA[simulationAgent]]></Name>
-					<X>580</X><Y>-140</Y>
+					<X>240</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1563,8 +1565,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 }
 
 densidadPoblacionPromedio = densidadPoblacionPromedio/regions.size();
-
-
+setChartsVisible();
 
 
 // Cargo el perfil etario de cada región 		|| OK
@@ -2605,58 +2606,81 @@ if (!movementFlag) {
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589393311661</Id>
 					<Name><![CDATA[rotacionPentagonos]]></Name>
-					<X>580</X><Y>-170</Y>
+					<X>240</X><Y>850</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//oval.setVisible(false);
-//roundRectangle16.setVisible(false);
-pausarRotacion = false;
-TimerTask timerTask = new TimerTask(){
-	@Override
-	public void run() {
-		double velocidadRotacion = 0.0001;
-
-		hexFill1.setRotation(hexFill1.getRotation() + velocidadRotacion);		
-		hexFill2.setRotation(hexFill2.getRotation() + velocidadRotacion);		
-		hexFill3.setRotation(hexFill3.getRotation() - velocidadRotacion);
-		hexClear1.setRotation(hexClear1.getRotation() + velocidadRotacion);
-		hexClear2.setRotation(hexClear2.getRotation() - velocidadRotacion);
-		
-		hexFillRun.setRotation(hexFillRun.getRotation() + velocidadRotacion*2);
-		hexFillRunbis.setRotation(hexFillRunbis.getRotation() - velocidadRotacion*2);			
-		
-
-		//((Presentation)getPresentation()).refresh();
-		if (pausarRotacion) {
-			this.cancel();
-		}
+					<Body><![CDATA[if(!montecarlo){
+	//oval.setVisible(false);
+	//roundRectangle16.setVisible(false);
+	pausarRotacion = false;
+	TimerTask timerTask = new TimerTask(){
+		@Override
+		public void run() {
+			double velocidadRotacion = 0.0001;
+	
+			hexFill1.setRotation(hexFill1.getRotation() + velocidadRotacion);		
+			hexFill2.setRotation(hexFill2.getRotation() + velocidadRotacion);		
+			hexFill3.setRotation(hexFill3.getRotation() - velocidadRotacion);
+			hexClear1.setRotation(hexClear1.getRotation() + velocidadRotacion);
+			hexClear2.setRotation(hexClear2.getRotation() - velocidadRotacion);
+			
+			hexFillRun.setRotation(hexFillRun.getRotation() + velocidadRotacion*2);
+			hexFillRunbis.setRotation(hexFillRunbis.getRotation() - velocidadRotacion*2);			
+			
+	
+			//((Presentation)getPresentation()).refresh();
+			if (pausarRotacion) {
+				this.cancel();
+			}
+		};
 	};
-};
-Timer timer = new Timer();
-long delay = 0;
-long intevalPeriod = 1;
-timer.scheduleAtFixedRate(timerTask, delay, intevalPeriod);]]></Body>
+	
+	Timer timer = new Timer();
+	long delay = 0;
+	long intevalPeriod = 1;
+	timer.scheduleAtFixedRate(timerTask, delay, intevalPeriod);
+	
+	
+	
+	
+	TimerTask timerTask2 = new TimerTask(){
+		@Override
+		public void run() {
+			double velocidadRotacion = 0.0001;
+	
+			hexFillRun.setRotation(hexFillRun.getRotation() + velocidadRotacion*2);
+			hexFillRunbis.setRotation(hexFillRunbis.getRotation() - velocidadRotacion*2);			
+			
+		};
+	};
+	Timer timer2 = new Timer();
+	delay = 0;
+	intevalPeriod = 1;
+	timer2.scheduleAtFixedRate(timerTask2, delay, intevalPeriod);
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589393329310</Id>
 					<Name><![CDATA[armoVisuales]]></Name>
-					<X>580</X><Y>-240</Y>
+					<X>240</X><Y>780</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//Copio rotacion de simulation
-hexFill1.setRotation(simulationAgent.hexFill1.getRotation());
-hexFill2.setRotation(simulationAgent.hexFill2.getRotation());
-hexFill3.setRotation(simulationAgent.hexFill3.getRotation());
-hexClear1.setRotation(simulationAgent.hexClear1.getRotation());
-hexClear2.setRotation(simulationAgent.hexClear2.getRotation());
-//Pongo a rotar las shapes
-rotacionPentagonos();]]></Body>
+					<Body><![CDATA[if(!montecarlo){
+	//Copio rotacion de simulation
+	hexFill1.setRotation(simulationAgent.hexFill1.getRotation());
+	hexFill2.setRotation(simulationAgent.hexFill2.getRotation());
+	hexFill3.setRotation(simulationAgent.hexFill3.getRotation());
+	hexClear1.setRotation(simulationAgent.hexClear1.getRotation());
+	hexClear2.setRotation(simulationAgent.hexClear2.getRotation());
+	//Pongo a rotar las shapes
+	rotacionPentagonos();
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2712,6 +2736,43 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 			e.printStackTrace();
 		}
 	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1589470033557</Id>
+					<Name><![CDATA[setChartsVisible]]></Name>
+					<X>2040</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for(int i = 0 ; i < regions.size() ; i++){
+	Region r = regions.get(i);
+	r.plot4.setVisible(false);
+	r.plot8.setVisible(false);
+	r.plot9.setVisible(false);
+	r.plot10.setVisible(false);	
+}	
+
+if (regSel == null){
+
+	plot4.setVisible(true);
+	plot8.setVisible(true);
+	plot9.setVisible(true);
+	plot10.setVisible(true);	
+
+}else{
+	plot4.setVisible(false);
+	plot8.setVisible(false);
+	plot9.setVisible(false);
+	plot10.setVisible(false);	
+
+	regSel.plot4.setVisible(true);
+	regSel.plot8.setVisible(true);
+	regSel.plot9.setVisible(true);
+	regSel.plot10.setVisible(true);
 }]]></Body>
 				</Function>
 			</Functions>
@@ -5879,7 +5940,7 @@ cargoPoliticas();]]></OnClickCode>
 						<Title><![CDATA[Camas Aislamiento]]></Title>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-10655817</Color>
-					<Expression2><![CDATA[regionsOk ? ((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.) : 0]]></Expression2>
+					<Expression2><![CDATA[regionsOk ? ((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.): 0]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -5902,7 +5963,7 @@ cargoPoliticas();]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>365</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
@@ -6166,19 +6227,19 @@ cargoPoliticas();]]></OnClickCode>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Fatalities]]></Title>
-					<Expression><![CDATA[my_dataset2]]></Expression>
-					<Color>-11116635</Color>
-					<Expression2><![CDATA[regions.sumDeaths() * divisor]]></Expression2>
+						<Title><![CDATA[Hospitalized]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-10635059</Color>
+					<Expression2><![CDATA[recuperadosTotales * divisor]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
 					<DatasetExpression>  
-						<Title><![CDATA[Hospitalized]]></Title>
-					<Expression><![CDATA[my_dataset3]]></Expression>
-					<Color>-10635059</Color>
-					<Expression2><![CDATA[recuperadosTotales * divisor]]></Expression2>
+						<Title><![CDATA[Fatalities]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-11116635</Color>
+					<Expression2><![CDATA[regions.sumDeaths() * divisor ]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
@@ -6192,7 +6253,7 @@ cargoPoliticas();]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>365</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
@@ -7035,7 +7096,7 @@ cargoPoliticas();]]></OnClickCode>
 				<Image>
 					<Id>1589315404377</Id>
 					<Name><![CDATA[image46]]></Name>
-					<X>1643</X><Y>-105</Y>
+					<X>1649</X><Y>26</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7294,7 +7355,7 @@ cargoPoliticas();]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>365</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
@@ -7620,8 +7681,8 @@ cargoPoliticas();]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<SamplesToKeep>500</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[500]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
     			</TimePlot>
@@ -8048,7 +8109,7 @@ enfermedad]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1589393633357</Id>
 					<Name><![CDATA[button1]]></Name>
-					<X>380</X><Y>-260</Y>
+					<X>240</X><Y>920</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8068,8 +8129,8 @@ enfermedad]]></Text>
 				<Group>
 					<Id>1589398732841</Id>
 					<Name><![CDATA[hexFillRun]]></Name>
-					<X>1665</X><Y>45</Y>
-					<Label><X>1.718</X><Y>0</Y></Label>
+					<X>1480</X><Y>530</Y>
+					<Label><X>4.013</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
@@ -8082,7 +8143,7 @@ enfermedad]]></Text>
 				<Image>
 					<Id>1589398732843</Id>
 					<Name><![CDATA[image8]]></Name>
-					<X>-20.957</X><Y>-21.303</Y>
+					<X>-48.939</X><Y>-48.626</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8090,8 +8151,8 @@ enfermedad]]></Text>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>40.884</Width>
-					<Height>40.716</Height>
+					<Width>95.475</Width>
+					<Height>92.938</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
@@ -8104,7 +8165,7 @@ enfermedad]]></Text>
 				<Oval>
 					<Id>1589398732845</Id>
 					<Name><![CDATA[oval7]]></Name>
-					<X>0</X><Y>-0.515</Y>
+					<X>0</X><Y>-1.173</Y>
 					<Label><X>0</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -8117,7 +8178,7 @@ enfermedad]]></Text>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<RadiusX>13.413</RadiusX>
+					<RadiusX>31.347</RadiusX>
 					<RadiusY>40</RadiusY>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -8144,8 +8205,8 @@ enfermedad]]></Text>
 				<Group>
 					<Id>1589398770010</Id>
 					<Name><![CDATA[hexFillRunbis]]></Name>
-					<X>2020</X><Y>-180</Y>
-					<Label><X>10.226</X><Y>0</Y></Label>
+					<X>1480</X><Y>420</Y>
+					<Label><X>4.148</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
@@ -8158,7 +8219,7 @@ enfermedad]]></Text>
 				<Image>
 					<Id>1589398770012</Id>
 					<Name><![CDATA[image9]]></Name>
-					<X>-124.744</X><Y>-126.332</Y>
+					<X>-50.623</X><Y>-49.197</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8166,8 +8227,8 @@ enfermedad]]></Text>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
-					<Width>243.357</Width>
-					<Height>241.455</Height>
+					<Width>98.757</Width>
+					<Height>94.03</Height>
 					<Rotation>0.0</Rotation>
 					<ImageFiles>
 						<ImageResourceReference>
@@ -8180,7 +8241,7 @@ enfermedad]]></Text>
 				<Oval>
 					<Id>1589398770014</Id>
 					<Name><![CDATA[oval8]]></Name>
-					<X>0</X><Y>-3.054</Y>
+					<X>0</X><Y>-1.187</Y>
 					<Label><X>0</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -8193,7 +8254,7 @@ enfermedad]]></Text>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<RadiusX>79.8395</RadiusX>
+					<RadiusX>32.4855</RadiusX>
 					<RadiusY>40</RadiusY>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -8220,7 +8281,7 @@ enfermedad]]></Text>
 				<Image>
 					<Id>1589398966290</Id>
 					<Name><![CDATA[image1]]></Name>
-					<X>1691</X><Y>25</Y>
+					<X>1720</X><Y>-40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8261,6 +8322,279 @@ enfermedad]]></Text>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Image>
+					<Id>1589466494825</Id>
+					<Name><![CDATA[image36]]></Name>
+					<X>1964</X><Y>37</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[idioma != "english"]]></VisibleCode>
+					<OnClickCode><![CDATA[regSel = null;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>33</Width>
+					<Height>11</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Todas (1).png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Todas.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[regSel == null ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>true</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1589466494887</Id>
+					<Name><![CDATA[image47]]></Name>
+					<X>1970</X><Y>37</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[idioma == "english"]]></VisibleCode>
+					<OnClickCode><![CDATA[regSel = null;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>15</Width>
+					<Height>10</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[All (1).png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[All.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[regSel == null ? 1 : 0]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Group>
+					<Id>1589466494947</Id>
+					<Name><![CDATA[groupoElegirProv]]></Name>
+					<X>2038</X><Y>39</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[//listadoProvincias.setVisible(!listadoProvincias.isVisible());
+if(!listadoProvincias.isVisible()){
+	smoothPopUp(listadoProvincias, 50., 0.5, 1.0, true);
+}else{
+	smoothPopUp(listadoProvincias, 50., 1.0, 0.5, false);
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1589466494949</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-20</X><Y>-9</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-4144960</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>162</Width>
+					<Height>23</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1589466494951</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>-10</X><Y>-3</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-8355712</Color>
+					<Text><![CDATA[Todas]]></Text>
+					<TextCode><![CDATA[regSel == null ? (idioma == "english" ? "All" : "Todas") : regSel.nombre]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Image>
+					<Id>1589466494953</Id>
+					<Name><![CDATA[image10]]></Name>
+					<X>125</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>11</Width>
+					<Height>7</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[dropdown.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+			</Presentation>
+
+				</Group>
+				<Group>
+					<Id>1589466497169</Id>
+					<Name><![CDATA[listadoProvincias]]></Name>
+					<X>2108</X><Y>66</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1589466497171</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>-90</X><Y>-10</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-4144960</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>162</Width>
+					<Height>19</Height>
+					<HeightCode><![CDATA[regions.size() * 20]]></HeightCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1589466497173</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>-80</X><Y>-5</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<YCode><![CDATA[-5 + index * 20]]></YCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[regions.size()]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[Region aux = regions.get(index);
+if(regSel != aux){
+	regSel = aux;
+}else{
+	regSel = null;
+}
+setChartsVisible();
+listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-8355712</Color>
+					<ColorCode><![CDATA[regSel == regions.get(index) ? dodgerBlue : gray]]></ColorCode>
+					<Text><![CDATA[Todas]]></Text>
+					<TextCode><![CDATA[regions.get(index).nombre]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+				<Image>
+					<Id>1589472146550</Id>
+					<Name><![CDATA[image2]]></Name>
+					<X>1870</X><Y>32</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>140</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 530.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 531.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<ImageIndexCode><![CDATA[idioma == "english" ? 0 : 1]]></ImageIndexCode>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Line>
+					<Id>1589472252306</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>1860</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-3354113</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>-15</Dy>
+					<Dz>0</Dz>
+				</Line>
 			</Presentation>
 
 				</Level>
@@ -9630,7 +9964,7 @@ enfermedad]]></Text>
 					<Name><![CDATA[text]]></Name>
 					<X>800</X><Y>20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
@@ -9669,6 +10003,333 @@ enfermedad]]></Text>
 						<LabelText><![CDATA[PRINT INFECTADOS]]></LabelText>
 					</ExtendedProperties>
 				</Control>
+    			<TimePlot>
+					<Id>1589469265434</Id>
+					<Name><![CDATA[plot10]]></Name>
+					<X>2455</X><Y>-242</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>420</Width>
+					<Height>253.907</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>340</Width>
+						<Height>193.907</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor/>
+						<GridColor>-5000269</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-7960954</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Camas Aislamiento]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-10655817</Color>
+					<Expression2><![CDATA[main.regionsOk ? ((1. - (camaAislamientoActual/camaAislamientoIniciales)) * 100.) : 0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Camas TI]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-4892768</Color>
+					<Expression2><![CDATA[main.regionsOk ? ((1. - (terapiaIntensivaActual/terapiaIntensivaIniciales)) * 100.) : 0 ]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Respiradores]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-6314008</Color>
+					<Expression2><![CDATA[main.regionsOk ? ((1. - (respiradoresActual/respiradoresIniciales)) * 100.) : 0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>dd_MMM</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1589469265720</Id>
+					<Name><![CDATA[plot4]]></Name>
+					<X>2030</X><Y>-536</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>420</Width>
+					<Height>257.921</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>340</Width>
+						<Height>197.921</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor/>
+						<GridColor>-5000269</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-7960954</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Fatalities]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-11116635</Color>
+					<Expression2><![CDATA[fallecidos * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Hospitalized]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-10635059</Color>
+					<Expression2><![CDATA[recuperados * main.divisor ]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Infected]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-628814</Color>
+					<Expression2><![CDATA[infectados.size() * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>dd_MMM</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1589469265732</Id>
+					<Name><![CDATA[plot8]]></Name>
+					<X>2455</X><Y>-536</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>420</Width>
+					<Height>257.921</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>340</Width>
+						<Height>197.921</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor/>
+						<GridColor>-5000269</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-7960954</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Leve]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-927591</Color>
+					<Expression2><![CDATA[leves * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Moderados]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-417402</Color>
+					<Expression2><![CDATA[moderados  * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Graves]]></Title>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-433786</Color>
+					<Expression2><![CDATA[criticas]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>dd_MMM</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1589469265748</Id>
+					<Name><![CDATA[plot9]]></Name>
+					<X>2030</X><Y>-242</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1584777600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>420</Width>
+					<Height>253.907</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>340</Width>
+						<Height>193.907</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor/>
+						<GridColor>-5000269</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-7960954</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Detectados]]></Title>
+					<Expression><![CDATA[my_dataset2]]></Expression>
+					<Color>-6386959</Color>
+					<Expression2><![CDATA[detectados * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[No Detectados]]></Title>
+					<Expression><![CDATA[my_dataset3]]></Expression>
+					<Color>-746095</Color>
+					<Expression2><![CDATA[noDetectados * main.divisor]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>2.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>dd_MMM</LabelFormat>
+    			</TimePlot>
 			</Presentation>
 
 				</Level>
@@ -13858,6 +14519,34 @@ public class Politica implements Serializable {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Input/Input_Politicas_Italia.xlsx]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[All (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[All.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Todas (1).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Todas.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[dropdown.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 530.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 531.png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
