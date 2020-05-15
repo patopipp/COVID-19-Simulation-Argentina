@@ -2972,7 +2972,8 @@ if(regSel == null){
 			answer = roundToInt((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.);
 		break;
 		case("isolation_PU_width"):
-			answer = roundToInt((100. - (picoSatCA))*80.);
+			answer = roundToInt(((picoSatCA/100.))*80.);
+		break;
 		case("isolation_PU_%"):
 			answer = roundToInt(picoSatCA);
 		break;
@@ -2986,7 +2987,8 @@ if(regSel == null){
 			answer = roundToInt((1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial())) * 100.);
 		break;
 		case("IC_PU_width"):
-			answer = roundToInt((100. - (picoSatTI))*80.);
+			answer = roundToInt(((picoSatTI/100.))*80.);
+		break;
 		case("IC_PU_%"):
 			answer = roundToInt(picoSatTI);
 		break;
@@ -3000,7 +3002,8 @@ if(regSel == null){
 			answer = roundToInt((1. - ((regions.sumRespiradoresLibres()*100.)/(regions.sumRespiradoresIniciales() * 100.))) * 100.);
 		break;
 		case("vent_PU_width"):
-			answer = roundToInt((100. - (picoSatResp))*80.);
+			answer = roundToInt(((picoSatResp/100.))*80.);
+		break;
 		case("vent_PU_%"):
 			answer = roundToInt(picoSatResp);
 		break;
@@ -3062,7 +3065,8 @@ if(regSel == null){
 			answer = roundToInt((1. - (regSel.camaAislamientoActual/regSel.camaAislamientoIniciales)) * 100.);
 		break;
 		case("isolation_PU_width"):
-			answer = roundToInt((100. - (regSel.maxSatCA))*80.);
+			answer = roundToInt(((regSel.maxSatCA/100.))*80.);
+		break;
 		case("isolation_PU_%"):
 			answer = roundToInt(regSel.maxSatCA);
 		break;
@@ -3076,7 +3080,8 @@ if(regSel == null){
 			answer = roundToInt((1. - (regSel.terapiaIntensivaActual/regSel.terapiaIntensivaIniciales)) * 100.);
 		break;
 		case("IC_PU_width"):
-			answer = roundToInt((100. - (regSel.maxSatTI))*80.);
+			answer = roundToInt(((regSel.maxSatTI/100.))*80.);
+		break;
 		case("IC_PU_%"):
 			answer = roundToInt(regSel.maxSatTI);
 		break;
@@ -3085,13 +3090,14 @@ if(regSel == null){
 		
 		
 		case("vent_width"):
-			answer = roundToInt((1. - ((regSel.respiradoresActual*100.)/(regSel.respiradoresIniciales*100.)))*80.);
+			answer = roundToInt(((1. - (regSel.respiradoresActual/regSel.respiradoresIniciales))) * 80.);
 		break;		
 		case("vent_%"):
 			answer = roundToInt((1. - ((regSel.respiradoresActual*100.)/(regSel.respiradoresIniciales*100))) * 100.);
 		break;
 		case("vent_PU_width"):
-			answer = roundToInt((100. - (regSel.maxSatResp))*80.);
+			answer = roundToInt(((regSel.maxSatResp/100.))*80.);
+		break;
 		case("vent_PU_%"):
 			answer = roundToInt(regSel.maxSatResp);
 		break;
@@ -6030,7 +6036,7 @@ el total de su enfermedad)]]></Text>
 				<Group>
 					<Id>1589315230071</Id>
 					<Name><![CDATA[grupoUploadInfo]]></Name>
-					<X>640</X><Y>360</Y>
+					<X>649</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8070,7 +8076,7 @@ cargoPoliticas();]]></OnClickCode>
 				<Group>
 					<Id>1589315229945</Id>
 					<Name><![CDATA[grupoEstadoInfo]]></Name>
-					<X>640</X><Y>1000</Y>
+					<X>649</X><Y>1000</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8836,7 +8842,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Group>
 					<Id>1589553196539</Id>
 					<Name><![CDATA[grouppPopUp]]></Name>
-					<X>2400</X><Y>940</Y>
+					<X>2260</X><Y>940</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9135,7 +9141,6 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<XCode><![CDATA[2236]]></XCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -10830,7 +10835,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<DatasetExpression>  
 						<Title><![CDATA[Camas TI]]></Title>
 					<Expression><![CDATA[my_dataset3]]></Expression>
-					<Color>-4892768</Color>
+					<Color>-6314008</Color>
 					<Expression2><![CDATA[main.regionsOk ? ((1. - (terapiaIntensivaActual/terapiaIntensivaIniciales)) * 100.) : 0 ]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
@@ -10839,7 +10844,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<DatasetExpression>  
 						<Title><![CDATA[Respiradores]]></Title>
 					<Expression><![CDATA[my_dataset]]></Expression>
-					<Color>-6314008</Color>
+					<Color>-4892768</Color>
 					<Expression2><![CDATA[main.regionsOk ? ((1. - (respiradoresActual/respiradoresIniciales)) * 100.) : 0]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
