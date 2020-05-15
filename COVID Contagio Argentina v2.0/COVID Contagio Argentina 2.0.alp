@@ -169,7 +169,7 @@ if(!montecarlo){
 				<Variable Class="PlainVariable">
 					<Id>1585020299467</Id>
 					<Name><![CDATA[regSel]]></Name>
-					<X>1950</X><Y>-30</Y>
+					<X>2120</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -850,6 +850,63 @@ if(!montecarlo){
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548759043</Id>
+					<Name><![CDATA[maxInfectadosFechaDate]]></Name>
+					<X>920</X><Y>2060</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Date]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548774174</Id>
+					<Name><![CDATA[picoSatCA]]></Name>
+					<X>930</X><Y>2090</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548796837</Id>
+					<Name><![CDATA[picoSatTI]]></Name>
+					<X>930</X><Y>2110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548804069</Id>
+					<Name><![CDATA[picoSatResp]]></Name>
+					<X>930</X><Y>2130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1584976395709</Id>
 					<Name><![CDATA[duracionPromedioEnfermedad]]></Name>
@@ -1507,6 +1564,38 @@ for(int i = 0; i < regions.size(); i++){
 	}
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1589556173912</Id>
+					<Name><![CDATA[finIngresosExterior]]></Name>
+					<X>1740</X><Y>2040</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="occuresOnce">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1589616000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[YEAR]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[probabilidadExtranjerosInfectados = 0.;
+ingresosExtranjerosDiarios = 0;]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -1887,6 +1976,11 @@ for(int i = 0; i < regions.size() ; i++){
 	if(r.infectados.size() > r.maxInfectadosCantidad){
 		r.maxInfectadosCantidad = r.infectados.size();
 		r.maxInfectadosFecha = time();
+		r.maxInfectadosFechaDate = date();
+		
+		r.maxSatCA = roundToInt((r.camaAislamientoActual*100.) / (r.camaAislamientoIniciales*100.)*100.);
+		r.maxSatTI = roundToInt((r.terapiaIntensivaActual*100.) / (r.terapiaIntensivaIniciales*100.)*100.);
+		r.maxSatCA = roundToInt((r.respiradoresActual*100.) / (r.respiradoresIniciales*100.)*100.);	
 	}
 
 }
@@ -1894,6 +1988,32 @@ for(int i = 0; i < regions.size() ; i++){
 if(infectados.size() > maxInfectadosCantidad){
 	maxInfectadosCantidad = infectados.size();
 	maxInfectadosFecha = time();
+	maxInfectadosFechaDate = date();
+	
+	double maxCA = 0;
+	double maxTI = 0;
+	double maxResp = 0;
+	
+	double CATotal = 0;
+	double TITotal = 0;
+	double respTotal = 0;
+	for(int i = 0 ; i < regions.size() ; i++){
+		Region r = regions.get(i);
+		
+		maxCA += r.camaAislamientoActual;
+		maxTI += r.terapiaIntensivaActual;
+		maxResp += r.respiradoresActual;
+		
+		CATotal += r.camaAislamientoIniciales;
+		TITotal += r.terapiaIntensivaIniciales;
+		respTotal += r.respiradoresIniciales;
+		
+	}
+
+	picoSatCA = roundToInt((maxCA*100.) / (CATotal*100.)*100.);
+	picoSatTI = roundToInt((maxTI*100.) / (TITotal*100.)*100.);
+	picoSatResp = roundToInt((maxResp*100.) / (respTotal*100.)*100.);	
+	
 }
 
 double poblacion = recuperadosTotales+susceptiblesTotales+fallecidosTotales+infectados.size();
@@ -1905,6 +2025,7 @@ calcularTopRegiones(25);
 
 if(infectados.size() == 0){
 	simulationFinished = true;
+	smoothLinearMovement(grouppPopUp, true, 600, 380);
 	if(exportacionActivada){
 		exportarResultados();
 	}
@@ -2738,7 +2859,7 @@ for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1589470033557</Id>
 					<Name><![CDATA[setChartsVisible]]></Name>
-					<X>2040</X><Y>-40</Y>
+					<X>2240</X><Y>-360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2785,7 +2906,7 @@ if (regSel == null){
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
+					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1589478309890</Id>
 					<Name><![CDATA[selRegionVisuals]]></Name>
 					<X>1440</X><Y>330</Y>
@@ -2797,13 +2918,13 @@ if (regSel == null){
 						<Name><![CDATA[type]]></Name>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
-					<Body><![CDATA[double answer = 0;
+					<Body><![CDATA[int answer = 0;
 
 if(regSel == null){
 	switch(type){
 	
 		case("deaths_width"):
-			answer = infectadosTotales > 0 ?  ((regions.sumDeaths()*100.)/(infectadosTotales*100.))*80. : 0;
+			answer = infectadosTotales > 0 ?  roundToInt(((regions.sumDeaths()*100.)/(infectadosTotales*100.))*80.) : 0;
 		break;
 		case ("deaths_%"):
 			answer = roundToInt((roundToInt(regions.sumDeaths()*100.)/(infectadosTotales*100.)) * 100.); 
@@ -2815,7 +2936,7 @@ if(regSel == null){
 		
 		
 		case("inf_width"):
-			answer = ((infectadosTotales*100.)/(regions.sumPoblacion()*100.))*80.;
+			answer = roundToInt(((infectadosTotales*100.)/(regions.sumPoblacion()*100.))*80.);
 		break;
 		case("inf_%"):
 			answer = roundToInt((infectadosTotales*100.)/(regions.sumPoblacion()*100.) * 100.);
@@ -2827,7 +2948,7 @@ if(regSel == null){
 		
 		
 		case("recovered_width"):
-			answer = infectadosTotales > 0 ? ((recuperadosTotales*100.0)/(infectadosTotales*100.0))*80. : 0;
+			answer = infectadosTotales > 0 ? roundToInt(((recuperadosTotales*100.0)/(infectadosTotales*100.0))*80.) : 0;
 		break;
 		case("recovered_%"):
 			answer = recuperadosTotales > 0 ? (roundToInt((recuperadosTotales*100.)/(infectadosTotales*100.)*100)) : 0;
@@ -2839,36 +2960,50 @@ if(regSel == null){
 				
 		
 		case("detected_width"):
-			answer =  255 * (regions.sumNoDetectados()/infectados.size());
+			answer =  roundToInt(255 * (regions.sumNoDetectados()/infectados.size()));
 		break;
 		
 		
 		
 		case("isolation_width"):
-			answer = (1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales()))*80.;
+			answer = roundToInt((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales()))*80.);
 		break;
 		case("isolation_%"):
 			answer = roundToInt((1. - (regions.sumCamasAislamientoLibres()/regions.sumCamasAislamientoIniciales())) * 100.);
+		break;
+		case("isolation_PU_width"):
+			answer = roundToInt((100. - (picoSatCA))*80.);
+		case("isolation_PU_%"):
+			answer = roundToInt(picoSatCA);
 		break;
 		
 		
 		
 		case("IC_width"):
-			answer = (1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial()))*80.;
+			answer = roundToInt((1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial()))*80.);
 		break;
 		case("IC_%"):
 			answer = roundToInt((1. - (regions.sumCamasTIEnUso()/regions.sumCamasTIInicial())) * 100.);
+		break;
+		case("IC_PU_width"):
+			answer = roundToInt((100. - (picoSatTI))*80.);
+		case("IC_PU_%"):
+			answer = roundToInt(picoSatTI);
 		break;
 		
 		
 		
 		case("vent_width"):
-			answer = (1. - (regions.sumRespiradoresLibres()/regions.sumRespiradoresIniciales()))*80.;
+			answer = roundToInt( (1. - ((regions.sumRespiradoresLibres() *100.)/(regions.sumRespiradoresIniciales() * 100.)))*80.);
 		break;		
 		case("vent_%"):
-			answer = roundToInt((1. - (regions.sumRespiradoresLibres()/regions.sumRespiradoresIniciales())) * 100.);
+			answer = roundToInt((1. - ((regions.sumRespiradoresLibres()*100.)/(regions.sumRespiradoresIniciales() * 100.))) * 100.);
 		break;
-		
+		case("vent_PU_width"):
+			answer = roundToInt((100. - (picoSatResp))*80.);
+		case("vent_PU_%"):
+			answer = roundToInt(picoSatResp);
+		break;
 		
 		
 		default:
@@ -2879,7 +3014,7 @@ if(regSel == null){
 	switch(type){
 	
 		case("deaths_width"):
-			answer = regSel.infectadosTotales > 0 ?  ((regSel.fallecidos*100.0)/(regSel.infectadosTotales*100.0))*80. : 0;
+			answer = regSel.infectadosTotales > 0 ?  roundToInt(((regSel.fallecidos*100.0)/(regSel.infectadosTotales*100.0))*80.) : 0;
 		break;
 		case ("deaths_%"):
 			answer = roundToInt((regSel.fallecidos*100.0)/(regSel.infectadosTotales*100.0)* 100.) ; 
@@ -2891,7 +3026,7 @@ if(regSel == null){
 		
 		
 		case("inf_width"):
-			answer = ((regSel.infectadosTotales* 100.)/(regSel.poblacion* 100.))*80.;
+			answer = roundToInt(((regSel.infectadosTotales* 100.)/(regSel.poblacion* 100.))*80.);
 		break;
 		case("inf_%"):
 			answer = roundToInt((regSel.infectadosTotales* 100.)/(regSel.poblacion* 100.) * 100);
@@ -2903,7 +3038,7 @@ if(regSel == null){
 		
 		
 		case("recovered_width"):
-			answer = regSel.infectadosTotales > 0 ? ((regSel.recuperados*100.0)/(regSel.infectadosTotales*100.0))*80. : 0;
+			answer = regSel.infectadosTotales > 0 ? roundToInt(((regSel.recuperados*100.0)/(regSel.infectadosTotales*100.0))*80.) : 0;
 		break;
 		case("recovered_%"):
 			answer = recuperadosTotales > 0 ? (roundToInt((regSel.recuperados*100.)/(regSel.infectadosTotales*100.)*100.)) : 0;
@@ -2915,34 +3050,50 @@ if(regSel == null){
 		
 		
 		case("detected_width"):
-			answer =  regSel.infectados.size() > 0 ? 255 * ((regSel.noDetectados* 100.)/(regSel.infectados.size()* 100.)) : 0;
+			answer =  regSel.infectados.size() > 0 ? roundToInt(255 * (roundToInt(regSel.noDetectados* 100.)/(regSel.infectados.size()* 100.))) : 0;
 		break;
 		
 		
 		
 		case("isolation_width"):
-			answer = (1. - (regSel.camaAislamientoActual/regSel.camaAislamientoIniciales))*80.;
+			answer = roundToInt((1. - (regSel.camaAislamientoActual/regSel.camaAislamientoIniciales))*80.);
 		break;
 		case("isolation_%"):
 			answer = roundToInt((1. - (regSel.camaAislamientoActual/regSel.camaAislamientoIniciales)) * 100.);
+		break;
+		case("isolation_PU_width"):
+			answer = roundToInt((100. - (regSel.maxSatCA))*80.);
+		case("isolation_PU_%"):
+			answer = roundToInt(regSel.maxSatCA);
 		break;
 		
 		
 		
 		case("IC_width"):
-			answer = (1. - (regSel.terapiaIntensivaActual/regSel.terapiaIntensivaIniciales))*80.;
+			answer = roundToInt((1. - (regSel.terapiaIntensivaActual/regSel.terapiaIntensivaIniciales))*80.);
 		break;
 		case("IC_%"):
 			answer = roundToInt((1. - (regSel.terapiaIntensivaActual/regSel.terapiaIntensivaIniciales)) * 100.);
 		break;
+		case("IC_PU_width"):
+			answer = roundToInt((100. - (regSel.maxSatTI))*80.);
+		case("IC_PU_%"):
+			answer = roundToInt(regSel.maxSatTI);
+		break;
+		
 		
 		
 		
 		case("vent_width"):
-			answer = (1. - (regSel.respiradoresActual/regSel.respiradoresIniciales))*80.;
+			answer = roundToInt((1. - ((regSel.respiradoresActual*100.)/(regSel.respiradoresIniciales*100.)))*80.);
 		break;		
 		case("vent_%"):
-			answer = roundToInt((1. - (regSel.respiradoresActual/regSel.respiradoresIniciales)) * 100.);
+			answer = roundToInt((1. - ((regSel.respiradoresActual*100.)/(regSel.respiradoresIniciales*100))) * 100.);
+		break;
+		case("vent_PU_width"):
+			answer = roundToInt((100. - (regSel.maxSatResp))*80.);
+		case("vent_PU_%"):
+			answer = roundToInt(regSel.maxSatResp);
 		break;
 		
 		
@@ -8258,32 +8409,10 @@ enfermedad]]></Text>
 						<LabelText><![CDATA[button]]></LabelText>
 					</ExtendedProperties>
 				</Control>
-				<Image>
-					<Id>1589398966290</Id>
-					<Name><![CDATA[image1]]></Name>
-					<X>1720</X><Y>-40</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>165</Width>
-					<Height>31</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageResourceReference>
-							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
-							<ClassName><![CDATA[Group 529.png]]></ClassName>
-						</ImageResourceReference>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
 				<Text>
 					<Id>1589459464277</Id>
 					<Name><![CDATA[text29]]></Name>
-					<X>2610</X><Y>67</Y>
+					<X>2756</X><Y>68</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8294,7 +8423,7 @@ enfermedad]]></Text>
 					<Rotation>0.0</Rotation>
 					<Color>-11116635</Color>
 					<Text><![CDATA[05/05/2020]]></Text>
-					<TextCode><![CDATA[new SimpleDateFormat("dd:MM:yyyy").format(timeToDate(time()))]]></TextCode>
+					<TextCode><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(timeToDate(time()))]]></TextCode>
 					<Font>
 						<Name>Arial</Name>
 						<Size>14</Size>
@@ -8305,7 +8434,7 @@ enfermedad]]></Text>
 				<Image>
 					<Id>1589466494825</Id>
 					<Name><![CDATA[image36]]></Name>
-					<X>1964</X><Y>37</Y>
+					<X>2254</X><Y>37</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8334,7 +8463,7 @@ enfermedad]]></Text>
 				<Image>
 					<Id>1589466494887</Id>
 					<Name><![CDATA[image47]]></Name>
-					<X>1970</X><Y>37</Y>
+					<X>2260</X><Y>37</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8363,7 +8492,7 @@ enfermedad]]></Text>
 				<Group>
 					<Id>1589466494947</Id>
 					<Name><![CDATA[groupoElegirProv]]></Name>
-					<X>2038</X><Y>39</Y>
+					<X>2328</X><Y>39</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8452,7 +8581,7 @@ if(!listadoProvincias.isVisible()){
 				<Group>
 					<Id>1589466497169</Id>
 					<Name><![CDATA[listadoProvincias]]></Name>
-					<X>2108</X><Y>66</Y>
+					<X>2398</X><Y>66</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -8527,7 +8656,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Image>
 					<Id>1589472146550</Id>
 					<Name><![CDATA[image2]]></Name>
-					<X>1870</X><Y>32</Y>
+					<X>2160</X><Y>32</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8554,7 +8683,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Line>
 					<Id>1589472252306</Id>
 					<Name><![CDATA[line]]></Name>
-					<X>1860</X><Y>50</Y>
+					<X>2150</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8633,7 +8762,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1589486395131</Id>
 					<Name><![CDATA[button3]]></Name>
-					<X>1420</X><Y>260</Y>
+					<X>1400</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8656,6 +8785,531 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<LabelText><![CDATA[button]]></LabelText>
 					</ExtendedProperties>
 				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1589545991699</Id>
+					<Name><![CDATA[button4]]></Name>
+					<X>1660</X><Y>1600</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[for(int i = 0 ; i < listaPoliticas.size(); i++){
+	Politica p = listaPoliticas.get(i);
+	
+	traceln(p.toString());
+}]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[print politicas]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Image>
+					<Id>1589546879026</Id>
+					<Name><![CDATA[image8]]></Name>
+					<X>2810</X><Y>655</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://cloud.anylogic.com/profile/user/0ae9031b-c206-46c9-abdd-87d5637b1c1c");]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>44</Width>
+					<Height>44</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 498 (2).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Group>
+					<Id>1589553196539</Id>
+					<Name><![CDATA[grouppPopUp]]></Name>
+					<X>2400</X><Y>940</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Image>
+					<Id>1589550359852</Id>
+					<Name><![CDATA[image9]]></Name>
+					<X>-180</X><Y>-150</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>360</Width>
+					<Height>296</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 549.png]]></ClassName>
+						</ImageResourceReference>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 547.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1589550382064</Id>
+					<Name><![CDATA[text30]]></Name>
+					<X>-2</X><Y>-110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Simulación Finalizada]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? ( simulationFinished ? "Simulation Finished" : "Simulation in Process" ) : ( simulationFinished ? "Simulación Finalizada" : "Simulación en Proceso" ) ]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550503732</Id>
+					<Name><![CDATA[text31]]></Name>
+					<X>0</X><Y>-90</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Estimaciones del Pico de Infectados]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? "Peak-Infected Estimates" : "Estimaciones del Pico de Infectados"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550618870</Id>
+					<Name><![CDATA[text33]]></Name>
+					<X>-110</X><Y>-36</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Cantidad de Infectados]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? "Number of Infected" : "Cantidad de Infectados"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550700013</Id>
+					<Name><![CDATA[text34]]></Name>
+					<X>-110</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Dia del Pico]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? "Peak-Day" : "Dia del Pico"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550753046</Id>
+					<Name><![CDATA[text37]]></Name>
+					<X>-110</X><Y>30</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[Saturación del Sistema hospitalario]]></Text>
+					<TextCode><![CDATA[idioma == "english" ? "Health System Saturation" : "Saturación del Sistema hospitalario"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550794854</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>66</X><Y>-36</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[123123123]]></Text>
+					<TextCode><![CDATA[regSel == null ? maxInfectadosCantidad*divisor : regSel.maxInfectadosCantidad*divisor]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589550900869</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>66</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[123123123]]></Text>
+					<TextCode><![CDATA[maxInfectadosFecha == 0 ? 
+		"-" : 
+		( regSel == null ? 
+			( 
+				new SimpleDateFormat("dd/MM/yyyy").format(maxInfectadosFechaDate) 
+			)  : 
+			( 
+				new SimpleDateFormat("dd/MM/yyyy").format(regSel.maxInfectadosFechaDate)
+			)
+		)]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1589551062128</Id>
+					<Name><![CDATA[rectangle39]]></Name>
+					<X>-64</X><Y>56</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>80</Width>
+					<Height>8</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-3354113</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1589551062130</Id>
+					<Name><![CDATA[rectangle40]]></Name>
+					<X>-64</X><Y>56</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>15</Width>
+					<Height>8</Height>
+					<WidthCode><![CDATA[selRegionVisuals("isolation_PU_width")]]></WidthCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-10655817</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1589551096951</Id>
+					<Name><![CDATA[rectangle41]]></Name>
+					<X>-64</X><Y>76</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>80</Width>
+					<Height>8</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-3354113</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1589551096953</Id>
+					<Name><![CDATA[rectangle42]]></Name>
+					<X>-64</X><Y>76</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>15</Width>
+					<Height>8</Height>
+					<WidthCode><![CDATA[selRegionVisuals("IC_PU_width")]]></WidthCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-6314008</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1589551107471</Id>
+					<Name><![CDATA[rectangle43]]></Name>
+					<X>-63</X><Y>96</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<XCode><![CDATA[2236]]></XCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>80</Width>
+					<Height>8</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-3354113</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1589551107473</Id>
+					<Name><![CDATA[rectangle44]]></Name>
+					<X>-64</X><Y>96</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>15</Width>
+					<Height>8</Height>
+					<WidthCode><![CDATA[selRegionVisuals("vent_PU_width")]]></WidthCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-4892768</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Image>
+					<Id>1589551171403</Id>
+					<Name><![CDATA[image13]]></Name>
+					<X>131</X><Y>-119</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[smoothLinearMovement(grouppPopUp, true, 500, 1500);
+]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>18</Width>
+					<Height>18</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 545.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1589551409263</Id>
+					<Name><![CDATA[text84]]></Name>
+					<X>41</X><Y>54</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[100%]]></Text>
+					<TextCode><![CDATA[selRegionVisuals("isolation_PU_%") + "%"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589551447959</Id>
+					<Name><![CDATA[text85]]></Name>
+					<X>41</X><Y>74</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[100%]]></Text>
+					<TextCode><![CDATA[selRegionVisuals("IC_PU_%") + "%"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1589551473027</Id>
+					<Name><![CDATA[text86]]></Name>
+					<X>41</X><Y>94</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-11116635</Color>
+					<Text><![CDATA[100%]]></Text>
+					<TextCode><![CDATA[selRegionVisuals("vent_PU_%") + "%"]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+				<Image>
+					<Id>1589555691172</Id>
+					<Name><![CDATA[image1]]></Name>
+					<X>1690</X><Y>33</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>429</Width>
+					<Height>19</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[COVID-19 AGENT BASED SIMULATION (1).png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Image>
+					<Id>1589555826014</Id>
+					<Name><![CDATA[image12]]></Name>
+					<X>1920</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[smoothLinearMovement(grouppPopUp, true, 600, 380);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>23</Width>
+					<Height>23</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[covidmontecarlo]]></PackageName>
+							<ClassName><![CDATA[Group 541.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
 			</Presentation>
 
 				</Level>
@@ -9167,7 +9821,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1586954475046</Id>
 					<Name><![CDATA[casosImportados]]></Name>
-					<X>20</X><Y>560</Y>
+					<X>20</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9194,7 +9848,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1589402616161</Id>
 					<Name><![CDATA[probabilidadMovimientoActual]]></Name>
-					<X>20</X><Y>460</Y>
+					<X>20</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9242,7 +9896,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1589404082160</Id>
 					<Name><![CDATA[nViajes]]></Name>
-					<X>20</X><Y>500</Y>
+					<X>20</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9257,7 +9911,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="PlainVariable">
 					<Id>1589405878862</Id>
 					<Name><![CDATA[nViajesExt]]></Name>
-					<X>20</X><Y>520</Y>
+					<X>20</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9267,6 +9921,54 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[1.]]></Code>
 						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548878612</Id>
+					<Name><![CDATA[maxInfectadosFechaDate]]></Name>
+					<X>40</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Date]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548895280</Id>
+					<Name><![CDATA[maxSatResp]]></Name>
+					<X>620</X><Y>450</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548895282</Id>
+					<Name><![CDATA[maxSatTI]]></Name>
+					<X>620</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1589548895284</Id>
+					<Name><![CDATA[maxSatCA]]></Name>
+					<X>620</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -9446,7 +10148,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="Parameter">
 					<Id>1586189424560</Id>
 					<Name><![CDATA[probabilidadMovimientoOriginal]]></Name>
-					<X>20</X><Y>480</Y>
+					<X>20</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9542,7 +10244,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="CollectionVariable">
 					<Id>1584643152520</Id>
 					<Name><![CDATA[destinos]]></Name>
-					<X>100</X><Y>500</Y>
+					<X>100</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9557,7 +10259,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Variable Class="CollectionVariable">
 					<Id>1584643180989</Id>
 					<Name><![CDATA[probabilidadDestinos]]></Name>
-					<X>100</X><Y>520</Y>
+					<X>100</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9738,7 +10440,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>190</Width>
-					<Height>250</Height>
+					<Height>280</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -9813,7 +10515,7 @@ listadoProvincias.setVisible(!listadoProvincias.isVisible());]]></OnClickCode>
 				<Text>
 					<Id>1584833111175</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>80</X><Y>420</Y>
+					<X>80</X><Y>440</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13711,7 +14413,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></OnClickCode>
 				<Image>
 					<Id>1589489809437</Id>
 					<Name><![CDATA[image11]]></Name>
-					<X>575</X><Y>515</Y>
+					<X>576.5</X><Y>515</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13777,8 +14479,8 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></OnClickCode>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
 				<InitialDate><![CDATA[1577836800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1672531200000]]></FinalDate>	
-				<FinalTime><![CDATA[1096.0]]></FinalTime>	
+				<FinalDate><![CDATA[1893456000000]]></FinalDate>	
+				<FinalTime><![CDATA[3653.0]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
@@ -14685,10 +15387,6 @@ public class Politica implements Serializable {
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
-			<Path><![CDATA[Group 529.png]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
 			<Path><![CDATA[Input/Matriz_Contacto_Italia.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
@@ -14754,6 +15452,30 @@ public class Politica implements Serializable {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Group 535.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 498 (2).png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 549.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 545.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 541.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Group 547.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[COVID-19 AGENT BASED SIMULATION (1).png]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
