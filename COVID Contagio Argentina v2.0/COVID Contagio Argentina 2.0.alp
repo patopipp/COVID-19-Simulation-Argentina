@@ -10135,6 +10135,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Input_Simulador.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -10157,6 +10158,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Matriz_Contacto.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -10179,6 +10181,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Input_Politicas.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -15271,7 +15274,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></OnClickCode>
 				<Image>
 					<Id>1589489809437</Id>
 					<Name><![CDATA[image11]]></Name>
-					<X>576.5</X><Y>515</Y>
+					<X>578.5</X><Y>515</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
