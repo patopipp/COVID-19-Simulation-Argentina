@@ -2873,7 +2873,7 @@ if (!movementFlag) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if(!montecarlo){
+					<Body><![CDATA[/*if(!montecarlo){
 	//Copio rotacion de simulation
 	hexFill1.setRotation(simulationAgent.hexFill1.getRotation());
 	hexFill2.setRotation(simulationAgent.hexFill2.getRotation());
@@ -2882,7 +2882,7 @@ if (!movementFlag) {
 	hexClear2.setRotation(simulationAgent.hexClear2.getRotation());
 	//Pongo a rotar las shapes
 	rotacionPentagonos();
-}]]></Body>
+}*/]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -4004,78 +4004,6 @@ if(returnVal == JFileChooser.APPROVE_OPTION) {
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
-				<Control Type="FileChooser">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1590006537327</Id>
-					<Name><![CDATA[fileChooser5]]></Name>
-					<X>1367</X><Y>1001</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="14" Height="14">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<Title><![CDATA[]]></Title>
-						<Type>UPLOAD</Type>
-						<Filters>.xlsx, .xls</Filters>
-						<FileName>file.txt</FileName>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="FileChooser">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1590006516434</Id>
-					<Name><![CDATA[fileChooser4]]></Name>
-					<X>1227</X><Y>1001</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="14" Height="15.572">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<Title><![CDATA[]]></Title>
-						<Type>UPLOAD</Type>
-						<Filters>.xlsx, .xls</Filters>
-						<FileName>file.txt</FileName>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="FileChooser">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1590006480778</Id>
-					<Name><![CDATA[fileChooser3]]></Name>
-					<X>1076</X><Y>1001</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="16" Height="15">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<Title><![CDATA[]]></Title>
-						<Type>UPLOAD</Type>
-						<Filters>.xlsx, .xls</Filters>
-						<FileName>file.txt</FileName>
-					</ExtendedProperties>
-				</Control>
 				<Image>
 					<Id>1589315404434</Id>
 					<Name><![CDATA[image28]]></Name>
@@ -9863,13 +9791,13 @@ hospitalario]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1590005358351</Id>
 					<Name><![CDATA[fileChooser]]></Name>
-					<X>2</X><Y>-19</Y>
+					<X>3</X><Y>-18</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="13" Height="13">
+					<BasicProperties Width="11" Height="11">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -9974,9 +9902,6 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[if(!contactUploaded){
-	uploadContactMatrix();
-}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -9986,17 +9911,31 @@ hospitalario]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1590006364530</Id>
 					<Name><![CDATA[fileChooser1]]></Name>
-					<X>13</X><Y>-20</Y>
+					<X>15</X><Y>-19</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="15" Height="15">
+					<BasicProperties Width="11" Height="11">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
 						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if(!contactUploaded){
+    try{
+    	String url = value;
+    	int indexExt = url.lastIndexOf('.');
+    	String extension = url.substring(indexExt + 1);
+    	if(extension.equals("xls") || extension.equals("xlsx")){	
+    		matricesContacto.setFileName(url);
+			cargoMatricesContacto();
+			contactUploaded = true;
+		}
+    }catch(Exception e){
+    	e.printStackTrace();
+    }
+}]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -10066,7 +10005,7 @@ hospitalario]]></Text>
 						</ImageResourceReference>
 					</ImageFiles>
 					<ImageIndexCode><![CDATA[useDefaultInput ? 3 : !contactUploaded ? 0 : contactOk ? 2 : 1]]></ImageIndexCode>
-					<OriginalSize>false</OriginalSize>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 			</Presentation>
 
@@ -10080,9 +10019,6 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[if(!policiesUploaded){
-	uploadPolicies();
-}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -10092,17 +10028,32 @@ hospitalario]]></Text>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1590006421322</Id>
 					<Name><![CDATA[fileChooser2]]></Name>
-					<X>8</X><Y>-20</Y>
+					<X>10</X><Y>-18</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="15" Height="15">
+					<BasicProperties Width="11" Height="11">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor>-1</FillColor>
 						<TextColor/>
 						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if(!policiesUploaded){
+	try{
+    	String url = value;
+    	int indexExt = url.lastIndexOf('.');
+    	String extension = url.substring(indexExt + 1);
+    	if(extension.equals("xls") || extension.equals("xlsx")){	
+    		politicas.setFileName(url);
+			policiesUploaded = true;
+			cargoPoliticas();
+			cargoArriboTests();
+    	}	
+    }catch(Exception e){
+    	e.printStackTrace();
+    }
+}]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
@@ -10216,7 +10167,7 @@ hospitalario]]></Text>
 							<ClassName><![CDATA[Group 560 (1).png]]></ClassName>
 						</ImageResourceReference>
 					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
+					<OriginalSize>true</OriginalSize>
 				</Image>
 				<Image>
 					<Id>1589978545255</Id>
@@ -16633,5 +16584,6 @@ public class Politica implements Serializable {
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
+	<CloudModelUuid><![CDATA[ee28f592-ef81-43f9-ab15-5dd699887133]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
