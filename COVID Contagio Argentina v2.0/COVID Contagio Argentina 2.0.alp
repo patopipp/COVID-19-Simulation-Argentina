@@ -2920,7 +2920,7 @@ String source = "Llegada de Tests";
 
 for (int row = 2 ; row <= xl.getLastRowNum(source) ; row ++){
 	
-	if(!xl.getCellStringValue(source, row, 2).equals("")){
+	if(!xl.getCellStringValue(source, row, 3).equals("")){
 		
 		int cantidad= roundToInt(xl.getCellNumericValue(source, row, 2));
 		String fecha = xl.getCellStringValue(source, row, 3);
@@ -3311,9 +3311,9 @@ if(returnVal == JFileChooser.APPROVE_OPTION) {
     	String extension = url.substring(indexExt + 1);
     	if(extension.equals("xls") || extension.equals("xlsx")){	
     		politicas.setFileName(url);
+			policiesUploaded = true;
 			cargoPoliticas();
 			cargoArriboTests();
-			policiesUploaded = true;
     	}	
     }catch(Exception e){
     	e.printStackTrace();
@@ -6487,8 +6487,8 @@ smoothLinearMovement(grupoEstadoInfo, true, 600, 380);]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>365</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<SamplesToKeep>730</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[730]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
     			</TimePlot>
@@ -6777,8 +6777,8 @@ smoothLinearMovement(grupoEstadoInfo, true, 600, 380);]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>365</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<SamplesToKeep>730</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[730]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
     			</TimePlot>
@@ -7853,8 +7853,8 @@ smoothLinearMovement(grupoEstadoInfo, true, 600, 380);]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>365</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[365]]></TimeWindowExpression>
+					<SamplesToKeep>730</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[730]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
     			</TimePlot>
@@ -8179,8 +8179,8 @@ smoothLinearMovement(grupoEstadoInfo, true, 600, 380);]]></OnClickCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>2.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>500</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[500]]></TimeWindowExpression>
+					<SamplesToKeep>730</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[730]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>dd_MMM</LabelFormat>
     			</TimePlot>
@@ -9770,6 +9770,7 @@ hospitalario]]></Text>
 		cargoMatricesContacto();
 		cargarInfoEnfermedad();
 		cargoPoliticas();
+		cargoArriboTests();
 	}
 	pausarRotacion = true;
 	runSimulation();
