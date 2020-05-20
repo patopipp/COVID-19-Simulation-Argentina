@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241833" AlpVersion="8.5.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.5.2.202001241823" AlpVersion="8.5.1">
 <Model>
 	<Id>1584450064334</Id>
 	<Name><![CDATA[COVID19 - Impact of Non-Pharmaceutical Interventions]]></Name>
@@ -3582,10 +3582,6 @@ if(returnVal == JFileChooser.APPROVE_OPTION) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<ResourceReference>
-						<PackageName><![CDATA[covid19interventions]]></PackageName>
-						<ClassName><![CDATA[Input/Input_Simulador.xlsx]]></ClassName>
-					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>false</LoadOnStartup>
 					<SaveOnDispose>false</SaveOnDispose>
@@ -4008,6 +4004,78 @@ if(returnVal == JFileChooser.APPROVE_OPTION) {
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590006537327</Id>
+					<Name><![CDATA[fileChooser5]]></Name>
+					<X>1367</X><Y>1001</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="14" Height="14">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590006516434</Id>
+					<Name><![CDATA[fileChooser4]]></Name>
+					<X>1227</X><Y>1001</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="14" Height="15.572">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590006480778</Id>
+					<Name><![CDATA[fileChooser3]]></Name>
+					<X>1076</X><Y>1001</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="16" Height="15">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
 				<Image>
 					<Id>1589315404434</Id>
 					<Name><![CDATA[image28]]></Name>
@@ -9786,14 +9854,52 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[if(!covidUploaded){
-	uploadCovid();
-}]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 
 			<Presentation>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590005358351</Id>
+					<Name><![CDATA[fileChooser]]></Name>
+					<X>2</X><Y>-19</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="13" Height="13">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[try{
+	if(!covidUploaded){
+    	String url = value;
+    	int indexExt = url.lastIndexOf('.');
+    	String extension = url.substring(indexExt + 1);
+    	if(extension.equals("xls") || extension.equals("xlsx")){	
+    		inputSimulador.setFileName(url);
+    		cargarRegiones();
+    		cargarInfoEnfermedad();
+    		covidUploaded = true;
+    	}else{
+			//verCartelito(500, 350, 300, 50, "Por favor seleccione un archivo Excel", 3);
+    	}
+    }	
+}catch(Exception e){
+    	e.printStackTrace();
+}]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
 				<Image>
 					<Id>1589915654765</Id>
 					<Name><![CDATA[image16]]></Name>
@@ -9876,6 +9982,30 @@ hospitalario]]></Text>
 					<Rotation>0.0</Rotation>
 
 			<Presentation>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590006364530</Id>
+					<Name><![CDATA[fileChooser1]]></Name>
+					<X>13</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="15" Height="15">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
 				<Image>
 					<Id>1589915644674</Id>
 					<Name><![CDATA[image14]]></Name>
@@ -9958,6 +10088,30 @@ hospitalario]]></Text>
 					<Rotation>0.0</Rotation>
 
 			<Presentation>
+				<Control Type="FileChooser">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1590006421322</Id>
+					<Name><![CDATA[fileChooser2]]></Name>
+					<X>8</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="15" Height="15">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor>-1</FillColor>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Title><![CDATA[]]></Title>
+						<Type>UPLOAD</Type>
+						<Filters>.xlsx, .xls</Filters>
+						<FileName>file.txt</FileName>
+					</ExtendedProperties>
+				</Control>
 				<Image>
 					<Id>1589915648163</Id>
 					<Name><![CDATA[image15]]></Name>
@@ -16176,10 +16330,6 @@ public class Politica implements Serializable {
 	<ModelResources>
 		<Resource>
 			<Path><![CDATA[Output/simulator_output.csv]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-		</Resource>
-		<Resource>
-			<Path><![CDATA[Input/Input_Simulador.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 		<Resource>
