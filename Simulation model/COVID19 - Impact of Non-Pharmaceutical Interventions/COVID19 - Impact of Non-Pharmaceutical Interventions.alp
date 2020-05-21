@@ -3582,6 +3582,10 @@ if(returnVal == JFileChooser.APPROVE_OPTION) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<ResourceReference>
+						<PackageName><![CDATA[covid19interventions]]></PackageName>
+						<ClassName><![CDATA[Input/Input_Simulador.xlsx]]></ClassName>
+					</ResourceReference>
 					<SaveInSnapshot>false</SaveInSnapshot>
 					<LoadOnStartup>false</LoadOnStartup>
 					<SaveOnDispose>false</SaveOnDispose>
@@ -10201,7 +10205,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Input_Simulador.xlsx");]]></OnClickCode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/Simulation%20model/COVID19%20-%20Impact%20of%20Non-Pharmaceutical%20Interventions/Input/Input_Simulador.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -10224,7 +10228,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Matriz_Contacto.xlsx");]]></OnClickCode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/Simulation%20model/COVID19%20-%20Impact%20of%20Non-Pharmaceutical%20Interventions/Input/Matriz_Contacto.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -10247,7 +10251,7 @@ hospitalario]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/COVID%20Contagio%20Argentina%20v2.0/Input/Input_Politicas.xlsx");]]></OnClickCode>
+					<OnClickCode><![CDATA[getExperimentHost().openWebSite("https://github.com/patopipp/COVID-19-Simulation-Argentina/raw/master/Simulation%20model/COVID19%20-%20Impact%20of%20Non-Pharmaceutical%20Interventions/Input/Input_Politicas.xlsx");]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Width>19</Width>
@@ -16581,6 +16585,10 @@ public class Politica implements Serializable {
 		</Resource>
 		<Resource>
 			<Path><![CDATA[Group 565.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[Input/Input_Simulador.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
